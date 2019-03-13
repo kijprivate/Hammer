@@ -63,6 +63,10 @@ public class Hammer : MonoBehaviour
             isHammerReady = false;
 
             HandleLoseCondition();
+            EventManager.RaiseEventHammerHit();
+
+            if (LevelContainer.GameOver)
+            { return; }
 
             StartCoroutine(BackToPositionRoutine());
         }
@@ -73,15 +77,12 @@ public class Hammer : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
 
-        if(targetNail.isOverhit)
+        if (targetNail.isOverhit)
         {
-            transform.position = startingPosition + new Vector3(2f, 0f, 0f);
-            targetIndex++;
-            targetNail = NailsParent.transform.GetChild(targetIndex).gameObject.GetComponent<Nail>();
+            SetupNextTarget();
         }
         else
         { transform.position = startingPosition; }
-        //transform.position = startingPosition + new Vector3(2f,0f,0f);
         transform.rotation = startingRotation;
 
         startingRotation = transform.rotation;
@@ -94,8 +95,8 @@ public class Hammer : MonoBehaviour
     {
         LevelContainer.HammerHits--;
         if (LevelContainer.HammerHits <= 0)
-        { // raise event game over
-            print("gameover");
+        { 
+            EventManager.RaiseEventGameOver();
         }
     }
     private void SetupStrength()
@@ -128,6 +129,19 @@ public class Hammer : MonoBehaviour
         rotationZ = this.transform.rotation.z;
     }
 
+    private void SetupNextTarget()
+    {
+        if (targetIndex < NailsParent.transform.GetChildCount() - 1)
+        {
+            targetIndex++;
+            targetNail = NailsParent.transform.GetChild(targetIndex).gameObject.GetComponent<Nail>();
+            transform.position = startingPosition + new Vector3(2f, 0f, 0f);
+        }
+        else
+        {
+            EventManager.RaiseEventNoMoreNails();
+        }
+    }
     public int GetStrength()
     {
         return strength;

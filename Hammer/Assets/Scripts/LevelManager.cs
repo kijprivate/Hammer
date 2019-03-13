@@ -16,27 +16,26 @@ public class LevelManager : MonoBehaviour
         else
         {
             _instance = this;
-            DontDestroyOnLoad(gameObject);
+           // DontDestroyOnLoad(gameObject);
         }
 
-        if(SceneManager.GetActiveScene().buildIndex==0)
-        {
-            LoadSplashScreenWithDelay();
-        }
+        //if(SceneManager.GetActiveScene().buildIndex==0)
+        //{
+        //    LoadSplashScreenWithDelay();
+        //}
     }
 
-    private void Update()
-    {
-        if(SceneManager.GetActiveScene().name=="Game" && Input.GetKeyDown(KeyCode.Escape))
-        {
-            QuitRequest();
-        }
-    }
+    //private void Update()
+    //{
+    //    if(SceneManager.GetActiveScene().name=="Game" && Input.GetKeyDown(KeyCode.Escape))
+    //    {
+    //        QuitRequest();
+    //    }
+    //}
 
     public void QuitRequest()
     {
         Application.Quit();
-
     }
     public void LoadLevel(string name)
     {
@@ -50,17 +49,4 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene("Game");
     }
-    //testing
-
-    //public void AddGems()
-    //{
-    //    PlayerPrefsManager.SetNumberOfGems(PlayerPrefsManager.GetNumberOfGems() + 1000);
-    //}
-
-    //public void LockAllBalls()
-    //{
-    //    PlayerPrefsManager.LockAllBalls();
-    //}
-
-
 }

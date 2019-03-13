@@ -33,8 +33,11 @@ public class Nail : MonoBehaviour
         }
         else
         {
-            if(hammer.GetStrength() == strengthForPerfectHit)
-            { isOverhit = true; }
+            if (hammer.GetStrength() == strengthForPerfectHit)
+            {
+                isOverhit = true;
+                EventManager.RaiseEventNailPocket();
+            }
             depthAfterHit = transform.position.y - (hammer.GetStrength() * step);
             strengthForPerfectHit -= hammer.GetStrength();
         }
