@@ -142,6 +142,7 @@ public class Hammer : MonoBehaviour
             EventManager.RaiseEventNoMoreNails();
         }
     }
+
     public int GetStrength()
     {
         return strength;

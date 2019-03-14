@@ -7,6 +7,8 @@ public class LevelContainer : MonoBehaviour
     [SerializeField] int hammerHits = 12;
     //[SerializeField] int numberOfNails = 10;
 
+    public static int Score { get; set; }
+    public static int MaxAvailableScore { get; private set; }
     public static int HammerHits{ get; set; }
     public static int PocketNails { get; private set; }
     public static bool GameOver { get; private set; }
@@ -17,6 +19,9 @@ public class LevelContainer : MonoBehaviour
         HammerHits = hammerHits;
         PocketNails = 0;
         GameOver = false;
+        Score = 0;
+        MaxAvailableScore = NailsSpawner.MAX_SCORE_FOR_NAILS + (HammerHits - NailsSpawner.MIN_HAMMER_HITS)*50 +NailsSpawner.NUMBER_OF_NAILS*100;
+        print(MaxAvailableScore);
         EventManager.EventGameOver += OnGameOver;
         EventManager.EventNailPocket += OnNailPocket;
         EventManager.EventNoMoreNails += OnGameOver;
@@ -26,6 +31,7 @@ public class LevelContainer : MonoBehaviour
     private void OnGameOver()
     {
         GameOver = true;
+        Score = Score + HammerHits * 50 + PocketNails * 100;
     }
 
     private void OnNailPocket()

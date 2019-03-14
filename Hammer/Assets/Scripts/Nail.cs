@@ -5,6 +5,8 @@ using UnityEngine;
 public class Nail : MonoBehaviour
 {
     public Transform nailHead;
+    public int scoreForNail = 300;
+    public int hitsPerCurrentNail = 0;
     [SerializeField]
     float difficulty = 1f;
     [SerializeField]
@@ -18,7 +20,7 @@ public class Nail : MonoBehaviour
     Hammer hammer;
     float depthAfterHit;
 
-    private void Start()
+    private void Awake()
     {
         hammer = FindObjectOfType<Hammer>();
         SetRandomHeight();
@@ -36,11 +38,14 @@ public class Nail : MonoBehaviour
             if (hammer.GetStrength() == strengthForPerfectHit)
             {
                 isOverhit = true;
+                hitsPerCurrentNail++;
+                LevelContainer.Score += scoreForNail / hitsPerCurrentNail;
                 EventManager.RaiseEventNailPocket();
             }
             depthAfterHit = transform.position.y - (hammer.GetStrength() * step);
             strengthForPerfectHit -= hammer.GetStrength();
         }
+        hitsPerCurrentNail++;
         transform.position = new Vector3(transform.position.x, depthAfterHit, transform.position.z);
     }
 
@@ -56,16 +61,19 @@ public class Nail : MonoBehaviour
             case 2:
                 Yoffset = -0.5f;
                 strengthForPerfectHit = 2;
+                scoreForNail = scoreForNail/2;
                 break;
             case 3:
                 Yoffset = -1f;
                 strengthForPerfectHit = 1;
+                scoreForNail = scoreForNail / 4;
                 break;
             default:
                 break;
         }
         transform.position += new Vector3(0f, Yoffset, 0f);
     }
+
     public float GetStep()
     {
         return step;
