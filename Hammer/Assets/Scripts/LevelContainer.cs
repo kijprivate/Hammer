@@ -12,8 +12,8 @@ public class LevelContainer : MonoBehaviour
     public static int HammerHits{ get; set; }
     public static int PocketNails { get; private set; }
     public static bool GameOver { get; private set; }
-    public static bool GameStarted { get; private set; }
-    public static bool MenuHided { get; private set; }
+    public static bool GameStarted { get; set; }
+    public static bool MenuHided { get; set; }
     //public static int NumberOfNails { get; set; }
 
     void Awake()
@@ -61,7 +61,7 @@ public class LevelContainer : MonoBehaviour
         EventManager.EventGameStarted -= OnGameStarted;
         EventManager.EventMenuHided -= OnMenuHided;
 
-        GameStarted = false;
-        MenuHided = false;
+       // GameStarted = false;
+       // MenuHided = false;
     }
 }

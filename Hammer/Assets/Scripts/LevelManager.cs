@@ -34,13 +34,16 @@ public class LevelManager : MonoBehaviour
     //}
     public void LoadNextLevel()
     {
-        if (SceneManager.sceneCountInBuildSettings - 1 > SceneManager.GetActiveScene().buildIndex + 1)
-        { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); }
+        if (SceneManager.sceneCountInBuildSettings > SceneManager.GetActiveScene().buildIndex + 1)
+        { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            LevelContainer.MenuHided = true;
+        }
         else
         { Debug.LogWarning("This is last level"); }
     }
     public void ReloadLevel()
     {
+        LevelContainer.MenuHided = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void QuitRequest()
@@ -49,7 +52,14 @@ public class LevelManager : MonoBehaviour
     }
     public void LoadLevel(string name)
     {
+        LevelContainer.MenuHided = false;
         SceneManager.LoadScene(name);
+    }
+    public void LoadMenuWithActiveLevel()
+    {
+        LevelContainer.MenuHided = false;
+        LevelContainer.GameStarted = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void LoadSplashScreenWithDelay()
     {

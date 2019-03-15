@@ -33,6 +33,10 @@ public class CanvasManager : MonoBehaviour
             MenuUI.SetActive(true);
             GameplayUI.SetActive(false);
         }
+        else
+        {
+            OnMenuHided();
+        }
     }
 
     private void OnGameOver()
