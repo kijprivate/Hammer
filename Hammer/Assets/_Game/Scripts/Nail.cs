@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using DG.Tweening;
+
 public class Nail : MonoBehaviour
 {
     public Transform nailHead;
@@ -46,7 +48,8 @@ public class Nail : MonoBehaviour
             strengthForPerfectHit -= hammer.GetStrength();
         }
         hitsPerCurrentNail++;
-        transform.position = new Vector3(transform.position.x, depthAfterHit, transform.position.z);
+        //transform.position = new Vector3(transform.position.x, depthAfterHit, transform.position.z);
+        transform.DOMove(new Vector3(transform.position.x, depthAfterHit, transform.position.z), 0.06f);
     }
 
     protected virtual void SetRandomHeight()

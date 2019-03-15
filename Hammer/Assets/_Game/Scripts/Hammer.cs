@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using DG.Tweening;
 using ControlFreak2;
 
 public class Hammer : MonoBehaviour
 {
     [SerializeField]
-    float speed = 10f;
+    float rotationSpeed = 10f;
+    [SerializeField]
+    float verticalMoveSpeed = 1f;
     [SerializeField]
     GameObject NailsParent;
 
@@ -44,16 +47,20 @@ public class Hammer : MonoBehaviour
         {
             if (isMovingUp)
             {
-                rotationZ += speed * Time.deltaTime;
+                rotationZ += rotationSpeed * Time.deltaTime;
+                movingY += verticalMoveSpeed*Time.deltaTime;
                 this.transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
+                this.transform.position = new Vector3(transform.position.x, movingY, transform.position.z);
 
                 if (transform.rotation.z >= 0.6f)
                 { isMovingUp = false; }
             }
             else if (!isMovingUp)
             {
-                rotationZ -= speed * Time.deltaTime;
+                rotationZ -= rotationSpeed * Time.deltaTime;
+                movingY -= verticalMoveSpeed*Time.deltaTime;
                 this.transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
+                this.transform.position = new Vector3(transform.position.x, movingY, transform.position.z);
 
                 if (transform.rotation.z <= 0f)
                 { isMovingUp = true; }
@@ -85,13 +92,16 @@ public class Hammer : MonoBehaviour
         if (targetNail.isOverhit)
         {
             SetupNextTarget();
+            startingPosition += new Vector3(2f, 0f, 0f);
         }
         else
-        { transform.position = startingPosition; }
-        transform.rotation = startingRotation;
+        {
+            transform.DOMove(startingPosition, 0.2f);
+        }
 
+        yield return new WaitForSeconds(0.2f);
+        transform.rotation = startingRotation;
         startingRotation = transform.rotation;
-        startingPosition = transform.position;
 
         isHammerReady = true;
     }
@@ -129,9 +139,10 @@ public class Hammer : MonoBehaviour
             depthAfterHit = targetNail.nailHead.position.y - strength * targetNail.GetStep() + 0.7f;
         }
 
-        transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-        transform.position = new Vector3(transform.position.x, depthAfterHit, transform.position.z);
+        transform.DORotateQuaternion(Quaternion.Euler(0f, 0f, 0f), 0.06f);
+        transform.DOMove(new Vector3(transform.position.x, depthAfterHit, transform.position.z), 0.06f);
         rotationZ = this.transform.rotation.z;
+        movingY = 0;
     }
 
     private void SetupNextTarget()
@@ -140,7 +151,7 @@ public class Hammer : MonoBehaviour
         {
             targetIndex++;
             targetNail = NailsParent.transform.GetChild(targetIndex).gameObject.GetComponent<Nail>();
-            transform.position = startingPosition + new Vector3(2f, 0f, 0f);
+            transform.DOMove(startingPosition + new Vector3(2f, 0f, 0f), 0.3f);
         }
         else
         {
