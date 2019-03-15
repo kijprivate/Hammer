@@ -11,9 +11,8 @@ public class NailsSpawner : MonoBehaviour
     [SerializeField] GameObject redNail;
     [SerializeField] int numberOfDefaultNails = 10;
     [SerializeField] int numberOfRedNails = 10;
-    [SerializeField,Tooltip("Distance between nails")]
-    float Xoffset = 2f;
 
+    float Xoffset = 2f;
     int defaultNails;
     int redNails;
 

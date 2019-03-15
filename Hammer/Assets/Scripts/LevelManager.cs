@@ -32,7 +32,17 @@ public class LevelManager : MonoBehaviour
     //        QuitRequest();
     //    }
     //}
-
+    public void LoadNextLevel()
+    {
+        if (SceneManager.sceneCountInBuildSettings - 1 > SceneManager.GetActiveScene().buildIndex + 1)
+        { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); }
+        else
+        { Debug.LogWarning("This is last level"); }
+    }
+    public void ReloadLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
     public void QuitRequest()
     {
         Application.Quit();

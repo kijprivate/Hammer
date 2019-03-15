@@ -104,7 +104,7 @@ public class Hammer : MonoBehaviour
             EventManager.RaiseEventGameOver();
         }
     }
-    private void SetupStrength()
+    private void SetupStrength() // Hardcoded numbers based on hammer angle
     {
         if (transform.rotation.z >= 0f && transform.rotation.z < 0.12f)
         { strength = 1; }

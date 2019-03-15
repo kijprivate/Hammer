@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,7 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] Text ScoreSummary;
     [SerializeField] Text HammersLeft;
     [SerializeField] Text NailPocket;
+    [SerializeField] Text LevelName;
 
     private void Start()
     {
@@ -24,6 +26,7 @@ public class CanvasManager : MonoBehaviour
 
         HammersLeft.text = LevelContainer.HammerHits.ToString();
         NailPocket.text = LevelContainer.PocketNails.ToString();
+        LevelName.text = SceneManager.GetActiveScene().name;
 
         if(!LevelContainer.MenuHided)
         {
