@@ -35,7 +35,12 @@ public class Hammer : MonoBehaviour
 
     void Update()
     {
-        if (CF2Input.GetButton("Click") && isHammerReady)
+        if (CF2Input.GetButton("Click") && !LevelContainer.MenuHided)
+        {
+            StartCoroutine(CoroutineHideMenuAndStartGame());
+        }
+
+        if (CF2Input.GetButton("Click") && isHammerReady && LevelContainer.GameStarted)
         {
             if (isMovingUp)
             {
@@ -55,7 +60,7 @@ public class Hammer : MonoBehaviour
             }
         }
 
-        if (CF2Input.GetButtonUp("Click") && isHammerReady)
+        if (CF2Input.GetButtonUp("Click") && isHammerReady && LevelContainer.GameStarted)
         {
             SetupStrength();
             SetupHammerPositionAfterHit();
@@ -70,7 +75,7 @@ public class Hammer : MonoBehaviour
 
             StartCoroutine(BackToPositionRoutine());
         }
-        
+
     }
 
     private IEnumerator BackToPositionRoutine()
@@ -141,6 +146,13 @@ public class Hammer : MonoBehaviour
         {
             EventManager.RaiseEventNoMoreNails();
         }
+    }
+
+    private IEnumerator CoroutineHideMenuAndStartGame()
+    {
+        EventManager.RaiseEventMenuHided();
+        yield return new WaitForSeconds(1f);
+        EventManager.RaiseEventGameStarted();
     }
 
     public int GetStrength()

@@ -22,10 +22,10 @@ public static class EventManager
     //    if (NewEvent != null) NewEvent(howMany, isFinal);
     //}
 
-    public static Event EventMenuLoaded;
-    public static void RaiseEventMenuLoaded()
+    public static Event EventMenuHided;
+    public static void RaiseEventMenuHided()
     {
-        if (EventMenuLoaded != null) EventMenuLoaded();
+        if (EventMenuHided != null) EventMenuHided();
     }
 
     public static Event EventGameStarted;

@@ -6,27 +6,27 @@ public class Nail : MonoBehaviour
 {
     public Transform nailHead;
     public int scoreForNail = 300;
+    [HideInInspector]
     public int hitsPerCurrentNail = 0;
+
     [SerializeField]
-    float difficulty = 1f;
-    [SerializeField]
-    int strengthForPerfectHit = 3;
-    [SerializeField]
-    float step = 0.5f;
-    [SerializeField] float Yoffset;
+    protected float step = 0.5f;
+
+    protected int strengthForPerfectHit = 3;
+    protected float Yoffset;
 
     public bool isOverhit { get; set; }
 
-    Hammer hammer;
-    float depthAfterHit;
+    protected Hammer hammer;
+    protected float depthAfterHit;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         hammer = FindObjectOfType<Hammer>();
         SetRandomHeight();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if(hammer.GetStrength() > strengthForPerfectHit)
         {
@@ -49,7 +49,7 @@ public class Nail : MonoBehaviour
         transform.position = new Vector3(transform.position.x, depthAfterHit, transform.position.z);
     }
 
-    private void SetRandomHeight()
+    protected virtual void SetRandomHeight()
     {
         int random = Random.Range(1, 4);
         switch (random)

@@ -12,6 +12,8 @@ public class LevelContainer : MonoBehaviour
     public static int HammerHits{ get; set; }
     public static int PocketNails { get; private set; }
     public static bool GameOver { get; private set; }
+    public static bool GameStarted { get; private set; }
+    public static bool MenuHided { get; private set; }
     //public static int NumberOfNails { get; set; }
 
     void Awake()
@@ -25,6 +27,8 @@ public class LevelContainer : MonoBehaviour
         EventManager.EventGameOver += OnGameOver;
         EventManager.EventNailPocket += OnNailPocket;
         EventManager.EventNoMoreNails += OnGameOver;
+        EventManager.EventGameStarted += OnGameStarted;
+        EventManager.EventMenuHided += OnMenuHided;
         //NumberOfNails = numberOfNails;
     }
 
@@ -39,10 +43,25 @@ public class LevelContainer : MonoBehaviour
         PocketNails++;
     }
 
+    private void OnMenuHided()
+    {
+        MenuHided = true;
+    }
+
+    private void OnGameStarted()
+    {
+        GameStarted = true;
+    }
+
     private void OnDestroy()
     {
         EventManager.EventGameOver -= OnGameOver;
         EventManager.EventNailPocket -= OnNailPocket;
         EventManager.EventNoMoreNails -= OnGameOver;
+        EventManager.EventGameStarted -= OnGameStarted;
+        EventManager.EventMenuHided -= OnMenuHided;
+
+        GameStarted = false;
+        MenuHided = false;
     }
 }
