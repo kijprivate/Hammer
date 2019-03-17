@@ -112,6 +112,91 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &277813354
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 9073872882390369730, guid: a48740e452897b644974d5214b0c4112,
+        type: 3}
+      propertyPath: m_Name
+      value: NailsSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 9073872882390369731, guid: a48740e452897b644974d5214b0c4112,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9073872882390369731, guid: a48740e452897b644974d5214b0c4112,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9073872882390369731, guid: a48740e452897b644974d5214b0c4112,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9073872882390369731, guid: a48740e452897b644974d5214b0c4112,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9073872882390369731, guid: a48740e452897b644974d5214b0c4112,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9073872882390369731, guid: a48740e452897b644974d5214b0c4112,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9073872882390369731, guid: a48740e452897b644974d5214b0c4112,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9073872882390369731, guid: a48740e452897b644974d5214b0c4112,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9073872882390369731, guid: a48740e452897b644974d5214b0c4112,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9073872882390369731, guid: a48740e452897b644974d5214b0c4112,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9073872882390369731, guid: a48740e452897b644974d5214b0c4112,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9073872882390369756, guid: a48740e452897b644974d5214b0c4112,
+        type: 3}
+      propertyPath: numberOfRedNails
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9073872882390369756, guid: a48740e452897b644974d5214b0c4112,
+        type: 3}
+      propertyPath: numberOfDefaultNails
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a48740e452897b644974d5214b0c4112, type: 3}
+--- !u!1 &277813355 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9073872882390369730, guid: a48740e452897b644974d5214b0c4112,
+    type: 3}
+  m_PrefabInstance: {fileID: 277813354}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &365831557
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,7 +652,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1554704052
 GameObject:
@@ -613,58 +698,8 @@ Transform:
   m_Children:
   - {fileID: 1189583406}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1655428334
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 4411496208543678846, guid: 8479b4dd6596a4843a3f2722f5fe81b2,
-    type: 3}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1655428335}
-  - component: {fileID: 1655428336}
-  m_Layer: 0
-  m_Name: NailsSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1655428335
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 4411496208543678847, guid: 8479b4dd6596a4843a3f2722f5fe81b2,
-    type: 3}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1655428334}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1655428336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1655428334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a584a576abf5be4418a1e9d20148caf7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultNail: {fileID: 7838098447166049759, guid: c340e9684501ab849b760d2b1c5385f3,
-    type: 3}
-  redNail: {fileID: 7838098447166049759, guid: 0b77956ab8b6cc7419d412d5b38d8672, type: 3}
-  numberOfDefaultNails: 6
-  numberOfRedNails: 2
 --- !u!1 &1765094950
 GameObject:
   m_ObjectHideFlags: 0
@@ -2739,7 +2774,7 @@ Transform:
   m_Children:
   - {fileID: 1964686375}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1887391506
 PrefabInstance:
@@ -2791,7 +2826,7 @@ PrefabInstance:
     - target: {fileID: 4876835395037101416, guid: 167bcb3555b29944cbf935a88897b44d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4876835395037101416, guid: 167bcb3555b29944cbf935a88897b44d,
         type: 3}
@@ -3048,7 +3083,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2081891152
 PrefabInstance:
@@ -3100,7 +3135,7 @@ PrefabInstance:
     - target: {fileID: 4387342755592455856, guid: 39f71fd60b4ddd84095fc07a96879e69,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4387342755592455856, guid: 39f71fd60b4ddd84095fc07a96879e69,
         type: 3}
@@ -3240,6 +3275,6 @@ PrefabInstance:
         type: 3}
       propertyPath: NailsParent
       value: 
-      objectReference: {fileID: 1655428334}
+      objectReference: {fileID: 277813355}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca3f6aad31e9287479c41ff222661c70, type: 3}

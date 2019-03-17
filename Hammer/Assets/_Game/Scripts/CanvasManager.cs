@@ -10,6 +10,7 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] GameObject MenuUI;
     [SerializeField] GameObject SummaryPanel;
     [SerializeField] GameObject star1,star2,star3;
+    [SerializeField] GameObject PlayAgain, NextLevel;
     [SerializeField] Text ScoreGameplay;
     [SerializeField] Text ScoreSummary;
     [SerializeField] Text HammersLeft;
@@ -44,15 +45,27 @@ public class CanvasManager : MonoBehaviour
         SummaryPanel.SetActive(true); //TODO add delay
         ScoreSummary.text = LevelContainer.Score.ToString();
 
-        if ((float)LevelContainer.Score / LevelContainer.MaxAvailableScore > 0.85f)
-        { star3.SetActive(true); }
-        else if ((float)LevelContainer.Score / LevelContainer.MaxAvailableScore > 0.75f)
-        { star2.SetActive(true); }
-        else if ((float)LevelContainer.Score / LevelContainer.MaxAvailableScore > 0.6f)
-        { star1.SetActive(true); }
+        if (LevelContainer.PercentageValueOfScore > 0.85f)
+        {
+            star3.SetActive(true);
+            PlayAgain.SetActive(true);
+            NextLevel.SetActive(true);
+        }
+        else if (LevelContainer.PercentageValueOfScore > 0.75f)
+        {
+            star2.SetActive(true);
+            PlayAgain.SetActive(true);
+            NextLevel.SetActive(true);
+        }
+        else if (LevelContainer.PercentageValueOfScore > 0.6f)
+        {
+            star1.SetActive(true);
+            PlayAgain.SetActive(true);
+            NextLevel.SetActive(true);
+        }
         else
         {
-            //levelfailed
+            PlayAgain.SetActive(true);
         }
     }
 

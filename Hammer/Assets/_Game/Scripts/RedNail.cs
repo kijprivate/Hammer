@@ -35,11 +35,11 @@ public class RedNail : Nail
                 strengthForPerfectHit = 4;
                 scoreForNail = scoreForNail / 2;
                 break;
-            case 5:
-                Yoffset = -2f;
-                strengthForPerfectHit = 2;
-                scoreForNail = scoreForNail / 4;
-                break;
+            //case 5:
+            //    Yoffset = -2f;
+            //    strengthForPerfectHit = 2;
+            //    scoreForNail = scoreForNail / 4;
+            //    break;
             default:
                 break;
         }

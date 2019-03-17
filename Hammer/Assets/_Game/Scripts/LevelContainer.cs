@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelContainer : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class LevelContainer : MonoBehaviour
     public static int MaxAvailableScore { get; private set; }
     public static int HammerHits{ get; set; }
     public static int PocketNails { get; private set; }
+    public static float PercentageValueOfScore { get; private set; }
     public static bool GameOver { get; private set; }
     public static bool GameStarted { get; set; }
     public static bool MenuHided { get; set; }
@@ -36,6 +38,9 @@ public class LevelContainer : MonoBehaviour
     {
         GameOver = true;
         Score = Score + HammerHits * 50 + PocketNails * 100;
+        PercentageValueOfScore = (float)Score / MaxAvailableScore;
+        if(PercentageValueOfScore > 0.6f)
+        { PlayerPrefsManager.UnlockLevel(SceneManager.GetActiveScene().buildIndex + 2); }
     }
 
     private void OnNailPocket()

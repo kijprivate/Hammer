@@ -7,8 +7,8 @@ public class NailsSpawner : MonoBehaviour
     public static int MAX_SCORE_FOR_NAILS=0;
     public static int MIN_HAMMER_HITS=0;
     public static int NUMBER_OF_NAILS;
-    [SerializeField] GameObject defaultNail;
-    [SerializeField] GameObject redNail;
+    [SerializeField] Nail defaultNail;
+    [SerializeField] Nail redNail;
     [SerializeField] int numberOfDefaultNails = 10;
     [SerializeField] int numberOfRedNails = 10;
 
@@ -28,10 +28,11 @@ public class NailsSpawner : MonoBehaviour
                 case 1:
                     if (defaultNails < numberOfDefaultNails)
                     {
-                        GameObject defNail = Instantiate(defaultNail, defaultNail.transform.position + new Vector3(Xoffset * i, 0f, 0f), Quaternion.identity);
-                        defNail.transform.SetParent(this.transform);
+                        Nail defNail = Instantiate(defaultNail, defaultNail.transform.position + new Vector3(Xoffset * i, 0f, 0f), Quaternion.identity) as Nail;
+                        defNail.gameObject.transform.SetParent(transform);
+                        defNail.Xoffset = Xoffset;
 
-                        CalculatePoints(defNail.GetComponent<Nail>().GetStrengthForPerfectHit(), defNail.GetComponent<Nail>().scoreForNail);
+                        CalculatePoints(defNail.GetStrengthForPerfectHit(), defNail.scoreForNail);
                         defaultNails++;
                         i++;
                     }
@@ -39,8 +40,9 @@ public class NailsSpawner : MonoBehaviour
                 case 2:
                     if (redNails < numberOfRedNails)
                     {
-                        GameObject rNail = Instantiate(this.redNail, this.redNail.transform.position + new Vector3(Xoffset * i, 0f, 0f), Quaternion.identity);
-                        rNail.transform.SetParent(this.transform);
+                        Nail rNail = Instantiate(redNail, redNail.transform.position + new Vector3(Xoffset * i, 0f, 0f), Quaternion.identity) as Nail;
+                        rNail.gameObject.transform.SetParent(transform);
+                        rNail.Xoffset = Xoffset;
 
                         CalculatePoints(rNail.GetComponent<Nail>().GetStrengthForPerfectHit(), rNail.GetComponent<Nail>().scoreForNail);
                         redNails++;

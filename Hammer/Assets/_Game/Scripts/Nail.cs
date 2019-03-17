@@ -10,6 +10,8 @@ public class Nail : MonoBehaviour
     public int scoreForNail = 300;
     [HideInInspector]
     public int hitsPerCurrentNail = 0;
+    [HideInInspector]
+    public float Xoffset = 2f;
 
     [SerializeField]
     protected float step = 0.5f;
@@ -48,7 +50,6 @@ public class Nail : MonoBehaviour
             strengthForPerfectHit -= hammer.GetStrength();
         }
         hitsPerCurrentNail++;
-        //transform.position = new Vector3(transform.position.x, depthAfterHit, transform.position.z);
         transform.DOMove(new Vector3(transform.position.x, depthAfterHit, transform.position.z), 0.06f);
     }
 

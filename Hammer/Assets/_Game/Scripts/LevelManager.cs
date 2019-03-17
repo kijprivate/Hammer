@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.UI;
 
-public class LevelManager : MonoBehaviour 
+public class LevelManager : MonoBehaviour
 {
     private static LevelManager _instance;
     public static LevelManager Instance { get { return _instance; } }
@@ -16,7 +17,7 @@ public class LevelManager : MonoBehaviour
         else
         {
             _instance = this;
-           // DontDestroyOnLoad(gameObject);
+            // DontDestroyOnLoad(gameObject);
         }
 
         //if(SceneManager.GetActiveScene().buildIndex==0)
@@ -25,17 +26,19 @@ public class LevelManager : MonoBehaviour
         //}
     }
 
-    //private void Update()
-    //{
-    //    if(SceneManager.GetActiveScene().name=="Game" && Input.GetKeyDown(KeyCode.Escape))
-    //    {
-    //        QuitRequest();
-    //    }
-    //}
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            QuitRequest();
+        }
+    }
+
     public void LoadNextLevel()
     {
         if (SceneManager.sceneCountInBuildSettings > SceneManager.GetActiveScene().buildIndex + 1)
-        { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             LevelContainer.MenuHided = true;
         }
         else
@@ -68,5 +71,16 @@ public class LevelManager : MonoBehaviour
     public void SplashScreen()
     {
         SceneManager.LoadScene("Game");
+    }
+
+    public void LockAllLevels()
+    {
+        PlayerPrefsManager.LockAllLevels();
+        GameObject[] lockedLevels = GameObject.FindGameObjectsWithTag("Locked");
+        foreach(var locked in lockedLevels)
+        {
+            locked.GetComponent<Button>().enabled = true;
+            locked.GetComponent<Image>().enabled = true;
+        }
     }
 }
