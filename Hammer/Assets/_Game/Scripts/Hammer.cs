@@ -12,7 +12,9 @@ public class Hammer : MonoBehaviour
     [SerializeField]
     float verticalMoveSpeed = 1f;
     [SerializeField]
-    float HammerPositionOverNailHead = 1.5f;
+    float PositionOverNailHeadBeforeHit = 1.5f;
+    [SerializeField]
+    float PositionOverNailHeadAfterHit = 0.7f;
 
     Transform myTransform;
     Nail targetNail;
@@ -99,7 +101,7 @@ public class Hammer : MonoBehaviour
         }
         else
         {
-            startingPosition = new Vector3(startingPosition.x, targetNail.nailHead.transform.position.y + HammerPositionOverNailHead, startingPosition.z);
+            startingPosition = new Vector3(startingPosition.x, targetNail.nailHead.transform.position.y + PositionOverNailHeadBeforeHit, startingPosition.z);
             myTransform.DOMove(startingPosition, 0.2f);
         }
 
@@ -138,11 +140,11 @@ public class Hammer : MonoBehaviour
     {
         if (strength > targetNail.GetStrengthForPerfectHit())
         {
-            depthAfterHit = targetNail.nailHead.position.y + 0.7f - (targetNail.GetStrengthForPerfectHit() * targetNail.GetStep() + (strength - targetNail.GetStrengthForPerfectHit()) * (targetNail.GetStep() / 2f));
+            depthAfterHit = targetNail.nailHead.position.y + PositionOverNailHeadAfterHit - (targetNail.GetStrengthForPerfectHit() * targetNail.GetStep() + (strength - targetNail.GetStrengthForPerfectHit()) * (targetNail.GetStep() / 2f));
         }
         else
         {
-            depthAfterHit = targetNail.nailHead.position.y - strength * targetNail.GetStep() + 0.7f;
+            depthAfterHit = targetNail.nailHead.position.y - strength * targetNail.GetStep() + PositionOverNailHeadAfterHit;
         }
 
         myTransform.DORotateQuaternion(Quaternion.Euler(0f, 0f, 0f), 0.06f);
@@ -156,7 +158,7 @@ public class Hammer : MonoBehaviour
             targetIndex++;
             targetNail = NailsParent.transform.GetChild(targetIndex).gameObject.GetComponent<Nail>();
             startingPosition += new Vector3(targetNail.Xoffset, 0f, 0f);
-            startingPosition = new Vector3(startingPosition.x,targetNail.nailHead.transform.position.y + HammerPositionOverNailHead, startingPosition.z);
+            startingPosition = new Vector3(startingPosition.x,targetNail.nailHead.transform.position.y + PositionOverNailHeadBeforeHit, startingPosition.z);
             myTransform.DOMove(startingPosition, 0.3f);
         }
         else
