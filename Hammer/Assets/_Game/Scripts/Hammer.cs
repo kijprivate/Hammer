@@ -153,7 +153,7 @@ public class Hammer : MonoBehaviour
 
     private void SetupNextTarget()
     {
-        if (targetIndex < NailsParent.transform.GetChildCount() - 1)
+        if (targetIndex < NailsParent.transform.childCount - 1)
         {
             targetIndex++;
             targetNail = NailsParent.transform.GetChild(targetIndex).gameObject.GetComponent<Nail>();
