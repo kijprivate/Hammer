@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a872ea053a8d04640ada76999cb79b5b
+guid: 1317c1f36e124085979ae47545690197
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -129,17 +129,17 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: 01 - Default
-    second: {fileID: 2100000, guid: ed609b7cf59d24741820d83f8fc35326, type: 2}
+    second: {fileID: 2100000, guid: 18235ff7d1f145eca1b435f65d51b5f7, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: healthglow
-    second: {fileID: 2100000, guid: bbf78acabe03c5347b91673fb89d42ec, type: 2}
+    second: {fileID: 2100000, guid: ddb2ca3f6324462c9eb1c410c1f8709f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: main_weapon
-    second: {fileID: 2100000, guid: ebf2bd3ca1b79a04b98d48108c88628b, type: 2}
+    second: {fileID: 2100000, guid: 4d78eacdb1ca476ea2af2431a06f3228, type: 2}
   materials:
     importMaterials: 1
     materialName: 2

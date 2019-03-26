@@ -36,12 +36,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 104308}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ef349a907a7f244882a56bb377d664f, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c7e508bb3b54dec916286040a9aeaf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fingerMarker: {fileID: 2800000, guid: ecb3f52902b6191428f1c5890554cc6d, type: 3}
-  pinchHintMarker: {fileID: 2800000, guid: 1f3fde9e93e671048b397ded2836920c, type: 3}
-  twistHintMarker: {fileID: 2800000, guid: d6fcaf4c972c57040babd621d8d29918, type: 3}
+  fingerMarker: {fileID: 2800000, guid: 9c8efe2cc41d4f2e915a3041aed1d263, type: 3}
+  pinchHintMarker: {fileID: 2800000, guid: a15751bdc21b4278a9ede3f895da6ca4, type: 3}
+  twistHintMarker: {fileID: 2800000, guid: 34f3edd98c794e61b10bd40059d85e61, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -90,7 +90,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6724451300504717536}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b59640e4d1979a4591ef535177ce3cc, type: 3}
+  m_Script: {fileID: 11500000, guid: add4c6d9065b451d8e894b469952f2a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 125
@@ -164,7 +164,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: ce3672851e7a5fc4cb1c37231f3b6373, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9bffe844e3994051a61946483ae32e72, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

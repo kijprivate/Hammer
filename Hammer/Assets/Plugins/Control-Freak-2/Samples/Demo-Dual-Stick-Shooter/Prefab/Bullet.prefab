@@ -41,7 +41,7 @@ MeshRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6c055f79c6e034b65be556accf6daa36, type: 2}
+  - {fileID: 2100000, guid: d64d1c7bf0de4d0aaaf8844ac8894046, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -82,7 +82,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100778}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 408e2cbff871f9041b6dc88a954f819a, type: 3}
+  m_Script: {fileID: 11500000, guid: f251468a157c41568e8cbf80154c8066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxLifetime: 1

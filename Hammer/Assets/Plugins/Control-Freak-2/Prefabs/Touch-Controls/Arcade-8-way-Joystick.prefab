@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: ccb0f7a1619de184ba52e837b11b4b2f, type: 2}
+  m_Material: {fileID: 2100000, guid: 45038d50c14a4cfca96693f9aa675879, type: 2}
   m_Color: {r: .694117665, g: .694117665, b: .694117665, a: 0}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
@@ -89,7 +89,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 329e29c067424eb4d980acd09e03ecdc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 58bdf53ae9df420aab36004912057289, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 179846}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 294a8c1378026744583a542cf9af0572, type: 3}
+  m_Script: {fileID: 11500000, guid: eee1a225f52b49c6a91ba4924e968c23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ignoreFingerRadius: 0
@@ -257,14 +257,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 184330}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b157099fa5ec75144808407db47c6a40, type: 3}
+  m_Script: {fileID: 11500000, guid: 54d7c8def1c74a45a87b72d824484ecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   autoConnectToSource: 1
   sourceControl: {fileID: 11411744}
   spriteNeutral:
     enabled: 1
-    sprite: {fileID: 21300000, guid: a1fbb7d4c6cd84443b0036e1dd4b1705, type: 3}
+    sprite: {fileID: 21300000, guid: 7369dcea6c224530826eca7e1e36191d, type: 3}
     color: {r: .697000027, g: .697000027, b: .697000027, a: .345098048}
     scale: 1
     rotation: 0
@@ -437,14 +437,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 159070}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b157099fa5ec75144808407db47c6a40, type: 3}
+  m_Script: {fileID: 11500000, guid: 54d7c8def1c74a45a87b72d824484ecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   autoConnectToSource: 1
   sourceControl: {fileID: 11411744}
   spriteNeutral:
     enabled: 1
-    sprite: {fileID: 21300000, guid: 329e29c067424eb4d980acd09e03ecdc, type: 3}
+    sprite: {fileID: 21300000, guid: 58bdf53ae9df420aab36004912057289, type: 3}
     color: {r: .694117665, g: .694117665, b: .694117665, a: 0}
     scale: 1
     rotation: 0
@@ -620,7 +620,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: ccb0f7a1619de184ba52e837b11b4b2f, type: 2}
+  m_Material: {fileID: 2100000, guid: 45038d50c14a4cfca96693f9aa675879, type: 2}
   m_Color: {r: .697000027, g: .697000027, b: .697000027, a: .345098048}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
@@ -628,7 +628,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: a1fbb7d4c6cd84443b0036e1dd4b1705, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7369dcea6c224530826eca7e1e36191d, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -647,7 +647,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: ccb0f7a1619de184ba52e837b11b4b2f, type: 2}
+  m_Material: {fileID: 2100000, guid: 45038d50c14a4cfca96693f9aa675879, type: 2}
   m_Color: {r: .745098054, g: .745098054, b: .745098054, a: .347000003}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
@@ -655,7 +655,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 6c9b4a946cb151042b0114b2eed082d1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7d7cc43b1f384df48f73008359dfdad2, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -671,14 +671,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 189858}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b157099fa5ec75144808407db47c6a40, type: 3}
+  m_Script: {fileID: 11500000, guid: 54d7c8def1c74a45a87b72d824484ecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   autoConnectToSource: 1
   sourceControl: {fileID: 11411744}
   spriteNeutral:
     enabled: 1
-    sprite: {fileID: 21300000, guid: 6c9b4a946cb151042b0114b2eed082d1, type: 3}
+    sprite: {fileID: 21300000, guid: 7d7cc43b1f384df48f73008359dfdad2, type: 3}
     color: {r: .745098054, g: .745098054, b: .745098054, a: .347000003}
     scale: 1
     rotation: 0

@@ -189,7 +189,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 140084}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cab2431f7c6ac94bad4241adeaa9d6e, type: 3}
+  m_Script: {fileID: 11500000, guid: 03a51cda9f804fa290f5ad02475ab314, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   charaMotor: {fileID: 11476308}
@@ -204,7 +204,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 140084}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 236882bd9c2e06444a85908e7f22e881, type: 3}
+  m_Script: {fileID: 11500000, guid: 91f7fc777fa147969e048f04c0d0ba54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 0}

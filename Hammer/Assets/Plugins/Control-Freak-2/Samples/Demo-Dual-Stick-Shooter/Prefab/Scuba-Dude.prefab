@@ -1409,7 +1409,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197840}
-  m_Mesh: {fileID: 4300002, guid: a872ea053a8d04640ada76999cb79b5b, type: 3}
+  m_Mesh: {fileID: 4300002, guid: 1317c1f36e124085979ae47545690197, type: 3}
 --- !u!54 &5463004
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -1445,7 +1445,7 @@ Animator:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101942}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: a872ea053a8d04640ada76999cb79b5b, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 1317c1f36e124085979ae47545690197, type: 3}
   m_Controller: {fileID: 9100000, guid: b255f2946a2bccc4dad58784b6acbb8a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -1462,7 +1462,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 101942}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 236882bd9c2e06444a85908e7f22e881, type: 3}
+  m_Script: {fileID: 11500000, guid: 91f7fc777fa147969e048f04c0d0ba54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 0}
@@ -1486,7 +1486,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 101942}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cab2431f7c6ac94bad4241adeaa9d6e, type: 3}
+  m_Script: {fileID: 11500000, guid: 03a51cda9f804fa290f5ad02475ab314, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   charaMotor: {fileID: 11424088}
@@ -1523,7 +1523,7 @@ SkinnedMeshRenderer:
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
-  m_Mesh: {fileID: 4300000, guid: a872ea053a8d04640ada76999cb79b5b, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 1317c1f36e124085979ae47545690197, type: 3}
   m_Bones:
   - {fileID: 458360}
   - {fileID: 468126}

@@ -36,12 +36,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 123554}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d96b74da24064e8488b21acb7a33708b, type: 3}
+  m_Script: {fileID: 11500000, guid: cc781fb6ecb64054bf80b0cf1034bd74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   drawGUI: 1
   drawUnityAxes: 0
-  skin: {fileID: 11400000, guid: cce0826667cb92d4491d6800bd1a1182, type: 2}
+  skin: {fileID: 11400000, guid: a4ea34b1a84d45ff9b5f11de86c14207, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

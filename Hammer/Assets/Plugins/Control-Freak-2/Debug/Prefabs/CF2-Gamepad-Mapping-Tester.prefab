@@ -329,14 +329,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 131768}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d96b74da24064e8488b21acb7a33708b, type: 3}
+  m_Script: {fileID: 11500000, guid: cc781fb6ecb64054bf80b0cf1034bd74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   drawGUI: 1
   drawMouseStats: 0
   drawUnityAxes: 0
   deltaResetKey: 286
-  skin: {fileID: 11400000, guid: cce0826667cb92d4491d6800bd1a1182, type: 2}
+  skin: {fileID: 11400000, guid: a4ea34b1a84d45ff9b5f11de86c14207, type: 2}
 --- !u!114 &11418004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -345,7 +345,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 133094}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bff5b65a8c619340b59028dc2a91816, type: 3}
+  m_Script: {fileID: 11500000, guid: e9cfb0b3c4c5418d822e42a4df6d1abe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
@@ -358,7 +358,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 134938}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81705b1c486dc3b468f7cc553a648228, type: 3}
+  m_Script: {fileID: 11500000, guid: 1999425d1ec24b3e9342e5b3fcaf5423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   autoConnectToRig: 1
@@ -403,7 +403,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 134938}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd0df8f6cb3d9d74abaf8582e7b07070, type: 3}
+  m_Script: {fileID: 11500000, guid: a665d1e39b604ca4a214ac05a90b30df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -470,7 +470,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 129416}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8f0547c3d0f3bd4bad1cb9cb2f0d11a, type: 3}
+  m_Script: {fileID: 11500000, guid: d73bbe82312046b4a3c43fd5604176f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxNotifications: 8
@@ -482,15 +482,15 @@ MonoBehaviour:
   msgGamepadDisconnected: '{0} gamepad at slot {1} disconncted.'
   msgGamepadActivated: '{0} gamepad activated at slot {1}.'
   msgGamepadDisactivated: '{0} gamepad disactivated at slot {1}.'
-  iconUnknownGamepadConnected: {fileID: 21300000, guid: 9a09435a6c8711d4d824664871bc9413,
+  iconUnknownGamepadConnected: {fileID: 21300000, guid: 29ae790748cb49779d53536bd17dad33,
     type: 3}
-  iconKnownGamepadConnected: {fileID: 21300000, guid: 9a09435a6c8711d4d824664871bc9413,
+  iconKnownGamepadConnected: {fileID: 21300000, guid: 29ae790748cb49779d53536bd17dad33,
     type: 3}
-  iconGamepadDisconnected: {fileID: 21300000, guid: 9a09435a6c8711d4d824664871bc9413,
+  iconGamepadDisconnected: {fileID: 21300000, guid: 29ae790748cb49779d53536bd17dad33,
     type: 3}
-  iconGamepadActivated: {fileID: 21300000, guid: 9a09435a6c8711d4d824664871bc9413,
+  iconGamepadActivated: {fileID: 21300000, guid: 29ae790748cb49779d53536bd17dad33,
     type: 3}
-  iconGamepadDisactivated: {fileID: 21300000, guid: 9a09435a6c8711d4d824664871bc9413,
+  iconGamepadDisactivated: {fileID: 21300000, guid: 29ae790748cb49779d53536bd17dad33,
     type: 3}
 --- !u!114 &11451654
 MonoBehaviour:
@@ -500,7 +500,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 145062}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f7d3c0703122fd4b813bd6bb7cc734c, type: 3}
+  m_Script: {fileID: 11500000, guid: a3870c52c6364ccc8c6f478e151ec37b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   autoActivate: 1
@@ -2830,7 +2830,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 133924}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab2ca803658d2164a8650a2d3cd4c23e, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d9f60cf60ed499786419e98294dcd9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   submitGamepadButton: 0
@@ -2845,7 +2845,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 162258}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1005d6409cef3040b6b585028ef6215, type: 3}
+  m_Script: {fileID: 11500000, guid: 833535f7253f48b88fc49b07760733f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetText: {fileID: 11442322}
