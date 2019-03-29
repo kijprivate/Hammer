@@ -8,6 +8,8 @@ using ControlFreak2;
 public class Hammer : MonoBehaviour
 {
     [SerializeField]
+    int maxHammerStrength = 5;
+    [SerializeField]
     float rotationSpeed = 10f;
     [SerializeField]
     float verticalMoveSpeed = 1f;
@@ -124,16 +126,26 @@ public class Hammer : MonoBehaviour
     }
     private void SetupStrength() // Hardcoded numbers based on hammer angle
     {
-        if (myTransform.rotation.z >= 0f && myTransform.rotation.z < 0.12f)
-        { strength = 1; }
-        else if (myTransform.rotation.z >= 0.12f && myTransform.rotation.z < 0.24f)
-        { strength = 2; }
-        else if (myTransform.rotation.z >= 0.24f && myTransform.rotation.z < 0.36f)
-        { strength = 3; }
-        else if (myTransform.rotation.z >= 0.36f && myTransform.rotation.z < 0.48f)
-        { strength = 4; }
-        else if (myTransform.rotation.z >= 0.48f && myTransform.rotation.z <= 0.60f)
-        { strength = 5; }
+        float strengthInterval = 0.60f / maxHammerStrength;
+
+        for(int i = 0; i < maxHammerStrength; i++)
+        {
+            if(myTransform.rotation.z >= i*strengthInterval && myTransform.rotation.z < (i+1)*strengthInterval)
+            { strength = i + 1; }
+        }
+
+        // old version of this to easier understand whats happening above
+
+        //if (myTransform.rotation.z >= 0f && myTransform.rotation.z < 0.12f)
+        //{ strength = 1; }
+        //else if (myTransform.rotation.z >= 0.12f && myTransform.rotation.z < 0.24f)
+        //{ strength = 2; }
+        //else if (myTransform.rotation.z >= 0.24f && myTransform.rotation.z < 0.36f)
+        //{ strength = 3; }
+        //else if (myTransform.rotation.z >= 0.36f && myTransform.rotation.z < 0.48f)
+        //{ strength = 4; }
+        //else if (myTransform.rotation.z >= 0.48f && myTransform.rotation.z <= 0.60f)
+        //{ strength = 5; }
     }
 
     private void SetupHammerPositionAfterHit()
@@ -170,7 +182,7 @@ public class Hammer : MonoBehaviour
     private IEnumerator CoroutineHideMenuAndStartGame()
     {
         EventManager.RaiseEventMenuHided();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.1f);
         EventManager.RaiseEventGameStarted();
     }
 
