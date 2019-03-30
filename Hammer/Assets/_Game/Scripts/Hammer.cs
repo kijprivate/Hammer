@@ -131,7 +131,7 @@ public class Hammer : MonoBehaviour
         for(int i = 0; i < maxHammerStrength; i++)
         {
             if(myTransform.rotation.z >= i*strengthInterval && myTransform.rotation.z < (i+1)*strengthInterval)
-            { strength = i + 1; }
+            { strength = i; }
         }
 
         // old version of this to easier understand whats happening above

@@ -93,9 +93,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: add4c6d9065b451d8e894b469952f2a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHammerStrength: 4
   rotationSpeed: 125
   verticalMoveSpeed: 1.2
-  HammerPositionOverNailHead: 2
+  PositionOverNailHeadBeforeHit: 1.5
+  PositionOverNailHeadAfterHit: 0.6
 --- !u!1 &6724451301502970308
 GameObject:
   m_ObjectHideFlags: 0
