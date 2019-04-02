@@ -7,17 +7,6 @@ using ControlFreak2;
 
 public class Hammer : MonoBehaviour
 {
-    [SerializeField]
-    int maxHammerStrength = 5;
-    [SerializeField]
-    float rotationSpeed = 10f;
-    [SerializeField]
-    float verticalMoveSpeed = 1f;
-    [SerializeField]
-    float PositionOverNailHeadBeforeHit = 1.5f;
-    [SerializeField]
-    float PositionOverNailHeadAfterHit = 0.7f;
-
     Transform myTransform;
     Nail targetNail;
     GameObject NailsParent;
@@ -55,8 +44,8 @@ public class Hammer : MonoBehaviour
         {
             if (isMovingUp)
             {
-                rotationZ += rotationSpeed * Time.deltaTime;
-                movingY += verticalMoveSpeed*Time.deltaTime;
+                rotationZ += LevelsDifficultyContainer.LevelsData[LevelContainer.CurrentLevelNumber].rotationSpeed * Time.deltaTime;
+                movingY += LevelsDifficultyContainer.LevelsData[LevelContainer.CurrentLevelNumber].verticalMoveSpeed*Time.deltaTime;
                 myTransform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
                 myTransform.position = new Vector3(myTransform.position.x, movingY, myTransform.position.z);
 
@@ -65,8 +54,8 @@ public class Hammer : MonoBehaviour
             }
             else if (!isMovingUp)
             {
-                rotationZ -= rotationSpeed * Time.deltaTime;
-                movingY -= verticalMoveSpeed*Time.deltaTime;
+                rotationZ -= LevelsDifficultyContainer.LevelsData[LevelContainer.CurrentLevelNumber].rotationSpeed * Time.deltaTime;
+                movingY -= LevelsDifficultyContainer.LevelsData[LevelContainer.CurrentLevelNumber].verticalMoveSpeed*Time.deltaTime;
                 myTransform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
                 myTransform.position = new Vector3(myTransform.position.x, movingY, myTransform.position.z);
 
@@ -82,7 +71,6 @@ public class Hammer : MonoBehaviour
 
             isHammerReady = false;
 
-            HandleLoseCondition();
             EventManager.RaiseEventHammerHit();
 
             if (LevelContainer.GameOver)
@@ -103,7 +91,7 @@ public class Hammer : MonoBehaviour
         }
         else
         {
-            startingPosition = new Vector3(startingPosition.x, targetNail.nailHead.transform.position.y + PositionOverNailHeadBeforeHit, startingPosition.z);
+            startingPosition = new Vector3(startingPosition.x, targetNail.nailHead.transform.position.y + ConstantDataContainer.PositionOverNailHeadBeforeHit, startingPosition.z);
             myTransform.DOMove(startingPosition, 0.2f);
         }
 
@@ -115,20 +103,11 @@ public class Hammer : MonoBehaviour
 
         isHammerReady = true;
     }
-
-    private void HandleLoseCondition()
-    {
-        LevelContainer.HammerHits--;
-        if (LevelContainer.HammerHits <= 0)
-        { 
-            EventManager.RaiseEventGameOver();
-        }
-    }
     private void SetupStrength() // Hardcoded numbers based on hammer angle
     {
-        float strengthInterval = 0.60f / maxHammerStrength;
+        float strengthInterval = 0.60f / (ConstantDataContainer.MaxHammerStrength+1);
 
-        for(int i = 0; i < maxHammerStrength; i++)
+        for(int i = 0; i < ConstantDataContainer.MaxHammerStrength; i++)
         {
             if(myTransform.rotation.z >= i*strengthInterval && myTransform.rotation.z < (i+1)*strengthInterval)
             { strength = i; }
@@ -152,11 +131,11 @@ public class Hammer : MonoBehaviour
     {
         if (strength > targetNail.GetStrengthForPerfectHit())
         {
-            depthAfterHit = targetNail.nailHead.position.y + PositionOverNailHeadAfterHit - (targetNail.GetStrengthForPerfectHit() * targetNail.GetStep() + (strength - targetNail.GetStrengthForPerfectHit()) * (targetNail.GetStep() / 2f));
+            depthAfterHit = targetNail.nailHead.position.y + ConstantDataContainer.PositionOverNailHeadAfterHit - (targetNail.GetStrengthForPerfectHit() * targetNail.GetStep() + (strength - targetNail.GetStrengthForPerfectHit()) * (targetNail.GetStep() / 2f));
         }
         else
         {
-            depthAfterHit = targetNail.nailHead.position.y - strength * targetNail.GetStep() + PositionOverNailHeadAfterHit;
+            depthAfterHit = targetNail.nailHead.position.y - strength * targetNail.GetStep() + ConstantDataContainer.PositionOverNailHeadAfterHit;
         }
 
         myTransform.DORotateQuaternion(Quaternion.Euler(0f, 0f, 0f), 0.06f);
@@ -170,7 +149,7 @@ public class Hammer : MonoBehaviour
             targetIndex++;
             targetNail = NailsParent.transform.GetChild(targetIndex).gameObject.GetComponent<Nail>();
             startingPosition += new Vector3(targetNail.Xoffset, 0f, 0f);
-            startingPosition = new Vector3(startingPosition.x,targetNail.nailHead.transform.position.y + PositionOverNailHeadBeforeHit, startingPosition.z);
+            startingPosition = new Vector3(startingPosition.x,targetNail.nailHead.transform.position.y + ConstantDataContainer.PositionOverNailHeadBeforeHit, startingPosition.z);
             myTransform.DOMove(startingPosition, 0.3f);
         }
         else

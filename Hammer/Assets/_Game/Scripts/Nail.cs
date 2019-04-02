@@ -7,8 +7,9 @@ using DG.Tweening;
 public class Nail : MonoBehaviour
 {
     public Transform nailHead;
-    public int scoreForNail = 300;
-    [HideInInspector]
+
+    public int ScoreForNail => scoreForNail;
+    
     public int hitsPerCurrentNail = 0;
     [HideInInspector]
     public float Xoffset = 2f;
@@ -24,8 +25,11 @@ public class Nail : MonoBehaviour
     protected Hammer hammer;
     protected float depthAfterHit;
 
+    protected int scoreForNail;
+
     protected virtual void Awake()
     {
+        scoreForNail = ConstantDataContainer.ScoreForDefaultNail;
         hammer = FindObjectOfType<Hammer>();
         SetRandomHeight();
     }
@@ -65,12 +69,10 @@ public class Nail : MonoBehaviour
             case 2:
                 Yoffset = -0.5f;
                 strengthForPerfectHit = 2;
-                scoreForNail = scoreForNail/2;
                 break;
             case 3:
                 Yoffset = -1f;
                 strengthForPerfectHit = 1;
-                scoreForNail = scoreForNail / 4;
                 break;
             default:
                 break;
