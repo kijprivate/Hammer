@@ -36,13 +36,16 @@ public class LevelManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        if (SceneManager.sceneCountInBuildSettings > SceneManager.GetActiveScene().buildIndex + 1)
+        if (LevelsDifficultyContainer.LevelsData.Count > PlayerPrefsManager.GetChosenLevelNumber())
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            PlayerPrefsManager.ChooseLevel(PlayerPrefsManager.GetChosenLevelNumber()+1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             LevelContainer.MenuHided = true;
         }
         else
-        { Debug.LogWarning("This is last level"); }
+        {
+            Debug.Log("This was last level");
+        }
     }
     public void ReloadLevel()
     {
@@ -53,24 +56,17 @@ public class LevelManager : MonoBehaviour
     {
         Application.Quit();
     }
-    public void LoadLevel(string name)
+    public void LoadLevel(int levelNumber)
     {
+        PlayerPrefsManager.ChooseLevel(levelNumber);
         LevelContainer.MenuHided = false;
-        SceneManager.LoadScene(name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void LoadMenuWithActiveLevel()
     {
         LevelContainer.MenuHided = false;
         LevelContainer.GameStarted = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-    public void LoadSplashScreenWithDelay()
-    {
-        Invoke("SplashScreen", 5f);
-    }
-    public void SplashScreen()
-    {
-        SceneManager.LoadScene("Game");
     }
 
     public void LockAllLevels()

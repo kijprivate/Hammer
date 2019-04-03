@@ -5,21 +5,46 @@ using UnityEngine.SceneManagement;
 
 public class NailsSpawner : MonoBehaviour
 {
-    public static int MAX_SCORE_FOR_NAILS=0;
-    public static int MIN_HAMMER_HITS=0;
+    private int maxAvailableScore;
+    public static int MaxAvailableScore => Instance.maxAvailableScore;
 
     [SerializeField] Nail defaultNail;
     [SerializeField] Nail redNail;
 
+    private int maxScoreForNails;
+    private int minHammerHits;
     private int numberOfNails;
     float Xoffset = 2f;
     int defaultNails;
     int redNails;
-
+    private int cashedScoreForMoves;
+    private int cashedScoreForNails;
+    
+    static NailsSpawner instance;
+    public static NailsSpawner Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<NailsSpawner>();
+            }
+            return instance;
+        }
+    }
     private void Awake()
     {
-        var data = LevelsDifficultyContainer.LevelsData[SceneManager.GetActiveScene().buildIndex];
+        StartCoroutine(SpawnWithDelay());
+        cashedScoreForMoves = ConstantDataContainer.ScoreDuplicatorForMovesLeft;
+        cashedScoreForNails = ConstantDataContainer.ScoreDuplicatorForCorrectNails;
+    }
+
+    private IEnumerator SpawnWithDelay()
+    {
+        yield return new WaitForEndOfFrame();
+        var data = LevelsDifficultyContainer.LevelsData[PlayerPrefsManager.GetChosenLevelNumber()-1];
         numberOfNails = LevelContainer.NumberOfNails;
+
         for (int i = 0; i < numberOfNails; )
         {
             int index = Random.Range(1, 3);
@@ -50,29 +75,22 @@ public class NailsSpawner : MonoBehaviour
                         i++;
                     }
                     break;
-                default:
-                    break;
             }
         }
+        maxAvailableScore = maxScoreForNails + (LevelContainer.HammerHits - minHammerHits)*cashedScoreForMoves +numberOfNails*cashedScoreForNails;
+        print(maxAvailableScore);
     }
-
     private void CalculatePoints(int strengthForPerfectHit,int scoreForNail)
     {
         if (strengthForPerfectHit % 5 == 0)
         {
-            MAX_SCORE_FOR_NAILS += scoreForNail / (strengthForPerfectHit / 5);
-            MIN_HAMMER_HITS += strengthForPerfectHit / 5;
+            maxScoreForNails += scoreForNail / (strengthForPerfectHit / 5);
+            minHammerHits += strengthForPerfectHit / 5;
         }
         else
         {
-            MAX_SCORE_FOR_NAILS += scoreForNail / (strengthForPerfectHit / 5 + 1);
-            MIN_HAMMER_HITS += strengthForPerfectHit / 5 + 1;
+            maxScoreForNails += scoreForNail / (strengthForPerfectHit / 5 + 1);
+            minHammerHits += strengthForPerfectHit / 5 + 1;
         }
-    }
-
-    private void OnDestroy()
-    {
-        MAX_SCORE_FOR_NAILS = 0;
-        MIN_HAMMER_HITS = 0;
     }
 }

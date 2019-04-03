@@ -12,3 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e6440269f4e4293895e993d0f8e37a5, type: 3}
   m_Name: LevelDataConfig
   m_EditorClassIdentifier: 
+  levelsData:
+  - levelNumber: 1
+    hammerHits: 12
+    rotationSpeed: 100
+    verticalMoveSpeed: 1
+    numberOfDefaultNails: 10
+    numberOfRedNails: 0
+  - levelNumber: 2
+    hammerHits: 15
+    rotationSpeed: 100
+    verticalMoveSpeed: 1
+    numberOfDefaultNails: 10
+    numberOfRedNails: 2
+  - levelNumber: 3
+    hammerHits: 17
+    rotationSpeed: 100
+    verticalMoveSpeed: 1
+    numberOfDefaultNails: 10
+    numberOfRedNails: 4

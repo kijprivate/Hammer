@@ -63,16 +63,4 @@ public static class EventManager
     {
         if (EventNoMoreNails != null) EventNoMoreNails();
     }
-
-    public static Event EventGemsSubstracted;
-    public static void RaiseEventGemsSubstracted()
-    {
-        if (EventGemsSubstracted != null) EventGemsSubstracted();
-    }
-
-    public static Event EventChooseBall;
-    public static void RaiseEventChooseBall()
-    {
-        if (EventChooseBall != null) EventChooseBall();
-    }
 }

@@ -17,6 +17,9 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] Text NailPocket;
     [SerializeField] Text LevelName;
 
+    private float cashed1Star;
+    private float cashed2Stars;
+    private float cashed3Stars;
     private void Start()
     {
         EventManager.EventGameOver += OnGameOver;
@@ -27,8 +30,12 @@ public class CanvasManager : MonoBehaviour
 
         HammersLeft.text = LevelContainer.HammerHits.ToString();
         NailPocket.text = LevelContainer.PocketNails.ToString();
-        LevelName.text = SceneManager.GetActiveScene().name;
+        LevelName.text = "Level"+LevelContainer.CurrentLevelNumber.ToString();
 
+        cashed1Star = ConstantDataContainer.PercentageValueFor1Star/100f;
+        cashed2Stars = ConstantDataContainer.PercentageValueFor2Stars/100f;
+        cashed3Stars = ConstantDataContainer.PercentageValueFor3Stars/100f;
+        
         if(!LevelContainer.MenuHided)
         {
             MenuUI.SetActive(true);
@@ -42,22 +49,21 @@ public class CanvasManager : MonoBehaviour
 
     private void OnGameOver()
     {
-        SummaryPanel.SetActive(true); //TODO add delay
-        ScoreSummary.text = LevelContainer.Score.ToString();
+        StartCoroutine(DisplayPoints());
 
-        if (LevelContainer.PercentageValueOfScore > 0.85f)
+        if (LevelContainer.PercentageValueOfScore > cashed3Stars)
         {
             star3.SetActive(true);
             PlayAgain.SetActive(true);
             NextLevel.SetActive(true);
         }
-        else if (LevelContainer.PercentageValueOfScore > 0.75f)
+        else if (LevelContainer.PercentageValueOfScore > cashed2Stars)
         {
             star2.SetActive(true);
             PlayAgain.SetActive(true);
             NextLevel.SetActive(true);
         }
-        else if (LevelContainer.PercentageValueOfScore > 0.6f)
+        else if (LevelContainer.PercentageValueOfScore > cashed1Star)
         {
             star1.SetActive(true);
             PlayAgain.SetActive(true);
@@ -69,6 +75,12 @@ public class CanvasManager : MonoBehaviour
         }
     }
 
+    private IEnumerator DisplayPoints()
+    {
+        yield return new WaitForSeconds(0.1f);
+        SummaryPanel.SetActive(true); 
+        ScoreSummary.text = LevelContainer.Score.ToString();
+    }
     private void OnHammerHit()
     {
         HammersLeft.text = LevelContainer.HammerHits.ToString();

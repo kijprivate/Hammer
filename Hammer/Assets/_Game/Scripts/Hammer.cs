@@ -7,18 +7,22 @@ using ControlFreak2;
 
 public class Hammer : MonoBehaviour
 {
+    private LevelData data;
     Transform myTransform;
     Nail targetNail;
     GameObject NailsParent;
     Quaternion startingRotation;
     Vector3 startingPosition;
 
+    private float cashedPositionBeforeHit;
+    private float cashedPositionAfterHit;
     bool isMovingUp = true;
     bool isHammerReady = true;
     float rotationZ;
     float movingY;
     float depthAfterHit;
     int strength;
+    private int cashedMaxStrength;
     int targetIndex = 0;
 
     void Start()
@@ -28,11 +32,20 @@ public class Hammer : MonoBehaviour
         movingY = myTransform.position.y;
         startingRotation = myTransform.rotation;
         startingPosition = myTransform.position;
-
-        NailsParent = FindObjectOfType<NailsSpawner>().gameObject;
-        targetNail = NailsParent.transform.GetChild(targetIndex).gameObject.GetComponent<Nail>();
+        
+        StartCoroutine(SetupWithDelay());
     }
 
+    private IEnumerator SetupWithDelay()
+    {
+        yield return new WaitForSeconds(0.2f);
+        data = LevelsDifficultyContainer.LevelsData[PlayerPrefsManager.GetChosenLevelNumber()-1];
+        NailsParent = FindObjectOfType<NailsSpawner>().gameObject;
+        targetNail = NailsParent.transform.GetChild(targetIndex).gameObject.GetComponent<Nail>();
+        cashedMaxStrength = ConstantDataContainer.MaxHammerStrength;
+        cashedPositionBeforeHit = ConstantDataContainer.PositionOverNailHeadBeforeHit;
+        cashedPositionAfterHit = ConstantDataContainer.PositionOverNailHeadAfterHit;
+    }
     void Update()
     {
         if (CF2Input.GetButton("Click") && !LevelContainer.MenuHided)
@@ -44,8 +57,8 @@ public class Hammer : MonoBehaviour
         {
             if (isMovingUp)
             {
-                rotationZ += LevelsDifficultyContainer.LevelsData[LevelContainer.CurrentLevelNumber].rotationSpeed * Time.deltaTime;
-                movingY += LevelsDifficultyContainer.LevelsData[LevelContainer.CurrentLevelNumber].verticalMoveSpeed*Time.deltaTime;
+                rotationZ += data.rotationSpeed * Time.deltaTime;
+                movingY += data.verticalMoveSpeed*Time.deltaTime;
                 myTransform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
                 myTransform.position = new Vector3(myTransform.position.x, movingY, myTransform.position.z);
 
@@ -54,8 +67,8 @@ public class Hammer : MonoBehaviour
             }
             else if (!isMovingUp)
             {
-                rotationZ -= LevelsDifficultyContainer.LevelsData[LevelContainer.CurrentLevelNumber].rotationSpeed * Time.deltaTime;
-                movingY -= LevelsDifficultyContainer.LevelsData[LevelContainer.CurrentLevelNumber].verticalMoveSpeed*Time.deltaTime;
+                rotationZ -= data.rotationSpeed * Time.deltaTime;
+                movingY -= data.verticalMoveSpeed*Time.deltaTime;
                 myTransform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
                 myTransform.position = new Vector3(myTransform.position.x, movingY, myTransform.position.z);
 
@@ -91,7 +104,7 @@ public class Hammer : MonoBehaviour
         }
         else
         {
-            startingPosition = new Vector3(startingPosition.x, targetNail.nailHead.transform.position.y + ConstantDataContainer.PositionOverNailHeadBeforeHit, startingPosition.z);
+            startingPosition = new Vector3(startingPosition.x, targetNail.nailHead.transform.position.y + cashedPositionBeforeHit, startingPosition.z);
             myTransform.DOMove(startingPosition, 0.2f);
         }
 
@@ -105,37 +118,25 @@ public class Hammer : MonoBehaviour
     }
     private void SetupStrength() // Hardcoded numbers based on hammer angle
     {
-        float strengthInterval = 0.60f / (ConstantDataContainer.MaxHammerStrength+1);
+        float strengthInterval = 0.60f / (cashedMaxStrength+1);
 
-        for(int i = 0; i < ConstantDataContainer.MaxHammerStrength; i++)
+        for(int i = 0; i < cashedMaxStrength+1; i++)
         {
             if(myTransform.rotation.z >= i*strengthInterval && myTransform.rotation.z < (i+1)*strengthInterval)
             { strength = i; }
         }
-
-        // old version of this to easier understand whats happening above
-
-        //if (myTransform.rotation.z >= 0f && myTransform.rotation.z < 0.12f)
-        //{ strength = 1; }
-        //else if (myTransform.rotation.z >= 0.12f && myTransform.rotation.z < 0.24f)
-        //{ strength = 2; }
-        //else if (myTransform.rotation.z >= 0.24f && myTransform.rotation.z < 0.36f)
-        //{ strength = 3; }
-        //else if (myTransform.rotation.z >= 0.36f && myTransform.rotation.z < 0.48f)
-        //{ strength = 4; }
-        //else if (myTransform.rotation.z >= 0.48f && myTransform.rotation.z <= 0.60f)
-        //{ strength = 5; }
     }
 
     private void SetupHammerPositionAfterHit()
     {
         if (strength > targetNail.GetStrengthForPerfectHit())
         {
-            depthAfterHit = targetNail.nailHead.position.y + ConstantDataContainer.PositionOverNailHeadAfterHit - (targetNail.GetStrengthForPerfectHit() * targetNail.GetStep() + (strength - targetNail.GetStrengthForPerfectHit()) * (targetNail.GetStep() / 2f));
+            depthAfterHit = targetNail.nailHead.position.y + cashedPositionAfterHit - 
+                            (targetNail.GetStrengthForPerfectHit() * targetNail.GetStep() + (strength - targetNail.GetStrengthForPerfectHit()) * (targetNail.GetStep() / 2f));
         }
         else
         {
-            depthAfterHit = targetNail.nailHead.position.y - strength * targetNail.GetStep() + ConstantDataContainer.PositionOverNailHeadAfterHit;
+            depthAfterHit = targetNail.nailHead.position.y - strength * targetNail.GetStep() + cashedPositionAfterHit;
         }
 
         myTransform.DORotateQuaternion(Quaternion.Euler(0f, 0f, 0f), 0.06f);
@@ -149,7 +150,7 @@ public class Hammer : MonoBehaviour
             targetIndex++;
             targetNail = NailsParent.transform.GetChild(targetIndex).gameObject.GetComponent<Nail>();
             startingPosition += new Vector3(targetNail.Xoffset, 0f, 0f);
-            startingPosition = new Vector3(startingPosition.x,targetNail.nailHead.transform.position.y + ConstantDataContainer.PositionOverNailHeadBeforeHit, startingPosition.z);
+            startingPosition = new Vector3(startingPosition.x,targetNail.nailHead.transform.position.y + cashedPositionBeforeHit, startingPosition.z);
             myTransform.DOMove(startingPosition, 0.3f);
         }
         else

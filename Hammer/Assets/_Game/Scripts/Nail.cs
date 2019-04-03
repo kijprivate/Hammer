@@ -10,6 +10,7 @@ public class Nail : MonoBehaviour
 
     public int ScoreForNail => scoreForNail;
     
+    [HideInInspector]
     public int hitsPerCurrentNail = 0;
     [HideInInspector]
     public float Xoffset = 2f;

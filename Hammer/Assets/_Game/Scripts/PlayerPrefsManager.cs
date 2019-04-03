@@ -33,9 +33,12 @@ public class PlayerPrefsManager : MonoBehaviour
     {
         PlayerPrefs.SetInt(CHOSEN_LEVEL_KEY, levelNumber);
     }
-    public static int GetChoosenLevelNumber()
+    public static int GetChosenLevelNumber()
     {
-        return PlayerPrefs.GetInt(CHOSEN_LEVEL_KEY);
+        if (!PlayerPrefs.HasKey(CHOSEN_LEVEL_KEY))
+        { return 1;}
+        else
+        { return PlayerPrefs.GetInt(CHOSEN_LEVEL_KEY); }
     }
 
     public static void LockAllLevels()
