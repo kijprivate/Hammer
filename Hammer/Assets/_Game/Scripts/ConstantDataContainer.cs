@@ -28,12 +28,8 @@ public class ConstantDataContainer:ScriptableObject
 
     [Header("Score")]
     [SerializeField] 
-    private int scoreDuplicatorForMovesLeft = 50;
-    public static int ScoreDuplicatorForMovesLeft => Instance.scoreDuplicatorForMovesLeft;
-
-    [SerializeField] 
-    private int scoreDuplicatorForCorrectNails = 100;
-    public static int ScoreDuplicatorForCorrectNails => Instance.scoreDuplicatorForCorrectNails;
+    private int scoreBonusForPerfectHit = 100;
+    public static int ScoreBonusForPerfectHit => Instance.scoreBonusForPerfectHit;
     
     [SerializeField] 
     private int percentageValueFor1Star = 65;

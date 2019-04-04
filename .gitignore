@@ -25,6 +25,10 @@ ExportedObj/
 *.opendb
 *.VC.db
 
+
+# Exclude rider idea data
+.idea
+
 # Unity3D generated meta files
 
 

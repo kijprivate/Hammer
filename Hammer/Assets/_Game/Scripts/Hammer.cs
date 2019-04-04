@@ -164,6 +164,7 @@ public class Hammer : MonoBehaviour
     {
         //TODO add logic
         Debug.Log("Perfect hit with " +targetNail.ScoreForNail+"score");
+        LevelContainer.Score += ConstantDataContainer.ScoreBonusForPerfectHit;
     }
 
     private void OnDestroy()

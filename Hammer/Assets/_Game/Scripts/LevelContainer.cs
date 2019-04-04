@@ -40,8 +40,7 @@ public class LevelContainer : MonoBehaviour
         numberOfNails = data.numberOfDefaultNails + data.numberOfRedNails;
         hammerHits = data.hammerHits;
         cashed1Star = ConstantDataContainer.PercentageValueFor1Star;
-        cashedScoreForMoves = ConstantDataContainer.ScoreDuplicatorForMovesLeft;
-        cashedScoreForNails = ConstantDataContainer.ScoreDuplicatorForCorrectNails;
+        cashedScoreForNails = ConstantDataContainer.ScoreBonusForPerfectHit;
         
         PocketNails = 0;
         GameOver = false;
@@ -69,7 +68,7 @@ public class LevelContainer : MonoBehaviour
     {
         GameOver = true;
 
-        Score = Score + HammerHits * cashedScoreForMoves + PocketNails * cashedScoreForNails;
+       // Score = Score + HammerHits * cashedScoreForMoves + PocketNails * cashedScoreForNails;
         percentageValueOfScore = (float)Score / NailsSpawner.MaxAvailableScore;
         
         if(PercentageValueOfScore > cashed1Star)

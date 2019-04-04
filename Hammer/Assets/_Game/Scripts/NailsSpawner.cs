@@ -18,7 +18,7 @@ public class NailsSpawner : MonoBehaviour
     int defaultNails;
     int redNails;
     private int cashedScoreForMoves;
-    private int cashedScoreForNails;
+    private int cashedBonusForPerfectHit;
     private int cashedMaxHammerStrength;
     
     static NailsSpawner instance;
@@ -36,8 +36,7 @@ public class NailsSpawner : MonoBehaviour
     private void Awake()
     {
         StartCoroutine(SpawnWithDelay());
-        cashedScoreForMoves = ConstantDataContainer.ScoreDuplicatorForMovesLeft;
-        cashedScoreForNails = ConstantDataContainer.ScoreDuplicatorForCorrectNails;
+        cashedBonusForPerfectHit = ConstantDataContainer.ScoreBonusForPerfectHit;
         cashedMaxHammerStrength = ConstantDataContainer.MaxHammerStrength;
     }
 
@@ -79,7 +78,7 @@ public class NailsSpawner : MonoBehaviour
                     break;
             }
         }
-        maxAvailableScore = maxScoreForNails + (LevelContainer.HammerHits - minHammerHits)*cashedScoreForMoves +numberOfNails*cashedScoreForNails;
+        maxAvailableScore = maxScoreForNails + numberOfNails*cashedBonusForPerfectHit;
         print(maxAvailableScore);
     }
     private void CalculatePoints(int strengthForCorrectHit,int scoreForNail)
