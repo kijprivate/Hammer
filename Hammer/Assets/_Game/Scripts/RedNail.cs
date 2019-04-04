@@ -7,8 +7,10 @@ public class RedNail : Nail
     protected override void Awake()
     {
         scoreForNail = ConstantDataContainer.ScoreForRedNail;
+        cashedMaxHammerStrength = ConstantDataContainer.MaxHammerStrength;
         hammer = FindObjectOfType<Hammer>();
         SetRandomHeight();
+        CalculateMinHammerHits();
     }
 
     protected override void SetRandomHeight()
@@ -18,19 +20,19 @@ public class RedNail : Nail
         {
             case 1:
                 Yoffset = 0f;
-                strengthForPerfectHit = 10;
+                strengthForCorrectHit = 10;
                 break;
             case 2:
                 Yoffset = -0.5f;
-                strengthForPerfectHit = 8;
+                strengthForCorrectHit = 8;
                 break;
             case 3:
                 Yoffset = -1f;
-                strengthForPerfectHit = 6;
+                strengthForCorrectHit = 6;
                 break;
             case 4:
                 Yoffset = -1.5f;
-                strengthForPerfectHit = 4;
+                strengthForCorrectHit = 4;
                 break;
             default:
                 break;

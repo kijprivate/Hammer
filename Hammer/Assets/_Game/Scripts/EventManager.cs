@@ -57,6 +57,12 @@ public static class EventManager
     {
         if (EventNailPocket != null) EventNailPocket();
     }
+    
+    public static Event EventPerfectHit;
+    public static void RaiseEventPerfectHit()
+    {
+        if (EventPerfectHit != null) EventPerfectHit();
+    }
 
     public static Event EventNoMoreNails;
     public static void RaiseEventNoMoreNails()

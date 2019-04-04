@@ -41,6 +41,7 @@ public class Hammer : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         data = LevelsDifficultyContainer.LevelsData[PlayerPrefsManager.GetChosenLevelNumber()-1];
         NailsParent = FindObjectOfType<NailsSpawner>().gameObject;
+        EventManager.EventPerfectHit += OnPerfectHit;
         targetNail = NailsParent.transform.GetChild(targetIndex).gameObject.GetComponent<Nail>();
         cashedMaxStrength = ConstantDataContainer.MaxHammerStrength;
         cashedPositionBeforeHit = ConstantDataContainer.PositionOverNailHeadBeforeHit;
@@ -129,10 +130,10 @@ public class Hammer : MonoBehaviour
 
     private void SetupHammerPositionAfterHit()
     {
-        if (strength > targetNail.GetStrengthForPerfectHit())
+        if (strength > targetNail.GetStrengthForCorrectHit())
         {
             depthAfterHit = targetNail.nailHead.position.y + cashedPositionAfterHit - 
-                            (targetNail.GetStrengthForPerfectHit() * targetNail.GetStep() + (strength - targetNail.GetStrengthForPerfectHit()) * (targetNail.GetStep() / 2f));
+                            (targetNail.GetStrengthForCorrectHit() * targetNail.GetStep() + (strength - targetNail.GetStrengthForCorrectHit()) * (targetNail.GetStep() / 2f));
         }
         else
         {
@@ -157,6 +158,17 @@ public class Hammer : MonoBehaviour
         {
             EventManager.RaiseEventNoMoreNails();
         }
+    }
+
+    private void OnPerfectHit()
+    {
+        //TODO add logic
+        Debug.Log("Perfect hit with " +targetNail.ScoreForNail+"score");
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.EventPerfectHit -= OnPerfectHit;
     }
 
     private IEnumerator CoroutineHideMenuAndStartGame()

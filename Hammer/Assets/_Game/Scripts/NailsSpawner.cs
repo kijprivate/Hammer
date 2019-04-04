@@ -19,6 +19,7 @@ public class NailsSpawner : MonoBehaviour
     int redNails;
     private int cashedScoreForMoves;
     private int cashedScoreForNails;
+    private int cashedMaxHammerStrength;
     
     static NailsSpawner instance;
     public static NailsSpawner Instance
@@ -37,6 +38,7 @@ public class NailsSpawner : MonoBehaviour
         StartCoroutine(SpawnWithDelay());
         cashedScoreForMoves = ConstantDataContainer.ScoreDuplicatorForMovesLeft;
         cashedScoreForNails = ConstantDataContainer.ScoreDuplicatorForCorrectNails;
+        cashedMaxHammerStrength = ConstantDataContainer.MaxHammerStrength;
     }
 
     private IEnumerator SpawnWithDelay()
@@ -58,7 +60,7 @@ public class NailsSpawner : MonoBehaviour
                         defNail.gameObject.transform.SetParent(transform);
                         defNail.Xoffset = Xoffset;
 
-                        CalculatePoints(defNail.GetStrengthForPerfectHit(), defNail.ScoreForNail);
+                        CalculatePoints(defNail.GetStrengthForCorrectHit(), defNail.ScoreForNail);
                         defaultNails++;
                         i++;
                     }
@@ -70,7 +72,7 @@ public class NailsSpawner : MonoBehaviour
                         rNail.gameObject.transform.SetParent(transform);
                         rNail.Xoffset = Xoffset;
 
-                        CalculatePoints(rNail.GetComponent<Nail>().GetStrengthForPerfectHit(), rNail.GetComponent<Nail>().ScoreForNail);
+                        CalculatePoints(rNail.GetStrengthForCorrectHit(), rNail.ScoreForNail);
                         redNails++;
                         i++;
                     }
@@ -80,17 +82,17 @@ public class NailsSpawner : MonoBehaviour
         maxAvailableScore = maxScoreForNails + (LevelContainer.HammerHits - minHammerHits)*cashedScoreForMoves +numberOfNails*cashedScoreForNails;
         print(maxAvailableScore);
     }
-    private void CalculatePoints(int strengthForPerfectHit,int scoreForNail)
+    private void CalculatePoints(int strengthForCorrectHit,int scoreForNail)
     {
-        if (strengthForPerfectHit % 5 == 0)
+        if (strengthForCorrectHit % cashedMaxHammerStrength == 0)
         {
-            maxScoreForNails += scoreForNail / (strengthForPerfectHit / 5);
-            minHammerHits += strengthForPerfectHit / 5;
+            maxScoreForNails += scoreForNail / (strengthForCorrectHit / cashedMaxHammerStrength);
+            minHammerHits += strengthForCorrectHit / cashedMaxHammerStrength;
         }
         else
         {
-            maxScoreForNails += scoreForNail / (strengthForPerfectHit / 5 + 1);
-            minHammerHits += strengthForPerfectHit / 5 + 1;
+            maxScoreForNails += scoreForNail / (strengthForCorrectHit / cashedMaxHammerStrength + 1);
+            minHammerHits += strengthForCorrectHit / cashedMaxHammerStrength + 1;
         }
     }
 }

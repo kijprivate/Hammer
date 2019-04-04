@@ -18,7 +18,8 @@ public class Nail : MonoBehaviour
     [SerializeField]
     protected float step = 0.5f;
 
-    protected int strengthForPerfectHit = 3;
+    protected int strengthForCorrectHit = 3;
+    protected int minHammerHits;
     protected float Yoffset;
 
     public bool isOverhit { get; set; }
@@ -27,32 +28,36 @@ public class Nail : MonoBehaviour
     protected float depthAfterHit;
 
     protected int scoreForNail;
+    protected int cashedMaxHammerStrength;
 
     protected virtual void Awake()
     {
         scoreForNail = ConstantDataContainer.ScoreForDefaultNail;
+        cashedMaxHammerStrength = ConstantDataContainer.MaxHammerStrength;
         hammer = FindObjectOfType<Hammer>();
         SetRandomHeight();
+        CalculateMinHammerHits();
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if(hammer.GetStrength() > strengthForPerfectHit)
+        if(hammer.GetStrength() > strengthForCorrectHit)
         {
-            depthAfterHit = transform.position.y - (strengthForPerfectHit * step + (hammer.GetStrength()-strengthForPerfectHit)*(step/2f) );
+            depthAfterHit = transform.position.y - (strengthForCorrectHit * step + (hammer.GetStrength()-strengthForCorrectHit)*(step/2f) );
             isOverhit = true;
         }
         else
         {
-            if (hammer.GetStrength() == strengthForPerfectHit)
+            if (hammer.GetStrength() == strengthForCorrectHit)
             {
                 isOverhit = true;
                 hitsPerCurrentNail++;
-                LevelContainer.Score += scoreForNail / hitsPerCurrentNail;
+                
+                CalculatePoints();
                 EventManager.RaiseEventNailPocket();
             }
             depthAfterHit = transform.position.y - (hammer.GetStrength() * step);
-            strengthForPerfectHit -= hammer.GetStrength();
+            strengthForCorrectHit -= hammer.GetStrength();
         }
         hitsPerCurrentNail++;
         transform.DOMove(new Vector3(transform.position.x, depthAfterHit, transform.position.z), 0.06f);
@@ -65,15 +70,15 @@ public class Nail : MonoBehaviour
         {
             case 1:
                 Yoffset = 0f;
-                strengthForPerfectHit = 3;
+                strengthForCorrectHit = 3;
                 break;
             case 2:
                 Yoffset = -0.5f;
-                strengthForPerfectHit = 2;
+                strengthForCorrectHit = 2;
                 break;
             case 3:
                 Yoffset = -1f;
-                strengthForPerfectHit = 1;
+                strengthForCorrectHit = 1;
                 break;
             default:
                 break;
@@ -81,13 +86,38 @@ public class Nail : MonoBehaviour
         transform.position += new Vector3(0f, Yoffset, 0f);
     }
 
+    protected void CalculateMinHammerHits()
+    {
+        if (strengthForCorrectHit % cashedMaxHammerStrength == 0)
+        {
+            minHammerHits += strengthForCorrectHit / cashedMaxHammerStrength;
+        }
+        else
+        {
+            minHammerHits += strengthForCorrectHit / cashedMaxHammerStrength + 1;
+        }
+    }
+
+    protected void CalculatePoints()
+    {
+        if (hitsPerCurrentNail <= minHammerHits)
+        {
+            LevelContainer.Score += scoreForNail;
+            EventManager.RaiseEventPerfectHit();
+        }
+        else
+        {
+            LevelContainer.Score += scoreForNail / hitsPerCurrentNail;
+        }
+    }
+
     public float GetStep()
     {
         return step;
     }
 
-    public int GetStrengthForPerfectHit()
+    public int GetStrengthForCorrectHit()
     {
-        return strengthForPerfectHit;
+        return strengthForCorrectHit;
     }
 }
