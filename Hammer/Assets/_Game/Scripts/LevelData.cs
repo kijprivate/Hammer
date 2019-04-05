@@ -18,4 +18,10 @@ public class LevelData
     public int numberOfDefaultNails=10;
     [SerializeField] 
     public int numberOfRedNails=2;
+
+    [Header("Score")] 
+    [SerializeField] 
+    public int gainedStars = 0;
+    [SerializeField] 
+    public int highScore = 0;
 }

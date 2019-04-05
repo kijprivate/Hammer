@@ -19,15 +19,21 @@ MonoBehaviour:
     verticalMoveSpeed: 1
     numberOfDefaultNails: 10
     numberOfRedNails: 0
+    gainedStars: 3
+    highScore: 3750
   - levelNumber: 2
     hammerHits: 15
     rotationSpeed: 100
     verticalMoveSpeed: 1
     numberOfDefaultNails: 10
     numberOfRedNails: 2
+    gainedStars: 3
+    highScore: 4350
   - levelNumber: 3
     hammerHits: 17
     rotationSpeed: 100
     verticalMoveSpeed: 1
     numberOfDefaultNails: 10
     numberOfRedNails: 4
+    gainedStars: 3
+    highScore: 5350

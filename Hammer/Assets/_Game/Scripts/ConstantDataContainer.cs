@@ -42,6 +42,17 @@ public class ConstantDataContainer:ScriptableObject
     [SerializeField] 
     private int percentageValueFor3Stars = 85;
     public static int PercentageValueFor3Stars => Instance.percentageValueFor3Stars;
+    
+    [Header("Coins")]
+    [SerializeField] 
+    private int scoreDividerWhenMoreStars = 100;
+
+    public static int ScoreDividerWhenMoreStars => Instance.scoreDividerWhenMoreStars;
+    
+    [SerializeField] 
+    private int scoreDividerWhenSameStars = 200;
+
+    public static int ScoreDividerWhenSameStars => Instance.scoreDividerWhenSameStars;
 
     static ConstantDataContainer instance;
     public static ConstantDataContainer Instance

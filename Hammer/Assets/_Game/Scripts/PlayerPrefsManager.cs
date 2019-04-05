@@ -9,7 +9,8 @@ public class PlayerPrefsManager : MonoBehaviour
     const string BALL_NEWKEY = "ball_unlocked_";
     const string CHOSEN_BALL_NEWKEY = "chosen_ball_key_";
 
-    const string NUMBER_GEMS = "number of gems";
+    const string NUMBER_COINS = "number of coins";
+    
     const string HIGH_SCORE = "high score";
     const string GAMES_PLAYED = "games played";
     const string REWARDED_PLAYED = "rewarded played";
@@ -47,14 +48,14 @@ public class PlayerPrefsManager : MonoBehaviour
         {   PlayerPrefs.SetInt(LEVEL_KEY + i.ToString(), 0);}
     }
 
-    public static void SetNumberOfGems(int value)
+    public static void SetNumberOfCoins(int value)
     {
-        PlayerPrefs.SetInt(NUMBER_GEMS, value);
+        PlayerPrefs.SetInt(NUMBER_COINS, value);
     }
 
-    public static int GetNumberOfGems()
+    public static int GetNumberOfCoins()
     {
-        return PlayerPrefs.GetInt(NUMBER_GEMS);
+        return PlayerPrefs.GetInt(NUMBER_COINS);
     }
 
     public static void SetHighScore(float value)

@@ -5,20 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class NailsSpawner : MonoBehaviour
 {
-    private int maxAvailableScore;
-    public static int MaxAvailableScore => Instance.maxAvailableScore;
+    private int maxScoreForNails;
+    public static int MaxScoreForNails => Instance.maxScoreForNails;
 
     [SerializeField] Nail defaultNail;
     [SerializeField] Nail redNail;
 
-    private int maxScoreForNails;
     private int minHammerHits;
     private int numberOfNails;
     float Xoffset = 2f;
     int defaultNails;
     int redNails;
     private int cashedScoreForMoves;
-    private int cashedBonusForPerfectHit;
     private int cashedMaxHammerStrength;
     
     static NailsSpawner instance;
@@ -36,7 +34,6 @@ public class NailsSpawner : MonoBehaviour
     private void Awake()
     {
         StartCoroutine(SpawnWithDelay());
-        cashedBonusForPerfectHit = ConstantDataContainer.ScoreBonusForPerfectHit;
         cashedMaxHammerStrength = ConstantDataContainer.MaxHammerStrength;
     }
 
@@ -78,8 +75,6 @@ public class NailsSpawner : MonoBehaviour
                     break;
             }
         }
-        maxAvailableScore = maxScoreForNails + numberOfNails*cashedBonusForPerfectHit;
-        print(maxAvailableScore);
     }
     private void CalculatePoints(int strengthForCorrectHit,int scoreForNail)
     {

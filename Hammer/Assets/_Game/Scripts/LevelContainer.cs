@@ -27,20 +27,27 @@ public class LevelContainer : MonoBehaviour
     public static bool GameStarted { get; set; }
     public static bool MenuHided { get; set; }
 
-    private int cashed1Star;
-    private int cashedScoreForMoves;
-    private int cashedScoreForNails;
+    private LevelData data;
+    private int starsForCurrentTry;
+    private int starsForPreviousTries;
+    private float cashed1Star;
+    private float cashed2Stars;
+    private float cashed3Stars;
+    private int maxAvailableScore;
     void Awake()
     {
         currentLevelNumber = PlayerPrefsManager.GetChosenLevelNumber();
         currentLevelIndex = currentLevelNumber - 1;
         //DontDestroyOnLoad(gameObject);
-        var data = LevelsDifficultyContainer.LevelsData[currentLevelIndex];
+        data = LevelsDifficultyContainer.LevelsData[currentLevelIndex];
 
+        starsForPreviousTries = data.gainedStars;
         numberOfNails = data.numberOfDefaultNails + data.numberOfRedNails;
         hammerHits = data.hammerHits;
-        cashed1Star = ConstantDataContainer.PercentageValueFor1Star;
-        cashedScoreForNails = ConstantDataContainer.ScoreBonusForPerfectHit;
+        
+        cashed1Star = ConstantDataContainer.PercentageValueFor1Star/100f;
+        cashed2Stars = ConstantDataContainer.PercentageValueFor2Stars/100f;
+        cashed3Stars = ConstantDataContainer.PercentageValueFor3Stars/100f;
         
         PocketNails = 0;
         GameOver = false;
@@ -68,11 +75,70 @@ public class LevelContainer : MonoBehaviour
     {
         GameOver = true;
 
-       // Score = Score + HammerHits * cashedScoreForMoves + PocketNails * cashedScoreForNails;
-        percentageValueOfScore = (float)Score / NailsSpawner.MaxAvailableScore;
+        maxAvailableScore = NailsSpawner.MaxScoreForNails + numberOfNails * ConstantDataContainer.ScoreBonusForPerfectHit;
+        print(maxAvailableScore);
+        percentageValueOfScore = (float)Score / maxAvailableScore;
         
-        if(PercentageValueOfScore > cashed1Star)
-        { PlayerPrefsManager.UnlockLevel(SceneManager.GetActiveScene().buildIndex + 2); }
+        StartCoroutine(CalculatePointsWithDelay());
+    }
+
+    private IEnumerator CalculatePointsWithDelay()
+    {
+        yield return new WaitForSeconds(0.3f);
+       
+
+        if (percentageValueOfScore > cashed3Stars)
+        {
+            starsForCurrentTry = 3;
+            PlayerPrefsManager.UnlockLevel(SceneManager.GetActiveScene().buildIndex + 2);
+            HandleCoins();
+        }
+        else if (percentageValueOfScore > cashed2Stars)
+        {
+            starsForCurrentTry = 2;
+            PlayerPrefsManager.UnlockLevel(SceneManager.GetActiveScene().buildIndex + 2);
+            HandleCoins();
+        }
+        else if (percentageValueOfScore > cashed1Star)
+        {
+            starsForCurrentTry = 1;
+            PlayerPrefsManager.UnlockLevel(SceneManager.GetActiveScene().buildIndex + 2);
+            HandleCoins();
+        }
+        else
+        {
+            starsForCurrentTry = 0;
+            HandleCoins();
+        }
+    }
+    private void HandleCoins()
+    {
+        if (starsForCurrentTry > starsForPreviousTries)
+        {
+            Debug.Log("Coins += Score/100 - highScore/100 (Full)");
+            if (data.gainedStars == 0)
+            {
+                PlayerPrefsManager.SetNumberOfCoins(PlayerPrefsManager.GetNumberOfCoins() + Score/ConstantDataContainer.ScoreDividerWhenMoreStars);
+            }
+            else
+            {
+                PlayerPrefsManager.SetNumberOfCoins(PlayerPrefsManager.GetNumberOfCoins() + (Score - data.highScore)/ConstantDataContainer.ScoreDividerWhenMoreStars);
+            }
+            data.gainedStars = starsForCurrentTry;
+        }
+        else if (starsForCurrentTry == starsForPreviousTries && starsForCurrentTry!=0)
+        {
+            Debug.Log("Coins += Score/200 (Divided by 200) - highScore/200");
+            PlayerPrefsManager.SetNumberOfCoins(PlayerPrefsManager.GetNumberOfCoins() + (Score - data.highScore)/ConstantDataContainer.ScoreDividerWhenSameStars);
+        }
+        else 
+        {
+            Debug.Log("No points added");
+        }
+        if (Score > data.highScore)
+        {
+            data.highScore = Score;
+        }
     }
 
     private void OnNailPocket()

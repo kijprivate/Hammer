@@ -16,6 +16,7 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] Text HammersLeft;
     [SerializeField] Text NailPocket;
     [SerializeField] Text LevelName;
+    [SerializeField] Text Coins;
 
     private float cashed1Star;
     private float cashed2Stars;
@@ -30,7 +31,8 @@ public class CanvasManager : MonoBehaviour
 
         HammersLeft.text = LevelContainer.HammerHits.ToString();
         NailPocket.text = LevelContainer.PocketNails.ToString();
-        LevelName.text = "Level"+LevelContainer.CurrentLevelNumber.ToString();
+        LevelName.text = "Level"+LevelContainer.CurrentLevelNumber;
+        Coins.text = "Coins: " + PlayerPrefsManager.GetNumberOfCoins();
 
         cashed1Star = ConstantDataContainer.PercentageValueFor1Star/100f;
         cashed2Stars = ConstantDataContainer.PercentageValueFor2Stars/100f;
@@ -50,6 +52,7 @@ public class CanvasManager : MonoBehaviour
     private void OnGameOver()
     {
         StartCoroutine(DisplayPoints());
+        Coins.text = "Coins: " + PlayerPrefsManager.GetNumberOfCoins();
 
         if (LevelContainer.PercentageValueOfScore > cashed3Stars)
         {

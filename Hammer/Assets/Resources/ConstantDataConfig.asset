@@ -17,8 +17,9 @@ MonoBehaviour:
   positionOverNailHeadAfterHit: 0.6
   scoreForDefaultNail: 300
   scoreForRedNail: 600
-  scoreDuplicatorForMovesLeft: 50
-  scoreDuplicatorForCorrectNails: 100
+  scoreBonusForPerfectHit: 100
   percentageValueFor1Star: 65
   percentageValueFor2Stars: 75
   percentageValueFor3Stars: 85
+  scoreDividerWhenMoreStars: 100
+  scoreDividerWhenSameStars: 200
