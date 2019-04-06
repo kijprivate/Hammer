@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class CanvasManager : MonoBehaviour
 {
@@ -11,16 +12,23 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] GameObject SummaryPanel;
     [SerializeField] GameObject star1,star2,star3;
     [SerializeField] GameObject PlayAgain, NextLevel;
+    [SerializeField] GameObject Splash; // Image that displays splashes with hit rating 
     [SerializeField] Text ScoreGameplay;
     [SerializeField] Text ScoreSummary;
     [SerializeField] Text HammersLeft;
     [SerializeField] Text NailPocket;
     [SerializeField] Text LevelName;
     [SerializeField] Text Coins;
+    [SerializeField] Sprite AwesomeSprite;  // sprite with Awesome! caption
+    [SerializeField] Sprite PerfectSprite;  // sprite with Perfect! caption
+    [SerializeField] Sprite ToohardSprite;  // sprite with Too hard! caption
+    [SerializeField] Sprite HitagainSprite; // sprite with Hit again! caption
 
     private float cashed1Star;
     private float cashed2Stars;
     private float cashed3Stars;
+    private RectTransform SplashRect;   // needed for changing scale when displaying Splash
+    private Image SplashImage;  // needed for changing Sprite depending on hit rating
     private void Start()
     {
         EventManager.EventGameOver += OnGameOver;
@@ -28,6 +36,7 @@ public class CanvasManager : MonoBehaviour
         EventManager.EventHammerHit += OnHammerHit;
         EventManager.EventNailPocket += OnNailPocket;
         EventManager.EventMenuHided += OnMenuHided;
+        EventManager.EventShowSplash += OnShowSplash;
 
         HammersLeft.text = LevelContainer.HammerHits.ToString();
         NailPocket.text = LevelContainer.PocketNails.ToString();
@@ -37,6 +46,8 @@ public class CanvasManager : MonoBehaviour
         cashed1Star = ConstantDataContainer.PercentageValueFor1Star/100f;
         cashed2Stars = ConstantDataContainer.PercentageValueFor2Stars/100f;
         cashed3Stars = ConstantDataContainer.PercentageValueFor3Stars/100f;
+        SplashRect = Splash.GetComponent<RectTransform>();
+        SplashImage = Splash.GetComponent<Image>();
         
         if(!LevelContainer.MenuHided)
         {
@@ -101,6 +112,33 @@ public class CanvasManager : MonoBehaviour
         GameplayUI.SetActive(true);
     }
 
+    private void OnShowSplash(int splashId)
+    {
+        StartCoroutine(DisplaySplash(splashId));
+
+    }
+
+    private IEnumerator DisplaySplash(int splashId) // displays splash with hit rating
+    {
+        switch (splashId)   
+        {
+            case -1:    // not enough strength
+                SplashImage.sprite = HitagainSprite;
+                break;
+            case 0: // perfect hit
+                SplashImage.sprite = AwesomeSprite;
+                break;
+            case 1: // too much strength
+                SplashImage.sprite = ToohardSprite;
+                break;
+        }
+        Splash.SetActive(true);
+        SplashRect.DOScale(new Vector3(1.0f, 1.0f, 1.0f), 0.5f).SetEase(Ease.OutElastic);   // scales splash for display
+        yield return new WaitForSeconds(1.0f);
+        Splash.SetActive(false);    
+        SplashRect.DOScale(new Vector3(0.01f, 0.01f, 1.0f), 0.01f); // scales bask after displaying
+    }
+
     private void OnDestroy()
     {
         EventManager.EventHammerHit -= OnHammerHit;
@@ -108,5 +146,6 @@ public class CanvasManager : MonoBehaviour
         EventManager.EventGameOver -= OnGameOver;
         EventManager.EventNoMoreNails -= OnGameOver;
         EventManager.EventMenuHided -= OnMenuHided;
+        EventManager.EventShowSplash -= OnShowSplash;
     }
 }

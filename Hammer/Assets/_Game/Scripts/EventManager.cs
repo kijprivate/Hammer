@@ -69,4 +69,10 @@ public static class EventManager
     {
         if (EventNoMoreNails != null) EventNoMoreNails();
     }
+
+    public static Event<int> EventShowSplash;   // -1 - not enough strength 0 - perfect 1 - too hard
+    public static void RaiseEventShowSplash(int splashId)
+    {
+        if (EventShowSplash != null) EventShowSplash(splashId);
+    }
 }
