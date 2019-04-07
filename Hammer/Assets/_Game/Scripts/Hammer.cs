@@ -17,7 +17,7 @@ public class Hammer : MonoBehaviour
     private float cashedPositionBeforeHit;
     private float cashedPositionAfterHit;
     bool isMovingUp = true;
-    bool isHammerReady = true;
+    bool isHammerReady;
     float rotationZ;
     float movingY;
     float depthAfterHit;
@@ -28,10 +28,6 @@ public class Hammer : MonoBehaviour
     void Start()
     {
         myTransform = transform;
-        rotationZ = myTransform.rotation.z;
-        movingY = myTransform.position.y;
-        startingRotation = myTransform.rotation;
-        startingPosition = myTransform.position;
         
         StartCoroutine(SetupWithDelay());
     }
@@ -43,9 +39,18 @@ public class Hammer : MonoBehaviour
         NailsParent = FindObjectOfType<NailsSpawner>().gameObject;
         EventManager.EventPerfectHit += OnPerfectHit;
         targetNail = NailsParent.transform.GetChild(targetIndex).gameObject.GetComponent<Nail>();
+
         cashedMaxStrength = ConstantDataContainer.MaxHammerStrength;
         cashedPositionBeforeHit = ConstantDataContainer.PositionOverNailHeadBeforeHit;
         cashedPositionAfterHit = ConstantDataContainer.PositionOverNailHeadAfterHit;
+        
+        myTransform.DOMove(new Vector3(myTransform.position.x,targetNail.nailHead.transform.position.y + cashedPositionBeforeHit, myTransform.position.z),0.3f) ;
+        yield return new WaitForSeconds(0.3f);
+        rotationZ = myTransform.rotation.z;
+        movingY = myTransform.position.y;
+        startingRotation = myTransform.rotation;
+        startingPosition = myTransform.position;
+        isHammerReady=true;
     }
     void Update()
     {
