@@ -1,5 +1,79 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1074718702
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1074718703}
+  - component: {fileID: 1074718705}
+  - component: {fileID: 1074718704}
+  m_Layer: 5
+  m_Name: Splash
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1074718703
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074718702}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4387342755196811731}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 370}
+  m_SizeDelta: {x: 262, y: 184}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1074718705
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074718702}
+  m_CullTransparentMesh: 0
+--- !u!114 &1074718704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074718702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 7918d268125028340b8cb72dfeb0d03d, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
 --- !u!1 &766176614722445514
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,6 +1169,7 @@ RectTransform:
   - {fileID: 4387342756137907072}
   - {fileID: 4387342755918729119}
   - {fileID: 4387342756170099201}
+  - {fileID: 1074718703}
   m_Father: {fileID: 4387342755592455856}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1671,12 +1746,17 @@ MonoBehaviour:
   star3: {fileID: 4387342755557993286}
   PlayAgain: {fileID: 4387342755612392485}
   NextLevel: {fileID: 3314805193194925089}
+  Splash: {fileID: 1074718702}
   ScoreGameplay: {fileID: 4387342756170099231}
   ScoreSummary: {fileID: 4387342755063182441}
   HammersLeft: {fileID: 4387342755856602073}
   NailPocket: {fileID: 4387342756287467606}
   LevelName: {fileID: 5021677436108825435}
   Coins: {fileID: 4244632986754532015}
+  AwesomeSprite: {fileID: 21300000, guid: 7918d268125028340b8cb72dfeb0d03d, type: 3}
+  PerfectSprite: {fileID: 21300000, guid: ccf05c616d7f98d4db51685711ac2133, type: 3}
+  ToohardSprite: {fileID: 21300000, guid: 9076fc8e744bcc848af3ac938f300eb4, type: 3}
+  HitagainSprite: {fileID: 21300000, guid: 0c5b5213c5710d14cab08fd07d2d52fc, type: 3}
 --- !u!1 &4387342755612392485
 GameObject:
   m_ObjectHideFlags: 0

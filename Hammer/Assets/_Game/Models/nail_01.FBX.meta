@@ -9,7 +9,12 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: nail_low_poly
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #27'
+    second: {fileID: 2100000, guid: f8e833c61735a9742acc6dcbe8b0f74e, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

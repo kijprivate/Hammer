@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHammerStrength: 5
   positionOverNailHeadBeforeHit: 1.5
-  positionOverNailHeadAfterHit: 0.6
+  positionOverNailHeadAfterHit: 0.85
   scoreForDefaultNail: 300
   scoreForRedNail: 600
   scoreBonusForPerfectHit: 100

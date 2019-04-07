@@ -20,19 +20,19 @@ public class RedNail : Nail
         {
             case 1:
                 Yoffset = 0f;
-                strengthForCorrectHit = 10;
+                strengthForCorrectHit = 9;
                 break;
             case 2:
                 Yoffset = -0.5f;
-                strengthForCorrectHit = 8;
+                strengthForCorrectHit = 7;
                 break;
             case 3:
                 Yoffset = -1f;
-                strengthForCorrectHit = 6;
+                strengthForCorrectHit = 5;
                 break;
             case 4:
                 Yoffset = -1.5f;
-                strengthForCorrectHit = 4;
+                strengthForCorrectHit = 3;
                 break;
             default:
                 break;

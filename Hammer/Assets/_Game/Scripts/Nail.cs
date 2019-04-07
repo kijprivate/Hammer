@@ -39,11 +39,11 @@ public class Nail : MonoBehaviour
         CalculateMinHammerHits();
     }
 
-    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter(Collider collision)
     {
         if(hammer.GetStrength() > strengthForCorrectHit)
         {
-            depthAfterHit = transform.position.y - (strengthForCorrectHit * step + (hammer.GetStrength()-strengthForCorrectHit)*(step/2f) );
+            depthAfterHit = transform.position.y - (strengthForCorrectHit * step + (hammer.GetStrength()-strengthForCorrectHit)*(step/3f) );
             isOverhit = true;
         }
         else
