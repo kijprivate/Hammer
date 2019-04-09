@@ -79,4 +79,14 @@ public class LevelManager : MonoBehaviour
             locked.GetComponent<Image>().enabled = true;
         }
     }
+    public void UnlockAllLevels()
+    {
+        PlayerPrefsManager.UnlockAllLevels();
+        GameObject[] lockedLevels = GameObject.FindGameObjectsWithTag("Locked");
+        foreach(var locked in lockedLevels)
+        {
+            locked.GetComponent<Button>().enabled = false;
+            locked.GetComponent<Image>().enabled = false;
+        }
+    }
 }

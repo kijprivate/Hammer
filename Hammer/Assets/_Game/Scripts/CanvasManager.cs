@@ -64,6 +64,9 @@ public class CanvasManager : MonoBehaviour
     {
         StartCoroutine(DisplayPoints());
         Coins.text = "Coins: " + PlayerPrefsManager.GetNumberOfCoins();
+        GameplayUI.SetActive(false);
+        LevelName.gameObject.SetActive(false);
+        Coins.gameObject.SetActive(false);
 
         if (LevelContainer.PercentageValueOfScore > cashed3Stars)
         {

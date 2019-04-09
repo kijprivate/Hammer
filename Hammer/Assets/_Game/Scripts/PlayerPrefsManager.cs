@@ -47,6 +47,12 @@ public class PlayerPrefsManager : MonoBehaviour
         for (int i = 2; i < 30; i++)
         {   PlayerPrefs.SetInt(LEVEL_KEY + i.ToString(), 0);}
     }
+    
+    public static void UnlockAllLevels()
+    {
+        for (int i = 2; i < 30; i++)
+        {   PlayerPrefs.SetInt(LEVEL_KEY + i.ToString(), 1);}
+    }
 
     public static void SetNumberOfCoins(int value)
     {
@@ -94,33 +100,6 @@ public class PlayerPrefsManager : MonoBehaviour
 
         return isSoundOn;
 
-    }
-    //public static void LockAllBalls()
-    //{
-    //    for (int i = 2; i < 30; i++)
-    //        PlayerPrefs.SetInt(BALL_KEY + i.ToString(), 0);
-
-    //}
-    public static void UnlockBall(int ballNumber)
-    {
-        PlayerPrefs.SetInt(BALL_NEWKEY + ballNumber.ToString(), 1);
-
-    }
-    public static bool IsBallUnlocked(int ballNumber)
-    {
-        int ballValue = PlayerPrefs.GetInt(BALL_NEWKEY + ballNumber.ToString());
-        bool isBallUnlocked = (ballValue == 1);
-
-        return isBallUnlocked;
-
-    }
-    public static void ChooseBall(int ballNumber)
-    {
-        PlayerPrefs.SetInt(CHOSEN_BALL_NEWKEY, ballNumber);
-    }
-    public static int GetChoosenBallNumber()
-    {
-       return PlayerPrefs.GetInt(CHOSEN_BALL_NEWKEY);
     }
 
     public static bool IsAdsRemoved()
