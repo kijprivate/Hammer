@@ -14,26 +14,82 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelsData:
   - levelNumber: 1
-    hammerHits: 12
+    hammerHits: 10
     rotationSpeed: 100
     verticalMoveSpeed: 1
-    numberOfDefaultNails: 10
+    numberOfDefaultNails: 5
     numberOfRedNails: 0
-    gainedStars: 3
-    highScore: 3750
+    gainedStars: 0
+    highScore: 0 
   - levelNumber: 2
     hammerHits: 15
     rotationSpeed: 100
     verticalMoveSpeed: 1
     numberOfDefaultNails: 10
-    numberOfRedNails: 2
-    gainedStars: 3
-    highScore: 4350
+    numberOfRedNails: 0
+    gainedStars: 0
+    highScore: 0
   - levelNumber: 3
-    hammerHits: 17
+    hammerHits: 14
     rotationSpeed: 100
     verticalMoveSpeed: 1
-    numberOfDefaultNails: 10
+    numberOfDefaultNails: 7
+    numberOfRedNails: 1
+    gainedStars: 0
+    highScore: 0
+  - levelNumber: 4
+    hammerHits: 15
+    rotationSpeed: 100
+    verticalMoveSpeed: 1
+    numberOfDefaultNails: 8
+    numberOfRedNails: 2
+    gainedStars: 0
+    highScore: 0
+  - levelNumber: 5
+    hammerHits: 13
+    rotationSpeed: 100
+    verticalMoveSpeed: 1
+    numberOfDefaultNails: 7
+    numberOfRedNails: 3
+    gainedStars: 0
+    highScore: 0
+  - levelNumber: 6
+    hammerHits: 15
+    rotationSpeed: 100
+    verticalMoveSpeed: 1
+    numberOfDefaultNails: 9
+    numberOfRedNails: 3
+    gainedStars: 0
+    highScore: 0
+  - levelNumber: 7
+    hammerHits: 15
+    rotationSpeed: 100
+    verticalMoveSpeed: 1
+    numberOfDefaultNails: 6
     numberOfRedNails: 4
-    gainedStars: 3
-    highScore: 5350
+    gainedStars: 0
+    highScore: 0
+  - levelNumber: 8
+    hammerHits: 16
+    rotationSpeed: 100
+    verticalMoveSpeed: 1
+    numberOfDefaultNails: 9
+    numberOfRedNails: 4
+    gainedStars: 0
+    highScore: 0
+  - levelNumber: 9
+    hammerHits: 13
+    rotationSpeed: 100
+    verticalMoveSpeed: 1
+    numberOfDefaultNails: 5
+    numberOfRedNails: 5
+    gainedStars: 0
+    highScore: 0
+  - levelNumber: 10
+    hammerHits: 15
+    rotationSpeed: 100
+    verticalMoveSpeed: 1
+    numberOfDefaultNails: 8
+    numberOfRedNails: 5
+    gainedStars: 0
+    highScore: 0
