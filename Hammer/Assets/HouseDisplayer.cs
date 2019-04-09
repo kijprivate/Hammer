@@ -7,6 +7,7 @@ public class HouseDisplayer : MonoBehaviour
 {
     [SerializeField] private GameObject house;
     [SerializeField] private GameObject[] houseParts;
+    [SerializeField] private GameObject board;
 
     private Vector3 positionToAnimate;
     private Hammer hammer;
@@ -24,14 +25,8 @@ public class HouseDisplayer : MonoBehaviour
 
     void OnGameOver()
     {
-        house.SetActive(true);
-        for (int i = 0; i < index; i++)
-        {
-            houseParts[i].SetActive(true);
-        }
-
+        StartCoroutine(DisableGameplayItemsAndActiveHouse());
         StartCoroutine(ActiveAndAnimateLastPart());
-        StartCoroutine(DisableGameplayItems());
     }
 
     private void OnDestroy()
@@ -40,11 +35,22 @@ public class HouseDisplayer : MonoBehaviour
         EventManager.EventNoMoreNails -= OnGameOver;
     }
 
-    private IEnumerator DisableGameplayItems()
+    private IEnumerator DisableGameplayItemsAndActiveHouse()
     {
+
+
+        yield return new WaitForSeconds(0.5f);
+        
+        house.SetActive(true);
+        for (int i = 0; i < index; i++)
+        {
+            houseParts[i].SetActive(true);
+        }
+        
         yield return new WaitForSeconds(0.2f);
         hammer.gameObject.SetActive(false);
         nailsSpawner.gameObject.SetActive(false);
+        board.SetActive(false);
     }
 
     private IEnumerator ActiveAndAnimateLastPart()
