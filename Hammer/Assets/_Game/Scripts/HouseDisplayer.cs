@@ -50,8 +50,10 @@ public class HouseDisplayer : MonoBehaviour
         {
             houseParts[i].SetActive(true);
         }
+        if(starsForPreviousTries>0) //show if already unlocked
+        { houseParts[index].SetActive(true);}
         
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
         hammer.gameObject.SetActive(false);
         nailsSpawner.gameObject.SetActive(false);
         board.SetActive(false);
@@ -59,8 +61,6 @@ public class HouseDisplayer : MonoBehaviour
 
     private IEnumerator ActiveAndAnimateLastPart()
     {
-        if(starsForPreviousTries>0) //show already unlocked
-        { houseParts[index].SetActive(true);}
         yield return new WaitForSeconds(1f);
         
         if (!(starsForPreviousTries > 0) && LevelContainer.StarsForCurrentTry>0) //unlock part and show

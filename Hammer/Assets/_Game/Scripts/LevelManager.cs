@@ -78,7 +78,13 @@ public class LevelManager : MonoBehaviour
             locked.GetComponent<Button>().enabled = true;
             locked.GetComponent<Image>().enabled = true;
         }
+        for(int i=0;i< LevelsDifficultyContainer.LevelsData.Count; i++)
+        {
+            LevelsDifficultyContainer.LevelsData[i].gainedStars=0;
+            LevelsDifficultyContainer.LevelsData[i].highScore=0;
+        }
     }
+    
     public void UnlockAllLevels()
     {
         PlayerPrefsManager.UnlockAllLevels();
