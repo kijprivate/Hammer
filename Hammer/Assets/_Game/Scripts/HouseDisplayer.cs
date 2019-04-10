@@ -9,10 +9,12 @@ public class HouseDisplayer : MonoBehaviour
     [SerializeField] private GameObject[] houseParts;
     [SerializeField] private GameObject board;
 
+    private LevelData data;
     private Vector3 positionToAnimate;
     private Hammer hammer;
     private NailsSpawner nailsSpawner;
     private int index;
+    private int starsForPreviousTries;
     void Start()
     {
         hammer = FindObjectOfType<Hammer>();
@@ -21,6 +23,10 @@ public class HouseDisplayer : MonoBehaviour
         positionToAnimate = houseParts[index].transform.position;
         EventManager.EventGameOver += OnGameOver;
         EventManager.EventNoMoreNails += OnGameOver;
+        
+        data = LevelsDifficultyContainer.LevelsData[index];
+
+        starsForPreviousTries = data.gainedStars;
     }
 
     void OnGameOver()
@@ -37,8 +43,6 @@ public class HouseDisplayer : MonoBehaviour
 
     private IEnumerator DisableGameplayItemsAndActiveHouse()
     {
-
-
         yield return new WaitForSeconds(0.5f);
         
         house.SetActive(true);
@@ -55,9 +59,15 @@ public class HouseDisplayer : MonoBehaviour
 
     private IEnumerator ActiveAndAnimateLastPart()
     {
+        if(starsForPreviousTries>0) //show already unlocked
+        { houseParts[index].SetActive(true);}
         yield return new WaitForSeconds(1f);
-        houseParts[index].SetActive(true);
-        houseParts[index].transform.position = positionToAnimate;
-        houseParts[index].GetComponent<DOTweenAnimation>().DOPlay();
+        
+        if (!(starsForPreviousTries > 0) && LevelContainer.StarsForCurrentTry>0) //unlock part and show
+        {
+            houseParts[index].SetActive(true);
+            houseParts[index].transform.position = positionToAnimate;
+            houseParts[index].GetComponent<DOTweenAnimation>().DOPlay();
+        }
     }
 }

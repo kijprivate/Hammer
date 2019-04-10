@@ -20,15 +20,18 @@ public class LevelContainer : MonoBehaviour
     private float percentageValueOfScore;
     public static float PercentageValueOfScore => Instance.percentageValueOfScore;
     
+    private int starsForCurrentTry;
+
+    public static int StarsForCurrentTry => Instance.starsForCurrentTry;
+
     public static int Score { get; set; }
     public static int PocketNails { get; private set; }
-
     public static bool GameOver { get; private set; }
     public static bool GameStarted { get; set; }
     public static bool MenuHided { get; set; }
 
     private LevelData data;
-    private int starsForCurrentTry;
+
     private int starsForPreviousTries;
     private float cashed1Star;
     private float cashed2Stars;

@@ -15,6 +15,7 @@
             <e p="ConstantDataContainer.cs" t="Include" />
             <e p="EventManager.cs" t="Include" />
             <e p="Hammer.cs" t="Include" />
+            <e p="HouseDisplayer.cs" t="Include" />
             <e p="LevelContainer.cs" t="Include" />
             <e p="LevelData.cs" t="Include" />
             <e p="LevelManager.cs" t="Include" />
@@ -67,7 +68,6 @@
             </e>
           </e>
         </e>
-        <e p="HouseDisplayer.cs" t="Include" />
         <e p="Plugins" t="Include">
           <e p="Control-Freak-2" t="Include">
             <e p="Control-Freak-2-ReadMe.txt" t="Include" />

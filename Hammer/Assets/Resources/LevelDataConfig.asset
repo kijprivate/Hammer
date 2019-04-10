@@ -20,7 +20,7 @@ MonoBehaviour:
     numberOfDefaultNails: 5
     numberOfRedNails: 0
     gainedStars: 0
-    highScore: 0 
+    highScore: 0
   - levelNumber: 2
     hammerHits: 15
     rotationSpeed: 100
