@@ -24,6 +24,7 @@ public class LevelManager : MonoBehaviour
         //{
         //    LoadSplashScreenWithDelay();
         //}
+        PlayerPrefsManager.UnlockLevel(1);
     }
 
     private void Update()

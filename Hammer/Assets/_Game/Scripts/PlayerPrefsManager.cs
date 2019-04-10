@@ -6,8 +6,7 @@ public class PlayerPrefsManager : MonoBehaviour
     const string LEVEL_KEY = "level_unlocked_";
     const string CHOSEN_LEVEL_KEY = "chosen_level_key_";
 
-    const string BALL_NEWKEY = "ball_unlocked_";
-    const string CHOSEN_BALL_NEWKEY = "chosen_ball_key_";
+    const string HOUSE_KEY = "house_unlocked_";
 
     const string NUMBER_COINS = "number of coins";
     
@@ -62,6 +61,18 @@ public class PlayerPrefsManager : MonoBehaviour
     public static int GetNumberOfCoins()
     {
         return PlayerPrefs.GetInt(NUMBER_COINS);
+    }
+    
+    public static void UnlockHouse(int houseNumber)
+    {
+        PlayerPrefs.SetInt(HOUSE_KEY + houseNumber.ToString(), 1);
+    }
+    public static bool IsHouseUnlocked(int houseNumber)
+    {
+        int houseValue = PlayerPrefs.GetInt(HOUSE_KEY + houseNumber.ToString());
+        bool isHouseUnlocked = (houseValue == 1);
+
+        return isHouseUnlocked;
     }
 
     public static void SetHighScore(float value)

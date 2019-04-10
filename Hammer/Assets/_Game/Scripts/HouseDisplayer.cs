@@ -70,4 +70,38 @@ public class HouseDisplayer : MonoBehaviour
             houseParts[index].GetComponent<DOTweenAnimation>().DOPlay();
         }
     }
+
+    public void ShowHouse(int houseNumber)
+    {
+        hammer.gameObject.SetActive(false);
+        nailsSpawner.gameObject.SetActive(false);
+        board.SetActive(false);
+        
+        house.SetActive(true);
+        houseParts[0].SetActive(true);
+        for (int i = 1; i < LevelsDifficultyContainer.LevelsData.Count; i++)
+        {
+            if (PlayerPrefsManager.IsLevelUnlocked(i))
+            {
+                houseParts[i].SetActive(true);
+            }
+        }
+    }
+
+    public void BackFromHouseView()
+    {
+        hammer.gameObject.SetActive(true);
+        nailsSpawner.gameObject.SetActive(true);
+        board.SetActive(true);
+        
+        house.SetActive(false);
+        houseParts[0].SetActive(false);
+        for (int i = 1; i < LevelsDifficultyContainer.LevelsData.Count; i++)
+        {
+            if (PlayerPrefsManager.IsLevelUnlocked(i))
+            {
+                houseParts[i].SetActive(false);
+            }
+        }
+    }
 }
