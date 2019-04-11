@@ -7,6 +7,8 @@ using ControlFreak2;
 
 public class Hammer : MonoBehaviour
 {
+    public int targetIndex { get; private set; }
+    
     private LevelData data;
     Transform myTransform;
     Nail targetNail;
@@ -23,7 +25,6 @@ public class Hammer : MonoBehaviour
     float depthAfterHit;
     int strength;
     private int cashedMaxStrength;
-    int targetIndex = 0;
 
     void Start()
     {
@@ -51,6 +52,7 @@ public class Hammer : MonoBehaviour
         startingRotation = myTransform.rotation;
         startingPosition = myTransform.position;
         isHammerReady=true;
+        targetIndex = 0;
     }
     void Update()
     {
@@ -107,6 +109,7 @@ public class Hammer : MonoBehaviour
         if (targetNail.isOverhit)
         {
             SetupNextTarget();
+            EventManager.RaiseEventNailFinished();
         }
         else
         {
@@ -170,7 +173,6 @@ public class Hammer : MonoBehaviour
 
     private void OnPerfectHit()
     {
-        //TODO add logic
         Debug.Log("Perfect hit with " +targetNail.ScoreForNail+"score");
         LevelContainer.Score += ConstantDataContainer.ScoreBonusForPerfectHit;
     }

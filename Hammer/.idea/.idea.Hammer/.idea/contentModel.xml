@@ -24,6 +24,7 @@
             <e p="Nail.cs" t="Include" />
             <e p="NailsSpawner.cs" t="Include" />
             <e p="PlayerPrefsManager.cs" t="Include" />
+            <e p="ProgressBar.cs" t="Include" />
             <e p="RedNail.cs" t="Include" />
           </e>
         </e>
