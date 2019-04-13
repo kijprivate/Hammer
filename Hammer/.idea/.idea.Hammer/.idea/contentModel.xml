@@ -325,6 +325,7 @@
             </e>
           </e>
         </e>
+        <e p="StrengthBar.cs" t="Include" />
       </e>
       <e p="Hammer.sln" t="IncludeFlat" />
       <e p="Library" t="ExcludeRecursive" />

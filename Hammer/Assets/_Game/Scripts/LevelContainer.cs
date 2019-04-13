@@ -24,6 +24,10 @@ public class LevelContainer : MonoBehaviour
 
     public static int StarsForCurrentTry => Instance.starsForCurrentTry;
 
+    private int maxAvailableScore;
+
+    public static int MaxAvailableScore => Instance.maxAvailableScore;
+
     public static int Score { get; set; }
     public static int PocketNails { get; private set; }
     public static bool GameOver { get; private set; }
@@ -36,7 +40,7 @@ public class LevelContainer : MonoBehaviour
     private float cashed1Star;
     private float cashed2Stars;
     private float cashed3Stars;
-    private int maxAvailableScore;
+
     void Awake()
     {
         currentLevelNumber = PlayerPrefsManager.GetChosenLevelNumber();
@@ -55,12 +59,25 @@ public class LevelContainer : MonoBehaviour
         PocketNails = 0;
         GameOver = false;
         Score = 0;
+
         EventManager.EventGameOver += OnGameOver;
         EventManager.EventNailPocket += OnNailPocket;
         EventManager.EventNoMoreNails += OnGameOver;
         EventManager.EventGameStarted += OnGameStarted;
         EventManager.EventMenuHided += OnMenuHided;
         EventManager.EventHammerHit += OnHammerHit;
+    }
+
+    private void Start()
+    {
+        StartCoroutine(CountMaxPoints());
+    }
+
+    IEnumerator CountMaxPoints()
+    {
+        yield return new WaitForSeconds(1f);
+        maxAvailableScore = NailsSpawner.MaxScoreForNails + numberOfNails * ConstantDataContainer.ScoreBonusForPerfectHit;
+        print(maxAvailableScore);
     }
     static LevelContainer instance;
     public static LevelContainer Instance

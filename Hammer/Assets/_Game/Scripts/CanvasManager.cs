@@ -48,7 +48,8 @@ public class CanvasManager : MonoBehaviour
         cashed3Stars = ConstantDataContainer.PercentageValueFor3Stars/100f;
         SplashRect = Splash.GetComponent<RectTransform>();
         SplashImage = Splash.GetComponent<Image>();
-        
+
+        StartCoroutine(DisplayMinPoints());
         if(!LevelContainer.MenuHided)
         {
             MenuUI.SetActive(true);
@@ -98,6 +99,13 @@ public class CanvasManager : MonoBehaviour
         SummaryPanel.SetActive(true); 
         ScoreSummary.text = LevelContainer.Score.ToString();
     }
+    
+    private IEnumerator DisplayMinPoints()
+    {
+        yield return new WaitForSeconds(1.1f);
+        ScoreGameplay.text = LevelContainer.Score.ToString() +"/"+LevelContainer.MaxAvailableScore*(ConstantDataContainer.PercentageValueFor1Star/100f);
+    }
+    
     private void OnHammerHit()
     {
         HammersLeft.text = LevelContainer.HammerHits.ToString();
@@ -106,7 +114,7 @@ public class CanvasManager : MonoBehaviour
     private void OnNailPocket()
     {
         NailPocket.text = LevelContainer.PocketNails.ToString();
-        ScoreGameplay.text = LevelContainer.Score.ToString();
+        ScoreGameplay.text = LevelContainer.Score.ToString() +"/"+LevelContainer.MaxAvailableScore*(ConstantDataContainer.PercentageValueFor1Star/100f);
     }
 
     private void OnMenuHided()

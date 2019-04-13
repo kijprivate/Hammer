@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6d087819ccf4dd1a3aac03e8a3aeee5, type: 3}
   m_Name: ConstantDataConfig
   m_EditorClassIdentifier: 
-  maxHammerStrength: 5
+  maxHammerStrength: 3
   positionOverNailHeadBeforeHit: 1.5
   positionOverNailHeadAfterHit: 0.85
   scoreForDefaultNail: 300
