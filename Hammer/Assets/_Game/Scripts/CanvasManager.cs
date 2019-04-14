@@ -28,8 +28,8 @@ public class CanvasManager : MonoBehaviour
     private float cashed2Stars;
     private float cashed3Stars;
     private RectTransform SplashRect;   // needed for changing scale when displaying Splash
-    private Image SplashImage;
-    private int numberofnails;// needed for changing Sprite depending on hit rating
+    private Image SplashImage;    // needed for changing Sprite depending on hit rating
+    private int numberofnails;
     private void Start()
     {
         EventManager.EventGameOver += OnGameOver;

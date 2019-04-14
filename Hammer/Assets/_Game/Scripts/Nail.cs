@@ -107,7 +107,7 @@ public class Nail : MonoBehaviour
         }
         else
         {
-            LevelContainer.Score += scoreForNail / hitsPerCurrentNail;
+            LevelContainer.Score += scoreForNail;
         }
     }
 

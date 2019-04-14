@@ -16,9 +16,24 @@ public class ProgressBar : MonoBehaviour
         EventManager.EventNailFinished += OnNailFinished;
     }
 
+    private float Remap (float from, float fromMin, float fromMax, float toMin,  float toMax)
+    {
+        var fromAbs  =  from - fromMin;
+        var fromMaxAbs = fromMax - fromMin;      
+           
+        var normal = fromAbs / fromMaxAbs;
+     
+        var toMaxAbs = toMax - toMin;
+        var toAbs = toMaxAbs * normal;
+     
+        var to = toAbs + toMin;
+           
+        return to;
+    }
+    
     void OnNailFinished()
     {
-        progressBar.fillAmount = fillInterval * (hammer.targetIndex + 1);
+        progressBar.fillAmount = Remap((float) LevelContainer.Score, 0f, LevelContainer.MaxAvailableScore, 0f, 1f);
     }
 
     private void OnDestroy()
