@@ -155,10 +155,12 @@ public class CanvasManager : MonoBehaviour
                 break;
         }
         Splash.SetActive(true);
-        SplashRect.DOScale(new Vector3(1.0f, 1.0f, 1.0f), 0.5f).SetEase(Ease.OutElastic);   // scales splash for display
-        yield return new WaitForSeconds(1.0f);
+        SplashRect.DOScale(new Vector3(0.6f, 0.6f, 1.0f), 0.5f).SetEase(Ease.OutElastic);   // scales splash for display
+        SplashRect.DOMove(new Vector3(850.0f, 750.0f, 0.0f), 0.5f).SetEase(Ease.OutSine);
+        yield return new WaitForSeconds(0.7f);
         Splash.SetActive(false);    
         SplashRect.DOScale(new Vector3(0.01f, 0.01f, 1.0f), 0.01f); // scales bask after displaying
+        SplashRect.DOMove(new Vector3(600.0f, 460.0f, 0.0f), 0.01f);
     }
 
     private void OnDestroy()

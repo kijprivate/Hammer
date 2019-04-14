@@ -25,10 +25,12 @@ public class Hammer : MonoBehaviour
     float depthAfterHit;
     int strength;
     private int cashedMaxStrength;
+    private ParticleSystem sparks;
 
     void Start()
     {
         myTransform = transform;
+        sparks = GetComponentInChildren<ParticleSystem>();
         
         StartCoroutine(SetupWithDelay());
     }
@@ -104,7 +106,7 @@ public class Hammer : MonoBehaviour
 
     private IEnumerator BackToPositionRoutine()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.7f);
 
         if (targetNail.isOverhit)
         {
@@ -146,7 +148,11 @@ public class Hammer : MonoBehaviour
         }
         else
         {
-            if(strength == targetNail.GetStrengthForCorrectHit()) EventManager.RaiseEventShowSplash(0); // raises event needed for displaying splash with hit rating
+            if (strength == targetNail.GetStrengthForCorrectHit())
+            {
+                sparks.Play();
+                EventManager.RaiseEventShowSplash(0); // raises event needed for displaying splash with hit rating
+            }
             else EventManager.RaiseEventShowSplash(-1); // raises event needed for displaying splash with hit rating
             depthAfterHit = targetNail.nailHead.position.y - strength * targetNail.GetStep() + cashedPositionAfterHit;
         }
