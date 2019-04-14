@@ -28,7 +28,8 @@ public class CanvasManager : MonoBehaviour
     private float cashed2Stars;
     private float cashed3Stars;
     private RectTransform SplashRect;   // needed for changing scale when displaying Splash
-    private Image SplashImage;  // needed for changing Sprite depending on hit rating
+    private Image SplashImage;
+    private int numberofnails;// needed for changing Sprite depending on hit rating
     private void Start()
     {
         EventManager.EventGameOver += OnGameOver;
@@ -37,9 +38,12 @@ public class CanvasManager : MonoBehaviour
         EventManager.EventNailPocket += OnNailPocket;
         EventManager.EventMenuHided += OnMenuHided;
         EventManager.EventShowSplash += OnShowSplash;
+        EventManager.EventNailFinished += OnNailFinished;
+
+        numberofnails = LevelContainer.NumberOfNails;
 
         HammersLeft.text = LevelContainer.HammerHits.ToString();
-        NailPocket.text = LevelContainer.PocketNails.ToString();
+        NailPocket.text = numberofnails.ToString();
         LevelName.text = "Level"+LevelContainer.CurrentLevelNumber;
         Coins.text = "Coins: " + PlayerPrefsManager.GetNumberOfCoins();
 
@@ -113,9 +117,16 @@ public class CanvasManager : MonoBehaviour
 
     private void OnNailPocket()
     {
-        NailPocket.text = LevelContainer.PocketNails.ToString();
+
         ScoreGameplay.text = LevelContainer.Score.ToString() +"/"+LevelContainer.MaxAvailableScore*(ConstantDataContainer.PercentageValueFor1Star/100f);
     }
+
+    private void OnNailFinished()
+    {
+        numberofnails--;
+        NailPocket.text = numberofnails.ToString();
+    }
+    
 
     private void OnMenuHided()
     {
@@ -158,5 +169,6 @@ public class CanvasManager : MonoBehaviour
         EventManager.EventNoMoreNails -= OnGameOver;
         EventManager.EventMenuHided -= OnMenuHided;
         EventManager.EventShowSplash -= OnShowSplash;
+        EventManager.EventNailFinished -= OnNailFinished;
     }
 }
