@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7838098447143784750}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalPosition: {x: 0, y: 3.482, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7838098447166049745}
@@ -60,7 +60,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7838098447166049759}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.89, y: -2.6, z: 0}
+  m_LocalPosition: {x: -0.89, y: -3.55, z: 0}
   m_LocalScale: {x: 0.8, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 7838098447143784737}
@@ -82,9 +82,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nailHead: {fileID: 7838098447143784737}
+  angle: 10
+  allowedAngle: 5
+  rotationSpeed: 10
   hitsPerCurrentNail: 0
   Xoffset: 2
   step: 0.5
+  strengthForCorrectHit: 3
+  isMoving: 0
 --- !u!65 &724342192827033780
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -97,7 +102,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.24911761, y: 3.2517793, z: 0.38895935}
-  m_Center: {x: -0.0016099215, y: -0.099110246, z: 0.015173316}
+  m_Center: {x: -0.0016099215, y: 1.88, z: 0.015173316}
 --- !u!1001 &2480624142825363498
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -115,7 +120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 474efe4d1ffd2704ab6f381c4a352390, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.525
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 474efe4d1ffd2704ab6f381c4a352390, type: 3}
       propertyPath: m_LocalPosition.z

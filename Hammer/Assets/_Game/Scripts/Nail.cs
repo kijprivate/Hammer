@@ -8,7 +8,13 @@ public class Nail : MonoBehaviour
 {
     public Transform nailHead;
 
+    [SerializeField] protected float angle=10f;
+    [SerializeField] protected float allowedAngle = 5f;
+    [SerializeField] protected float rotationSpeed=10f;
     public int ScoreForNail => scoreForNail;
+    public Vector3 DefaultPosition => defaultPosition;
+
+    public int DefaultStrengthForCorrectHit => defaultStrengthForCorrectHit;
     
     [HideInInspector]
     public int hitsPerCurrentNail = 0;
@@ -18,7 +24,8 @@ public class Nail : MonoBehaviour
     [SerializeField]
     protected float step = 0.5f;
 
-    protected int strengthForCorrectHit = 3;
+    public int strengthForCorrectHit = 3;
+    protected int defaultStrengthForCorrectHit = 3;
     protected int minHammerHits;
     protected float Yoffset;
 
@@ -26,9 +33,13 @@ public class Nail : MonoBehaviour
 
     protected Hammer hammer;
     protected float depthAfterHit;
+    public bool isSwing=false;
+    protected bool isMovingRight;
 
     protected int scoreForNail;
+    private Vector3 defaultPosition;
     protected int cashedMaxHammerStrength;
+    protected float rotationZ=0f;
 
     protected virtual void Awake()
     {
@@ -39,8 +50,36 @@ public class Nail : MonoBehaviour
         CalculateMinHammerHits();
     }
 
+    protected virtual void Update()
+    {
+        if (isSwing)
+        {
+            if (isMovingRight)
+            {
+                rotationZ += rotationSpeed * Time.deltaTime;
+                transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
+                if (rotationZ >= angle)
+                {
+                    isMovingRight = false;
+                }
+            }
+            else
+            {
+                rotationZ -= rotationSpeed * Time.deltaTime;
+                transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
+                if (rotationZ <= -angle)
+                {
+                    isMovingRight = true;
+                }
+            }
+        }
+    }
+
     protected virtual void OnTriggerEnter(Collider collision)
     {
+        HandleMovingNail();
+        if(isOverhit)
+        {return;}
         if(hammer.GetStrength() > strengthForCorrectHit)
         {
             depthAfterHit = transform.position.y - (strengthForCorrectHit * step + (hammer.GetStrength()-strengthForCorrectHit)*(step/3f) );
@@ -63,8 +102,28 @@ public class Nail : MonoBehaviour
         transform.DOMove(new Vector3(transform.position.x, depthAfterHit, transform.position.z), 0.06f);
     }
 
+    private void HandleMovingNail()
+    {
+        if (isSwing && GetCurrentAngle() > allowedAngle && hammer.GetStrength() > 0)
+        {
+            // TODO add animation
+            isOverhit = true;
+            isSwing = false;
+            scoreForNail = 0;
+            var sequence = DOTween.Sequence();
+            sequence.Append(transform.DOMoveY(-5, 1f))
+                .Join(transform.DOScale(Vector3.zero, 1f));
+        }
+        else if (isSwing && GetCurrentAngle() <= allowedAngle)
+        {
+            isSwing = false;
+            transform.DORotate(Vector3.zero, 0.2f);
+        }
+    }
+
     protected virtual void SetRandomHeight()
     {
+        defaultPosition = transform.position;
         int random = Random.Range(1, 4);
         switch (random)
         {
@@ -116,8 +175,15 @@ public class Nail : MonoBehaviour
         return step;
     }
 
-    public int GetStrengthForCorrectHit()
+    private float GetCurrentAngle()
     {
-        return strengthForCorrectHit;
+        if (transform.rotation.eulerAngles.z > angle)
+        {
+            return 360f - transform.rotation.eulerAngles.z;
+        }
+        else
+        {
+            return transform.rotation.eulerAngles.z;
+        }
     }
 }

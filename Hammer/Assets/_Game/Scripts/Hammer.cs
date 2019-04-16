@@ -140,15 +140,15 @@ public class Hammer : MonoBehaviour
 
     private void SetupHammerPositionAfterHit()
     {
-        if (strength > targetNail.GetStrengthForCorrectHit())
+        if (strength > targetNail.strengthForCorrectHit)
         {
             depthAfterHit = targetNail.nailHead.position.y + cashedPositionAfterHit - 
-                            (targetNail.GetStrengthForCorrectHit() * targetNail.GetStep() + (strength - targetNail.GetStrengthForCorrectHit()) * (targetNail.GetStep() / 3f));
+                            (targetNail.strengthForCorrectHit * targetNail.GetStep() + (strength - targetNail.strengthForCorrectHit) * (targetNail.GetStep() / 3f));
             EventManager.RaiseEventShowSplash(1);   // raises event needed for displaying splash with hit rating
         }
         else
         {
-            if (strength == targetNail.GetStrengthForCorrectHit())
+            if (strength == targetNail.strengthForCorrectHit)
             {
                 sparks.Play();
                 EventManager.RaiseEventShowSplash(0); // raises event needed for displaying splash with hit rating

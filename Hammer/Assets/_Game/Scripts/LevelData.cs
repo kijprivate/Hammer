@@ -1,3 +1,4 @@
+
 using UnityEngine;
 
 [System.Serializable]
@@ -18,6 +19,12 @@ public class LevelData
     public int numberOfDefaultNails=10;
     [SerializeField] 
     public int numberOfRedNails=2;
+    [Header("Nails")] 
+    [SerializeField] 
+    public int movingDefaultNails=0;
+    [SerializeField] 
+    public int movingRedNails=0;
+    
 
     [Header("Score")] 
     [SerializeField] 

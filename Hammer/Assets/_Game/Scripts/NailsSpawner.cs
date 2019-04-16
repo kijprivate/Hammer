@@ -11,11 +11,15 @@ public class NailsSpawner : MonoBehaviour
     [SerializeField] Nail defaultNail;
     [SerializeField] Nail redNail;
 
+    private LevelData data;
+    
     private int minHammerHits;
     private int numberOfNails;
-    float Xoffset = 2f;
-    int defaultNails;
-    int redNails;
+    private float Xoffset = 2f;
+    private int spawnedDefaultNails;
+    private int spawnedRedNails;
+    private int spawnedMovingDefaultNails;
+    private int spawnedMovingRedNails;
     private int cashedScoreForMoves;
     private int cashedMaxHammerStrength;
     
@@ -40,7 +44,7 @@ public class NailsSpawner : MonoBehaviour
     private IEnumerator SpawnWithDelay()
     {
         yield return new WaitForEndOfFrame();
-        var data = LevelsDifficultyContainer.LevelsData[PlayerPrefsManager.GetChosenLevelNumber()-1];
+        data = LevelsDifficultyContainer.LevelsData[PlayerPrefsManager.GetChosenLevelNumber()-1];
         numberOfNails = LevelContainer.NumberOfNails;
 
         for (int i = 0; i < numberOfNails; )
@@ -50,26 +54,38 @@ public class NailsSpawner : MonoBehaviour
             switch (index)
             {
                 case 1:
-                    if (defaultNails < data.numberOfDefaultNails)
+                    if (spawnedDefaultNails < data.numberOfDefaultNails)
                     {
                         Nail defNail = Instantiate(defaultNail, defaultNail.transform.position + new Vector3(Xoffset * i, 0f, 0f), Quaternion.identity) as Nail;
                         defNail.gameObject.transform.SetParent(transform);
                         defNail.Xoffset = Xoffset;
+                        if (IsMoving(ref spawnedMovingDefaultNails,data.movingDefaultNails,data.numberOfDefaultNails))
+                        {
+                            defNail.transform.position = defNail.DefaultPosition;
+                            defNail.strengthForCorrectHit = defNail.DefaultStrengthForCorrectHit;
+                            defNail.isSwing=true;
+                        }
 
-                        CalculatePoints(defNail.GetStrengthForCorrectHit(), defNail.ScoreForNail);
-                        defaultNails++;
+                        CalculatePoints(defNail.strengthForCorrectHit, defNail.ScoreForNail);
+                        spawnedDefaultNails++;
                         i++;
                     }
                     break;
                 case 2:
-                    if (redNails < data.numberOfRedNails)
+                    if (spawnedRedNails < data.numberOfRedNails)
                     {
                         Nail rNail = Instantiate(redNail, redNail.transform.position + new Vector3(Xoffset * i, 0f, 0f), Quaternion.identity) as Nail;
                         rNail.gameObject.transform.SetParent(transform);
                         rNail.Xoffset = Xoffset;
-
-                        CalculatePoints(rNail.GetStrengthForCorrectHit(), rNail.ScoreForNail);
-                        redNails++;
+//                        if (IsMoving(ref spawnedMovingRedNails,data.movingRedNails,data.numberOfRedNails))
+//                        {
+//                           // redNail.transform.position = redNail.DefaultPosition;
+//                            redNail.strengthForCorrectHit = redNail.DefaultStrengthForCorrectHit;
+//                            redNail.isMovingRed=true;
+//                        }
+                        
+                        CalculatePoints(rNail.strengthForCorrectHit, rNail.ScoreForNail);
+                        spawnedRedNails++;
                         i++;
                     }
                     break;
@@ -88,5 +104,27 @@ public class NailsSpawner : MonoBehaviour
             maxScoreForNails += scoreForNail / (strengthForCorrectHit / cashedMaxHammerStrength + 1);
             minHammerHits += strengthForCorrectHit / cashedMaxHammerStrength + 1;
         }
+    }
+
+    private bool IsMoving(ref int currentSpawnedNails,int targetSpawnedNails,int numberNotMovingNails)
+    {
+        if (currentSpawnedNails < targetSpawnedNails)
+        {
+            if (targetSpawnedNails > numberNotMovingNails / 2)     // try spawn all 
+            {
+                currentSpawnedNails++;
+                return true;
+            }
+            else                                                             // add some randomness
+            {
+                var index = Random.Range(0, 2);
+                if (index == 0)
+                {
+                    currentSpawnedNails++;
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
