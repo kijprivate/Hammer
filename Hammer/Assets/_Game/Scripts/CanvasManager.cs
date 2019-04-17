@@ -165,6 +165,16 @@ public class CanvasManager : MonoBehaviour
         SplashRect.DOMove(tempPosition, 0.01f);
     }
 
+    public void HideMenuAndStartGame()
+    {
+        StartCoroutine(CoroutineHideMenuAndStartGame());
+    }
+    private IEnumerator CoroutineHideMenuAndStartGame()
+    {
+        EventManager.RaiseEventMenuHided();
+        yield return new WaitForSeconds(0.1f);
+        EventManager.RaiseEventGameStarted();
+    }
     private void OnDestroy()
     {
         EventManager.EventHammerHit -= OnHammerHit;

@@ -79,9 +79,9 @@ public class NailsSpawner : MonoBehaviour
                         rNail.Xoffset = Xoffset;
                         if (IsMoving(ref spawnedMovingRedNails,data.movingRedNails,data.numberOfRedNails))
                         {
-                            rNail.transform.position = rNail.DefaultPosition;
+                            rNail.transform.position = rNail.DefaultPositionRed;
                             rNail.strengthForCorrectHit = rNail.DefaultStrengthForCorrectHit;
-                            rNail.isMoving=true;
+                            rNail.isMovingRed=true;
                         }
                         
                         CalculatePoints(rNail.strengthForCorrectHit, rNail.ScoreForNail);

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ConstantDataConfig
   m_EditorClassIdentifier: 
   maxHammerStrength: 3
-  positionOverNailHeadBeforeHit: 1.5
+  positionOverNailHeadBeforeHit: 1.85
   positionOverNailHeadAfterHit: 0.85
   scoreForDefaultNail: 300
   scoreForRedNail: 600

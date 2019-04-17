@@ -5,10 +5,10 @@ using DG.Tweening;
 
 public class RedNail : Nail
 {
-    public bool isMoving;
-    public Vector3 DefaultPosition => defaultPosition;
+    public bool isMovingRed;
+    public Vector3 DefaultPositionRed => defaultPositionRed;
 
-    private Vector3 defaultPosition;
+    private Vector3 defaultPositionRed;
     private bool isMovingRight;
     protected override void Awake()
     {
@@ -22,7 +22,7 @@ public class RedNail : Nail
 
     protected override void Update()
     {
-        if (isMoving)
+        if (isMovingRed)
         {
             if (isMovingRight)
             {
@@ -74,25 +74,25 @@ public class RedNail : Nail
     
     protected override void HandleMovingNail()
     {
-        if (isMoving && GetCurrentAngle() > allowedAngle && hammer.GetStrength() > 0)
+        if (isMovingRed && GetCurrentAngle() > allowedAngle && hammer.GetStrength() > 0)
         {
             // TODO add animation
             isOverhit = true;
-            isMoving = false;
+            isMovingRed = false;
             scoreForNail = 0;
             var sequence = DOTween.Sequence();
             sequence.Append(transform.DOMoveY(-5, 1f))
                 .Join(transform.DOScale(Vector3.zero, 1f));
         }
-        else if (isMoving && GetCurrentAngle() <= allowedAngle)
+        else if (isMovingRed && GetCurrentAngle() <= allowedAngle)
         {
-            isMoving = false;
+            isMovingRed = false;
             transform.DORotate(Vector3.zero, 0.2f);
         }
     }
     protected override void SetRandomHeight()
     {
-        defaultPosition = transform.position;
+        defaultPositionRed = transform.position;
         int random = Random.Range(1, 5);
         switch (random)
         {
