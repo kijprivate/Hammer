@@ -14,6 +14,7 @@
           <e p="Scripts" t="Include">
             <e p="CanvasManager.cs" t="Include" />
             <e p="ConstantDataContainer.cs" t="Include" />
+            <e p="DefaultNail.cs" t="Include" />
             <e p="EventManager.cs" t="Include" />
             <e p="Hammer.cs" t="Include" />
             <e p="HouseDisplayer.cs" t="Include" />

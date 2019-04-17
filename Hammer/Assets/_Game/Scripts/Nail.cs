@@ -4,13 +4,15 @@ using UnityEngine;
 
 using DG.Tweening;
 
-public class Nail : MonoBehaviour
+public abstract class Nail : MonoBehaviour
 {
     public Transform nailHead;
 
     [SerializeField] protected float angle=10f;
     [SerializeField] protected float allowedAngle = 5f;
     [SerializeField] protected float rotationSpeed=10f;
+    [SerializeField] protected int defaultStrengthForCorrectHit = 3;
+    
     public int ScoreForNail => scoreForNail;
     public Vector3 DefaultPosition => defaultPosition;
 
@@ -25,10 +27,10 @@ public class Nail : MonoBehaviour
     protected float step = 0.5f;
 
     public int strengthForCorrectHit = 3;
-    protected int defaultStrengthForCorrectHit = 3;
+
     protected int minHammerHits;
     protected float Yoffset;
-
+    
     public bool isOverhit { get; set; }
 
     protected Hammer hammer;
@@ -37,11 +39,12 @@ public class Nail : MonoBehaviour
     protected bool isMovingRight;
 
     protected int scoreForNail;
-    private Vector3 defaultPosition;
+    protected Vector3 defaultPosition;
     protected int cashedMaxHammerStrength;
     protected float rotationZ=0f;
 
-    protected virtual void Awake()
+    protected abstract void SetRandomHeight();
+    protected void Awake()
     {
         scoreForNail = ConstantDataContainer.ScoreForDefaultNail;
         cashedMaxHammerStrength = ConstantDataContainer.MaxHammerStrength;
@@ -49,8 +52,7 @@ public class Nail : MonoBehaviour
         SetRandomHeight();
         CalculateMinHammerHits();
     }
-
-    protected virtual void Update()
+    protected void Update()
     {
         if (isMoving)
         {
@@ -74,8 +76,7 @@ public class Nail : MonoBehaviour
             }
         }
     }
-
-    protected virtual void OnTriggerEnter(Collider collision)
+    protected void OnTriggerEnter(Collider collision)
     {
         HandleMovingNail();
         if(isOverhit)
@@ -101,8 +102,7 @@ public class Nail : MonoBehaviour
         hitsPerCurrentNail++;
         transform.DOMove(new Vector3(transform.position.x, depthAfterHit, transform.position.z), 0.06f);
     }
-
-    protected virtual void HandleMovingNail()
+    protected void HandleMovingNail()
     {
         if (isMoving && GetCurrentAngle() > allowedAngle && hammer.GetStrength() > 0)
         {
@@ -120,31 +120,6 @@ public class Nail : MonoBehaviour
             transform.DORotate(Vector3.zero, 0.2f);
         }
     }
-
-    protected virtual void SetRandomHeight()
-    {
-        defaultPosition = transform.position;
-        int random = Random.Range(1, 4);
-        switch (random)
-        {
-            case 1:
-                Yoffset = 0f;
-                strengthForCorrectHit = 3;
-                break;
-            case 2:
-                Yoffset = -0.5f;
-                strengthForCorrectHit = 2;
-                break;
-            case 3:
-                Yoffset = -1f;
-                strengthForCorrectHit = 1;
-                break;
-            default:
-                break;
-        }
-        transform.position += new Vector3(0f, Yoffset, 0f);
-    }
-
     protected void CalculateMinHammerHits()
     {
         if (strengthForCorrectHit % cashedMaxHammerStrength == 0)
@@ -156,7 +131,7 @@ public class Nail : MonoBehaviour
             minHammerHits += strengthForCorrectHit / cashedMaxHammerStrength + 1;
         }
     }
-
+    
     protected void CalculatePoints()
     {
         if (hitsPerCurrentNail <= minHammerHits)

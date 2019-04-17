@@ -56,7 +56,7 @@ public class NailsSpawner : MonoBehaviour
                 case 1:
                     if (spawnedDefaultNails < data.numberOfDefaultNails)
                     {
-                        Nail defNail = Instantiate(defaultNail, defaultNail.transform.position + new Vector3(Xoffset * i, 0f, 0f), Quaternion.identity) as Nail;
+                        Nail defNail = Instantiate(defaultNail, defaultNail.transform.position + new Vector3(Xoffset * i, 0f, 0f), Quaternion.identity) as DefaultNail;
                         defNail.gameObject.transform.SetParent(transform);
                         defNail.Xoffset = Xoffset;
                         if (IsMoving(ref spawnedMovingDefaultNails,data.movingDefaultNails,data.numberOfDefaultNails))
@@ -74,14 +74,14 @@ public class NailsSpawner : MonoBehaviour
                 case 2:
                     if (spawnedRedNails < data.numberOfRedNails)
                     {
-                        RedNail rNail = Instantiate(redNail, redNail.transform.position + new Vector3(Xoffset * i, 0f, 0f), Quaternion.identity) as RedNail;
+                        Nail rNail = Instantiate(redNail, redNail.transform.position + new Vector3(Xoffset * i, 0f, 0f), Quaternion.identity) as RedNail;
                         rNail.gameObject.transform.SetParent(transform);
                         rNail.Xoffset = Xoffset;
                         if (IsMoving(ref spawnedMovingRedNails,data.movingRedNails,data.numberOfRedNails))
                         {
-                            rNail.transform.position = rNail.DefaultPositionRed;
+                            rNail.transform.position = rNail.DefaultPosition;
                             rNail.strengthForCorrectHit = rNail.DefaultStrengthForCorrectHit;
-                            rNail.isMovingRed=true;
+                            rNail.isMoving=true;
                         }
                         
                         CalculatePoints(rNail.strengthForCorrectHit, rNail.ScoreForNail);

@@ -30,9 +30,9 @@ MonoBehaviour:
     numberOfDefaultNails: 10
     numberOfRedNails: 4
     movingDefaultNails: 0
-    movingRedNails: 0
+    movingRedNails: 2
     gainedStars: 2
-    highScore: 4300
+    highScore: 4700
   - levelNumber: 3
     hammerHits: 14
     rotationSpeed: 100
@@ -41,8 +41,8 @@ MonoBehaviour:
     numberOfRedNails: 2
     movingDefaultNails: 0
     movingRedNails: 0
-    gainedStars: 0
-    highScore: 0
+    gainedStars: 3
+    highScore: 4200
   - levelNumber: 4
     hammerHits: 15
     rotationSpeed: 100
@@ -71,8 +71,8 @@ MonoBehaviour:
     numberOfRedNails: 2
     movingDefaultNails: 0
     movingRedNails: 0
-    gainedStars: 0
-    highScore: 0
+    gainedStars: 3
+    highScore: 5000
   - levelNumber: 7
     hammerHits: 15
     rotationSpeed: 100
@@ -81,8 +81,8 @@ MonoBehaviour:
     numberOfRedNails: 2
     movingDefaultNails: 0
     movingRedNails: 0
-    gainedStars: 2
-    highScore: 2900
+    gainedStars: 3
+    highScore: 3800
   - levelNumber: 8
     hammerHits: 16
     rotationSpeed: 100
