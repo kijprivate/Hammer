@@ -107,7 +107,7 @@ public class CanvasManager : MonoBehaviour
     private IEnumerator DisplayMinPoints()
     {
         yield return new WaitForSeconds(1.1f);
-        ScoreGameplay.text = LevelContainer.Score.ToString() +"/"+LevelContainer.MaxAvailableScore*(ConstantDataContainer.PercentageValueFor1Star/100f);
+        ScoreGameplay.text = LevelContainer.Score +"/"+LevelContainer.MaxAvailableScore*(ConstantDataContainer.PercentageValueFor1Star/100f);
     }
     
     private void OnHammerHit()
@@ -117,8 +117,33 @@ public class CanvasManager : MonoBehaviour
 
     private void OnNailPocket()
     {
-
-        ScoreGameplay.text = LevelContainer.Score.ToString() +"/"+LevelContainer.MaxAvailableScore*(ConstantDataContainer.PercentageValueFor1Star/100f);
+        if (LevelContainer.Score >
+            LevelsDifficultyContainer.LevelsData[LevelContainer.CurrentLevelIndex].highScore)
+        {
+            ScoreGameplay.text = LevelContainer.Score.ToString();
+        }
+        else if (LevelContainer.Score >
+            LevelContainer.MaxAvailableScore * (ConstantDataContainer.PercentageValueFor3Stars / 100f) &&
+            LevelContainer.Score < LevelsDifficultyContainer.LevelsData[LevelContainer.CurrentLevelIndex].highScore)
+        {
+            ScoreGameplay.text = LevelContainer.Score +"/"+LevelsDifficultyContainer.LevelsData[LevelContainer.CurrentLevelIndex].highScore;
+        }
+        else if (LevelContainer.Score >
+            LevelContainer.MaxAvailableScore * (ConstantDataContainer.PercentageValueFor2Stars / 100f))
+        {
+            ScoreGameplay.text = LevelContainer.Score +"/"+LevelContainer.MaxAvailableScore*(ConstantDataContainer.PercentageValueFor3Stars/100f);
+        }
+        else if (LevelContainer.Score >
+            LevelContainer.MaxAvailableScore * (ConstantDataContainer.PercentageValueFor1Star / 100f))
+        {
+            ScoreGameplay.text = LevelContainer.Score +"/"+LevelContainer.MaxAvailableScore*(ConstantDataContainer.PercentageValueFor2Stars/100f);
+        }
+        else if (LevelContainer.Score <
+            LevelContainer.MaxAvailableScore * (ConstantDataContainer.PercentageValueFor1Star / 100f))
+        {
+            ScoreGameplay.text = LevelContainer.Score + "/" + LevelContainer.MaxAvailableScore *
+                                 (ConstantDataContainer.PercentageValueFor1Star / 100f);
+        }
     }
 
     private void OnNailFinished()

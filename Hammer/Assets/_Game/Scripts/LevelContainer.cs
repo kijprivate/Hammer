@@ -77,7 +77,7 @@ public class LevelContainer : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         maxAvailableScore = NailsSpawner.MaxScoreForNails + numberOfNails * ConstantDataContainer.ScoreBonusForPerfectHit;
-        print(maxAvailableScore);
+       // print(maxAvailableScore);
     }
     static LevelContainer instance;
     public static LevelContainer Instance
