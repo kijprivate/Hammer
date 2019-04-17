@@ -63,7 +63,7 @@ public class NailsSpawner : MonoBehaviour
                         {
                             defNail.transform.position = defNail.DefaultPosition;
                             defNail.strengthForCorrectHit = defNail.DefaultStrengthForCorrectHit;
-                            defNail.isSwing=true;
+                            defNail.isMoving=true;
                         }
 
                         CalculatePoints(defNail.strengthForCorrectHit, defNail.ScoreForNail);
@@ -74,15 +74,15 @@ public class NailsSpawner : MonoBehaviour
                 case 2:
                     if (spawnedRedNails < data.numberOfRedNails)
                     {
-                        Nail rNail = Instantiate(redNail, redNail.transform.position + new Vector3(Xoffset * i, 0f, 0f), Quaternion.identity) as Nail;
+                        RedNail rNail = Instantiate(redNail, redNail.transform.position + new Vector3(Xoffset * i, 0f, 0f), Quaternion.identity) as RedNail;
                         rNail.gameObject.transform.SetParent(transform);
                         rNail.Xoffset = Xoffset;
-//                        if (IsMoving(ref spawnedMovingRedNails,data.movingRedNails,data.numberOfRedNails))
-//                        {
-//                           // redNail.transform.position = redNail.DefaultPosition;
-//                            redNail.strengthForCorrectHit = redNail.DefaultStrengthForCorrectHit;
-//                            redNail.isMovingRed=true;
-//                        }
+                        if (IsMoving(ref spawnedMovingRedNails,data.movingRedNails,data.numberOfRedNails))
+                        {
+                            rNail.transform.position = rNail.DefaultPosition;
+                            rNail.strengthForCorrectHit = rNail.DefaultStrengthForCorrectHit;
+                            rNail.isMoving=true;
+                        }
                         
                         CalculatePoints(rNail.strengthForCorrectHit, rNail.ScoreForNail);
                         spawnedRedNails++;

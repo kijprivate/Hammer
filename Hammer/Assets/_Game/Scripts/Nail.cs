@@ -33,7 +33,7 @@ public class Nail : MonoBehaviour
 
     protected Hammer hammer;
     protected float depthAfterHit;
-    public bool isSwing=false;
+    public bool isMoving;
     protected bool isMovingRight;
 
     protected int scoreForNail;
@@ -52,7 +52,7 @@ public class Nail : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (isSwing)
+        if (isMoving)
         {
             if (isMovingRight)
             {
@@ -102,21 +102,21 @@ public class Nail : MonoBehaviour
         transform.DOMove(new Vector3(transform.position.x, depthAfterHit, transform.position.z), 0.06f);
     }
 
-    private void HandleMovingNail()
+    protected virtual void HandleMovingNail()
     {
-        if (isSwing && GetCurrentAngle() > allowedAngle && hammer.GetStrength() > 0)
+        if (isMoving && GetCurrentAngle() > allowedAngle && hammer.GetStrength() > 0)
         {
             // TODO add animation
             isOverhit = true;
-            isSwing = false;
+            isMoving = false;
             scoreForNail = 0;
             var sequence = DOTween.Sequence();
             sequence.Append(transform.DOMoveY(-5, 1f))
                 .Join(transform.DOScale(Vector3.zero, 1f));
         }
-        else if (isSwing && GetCurrentAngle() <= allowedAngle)
+        else if (isMoving && GetCurrentAngle() <= allowedAngle)
         {
-            isSwing = false;
+            isMoving = false;
             transform.DORotate(Vector3.zero, 0.2f);
         }
     }
@@ -175,7 +175,7 @@ public class Nail : MonoBehaviour
         return step;
     }
 
-    private float GetCurrentAngle()
+    protected virtual float GetCurrentAngle()
     {
         if (transform.rotation.eulerAngles.z > angle)
         {

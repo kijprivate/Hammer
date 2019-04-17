@@ -57,7 +57,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7838098447166049759}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.89, y: -3.35, z: 0}
   m_LocalScale: {x: 1.28, y: 0.8, z: 0.5}
   m_Children:
   - {fileID: 7838098447143784737}
@@ -133,6 +133,7 @@ MonoBehaviour:
   Xoffset: 2
   step: 0.25
   strengthForCorrectHit: 3
+  isSwing: 0
   isMoving: 1
 --- !u!65 &366948254820116115
 BoxCollider:

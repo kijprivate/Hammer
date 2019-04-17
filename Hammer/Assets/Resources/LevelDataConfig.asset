@@ -30,7 +30,7 @@ MonoBehaviour:
     numberOfDefaultNails: 10
     numberOfRedNails: 4
     movingDefaultNails: 0
-    movingRedNails: 0
+    movingRedNails: 2
     gainedStars: 2
     highScore: 4300
   - levelNumber: 3
