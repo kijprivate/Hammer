@@ -24,7 +24,7 @@ public class HouseDisplayer : MonoBehaviour
         EventManager.EventGameOver += OnGameOver;
         EventManager.EventNoMoreNails += OnGameOver;
         
-        data = LevelsDifficultyContainer.LevelsData[index];
+        data = LevelsDifficultyContainer.Houses[LevelContainer.CurrentHouseNumber-1].levelsData[index];
 
         starsForPreviousTries = data.gainedStars;
     }
@@ -79,7 +79,7 @@ public class HouseDisplayer : MonoBehaviour
         
         house.SetActive(true);
         houseParts[0].SetActive(true);
-        for (int i = 1; i < LevelsDifficultyContainer.LevelsData.Count; i++)
+        for (int i = 1; i < LevelsDifficultyContainer.Houses[LevelContainer.CurrentHouseNumber-1].levelsData.Count; i++)
         {
             if (PlayerPrefsManager.IsLevelUnlocked(i))
             {
@@ -96,7 +96,7 @@ public class HouseDisplayer : MonoBehaviour
         
         house.SetActive(false);
         houseParts[0].SetActive(false);
-        for (int i = 1; i < LevelsDifficultyContainer.LevelsData.Count; i++)
+        for (int i = 1; i < LevelsDifficultyContainer.Houses[LevelContainer.CurrentHouseNumber-1].levelsData.Count; i++)
         {
             if (PlayerPrefsManager.IsLevelUnlocked(i))
             {

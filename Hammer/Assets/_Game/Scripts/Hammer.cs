@@ -18,6 +18,7 @@ public class Hammer : MonoBehaviour
 
     private float cashedPositionBeforeHit;
     private float cashedPositionAfterHit;
+    private float verticalMoveSpeed;
     bool isMovingUp = true;
     bool isHammerReady;
     float rotationZ;
@@ -38,7 +39,8 @@ public class Hammer : MonoBehaviour
     private IEnumerator SetupWithDelay()
     {
         yield return new WaitForSeconds(0.2f);
-        data = LevelsDifficultyContainer.LevelsData[PlayerPrefsManager.GetChosenLevelNumber()-1];
+        data = LevelsDifficultyContainer.Houses[LevelContainer.CurrentHouseNumber-1].levelsData[LevelContainer.CurrentLevelIndex];
+        verticalMoveSpeed = data.rotationSpeed / 100f;
         NailsParent = FindObjectOfType<NailsSpawner>().gameObject;
         EventManager.EventPerfectHit += OnPerfectHit;
         targetNail = NailsParent.transform.GetChild(targetIndex).gameObject.GetComponent<Nail>();
@@ -68,7 +70,7 @@ public class Hammer : MonoBehaviour
             if (isMovingUp)
             {
                 rotationZ += data.rotationSpeed * Time.deltaTime;
-                movingY += data.verticalMoveSpeed*Time.deltaTime;
+                movingY += verticalMoveSpeed*Time.deltaTime;
                 myTransform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
                 myTransform.position = new Vector3(myTransform.position.x, movingY, myTransform.position.z);
 
@@ -78,7 +80,7 @@ public class Hammer : MonoBehaviour
             else if (!isMovingUp)
             {
                 rotationZ -= data.rotationSpeed * Time.deltaTime;
-                movingY -= data.verticalMoveSpeed*Time.deltaTime;
+                movingY -= verticalMoveSpeed*Time.deltaTime;
                 myTransform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
                 myTransform.position = new Vector3(myTransform.position.x, movingY, myTransform.position.z);
 

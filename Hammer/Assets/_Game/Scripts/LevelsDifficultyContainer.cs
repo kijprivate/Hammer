@@ -4,8 +4,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "LevelDataContainer", fileName = "LevelDataConfig",order = 2)]
 public class LevelsDifficultyContainer:ScriptableObject
 {
-    [SerializeField] private List<LevelData> levelsData = new List<LevelData>();
-    public static List<LevelData> LevelsData => Instance.levelsData;
+    [SerializeField] private List<House> houses = new List<House>();
+    public static List<House> Houses => Instance.houses;
     
     static LevelsDifficultyContainer instance;
     public static LevelsDifficultyContainer Instance

@@ -44,9 +44,10 @@ public class NailsSpawner : MonoBehaviour
     private IEnumerator SpawnWithDelay()
     {
         yield return new WaitForEndOfFrame();
-        data = LevelsDifficultyContainer.LevelsData[PlayerPrefsManager.GetChosenLevelNumber()-1];
-        numberOfNails = LevelContainer.NumberOfNails;
+        data = LevelsDifficultyContainer.Houses[LevelContainer.CurrentHouseNumber-1].levelsData[LevelContainer.CurrentLevelIndex];
 
+        numberOfNails = LevelContainer.NumberOfNails;
+        //print(LevelContainer.CurrentLevelIndex);
         for (int i = 0; i < numberOfNails; )
         {
             int index = Random.Range(1, 3);

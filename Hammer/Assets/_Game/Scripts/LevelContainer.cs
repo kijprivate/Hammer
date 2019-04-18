@@ -13,6 +13,9 @@ public class LevelContainer : MonoBehaviour
     
     private int currentLevelIndex;
     public static int CurrentLevelIndex => Instance.currentLevelIndex;
+    
+    private int currentHouseNumber;
+    public static int CurrentHouseNumber => Instance.currentHouseNumber;
 
     private int numberOfNails;
     public static int NumberOfNails => Instance.numberOfNails;
@@ -44,9 +47,33 @@ public class LevelContainer : MonoBehaviour
     void Awake()
     {
         currentLevelNumber = PlayerPrefsManager.GetChosenLevelNumber();
-        currentLevelIndex = currentLevelNumber - 1;
+        
+        int length=0;
+        for (int i = 0; i < LevelsDifficultyContainer.Houses.Count; i++)
+        {
+            length += LevelsDifficultyContainer.Houses[i].levelsData.Count;
+            if (currentLevelNumber <= length)
+            {
+                currentHouseNumber = i + 1;
+                break;
+            }
+        }
+
+        int levNumber = currentLevelNumber;
+        for (int i = 1; i < currentHouseNumber; i++)
+        {
+            if (currentHouseNumber > 1)
+            {
+                levNumber -= LevelsDifficultyContainer.Houses[i].levelsData.Count;
+            }
+        }
+
+        currentLevelIndex = levNumber - 1;
+        print(currentHouseNumber);
+        print(currentLevelNumber);
+        print(currentLevelIndex);
         //DontDestroyOnLoad(gameObject);
-        data = LevelsDifficultyContainer.LevelsData[currentLevelIndex];
+        data = LevelsDifficultyContainer.Houses[currentHouseNumber-1].levelsData[currentLevelIndex];
 
         starsForPreviousTries = data.gainedStars;
         numberOfNails = data.numberOfDefaultNails + data.numberOfRedNails;

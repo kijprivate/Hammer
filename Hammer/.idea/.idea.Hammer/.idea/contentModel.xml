@@ -17,6 +17,7 @@
             <e p="DefaultNail.cs" t="Include" />
             <e p="EventManager.cs" t="Include" />
             <e p="Hammer.cs" t="Include" />
+            <e p="House.cs" t="Include" />
             <e p="HouseDisplayer.cs" t="Include" />
             <e p="LevelContainer.cs" t="Include" />
             <e p="LevelData.cs" t="Include" />

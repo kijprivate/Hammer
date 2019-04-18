@@ -118,15 +118,17 @@ public class CanvasManager : MonoBehaviour
     private void OnNailPocket()
     {
         if (LevelContainer.Score >
-            LevelsDifficultyContainer.LevelsData[LevelContainer.CurrentLevelIndex].highScore)
+            LevelContainer.MaxAvailableScore * (ConstantDataContainer.PercentageValueFor3Stars / 100f) &&
+            LevelContainer.Score >
+            LevelsDifficultyContainer.Houses[LevelContainer.CurrentHouseNumber-1].levelsData[LevelContainer.CurrentLevelIndex].highScore)
         {
             ScoreGameplay.text = LevelContainer.Score.ToString();
         }
         else if (LevelContainer.Score >
             LevelContainer.MaxAvailableScore * (ConstantDataContainer.PercentageValueFor3Stars / 100f) &&
-            LevelContainer.Score < LevelsDifficultyContainer.LevelsData[LevelContainer.CurrentLevelIndex].highScore)
+            LevelContainer.Score < LevelsDifficultyContainer.Houses[LevelContainer.CurrentHouseNumber-1].levelsData[LevelContainer.CurrentLevelIndex].highScore)
         {
-            ScoreGameplay.text = LevelContainer.Score +"/"+LevelsDifficultyContainer.LevelsData[LevelContainer.CurrentLevelIndex].highScore;
+            ScoreGameplay.text = LevelContainer.Score +"/"+LevelsDifficultyContainer.Houses[LevelContainer.CurrentHouseNumber-1].levelsData[LevelContainer.CurrentLevelIndex].highScore;
         }
         else if (LevelContainer.Score >
             LevelContainer.MaxAvailableScore * (ConstantDataContainer.PercentageValueFor2Stars / 100f))
