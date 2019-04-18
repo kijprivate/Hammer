@@ -1233,7 +1233,7 @@ RectTransform:
   m_GameObject: {fileID: 2195829085062957104}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_Children:
   - {fileID: 6436454407403058595}
   m_Father: {fileID: 4387342756058687718}
@@ -1241,7 +1241,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0042493, y: 177.69998}
+  m_AnchoredPosition: {x: 0.0042493, y: 167.7}
   m_SizeDelta: {x: 441.2, y: 122.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3304643076952230237
@@ -1272,8 +1272,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: b05084b9b02844438d8c8a9e1e904d30, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 1738435efaeb4c9459b39493f3376dd4, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1394,7 +1394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4299,7 +4299,7 @@ RectTransform:
   m_GameObject: {fileID: 4387342755878764365}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_Children:
   - {fileID: 4387342756642114212}
   m_Father: {fileID: 4387342756058687718}
@@ -4307,7 +4307,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0036316, y: -182.47113}
+  m_AnchoredPosition: {x: 0.0036316, y: -172.4711}
   m_SizeDelta: {x: 441.2, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4387342755878764465
@@ -4338,7 +4338,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 0b6687d3ac0e4ae287e72e802796e3e9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 801f9c9935d5d5c48a51d5f07a71b93f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5023,7 +5023,7 @@ RectTransform:
   m_GameObject: {fileID: 4387342756597167754}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_Children:
   - {fileID: 4387342756483573308}
   m_Father: {fileID: 4387342756058687718}
@@ -5062,7 +5062,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 31462fabd36b4e01a93c171a6cc5362f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e25e4ebdf82e55c44ace4625baf2f3b5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8204,8 +8204,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 3.2000008}
-  m_SizeDelta: {x: 0, y: -6.5}
+  m_AnchoredPosition: {x: -95.025, y: -23.605}
+  m_SizeDelta: {x: -144.06999, y: 47.21}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8151834627938504647
 CanvasRenderer:
@@ -8228,7 +8228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -8237,11 +8237,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 79879512feae8024492cdbb7a11b7800, type: 3}
-    m_FontSize: 55
+    m_FontSize: 92
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 5
-    m_MaxSize: 55
+    m_MinSize: 0
+    m_MaxSize: 300
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1

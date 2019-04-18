@@ -143,7 +143,7 @@ public class Hammer : MonoBehaviour
         if (strength > targetNail.strengthForCorrectHit)
         {
             depthAfterHit = targetNail.nailHead.position.y + cashedPositionAfterHit - 
-                            (targetNail.strengthForCorrectHit * targetNail.GetStep() + (strength - targetNail.strengthForCorrectHit) * (targetNail.GetStep() / 3f));
+                            (targetNail.strengthForCorrectHit * targetNail.GetStep() + (strength - targetNail.strengthForCorrectHit) * (targetNail.GetStep() / 2f));
             EventManager.RaiseEventShowSplash(1);   // raises event needed for displaying splash with hit rating
         }
         else

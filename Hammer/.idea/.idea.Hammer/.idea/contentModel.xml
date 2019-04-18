@@ -10,8 +10,8 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="_Game" t="Include">
-          <e p="NewSurfaceShader.shader" t="Include" />
           <e p="Scripts" t="Include">
+            <e p="Blur.cs" t="Include" />
             <e p="CanvasManager.cs" t="Include" />
             <e p="ConstantDataContainer.cs" t="Include" />
             <e p="DefaultNail.cs" t="Include" />
@@ -28,10 +28,13 @@
             <e p="PlayerPrefsManager.cs" t="Include" />
             <e p="ProgressBar.cs" t="Include" />
             <e p="RedNail.cs" t="Include" />
+            <e p="StrengthBar.cs" t="Include" />
+          </e>
+          <e p="Shaders" t="Include">
+            <e p="Blur.shader" t="Include" />
+            <e p="Gradient.shader" t="Include" />
           </e>
         </e>
-        <e p="Blur.cs" t="Include" />
-        <e p="Blur.shader" t="Include" />
         <e p="Demigiant" t="Include">
           <e p="DemiLib" t="Include">
             <e p="Core" t="Include">
@@ -328,7 +331,6 @@
             </e>
           </e>
         </e>
-        <e p="StrengthBar.cs" t="Include" />
       </e>
       <e p="Hammer.sln" t="IncludeFlat" />
       <e p="Library" t="ExcludeRecursive" />

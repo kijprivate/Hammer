@@ -22,11 +22,13 @@ public abstract class Nail : MonoBehaviour
     public int hitsPerCurrentNail = 0;
     [HideInInspector]
     public float Xoffset = 2f;
+    [HideInInspector]
+    public int strengthForCorrectHit = 3;
+    [HideInInspector]
+    public bool isMoving;
 
     [SerializeField]
     protected float step = 0.5f;
-
-    public int strengthForCorrectHit = 3;
 
     protected int minHammerHits;
     protected float Yoffset;
@@ -35,7 +37,6 @@ public abstract class Nail : MonoBehaviour
 
     protected Hammer hammer;
     protected float depthAfterHit;
-    public bool isMoving;
     protected bool isMovingRight;
 
     protected int scoreForNail;
@@ -83,7 +84,7 @@ public abstract class Nail : MonoBehaviour
         {return;}
         if(hammer.GetStrength() > strengthForCorrectHit)
         {
-            depthAfterHit = transform.position.y - (strengthForCorrectHit * step + (hammer.GetStrength()-strengthForCorrectHit)*(step/3f) );
+            depthAfterHit = transform.position.y - (strengthForCorrectHit * step + (hammer.GetStrength()-strengthForCorrectHit)*(step/2f) );
             isOverhit = true;
         }
         else
