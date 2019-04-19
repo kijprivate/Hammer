@@ -116,8 +116,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/_Game/Scripts/CanvasManager.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="121" column="12" selection-start-line="121" selection-start-column="12" selection-end-line="121" selection-end-column="12" />
+            <state relative-caret-position="9">
+              <caret line="112" column="30" lean-forward="true" selection-start-line="112" selection-start-column="30" selection-end-line="112" selection-end-column="30" />
               <folding>
                 <marker date="1555629262652" expanded="false" signature="6:154" ph="..." />
                 <marker date="1555629262652" expanded="true" signature="198:8266" ph="{...}" />
@@ -443,12 +443,12 @@
       <workItem from="1555442905536" duration="12836000" />
       <workItem from="1555488059307" duration="1196000" />
       <workItem from="1555530112060" duration="9247000" />
-      <workItem from="1555620672784" duration="7681000" />
+      <workItem from="1555620672784" duration="7930000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94786000" />
+    <option name="totallyTimeSpent" value="95035000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -461,7 +461,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13646056" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -905,8 +904,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/_Game/Scripts/CanvasManager.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="121" column="12" selection-start-line="121" selection-start-column="12" selection-end-line="121" selection-end-column="12" />
+        <state relative-caret-position="9">
+          <caret line="112" column="30" lean-forward="true" selection-start-line="112" selection-start-column="30" selection-end-line="112" selection-end-column="30" />
           <folding>
             <marker date="1555629262652" expanded="false" signature="6:154" ph="..." />
             <marker date="1555629262652" expanded="true" signature="198:8266" ph="{...}" />

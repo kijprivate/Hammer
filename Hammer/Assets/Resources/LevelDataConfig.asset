@@ -12,104 +12,188 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e6440269f4e4293895e993d0f8e37a5, type: 3}
   m_Name: LevelDataConfig
   m_EditorClassIdentifier: 
-  levelsData:
-  - levelNumber: 1
-    hammerHits: 10
-    rotationSpeed: 100
-    verticalMoveSpeed: 1
-    numberOfDefaultNails: 5
-    numberOfRedNails: 0
-    movingDefaultNails: 5
-    movingRedNails: 0
-    gainedStars: 3
-    highScore: 2000
-  - levelNumber: 2
-    hammerHits: 15
-    rotationSpeed: 100
-    verticalMoveSpeed: 1
-    numberOfDefaultNails: 10
-    numberOfRedNails: 4
-    movingDefaultNails: 0
-    movingRedNails: 2
-    gainedStars: 2
-    highScore: 4700
-  - levelNumber: 3
-    hammerHits: 14
-    rotationSpeed: 100
-    verticalMoveSpeed: 1
-    numberOfDefaultNails: 7
-    numberOfRedNails: 2
-    movingDefaultNails: 0
-    movingRedNails: 0
-    gainedStars: 3
-    highScore: 4200
-  - levelNumber: 4
-    hammerHits: 15
-    rotationSpeed: 100
-    verticalMoveSpeed: 1
-    numberOfDefaultNails: 8
-    numberOfRedNails: 2
-    movingDefaultNails: 0
-    movingRedNails: 0
-    gainedStars: 0
-    highScore: 0
-  - levelNumber: 5
-    hammerHits: 13
-    rotationSpeed: 100
-    verticalMoveSpeed: 1
-    numberOfDefaultNails: 7
-    numberOfRedNails: 2
-    movingDefaultNails: 0
-    movingRedNails: 0
-    gainedStars: 0
-    highScore: 0
-  - levelNumber: 6
-    hammerHits: 15
-    rotationSpeed: 100
-    verticalMoveSpeed: 1
-    numberOfDefaultNails: 9
-    numberOfRedNails: 2
-    movingDefaultNails: 0
-    movingRedNails: 0
-    gainedStars: 3
-    highScore: 5000
-  - levelNumber: 7
-    hammerHits: 15
-    rotationSpeed: 100
-    verticalMoveSpeed: 1
-    numberOfDefaultNails: 6
-    numberOfRedNails: 2
-    movingDefaultNails: 0
-    movingRedNails: 0
-    gainedStars: 3
-    highScore: 3800
-  - levelNumber: 8
-    hammerHits: 16
-    rotationSpeed: 100
-    verticalMoveSpeed: 1
-    numberOfDefaultNails: 9
-    numberOfRedNails: 2
-    movingDefaultNails: 0
-    movingRedNails: 0
-    gainedStars: 0
-    highScore: 0
-  - levelNumber: 9
-    hammerHits: 13
-    rotationSpeed: 100
-    verticalMoveSpeed: 1
-    numberOfDefaultNails: 5
-    numberOfRedNails: 2
-    movingDefaultNails: 0
-    movingRedNails: 0
-    gainedStars: 0
-    highScore: 0
-  - levelNumber: 10
-    hammerHits: 15
-    rotationSpeed: 100
-    verticalMoveSpeed: 1
-    numberOfDefaultNails: 8
-    numberOfRedNails: 2
-    movingDefaultNails: 0
-    movingRedNails: 0
-    gainedStars: 0
-    highScore: 0
+  houses:
+  - houseNumber: 1
+    levelsData:
+    - levelNumber: 1
+      hammerHits: 10
+      rotationSpeed: 100
+      numberOfDefaultNails: 5
+      numberOfRedNails: 0
+      movingDefaultNails: 0
+      movingRedNails: 0
+      gainedStars: 0
+      highScore: 0
+    - levelNumber: 2
+      hammerHits: 15
+      rotationSpeed: 100
+      numberOfDefaultNails: 10
+      numberOfRedNails: 0
+      movingDefaultNails: 0
+      movingRedNails: 0
+      gainedStars: 3
+      highScore: 3800
+    - levelNumber: 3
+      hammerHits: 14
+      rotationSpeed: 100
+      numberOfDefaultNails: 7
+      numberOfRedNails: 1
+      movingDefaultNails: 0
+      movingRedNails: 0
+      gainedStars: 3
+      highScore: 2700
+    - levelNumber: 4
+      hammerHits: 15
+      rotationSpeed: 100
+      numberOfDefaultNails: 8
+      numberOfRedNails: 2
+      movingDefaultNails: 0
+      movingRedNails: 0
+      gainedStars: 3
+      highScore: 4000
+    - levelNumber: 5
+      hammerHits: 13
+      rotationSpeed: 100
+      numberOfDefaultNails: 7
+      numberOfRedNails: 3
+      movingDefaultNails: 0
+      movingRedNails: 0
+      gainedStars: 0
+      highScore: 0
+    - levelNumber: 6
+      hammerHits: 15
+      rotationSpeed: 100
+      numberOfDefaultNails: 9
+      numberOfRedNails: 3
+      movingDefaultNails: 0
+      movingRedNails: 0
+      gainedStars: 3
+      highScore: 4400
+    - levelNumber: 7
+      hammerHits: 15
+      rotationSpeed: 100
+      numberOfDefaultNails: 6
+      numberOfRedNails: 4
+      movingDefaultNails: 0
+      movingRedNails: 0
+      gainedStars: 0
+      highScore: 0
+    - levelNumber: 8
+      hammerHits: 16
+      rotationSpeed: 100
+      numberOfDefaultNails: 9
+      numberOfRedNails: 4
+      movingDefaultNails: 0
+      movingRedNails: 0
+      gainedStars: 0
+      highScore: 0
+    - levelNumber: 9
+      hammerHits: 13
+      rotationSpeed: 100
+      numberOfDefaultNails: 5
+      numberOfRedNails: 5
+      movingDefaultNails: 0
+      movingRedNails: 0
+      gainedStars: 0
+      highScore: 0
+    - levelNumber: 10
+      hammerHits: 15
+      rotationSpeed: 100
+      numberOfDefaultNails: 8
+      numberOfRedNails: 5
+      movingDefaultNails: 0
+      movingRedNails: 0
+      gainedStars: 0
+      highScore: 0
+  - houseNumber: 2
+    levelsData:
+    - levelNumber: 1
+      hammerHits: 10
+      rotationSpeed: 100
+      numberOfDefaultNails: 5
+      numberOfRedNails: 0
+      movingDefaultNails: 0
+      movingRedNails: 0
+      gainedStars: 3
+      highScore: 1900
+    - levelNumber: 2
+      hammerHits: 15
+      rotationSpeed: 100
+      numberOfDefaultNails: 10
+      numberOfRedNails: 0
+      movingDefaultNails: 0
+      movingRedNails: 0
+      gainedStars: 0
+      highScore: 0
+    - levelNumber: 3
+      hammerHits: 14
+      rotationSpeed: 100
+      numberOfDefaultNails: 7
+      numberOfRedNails: 1
+      movingDefaultNails: 0
+      movingRedNails: 0
+      gainedStars: 0
+      highScore: 0
+    - levelNumber: 4
+      hammerHits: 15
+      rotationSpeed: 100
+      numberOfDefaultNails: 8
+      numberOfRedNails: 2
+      movingDefaultNails: 0
+      movingRedNails: 0
+      gainedStars: 0
+      highScore: 0
+    - levelNumber: 5
+      hammerHits: 13
+      rotationSpeed: 100
+      numberOfDefaultNails: 7
+      numberOfRedNails: 3
+      movingDefaultNails: 0
+      movingRedNails: 0
+      gainedStars: 0
+      highScore: 0
+    - levelNumber: 6
+      hammerHits: 15
+      rotationSpeed: 100
+      numberOfDefaultNails: 9
+      numberOfRedNails: 3
+      movingDefaultNails: 0
+      movingRedNails: 0
+      gainedStars: 0
+      highScore: 0
+    - levelNumber: 7
+      hammerHits: 15
+      rotationSpeed: 100
+      numberOfDefaultNails: 6
+      numberOfRedNails: 4
+      movingDefaultNails: 0
+      movingRedNails: 0
+      gainedStars: 0
+      highScore: 0
+    - levelNumber: 8
+      hammerHits: 16
+      rotationSpeed: 100
+      numberOfDefaultNails: 9
+      numberOfRedNails: 4
+      movingDefaultNails: 0
+      movingRedNails: 0
+      gainedStars: 0
+      highScore: 0
+    - levelNumber: 9
+      hammerHits: 13
+      rotationSpeed: 100
+      numberOfDefaultNails: 5
+      numberOfRedNails: 5
+      movingDefaultNails: 0
+      movingRedNails: 0
+      gainedStars: 0
+      highScore: 0
+    - levelNumber: 10
+      hammerHits: 15
+      rotationSpeed: 100
+      numberOfDefaultNails: 8
+      numberOfRedNails: 5
+      movingDefaultNails: 0
+      movingRedNails: 0
+      gainedStars: 0
+      highScore: 0
