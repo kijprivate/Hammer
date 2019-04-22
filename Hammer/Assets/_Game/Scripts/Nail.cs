@@ -95,6 +95,7 @@ public abstract class Nail : MonoBehaviour
                 hitsPerCurrentNail++;
                 
                 CalculatePoints();
+                EventManager.RaiseEventEarnScore(scoreForNail);
                 EventManager.RaiseEventNailPocket();
             }
             depthAfterHit = transform.position.y - (hammer.GetStrength() * step);

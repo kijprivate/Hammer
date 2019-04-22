@@ -81,4 +81,10 @@ public static class EventManager
     {
         if (EventShowSplash != null) EventShowSplash(splashId);
     }
+
+    public static Event<int> EventEarnScore;
+    public static void RaiseEventEarnScore(int points)
+    {
+        if (EventEarnScore != null) EventEarnScore(points);
+    }
 }

@@ -13,6 +13,7 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] GameObject star1,star2,star3;
     [SerializeField] GameObject PlayAgain, NextLevel;
     [SerializeField] GameObject Splash; // Image that displays splashes with hit rating 
+    [SerializeField] GameObject ScoreEarned;    // Text displaying points earned with one hit
     [SerializeField] Text ScoreGameplay;
     [SerializeField] Text ScoreSummary;
     [SerializeField] Text HammersLeft;
@@ -29,6 +30,8 @@ public class CanvasManager : MonoBehaviour
     private float cashed3Stars;
     private RectTransform SplashRect;   // needed for changing scale when displaying Splash
     private Image SplashImage;    // needed for changing Sprite depending on hit rating
+    private RectTransform EarnedScoreRect;  // needed for changing position of earned score text
+    private Text EarnedScoreText;   // text displayed when points earned
     private int numberofnails;
     private void Start()
     {
@@ -39,6 +42,7 @@ public class CanvasManager : MonoBehaviour
         EventManager.EventMenuHided += OnMenuHided;
         EventManager.EventShowSplash += OnShowSplash;
         EventManager.EventNailFinished += OnNailFinished;
+        EventManager.EventEarnScore += OnShowEarnedScore;
 
         numberofnails = LevelContainer.NumberOfNails;
 
@@ -52,6 +56,8 @@ public class CanvasManager : MonoBehaviour
         cashed3Stars = ConstantDataContainer.PercentageValueFor3Stars/100f;
         SplashRect = Splash.GetComponent<RectTransform>();
         SplashImage = Splash.GetComponent<Image>();
+        EarnedScoreText = ScoreEarned.GetComponent<Text>();
+        EarnedScoreRect = ScoreEarned.GetComponent<RectTransform>();
 
         StartCoroutine(DisplayMinPoints());
         if(!LevelContainer.MenuHided)
@@ -184,12 +190,34 @@ public class CanvasManager : MonoBehaviour
         }
         tempPosition = SplashRect.position;
         Splash.SetActive(true);
-        SplashRect.DOScale(new Vector3(0.6f, 0.6f, 1.0f), 0.5f).SetEase(Ease.OutElastic);   // scales splash for display
-        SplashRect.DOMove(SplashRect.position + new Vector3(100.0f, 250.0f, 0.0f), 0.5f).SetEase(Ease.OutSine);
+        SplashRect.DOScale(new Vector3(0.8f, 0.8f, 1.0f), 0.5f).SetEase(Ease.OutElastic);   // scales splash for display
+        SplashRect.DOMove(SplashRect.position + new Vector3(-200.0f, 250.0f, 0.0f), 0.5f).SetEase(Ease.OutSine);
         yield return new WaitForSeconds(0.7f);
         Splash.SetActive(false);    
         SplashRect.DOScale(new Vector3(0.01f, 0.01f, 1.0f), 0.01f); // scales bask after displaying
         SplashRect.DOMove(tempPosition, 0.01f);
+    }
+
+    private void OnShowEarnedScore(int points)
+    {
+        StartCoroutine(DisplayEarnedScore(points));
+    }
+
+    private IEnumerator DisplayEarnedScore(int earnedPoints)    // displays text with earned pointes
+    {
+        Vector3 tempPosition;
+
+        tempPosition = EarnedScoreRect.position;
+        ScoreEarned.SetActive(true);
+        EarnedScoreText.text = "+" + earnedPoints;
+        Sequence earnedScoreSequence = DOTween.Sequence();
+        earnedScoreSequence.Append(EarnedScoreText.DOColor(new Color(1.0f,1.0f,1.0f,1.0f), 0.35f));
+        earnedScoreSequence.AppendInterval(0.7f);
+        earnedScoreSequence.Append(EarnedScoreText.DOColor(new Color(1.0f, 1.0f, 1.0f, 0.0f), 0.35f));
+        earnedScoreSequence.Insert(0, EarnedScoreRect.DOMove(EarnedScoreRect.position + new Vector3(0.0f, 200.0f, 0.0f), 1.4f));
+        yield return new WaitForSeconds(1.4f);
+        earnedScoreSequence.Append(EarnedScoreRect.DOMove(tempPosition, 0.01f));
+        ScoreEarned.SetActive(false);
     }
 
     public void HideMenuAndStartGame()
@@ -211,5 +239,6 @@ public class CanvasManager : MonoBehaviour
         EventManager.EventMenuHided -= OnMenuHided;
         EventManager.EventShowSplash -= OnShowSplash;
         EventManager.EventNailFinished -= OnNailFinished;
+        EventManager.EventEarnScore -= OnShowEarnedScore;
     }
 }
