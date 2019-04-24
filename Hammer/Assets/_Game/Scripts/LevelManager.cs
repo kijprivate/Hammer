@@ -89,6 +89,16 @@ public class LevelManager : MonoBehaviour
         }
     }
     
+    public void LockAllHammers()
+    {
+        PlayerPrefsManager.LockAllHammers();
+    }
+
+    public void AddCoins()
+    {
+        PlayerPrefsManager.SetNumberOfCoins(10000);
+    }
+
     public void UnlockAllLevels()
     {
         PlayerPrefsManager.UnlockAllLevels();

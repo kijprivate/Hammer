@@ -6,6 +6,9 @@ public class PlayerPrefsManager : MonoBehaviour
     const string LEVEL_KEY = "level_unlocked_";
     const string CHOSEN_LEVEL_KEY = "chosen_level_key_";
 
+    const string HAMMER_KEY = "hammer_unlocked_";
+    const string CHOSEN_HAMMER_KEY = "chosen_hammer_key_";
+
     const string HOUSE_KEY = "house_unlocked_";
 
     const string NUMBER_COINS = "number of coins";
@@ -40,13 +43,42 @@ public class PlayerPrefsManager : MonoBehaviour
         else
         { return PlayerPrefs.GetInt(CHOSEN_LEVEL_KEY); }
     }
+    
+    public static void UnlockHammer(int hammerNumber)
+    {
+        PlayerPrefs.SetInt(HAMMER_KEY + hammerNumber.ToString(), 1);
+    }
+    public static bool IsHammerUnlocked(int hammerNumber)
+    {
+        int hammerValue = PlayerPrefs.GetInt(HAMMER_KEY + hammerNumber.ToString());
+        bool isHammerUnlocked = (hammerValue == 1);
 
+        return isHammerUnlocked;
+    }
+    public static void ChooseHammer(int hammerNumber)
+    {
+        PlayerPrefs.SetInt(CHOSEN_HAMMER_KEY, hammerNumber);
+    }
+    public static int GetChosenHammer()
+    {
+        if (!PlayerPrefs.HasKey(CHOSEN_HAMMER_KEY))
+        { return 0; }
+        else
+        { return PlayerPrefs.GetInt(CHOSEN_HAMMER_KEY); }
+    }
+    
     public static void LockAllLevels()
     {
         for (int i = 2; i < 30; i++)
         {   PlayerPrefs.SetInt(LEVEL_KEY + i.ToString(), 0);}
     }
-    
+
+    public static void LockAllHammers()
+    {
+        for (int i = 1; i < 30; i++)
+        { PlayerPrefs.SetInt(HAMMER_KEY + i.ToString(), 0); }
+    }
+
     public static void UnlockAllLevels()
     {
         for (int i = 2; i < 30; i++)

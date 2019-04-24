@@ -43,6 +43,7 @@ public class CanvasManager : MonoBehaviour
         EventManager.EventShowSplash += OnShowSplash;
         EventManager.EventNailFinished += OnNailFinished;
         EventManager.EventEarnScore += OnShowEarnedScore;
+        EventManager.EventCoinsSubstracted += OnCoinsSubstracted;
 
         numberofnails = LevelContainer.NumberOfNails;
 
@@ -160,6 +161,10 @@ public class CanvasManager : MonoBehaviour
         NailPocket.text = numberofnails.ToString();
     }
     
+    private void OnCoinsSubstracted()
+    {
+        Coins.text = "Coins: " + PlayerPrefsManager.GetNumberOfCoins();
+    }
 
     private void OnMenuHided()
     {
@@ -170,7 +175,6 @@ public class CanvasManager : MonoBehaviour
     private void OnShowSplash(int splashId)
     {
         StartCoroutine(DisplaySplash(splashId));
-
     }
 
     private IEnumerator DisplaySplash(int splashId) // displays splash with hit rating
@@ -239,6 +243,7 @@ public class CanvasManager : MonoBehaviour
         EventManager.EventMenuHided -= OnMenuHided;
         EventManager.EventShowSplash -= OnShowSplash;
         EventManager.EventNailFinished -= OnNailFinished;
+        EventManager.EventCoinsSubstracted -= OnCoinsSubstracted;
         EventManager.EventEarnScore -= OnShowEarnedScore;
     }
 }

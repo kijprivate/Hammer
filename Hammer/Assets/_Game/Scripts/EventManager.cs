@@ -76,6 +76,18 @@ public static class EventManager
         if (EventNoMoreNails != null) EventNoMoreNails();
     }
 
+    public static Event EventCoinsSubstracted;
+    public static void RaiseEventCoinsSubstracted()
+    {
+        if (EventCoinsSubstracted != null) EventCoinsSubstracted();
+    }
+
+    public static Event EventHammerSpriteChanged;
+    public static void RaiseEventHammerSpriteChanged()
+    {
+        if (EventHammerSpriteChanged != null) EventHammerSpriteChanged();
+    }
+
     public static Event<int> EventShowSplash;   // -1 - not enough strength 0 - perfect 1 - too hard
     public static void RaiseEventShowSplash(int splashId)
     {

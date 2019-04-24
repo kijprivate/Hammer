@@ -8,7 +8,9 @@ using ControlFreak2;
 public class Hammer : MonoBehaviour
 {
     public int targetIndex { get; private set; }
-    
+
+    [SerializeField] HammerSprites sprites;
+
     private LevelData data;
     Transform myTransform;
     Nail targetNail;
@@ -28,6 +30,12 @@ public class Hammer : MonoBehaviour
     private int cashedMaxStrength;
     private ParticleSystem sparks;
 
+    private void Awake()
+    {
+        var sprite = Instantiate(sprites.HammerSprite[PlayerPrefsManager.GetChosenHammer()], transform);
+        sprite.transform.SetParent(transform);
+    }
+
     void Start()
     {
         myTransform = transform;
@@ -43,6 +51,7 @@ public class Hammer : MonoBehaviour
         verticalMoveSpeed = data.rotationSpeed / 100f;
         NailsParent = FindObjectOfType<NailsSpawner>().gameObject;
         EventManager.EventPerfectHit += OnPerfectHit;
+        EventManager.EventHammerSpriteChanged += OnSpriteChanged;
         targetNail = NailsParent.transform.GetChild(targetIndex).gameObject.GetComponent<Nail>();
 
         cashedMaxStrength = ConstantDataContainer.MaxHammerStrength;
@@ -185,9 +194,21 @@ public class Hammer : MonoBehaviour
         LevelContainer.Score += ConstantDataContainer.ScoreBonusForPerfectHit;
     }
 
+    private void OnSpriteChanged()
+    {
+        var existingSprite = GetComponentInChildren<MeshRenderer>();
+        if(existingSprite)
+        {
+            Destroy(existingSprite.gameObject);
+        }
+        var sprite = Instantiate(sprites.HammerSprite[PlayerPrefsManager.GetChosenHammer()], transform);
+        sprite.transform.SetParent(transform);
+    }
+
     private void OnDestroy()
     {
         EventManager.EventPerfectHit -= OnPerfectHit;
+        EventManager.EventHammerSpriteChanged -= OnSpriteChanged;
     }
 
     private IEnumerator CoroutineHideMenuAndStartGame()
