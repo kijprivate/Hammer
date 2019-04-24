@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class RedNail : Nail
 {
+    protected override void Awake()
+    {
+        base.Awake();
+        scoreForNail = ConstantDataContainer.ScoreForRedNail;
+    }
+
     protected override void SetRandomHeight()
     {
         defaultPosition = transform.position;

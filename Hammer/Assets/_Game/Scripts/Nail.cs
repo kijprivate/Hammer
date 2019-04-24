@@ -45,9 +45,8 @@ public abstract class Nail : MonoBehaviour
     protected float rotationZ=0f;
 
     protected abstract void SetRandomHeight();
-    protected void Awake()
+    protected virtual void Awake()
     {
-        scoreForNail = ConstantDataContainer.ScoreForDefaultNail;
         cashedMaxHammerStrength = ConstantDataContainer.MaxHammerStrength;
         hammer = FindObjectOfType<Hammer>();
         SetRandomHeight();

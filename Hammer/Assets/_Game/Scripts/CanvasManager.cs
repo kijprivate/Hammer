@@ -46,7 +46,7 @@ public class CanvasManager : MonoBehaviour
         EventManager.EventCoinsSubstracted += OnCoinsSubstracted;
 
         numberofnails = LevelContainer.NumberOfNails;
-
+        print(PlayerPrefsManager.GetNumberOfCoins());
         HammersLeft.text = LevelContainer.HammerHits.ToString();
         NailPocket.text = numberofnails.ToString();
         LevelName.text = "Level"+LevelContainer.CurrentLevelNumber;
