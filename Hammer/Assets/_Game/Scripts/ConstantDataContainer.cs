@@ -45,14 +45,10 @@ public class ConstantDataContainer:ScriptableObject
     
     [Header("Coins")]
     [SerializeField] 
-    private int scoreDividerWhenMoreStars = 100;
+    private int scoreDivider = 10;
 
-    public static int ScoreDividerWhenMoreStars => Instance.scoreDividerWhenMoreStars;
+    public static int ScoreDivider => Instance.scoreDivider;
     
-    [SerializeField] 
-    private int scoreDividerWhenSameStars = 200;
-
-    public static int ScoreDividerWhenSameStars => Instance.scoreDividerWhenSameStars;
 
     static ConstantDataContainer instance;
     public static ConstantDataContainer Instance

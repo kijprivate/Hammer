@@ -103,7 +103,8 @@ public class LevelContainer : MonoBehaviour
     IEnumerator CountMaxPoints()
     {
         yield return new WaitForSeconds(1f);
-        maxAvailableScore = NailsSpawner.MaxScoreForNails + numberOfNails * ConstantDataContainer.ScoreBonusForPerfectHit;
+        //maxAvailableScore = NailsSpawner.MaxScoreForNails + numberOfNails * ConstantDataContainer.ScoreBonusForPerfectHit;
+        maxAvailableScore = NailsSpawner.MaxScoreForNails + (int)(data.numberOfDefaultNails * ConstantDataContainer.ScoreForDefaultNail * 0.5f + data.numberOfRedNails * ConstantDataContainer.ScoreForRedNail*0.5f);
        // print(maxAvailableScore);
     }
     static LevelContainer instance;
@@ -122,7 +123,8 @@ public class LevelContainer : MonoBehaviour
     {
         GameOver = true;
 
-        maxAvailableScore = NailsSpawner.MaxScoreForNails + numberOfNails * ConstantDataContainer.ScoreBonusForPerfectHit;
+        //maxAvailableScore = NailsSpawner.MaxScoreForNails + numberOfNails * ConstantDataContainer.ScoreBonusForPerfectHit;
+        maxAvailableScore = NailsSpawner.MaxScoreForNails + (int)(data.numberOfDefaultNails * ConstantDataContainer.ScoreForDefaultNail * 0.5f + data.numberOfRedNails * ConstantDataContainer.ScoreForRedNail * 0.5f);
         print(maxAvailableScore);
         percentageValueOfScore = (float)Score / maxAvailableScore;
         
@@ -160,31 +162,19 @@ public class LevelContainer : MonoBehaviour
     }
     private void HandleCoins()
     {
-        if (starsForCurrentTry > starsForPreviousTries)
+        if (Score > data.highScore)
         {
-            Debug.Log("Coins += Score/100 - highScore/100 (Full)");
-            if (data.gainedStars == 0)
+            PlayerPrefsManager.SetNumberOfCoins(PlayerPrefsManager.GetNumberOfCoins() + (Score - data.highScore)/ConstantDataContainer.ScoreDivider);
+
+            data.highScore = Score;
+            if(starsForCurrentTry > starsForPreviousTries)
             {
-                PlayerPrefsManager.SetNumberOfCoins(PlayerPrefsManager.GetNumberOfCoins() + Score/ConstantDataContainer.ScoreDividerWhenMoreStars);
+                data.gainedStars = starsForCurrentTry;
             }
-            else
-            {
-                PlayerPrefsManager.SetNumberOfCoins(PlayerPrefsManager.GetNumberOfCoins() + (Score - data.highScore)/ConstantDataContainer.ScoreDividerWhenMoreStars);
-            }
-            data.gainedStars = starsForCurrentTry;
-        }
-        else if (starsForCurrentTry == starsForPreviousTries && starsForCurrentTry!=0)
-        {
-            Debug.Log("Coins += Score/200 (Divided by 200) - highScore/200");
-            PlayerPrefsManager.SetNumberOfCoins(PlayerPrefsManager.GetNumberOfCoins() + (Score - data.highScore)/ConstantDataContainer.ScoreDividerWhenSameStars);
         }
         else 
         {
             Debug.Log("No points added");
-        }
-        if (Score > data.highScore)
-        {
-            data.highScore = Score;
         }
     }
 

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Blur : MonoBehaviour
 {
+    [SerializeField] float fadeSpeed =2f;
+
     private Image rend;
     private float blurStrength = 1.5f;
     private void Awake()
@@ -28,7 +30,7 @@ public class Blur : MonoBehaviour
         while (blurStrength > Mathf.Epsilon)
         {
             yield return new WaitForEndOfFrame();
-            blurStrength -= Time.deltaTime;
+            blurStrength -= Time.deltaTime*fadeSpeed;
             rend.material.SetFloat("_Size", blurStrength);
         }
     }
