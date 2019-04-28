@@ -218,7 +218,7 @@ public class CanvasManager : MonoBehaviour
         }
         Splash.SetActive(true);
         SplashRect.DOScale(new Vector3(1.2f, 1.2f, 1.0f), 0.5f).SetEase(Ease.OutElastic);   // scales splash for display
-        SplashRect.DOMove(SplashRect.position + new Vector3(400.0f, 400.0f, 0.0f), 0.5f).SetEase(Ease.OutBounce);
+        SplashRect.DOMove(SplashRect.position + new Vector3(275.0f, 200.0f, 0.0f), 0.5f).SetEase(Ease.OutBounce);
         yield return new WaitForSeconds(0.7f);    
         SplashRect.position = SplashPosition; // moves back after displaying
         SplashRect.localScale = SplashScale;  // scales back after displaying
@@ -238,7 +238,7 @@ public class CanvasManager : MonoBehaviour
         earnedScoreSequence.Append(EarnedScoreText.DOColor(new Color(1.0f,1.0f,1.0f,1.0f), 0.6f));
         earnedScoreSequence.AppendInterval(0.2f);
         earnedScoreSequence.Append(EarnedScoreText.DOColor(new Color(1.0f, 1.0f, 1.0f, 0.0f), 0.6f));
-        earnedScoreSequence.Insert(0, EarnedScoreRect.DOMove(EarnedScoreRect.position + new Vector3(0.0f, 300.0f, 0.0f), 1.4f));
+        earnedScoreSequence.Insert(0, EarnedScoreRect.DOMove(EarnedScoreRect.position + new Vector3(0.0f, 230.0f, 0.0f), 1.4f));
         yield return new WaitForSeconds(1.4f);
         EarnedScoreRect.position = EarnedScorePosition;
         ScoreEarned.SetActive(false);
@@ -254,12 +254,12 @@ public class CanvasManager : MonoBehaviour
         PerfectObject.SetActive(true);
         BonusObject.SetActive(true);
         PerfectRect.DOScale(new Vector3(1.5f, 1.5f, 1.0f), 0.5f).SetEase(Ease.OutElastic);   // scales perfect for display
-        PerfectRect.DOMove(PerfectRect.position + new Vector3(-150.0f, 930.0f, 0.0f), 0.5f).SetEase(Ease.OutBounce);
+        PerfectRect.DOMove(PerfectRect.position + new Vector3(-100.0f, 630.0f, 0.0f), 0.5f).SetEase(Ease.OutBounce);
         Sequence bonusSequence = DOTween.Sequence();
         bonusSequence.Append(BonusText.DOColor(new Color(1.0f, 1.0f, 1.0f, 1.0f), 0.6f));
         bonusSequence.AppendInterval(0.2f);
         bonusSequence.Append(BonusText.DOColor(new Color(1.0f, 1.0f, 1.0f, 0.0f), 0.6f));
-        bonusSequence.Insert(0, BonusRect.DOMove(BonusRect.position + new Vector3(0.0f, 300.0f, 0.0f), 1.4f));
+        bonusSequence.Insert(0, BonusRect.DOMove(BonusRect.position + new Vector3(0.0f, 230.0f, 0.0f), 1.4f));
         yield return new WaitForSeconds(1.4f);
         BonusRect.position = BonusPosition;
         PerfectRect.localScale = PerfectScale; // scales back after displaying
