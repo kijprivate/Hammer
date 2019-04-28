@@ -88,7 +88,7 @@ public static class EventManager
         if (EventHammerSpriteChanged != null) EventHammerSpriteChanged();
     }
 
-    public static Event<int> EventShowSplash;   // -1 - not enough strength 0 - perfect 1 - too hard
+    public static Event<int> EventShowSplash;   // -1 - not enough strength 0 - awesome 1 - too hard
     public static void RaiseEventShowSplash(int splashId)
     {
         if (EventShowSplash != null) EventShowSplash(splashId);
