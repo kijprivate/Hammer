@@ -8,6 +8,20 @@ public class RedNail : Nail
     {
         base.Awake();
         scoreForNail = ConstantDataContainer.ScoreForRedNail;
+        StartCoroutine(AdditionalPointsForMoving());
+    }
+
+    IEnumerator AdditionalPointsForMoving()
+    {
+        yield return new WaitForEndOfFrame();
+        if (isMoving)
+        {
+            scoreForNail = (int)(ConstantDataContainer.ScoreForRedNail * 1.5f);
+        }
+        else
+        {
+            scoreForNail = ConstantDataContainer.ScoreForRedNail;
+        }
     }
 
     protected override void SetRandomHeight()

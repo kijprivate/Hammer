@@ -50,7 +50,7 @@ public class NailsSpawner : MonoBehaviour
         //print(LevelContainer.CurrentLevelIndex);
         for (int i = 0; i < numberOfNails; )
         {
-            int index = Random.Range(1, 3);
+            int index = Random.Range(1, 5);
 
             switch (index)
             {
@@ -60,12 +60,6 @@ public class NailsSpawner : MonoBehaviour
                         Nail defNail = Instantiate(defaultNail, defaultNail.transform.position + new Vector3(Xoffset * i, 0f, 0f), Quaternion.identity) as DefaultNail;
                         defNail.gameObject.transform.SetParent(transform);
                         defNail.Xoffset = Xoffset;
-                        if (IsMoving(ref spawnedMovingDefaultNails,data.movingDefaultNails,data.numberOfDefaultNails))
-                        {
-                            defNail.transform.position = defNail.DefaultPosition;
-                            defNail.strengthForCorrectHit = defNail.DefaultStrengthForCorrectHit;
-                            defNail.isMoving=true;
-                        }
 
                         CalculatePoints(defNail.strengthForCorrectHit, defNail.ScoreForNail);
                         spawnedDefaultNails++;
@@ -78,21 +72,48 @@ public class NailsSpawner : MonoBehaviour
                         Nail rNail = Instantiate(redNail, redNail.transform.position + new Vector3(Xoffset * i, 0f, 0f), Quaternion.identity) as RedNail;
                         rNail.gameObject.transform.SetParent(transform);
                         rNail.Xoffset = Xoffset;
-                        if (IsMoving(ref spawnedMovingRedNails,data.movingRedNails,data.numberOfRedNails))
-                        {
-                            rNail.transform.position = rNail.DefaultPosition;
-                            rNail.strengthForCorrectHit = rNail.DefaultStrengthForCorrectHit;
-                            rNail.isMoving=true;
-                        }
                         
                         CalculatePoints(rNail.strengthForCorrectHit, rNail.ScoreForNail);
                         spawnedRedNails++;
                         i++;
                     }
                     break;
+                case 3:
+                    if (spawnedMovingDefaultNails < data.movingDefaultNails)
+                    {
+                        Nail defNail = Instantiate(defaultNail, defaultNail.transform.position + new Vector3(Xoffset * i, 0f, 0f), Quaternion.identity) as DefaultNail;
+                        defNail.gameObject.transform.SetParent(transform);
+                        defNail.Xoffset = Xoffset;
+
+                        defNail.transform.position = defNail.DefaultPosition;
+                        defNail.strengthForCorrectHit = defNail.DefaultStrengthForCorrectHit;
+                        defNail.isMoving = true;
+
+                        CalculatePoints(defNail.strengthForCorrectHit, defNail.ScoreForNail);
+                        spawnedMovingDefaultNails++;
+                        i++;
+                    }
+                    break;
+                case 4:
+                    if (spawnedMovingRedNails < data.movingRedNails)
+                    {
+                        Nail rNail = Instantiate(redNail, redNail.transform.position + new Vector3(Xoffset * i, 0f, 0f), Quaternion.identity) as RedNail;
+                        rNail.gameObject.transform.SetParent(transform);
+                        rNail.Xoffset = Xoffset;
+
+                        rNail.transform.position = rNail.DefaultPosition;
+                        rNail.strengthForCorrectHit = rNail.DefaultStrengthForCorrectHit;
+                        rNail.isMoving = true;
+                        print(rNail.ScoreForNail);
+                        CalculatePoints(rNail.strengthForCorrectHit, rNail.ScoreForNail);
+                        spawnedMovingRedNails++;
+                        i++;
+                    }
+                    break;
             }
         }
     }
+
     private void CalculatePoints(int strengthForCorrectHit,int scoreForNail)
     {
         if (strengthForCorrectHit % cashedMaxHammerStrength == 0)
@@ -105,27 +126,5 @@ public class NailsSpawner : MonoBehaviour
             maxScoreForNails += scoreForNail / (strengthForCorrectHit / cashedMaxHammerStrength + 1);
             minHammerHits += strengthForCorrectHit / cashedMaxHammerStrength + 1;
         }
-    }
-
-    private bool IsMoving(ref int currentSpawnedNails,int targetSpawnedNails,int numberNotMovingNails)
-    {
-        if (currentSpawnedNails < targetSpawnedNails)
-        {
-            if (targetSpawnedNails > numberNotMovingNails / 2)     // try spawn all 
-            {
-                currentSpawnedNails++;
-                return true;
-            }
-            else                                                             // add some randomness
-            {
-                var index = Random.Range(0, 2);
-                if (index == 0)
-                {
-                    currentSpawnedNails++;
-                    return true;
-                }
-            }
-        }
-        return false;
     }
 }

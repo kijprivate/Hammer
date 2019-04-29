@@ -76,7 +76,7 @@ public class LevelContainer : MonoBehaviour
         data = LevelsDifficultyContainer.Houses[currentHouseNumber-1].levelsData[currentLevelIndex];
 
         starsForPreviousTries = data.gainedStars;
-        numberOfNails = data.numberOfDefaultNails + data.numberOfRedNails;
+        numberOfNails = data.numberOfDefaultNails + data.numberOfRedNails + data.movingDefaultNails + data.movingRedNails;
         hammerHits = data.hammerHits;
         
         cashed1Star = ConstantDataContainer.PercentageValueFor1Star/100f;
@@ -104,8 +104,16 @@ public class LevelContainer : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         //maxAvailableScore = NailsSpawner.MaxScoreForNails + numberOfNails * ConstantDataContainer.ScoreBonusForPerfectHit;
-        maxAvailableScore = NailsSpawner.MaxScoreForNails + (int)(data.numberOfDefaultNails * ConstantDataContainer.ScoreForDefaultNail * 0.5f + data.numberOfRedNails * ConstantDataContainer.ScoreForRedNail*0.5f);
-       // print(maxAvailableScore);
+        maxAvailableScore = NailsSpawner.MaxScoreForNails + (int)(data.numberOfDefaultNails * ConstantDataContainer.ScoreForDefaultNail * 0.5f +
+                                                                  data.numberOfRedNails * ConstantDataContainer.ScoreForRedNail*0.5f +
+                                                                  data.movingDefaultNails * ConstantDataContainer.ScoreForDefaultNail*1.5f*0.5f +
+                                                                  data.movingRedNails * ConstantDataContainer.ScoreForRedNail * 1.5f * 0.5f );
+        print(NailsSpawner.MaxScoreForNails);
+        print(data.numberOfDefaultNails * ConstantDataContainer.ScoreForDefaultNail * 0.5f +
+                                                                  data.numberOfRedNails * ConstantDataContainer.ScoreForRedNail * 0.5f +
+                                                                  data.movingDefaultNails * ConstantDataContainer.ScoreForDefaultNail * 1.5f * 0.5f +
+                                                                  data.movingRedNails * ConstantDataContainer.ScoreForRedNail * 1.5f * 0.5f);
+        print(maxAvailableScore);
     }
     static LevelContainer instance;
     public static LevelContainer Instance
@@ -124,7 +132,10 @@ public class LevelContainer : MonoBehaviour
         GameOver = true;
 
         //maxAvailableScore = NailsSpawner.MaxScoreForNails + numberOfNails * ConstantDataContainer.ScoreBonusForPerfectHit;
-        maxAvailableScore = NailsSpawner.MaxScoreForNails + (int)(data.numberOfDefaultNails * ConstantDataContainer.ScoreForDefaultNail * 0.5f + data.numberOfRedNails * ConstantDataContainer.ScoreForRedNail * 0.5f);
+        maxAvailableScore = NailsSpawner.MaxScoreForNails + (int)(data.numberOfDefaultNails * ConstantDataContainer.ScoreForDefaultNail * 0.5f +
+                                                           data.numberOfRedNails * ConstantDataContainer.ScoreForRedNail * 0.5f +
+                                                           data.movingDefaultNails * ConstantDataContainer.ScoreForDefaultNail * 1.5f * 0.5f +
+                                                           data.movingRedNails * ConstantDataContainer.ScoreForRedNail * 1.5f * 0.5f);
         print(maxAvailableScore);
         percentageValueOfScore = (float)Score / maxAvailableScore;
         

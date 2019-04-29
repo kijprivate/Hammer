@@ -46,7 +46,7 @@ public class CanvasManager : MonoBehaviour
     private RectTransform PerfectRect;   // needed for changing scale when displaying Splash
     private Vector3 PerfectPosition;
     private Vector3 PerfectScale;
-    private int numberofnails;
+    private int numberOfNails;
     private void Start()
     {
         EventManager.EventGameOver += OnGameOver;
@@ -60,10 +60,9 @@ public class CanvasManager : MonoBehaviour
         EventManager.EventCoinsSubstracted += OnCoinsSubstracted;
         EventManager.EventPerfectHit += OnPerfectHit;
 
-        numberofnails = LevelContainer.NumberOfNails;
-        print(PlayerPrefsManager.GetNumberOfCoins());
+        numberOfNails = LevelContainer.NumberOfNails;
         HammersLeft.text = LevelContainer.HammerHits.ToString();
-        NailPocket.text = numberofnails.ToString();
+        NailPocket.text = numberOfNails.ToString();
         LevelName.text = "Level"+LevelContainer.CurrentLevelNumber;
         Coins.text = "Coins: " + PlayerPrefsManager.GetNumberOfCoins();
 
@@ -185,8 +184,8 @@ public class CanvasManager : MonoBehaviour
 
     private void OnNailFinished()
     {
-        numberofnails--;
-        NailPocket.text = numberofnails.ToString();
+        numberOfNails--;
+        NailPocket.text = numberOfNails.ToString();
     }
     
     private void OnCoinsSubstracted()

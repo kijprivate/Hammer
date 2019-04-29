@@ -7,7 +7,21 @@ public class DefaultNail : Nail
     protected override void Awake()
     {
         base.Awake();
+        StartCoroutine(AdditionalPointsForMoving());
         scoreForNail = ConstantDataContainer.ScoreForDefaultNail;
+    }
+
+    IEnumerator AdditionalPointsForMoving()
+    {
+        yield return new WaitForEndOfFrame();
+        if (isMoving)
+        {
+            scoreForNail = (int)(ConstantDataContainer.ScoreForDefaultNail * 1.5f);
+        }
+        else
+        {
+            scoreForNail = ConstantDataContainer.ScoreForDefaultNail;
+        }
     }
 
     protected override void SetRandomHeight()
