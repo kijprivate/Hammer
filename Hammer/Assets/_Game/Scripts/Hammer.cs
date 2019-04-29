@@ -10,6 +10,7 @@ public class Hammer : MonoBehaviour
     public int targetIndex { get; private set; }
 
     [SerializeField] HammerSprites sprites;
+    [SerializeField] AudioClip[] HammerHits;
 
     private LevelData data;
     Transform myTransform;
@@ -29,6 +30,7 @@ public class Hammer : MonoBehaviour
     int strength;
     private int cashedMaxStrength;
     private ParticleSystem sparks;
+    private AudioSource hammerAudioSource;
 
     private void Awake()
     {
@@ -40,6 +42,7 @@ public class Hammer : MonoBehaviour
     {
         myTransform = transform;
         sparks = GetComponentInChildren<ParticleSystem>();
+        hammerAudioSource = GetComponent<AudioSource>();
         
         StartCoroutine(SetupWithDelay());
     }
@@ -101,6 +104,7 @@ public class Hammer : MonoBehaviour
         if (CF2Input.GetButtonUp("Click") && isHammerReady && LevelContainer.GameStarted)
         {
             SetupStrength();
+            PlayHitSound();
             SetupHammerPositionAfterHit();
 
             isHammerReady = false;
@@ -147,6 +151,16 @@ public class Hammer : MonoBehaviour
             if(myTransform.rotation.z >= i*strengthInterval && myTransform.rotation.z < (i+1)*strengthInterval)
             { strength = i; }
         }
+    }
+
+    private void PlayHitSound()
+    {
+        if (strength < HammerHits.Length)
+        {
+            hammerAudioSource.clip = HammerHits[strength];
+            hammerAudioSource.Play();
+        }
+
     }
 
     private void SetupHammerPositionAfterHit()
