@@ -26,6 +26,9 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] Sprite PerfectSprite;
     [SerializeField] Sprite ToohardSprite;  // sprite with Too hard! caption
     [SerializeField] Sprite HitagainSprite; // sprite with Hit again! caption
+    [SerializeField] RectTransform PerfectTarget;
+    [SerializeField] RectTransform SplashTarget;
+    [SerializeField] RectTransform ScoreTarget;
 
     private float cashed1Star;
     private float cashed2Stars;
@@ -216,12 +219,13 @@ public class CanvasManager : MonoBehaviour
                 SplashImage.sprite = ToohardSprite;
                 break;
         }
+        DOTween.KillAll(true);
+        SplashRect.position = SplashPosition; // moves back before displaying
+        SplashRect.localScale = SplashScale;  // scales back before displaying
         Splash.SetActive(true);
         SplashRect.DOScale(new Vector3(1.2f, 1.2f, 1.0f), 0.5f).SetEase(Ease.OutElastic);   // scales splash for display
-        SplashRect.DOMove(SplashRect.position + new Vector3(275.0f, 200.0f, 0.0f), 0.5f).SetEase(Ease.OutBounce);
+        SplashRect.DOMove(SplashTarget.position, 0.5f).SetEase(Ease.OutBounce);
         yield return new WaitForSeconds(0.7f);    
-        SplashRect.position = SplashPosition; // moves back after displaying
-        SplashRect.localScale = SplashScale;  // scales back after displaying
         Splash.SetActive(false);
     }
 
@@ -233,14 +237,14 @@ public class CanvasManager : MonoBehaviour
     private IEnumerator DisplayEarnedScore(int earnedPoints)    // displays text with earned pointes
     {
         ScoreEarned.SetActive(true);
+        EarnedScoreRect.position = EarnedScorePosition;
         EarnedScoreText.text = "+" + earnedPoints;
         Sequence earnedScoreSequence = DOTween.Sequence();
-        earnedScoreSequence.Append(EarnedScoreText.DOColor(new Color(1.0f,1.0f,1.0f,1.0f), 0.6f));
-        earnedScoreSequence.AppendInterval(0.2f);
-        earnedScoreSequence.Append(EarnedScoreText.DOColor(new Color(1.0f, 1.0f, 1.0f, 0.0f), 0.6f));
-        earnedScoreSequence.Insert(0, EarnedScoreRect.DOMove(EarnedScoreRect.position + new Vector3(0.0f, 230.0f, 0.0f), 1.4f));
-        yield return new WaitForSeconds(1.4f);
-        EarnedScoreRect.position = EarnedScorePosition;
+        earnedScoreSequence.Append(EarnedScoreText.DOColor(new Color(1.0f,1.0f,1.0f,1.0f), 0.8f));
+        earnedScoreSequence.AppendInterval(0.4f);
+        earnedScoreSequence.Append(EarnedScoreText.DOColor(new Color(1.0f, 1.0f, 1.0f, 0.0f), 0.8f));
+        earnedScoreSequence.Insert(0, EarnedScoreRect.DOMove(ScoreTarget.position, 2.0f));
+        yield return new WaitForSeconds(2.0f);
         ScoreEarned.SetActive(false);
     }
 
@@ -253,17 +257,17 @@ public class CanvasManager : MonoBehaviour
     {
         PerfectObject.SetActive(true);
         BonusObject.SetActive(true);
+        PerfectRect.localScale = PerfectScale; // scales back before displaying
+        PerfectRect.position = PerfectPosition; // moves back before displaying
         PerfectRect.DOScale(new Vector3(1.5f, 1.5f, 1.0f), 0.5f).SetEase(Ease.OutElastic);   // scales perfect for display
-        PerfectRect.DOMove(PerfectRect.position + new Vector3(-100.0f, 630.0f, 0.0f), 0.5f).SetEase(Ease.OutBounce);
+        PerfectRect.DOMove(PerfectTarget.position, 0.5f).SetEase(Ease.OutBounce);
         Sequence bonusSequence = DOTween.Sequence();
-        bonusSequence.Append(BonusText.DOColor(new Color(1.0f, 1.0f, 1.0f, 1.0f), 0.6f));
-        bonusSequence.AppendInterval(0.2f);
-        bonusSequence.Append(BonusText.DOColor(new Color(1.0f, 1.0f, 1.0f, 0.0f), 0.6f));
-        bonusSequence.Insert(0, BonusRect.DOMove(BonusRect.position + new Vector3(0.0f, 230.0f, 0.0f), 1.4f));
-        yield return new WaitForSeconds(1.4f);
+        bonusSequence.Append(BonusText.DOColor(new Color(1.0f, 1.0f, 1.0f, 1.0f), 0.8f));
+        bonusSequence.AppendInterval(0.4f);
+        bonusSequence.Append(BonusText.DOColor(new Color(1.0f, 1.0f, 1.0f, 0.0f), 0.8f));
+        bonusSequence.Insert(0, BonusRect.DOMove(ScoreTarget.position - new Vector3(0.0f, 89.0f,0.0f), 2.0f));
+        yield return new WaitForSeconds(2.0f);
         BonusRect.position = BonusPosition;
-        PerfectRect.localScale = PerfectScale; // scales back after displaying
-        PerfectRect.position = PerfectPosition;
         PerfectObject.SetActive(false);
         BonusObject.SetActive(false);
     }
