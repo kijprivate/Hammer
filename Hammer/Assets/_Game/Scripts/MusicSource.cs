@@ -11,14 +11,7 @@ public class MusicSource : MonoBehaviour
 
     private void Awake()
     {
-        //singleton
-        if(instance == null)
-        { instance = this; }
-        else if(instance != this)
-        { Destroy(gameObject); }
-
         musicAudioSource = GetComponent<AudioSource>();
-        DontDestroyOnLoad(gameObject);
         Random.InitState((int)System.DateTime.Now.Ticks);
     }
 
