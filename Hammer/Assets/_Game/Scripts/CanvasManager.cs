@@ -209,7 +209,6 @@ public class CanvasManager : MonoBehaviour
     {
         MenuUI.SetActive(false);
         GameplayUI.SetActive(true);
-        MusicSource.Play();
     }
 
     private void OnShowSplash(int splashId)
