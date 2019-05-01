@@ -7,7 +7,7 @@ public class MusicSource : MonoBehaviour
     [SerializeField] AudioClip[] Playlist;
 
     private AudioSource musicAudioSource;
-    private static MusicSource instance = null;
+    //private static MusicSource instance = null;
 
     private void Awake()
     {
