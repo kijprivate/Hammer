@@ -8,6 +8,7 @@ public abstract class Nail : MonoBehaviour
 {
     public Transform nailHead;
 
+    [SerializeField] GameObject CrashedNail;
     [SerializeField] protected float angle=10f;
     [SerializeField] protected float allowedAngle = 5f;
     [SerializeField] protected float rotationSpeed=10f;
@@ -108,12 +109,14 @@ public abstract class Nail : MonoBehaviour
         if (isMoving && GetCurrentAngle() > allowedAngle && hammer.GetStrength() > 0)
         {
             // TODO add animation
+            GetComponentInChildren<MeshRenderer>().enabled = false;
+            CrashedNail.SetActive(true);
             isOverhit = true;
             isMoving = false;
             scoreForNail = 0;
-            var sequence = DOTween.Sequence();
-            sequence.Append(transform.DOMoveY(-5, 1f))
-                .Join(transform.DOScale(Vector3.zero, 1f));
+            //var sequence = DOTween.Sequence();
+            //sequence.Append(transform.DOMoveY(-5, 1f))
+            //    .Join(transform.DOScale(Vector3.zero, 1f));
         }
         else if (isMoving && GetCurrentAngle() <= allowedAngle)
         {
