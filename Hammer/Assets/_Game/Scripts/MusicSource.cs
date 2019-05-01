@@ -19,11 +19,12 @@ public class MusicSource : MonoBehaviour
 
         musicAudioSource = GetComponent<AudioSource>();
         DontDestroyOnLoad(gameObject);
+        Random.InitState((int)System.DateTime.Now.Ticks);
     }
 
     void Start()
     {
-        musicAudioSource.clip = Playlist[1];
+        musicAudioSource.clip = Playlist[Random.Range(0,Playlist.Length)];
         musicAudioSource.Play();
     }
 

@@ -29,6 +29,12 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] RectTransform PerfectTarget;
     [SerializeField] RectTransform SplashTarget;
     [SerializeField] RectTransform ScoreTarget;
+    [SerializeField] AudioClip OkSound;
+    [SerializeField] AudioClip PerfectSound;
+    [SerializeField] AudioClip LevelSound;
+    [SerializeField] AudioClip WoodBreakSound;
+    [SerializeField] AudioClip PickSound;
+    [SerializeField] AudioSource MusicSource;
 
     private float cashed1Star;
     private float cashed2Stars;
@@ -47,6 +53,8 @@ public class CanvasManager : MonoBehaviour
     private Vector3 PerfectPosition;
     private Vector3 PerfectScale;
     private int numberOfNails;
+    private AudioSource CanvasAudioSource;
+
     private void Start()
     {
         EventManager.EventGameOver += OnGameOver;
@@ -82,7 +90,7 @@ public class CanvasManager : MonoBehaviour
         BonusPosition = BonusRect.position;
         PerfectPosition = PerfectRect.position;
         PerfectScale = PerfectRect.localScale;
-
+        CanvasAudioSource = GetComponent<AudioSource>();
 
         StartCoroutine(DisplayMinPoints());
         if(!LevelContainer.MenuHided)
@@ -94,10 +102,14 @@ public class CanvasManager : MonoBehaviour
         {
             OnMenuHided();
         }
+        Debug.Log("Canvas Manager started");
     }
 
     private void OnGameOver()
     {
+        MusicSource.Stop();
+        CanvasAudioSource.clip = LevelSound;
+        CanvasAudioSource.Play();
         StartCoroutine(DisplayPoints());
         Coins.text = PlayerPrefsManager.GetNumberOfCoins().ToString();
         GameplayUI.SetActive(false);
@@ -197,6 +209,7 @@ public class CanvasManager : MonoBehaviour
     {
         MenuUI.SetActive(false);
         GameplayUI.SetActive(true);
+        MusicSource.Play();
     }
 
     private void OnShowSplash(int splashId)
@@ -213,9 +226,13 @@ public class CanvasManager : MonoBehaviour
                 break;
             case 0: // ok hit
                 SplashImage.sprite = AwesomeSprite;
+                CanvasAudioSource.clip = OkSound;
+                CanvasAudioSource.Play();
                 break;
             case 1: // too much strength
                 SplashImage.sprite = ToohardSprite;
+                CanvasAudioSource.clip = WoodBreakSound;
+                CanvasAudioSource.Play();
                 break;
         }
         DOTween.KillAll(true);
@@ -254,6 +271,8 @@ public class CanvasManager : MonoBehaviour
 
     private IEnumerator DisplayPerfectHit()    // displays text with earned pointes
     {
+        CanvasAudioSource.clip = PerfectSound;
+        CanvasAudioSource.Play();
         PerfectObject.SetActive(true);
         BonusObject.SetActive(true);
         PerfectRect.localScale = PerfectScale; // scales back before displaying
@@ -275,6 +294,14 @@ public class CanvasManager : MonoBehaviour
     {
         StartCoroutine(CoroutineHideMenuAndStartGame());
     }
+
+    public void ItemPicked()
+    {
+        Debug.Log("Playing pick sound");
+        CanvasAudioSource.clip = PickSound;
+        CanvasAudioSource.Play();
+    }
+
     private IEnumerator CoroutineHideMenuAndStartGame()
     {
         EventManager.RaiseEventMenuHided();
