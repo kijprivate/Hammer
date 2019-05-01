@@ -64,7 +64,7 @@ public class CanvasManager : MonoBehaviour
         HammersLeft.text = LevelContainer.HammerHits.ToString();
         NailPocket.text = numberOfNails.ToString();
         LevelName.text = "Level"+LevelContainer.CurrentLevelNumber;
-        Coins.text = "Coins: " + PlayerPrefsManager.GetNumberOfCoins();
+        Coins.text = PlayerPrefsManager.GetNumberOfCoins().ToString();
 
         cashed1Star = ConstantDataContainer.PercentageValueFor1Star/100f;
         cashed2Stars = ConstantDataContainer.PercentageValueFor2Stars/100f;
@@ -99,7 +99,7 @@ public class CanvasManager : MonoBehaviour
     private void OnGameOver()
     {
         StartCoroutine(DisplayPoints());
-        Coins.text = "Coins: " + PlayerPrefsManager.GetNumberOfCoins();
+        Coins.text = PlayerPrefsManager.GetNumberOfCoins().ToString();
         GameplayUI.SetActive(false);
         LevelName.gameObject.SetActive(false);
         Coins.gameObject.SetActive(false);
@@ -190,7 +190,7 @@ public class CanvasManager : MonoBehaviour
     
     private void OnCoinsSubstracted()
     {
-        Coins.text = "Coins: " + PlayerPrefsManager.GetNumberOfCoins();
+        Coins.text = PlayerPrefsManager.GetNumberOfCoins().ToString();
     }
 
     private void OnMenuHided()
