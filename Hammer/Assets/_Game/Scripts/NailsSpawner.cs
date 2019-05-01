@@ -104,7 +104,7 @@ public class NailsSpawner : MonoBehaviour
                         rNail.transform.position = rNail.DefaultPosition;
                         rNail.strengthForCorrectHit = rNail.DefaultStrengthForCorrectHit;
                         rNail.isMoving = true;
-                        print(rNail.ScoreForNail);
+
                         CalculatePoints(rNail.strengthForCorrectHit, rNail.ScoreForNail);
                         spawnedMovingRedNails++;
                         i++;

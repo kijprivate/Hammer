@@ -9,6 +9,8 @@ public abstract class Nail : MonoBehaviour
     public Transform nailHead;
 
     [SerializeField] GameObject CrashedNail;
+    [SerializeField] GameObject CrackStrength1;
+    [SerializeField] GameObject CrackStrength2;
     [SerializeField] protected float angle=10f;
     [SerializeField] protected float allowedAngle = 5f;
     [SerializeField] protected float rotationSpeed=10f;
@@ -84,8 +86,10 @@ public abstract class Nail : MonoBehaviour
         {return;}
         if(hammer.GetStrength() > strengthForCorrectHit)
         {
-            depthAfterHit = transform.position.y - (strengthForCorrectHit * step + (hammer.GetStrength()-strengthForCorrectHit)*(step/2f) );
+            depthAfterHit = transform.position.y - (strengthForCorrectHit * step + (hammer.GetStrength() - strengthForCorrectHit) * (step / 2f));
             isOverhit = true;
+
+            DisplayCrack();
         }
         else
         {
@@ -104,11 +108,27 @@ public abstract class Nail : MonoBehaviour
         hitsPerCurrentNail++;
         transform.DOMove(new Vector3(transform.position.x, depthAfterHit, transform.position.z), 0.06f);
     }
+
+    private void DisplayCrack()
+    {
+        var overHitValue = hammer.GetStrength() - strengthForCorrectHit;
+        switch (overHitValue)
+        {
+            case 1:
+                CrackStrength1.SetActive(true);
+                break;
+            case 2:
+                CrackStrength2.SetActive(true);
+                break;
+            default:
+                break;
+        }
+    }
+
     protected void HandleMovingNail()
     {
         if (isMoving && GetCurrentAngle() > allowedAngle && hammer.GetStrength() > 0)
         {
-            // TODO add animation
             GetComponentInChildren<MeshRenderer>().enabled = false;
             CrashedNail.SetActive(true);
             isOverhit = true;
