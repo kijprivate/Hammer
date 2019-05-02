@@ -238,6 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nailHead: {fileID: 7838098447143784737}
+  constantData: {fileID: 11400000, guid: c7c19fcc2a33d0647b1dca1da6ee3110, type: 2}
   CrashedNail: {fileID: 2312670041810155417}
   CrackStrength1: {fileID: 6707343193085094499}
   CrackStrength2: {fileID: 159225750172712088}
