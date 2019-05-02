@@ -885,8 +885,51 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4735134210273073711, guid: c5953cea3ebe49e38a0c267d434069bf,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000038146973
+      objectReference: {fileID: 0}
+    - target: {fileID: 217915754934050314, guid: c5953cea3ebe49e38a0c267d434069bf,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 10.099976
+      objectReference: {fileID: 0}
+    - target: {fileID: 217915754934050314, guid: c5953cea3ebe49e38a0c267d434069bf,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 57.80005
+      objectReference: {fileID: 0}
+    - target: {fileID: 2637452592478546113, guid: c5953cea3ebe49e38a0c267d434069bf,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 10.099976
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415129767421460769, guid: c5953cea3ebe49e38a0c267d434069bf,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5953cea3ebe49e38a0c267d434069bf, type: 3}
+--- !u!114 &312131235 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6139207247532018771, guid: c5953cea3ebe49e38a0c267d434069bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 312131234}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &312131236 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5861230028895942223, guid: c5953cea3ebe49e38a0c267d434069bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 312131234}
+  m_PrefabAsset: {fileID: 0}
 --- !u!82 &322417097 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 2876087646331195774, guid: 356c56051d2e4074b95f6fdf4fa237be,
@@ -2315,8 +2358,40 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: d7eca6dd7d1c5954aa5b032b4ca82d38,
         type: 2}
+    - target: {fileID: 4876835395037101417, guid: 827f869584cb4196bf0c9e1abec8c432,
+        type: 3}
+      propertyPath: PauseButton
+      value: 
+      objectReference: {fileID: 1526600405}
+    - target: {fileID: 4876835395037101417, guid: 827f869584cb4196bf0c9e1abec8c432,
+        type: 3}
+      propertyPath: CancelQuitPanel
+      value: 
+      objectReference: {fileID: 312131235}
+    - target: {fileID: 4876835395037101417, guid: 827f869584cb4196bf0c9e1abec8c432,
+        type: 3}
+      propertyPath: QuitPanel
+      value: 
+      objectReference: {fileID: 312131236}
+    - target: {fileID: 4876835395037101417, guid: 827f869584cb4196bf0c9e1abec8c432,
+        type: 3}
+      propertyPath: ResumeButton
+      value: 
+      objectReference: {fileID: 956979913}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 827f869584cb4196bf0c9e1abec8c432, type: 3}
+--- !u!114 &956979913 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1669307825394350353, guid: c5953cea3ebe49e38a0c267d434069bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 312131234}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &987521634
 GameObject:
   m_ObjectHideFlags: 0
@@ -3421,6 +3496,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1491341608}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1526600405 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4511543685881848784, guid: c5953cea3ebe49e38a0c267d434069bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 312131234}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1535916746
 GameObject:
   m_ObjectHideFlags: 0

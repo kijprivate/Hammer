@@ -5,6 +5,14 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
+    [SerializeField] Button PauseButton;
+    [SerializeField] Button ResumeButton;
+    [SerializeField] GameObject QuitPanel;
+    [SerializeField] Button CancelQuitPanel;
+
+    private bool isPaused;
+    private bool quitPanelActive;
+
     private static LevelManager _instance;
     public static LevelManager Instance { get { return _instance; } }
 
@@ -29,9 +37,32 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if((Input.GetKey(KeyCode.Home) || Input.GetKey(KeyCode.Menu)) && LevelContainer.MenuHided && !isPaused)
         {
-            QuitRequest();
+            PauseButton.onClick.Invoke();
+            isPaused = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape) && !LevelContainer.MenuHided && !quitPanelActive)
+        {
+            QuitPanel.SetActive(true);
+            quitPanelActive = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && !LevelContainer.MenuHided && quitPanelActive)
+        {
+            CancelQuitPanel.onClick.Invoke();
+            quitPanelActive = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape) && LevelContainer.MenuHided && !isPaused)
+        {
+            PauseButton.onClick.Invoke();
+            isPaused = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && LevelContainer.MenuHided && isPaused)
+        {
+            ResumeButton.onClick.Invoke();
+            isPaused = false;
         }
     }
 
