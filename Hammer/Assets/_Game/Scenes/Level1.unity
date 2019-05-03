@@ -397,11 +397,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 4387342755592455756, guid: c5953cea3ebe49e38a0c267d434069bf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4387342755592455856, guid: c5953cea3ebe49e38a0c267d434069bf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -527,35 +522,6 @@ PrefabInstance:
       propertyPath: MusicSource
       value: 
       objectReference: {fileID: 322417097}
-    - target: {fileID: 1769826331, guid: c5953cea3ebe49e38a0c267d434069bf, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4735134210273073711, guid: c5953cea3ebe49e38a0c267d434069bf,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.000038146973
-      objectReference: {fileID: 0}
-    - target: {fileID: 217915754934050314, guid: c5953cea3ebe49e38a0c267d434069bf,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 10.099976
-      objectReference: {fileID: 0}
-    - target: {fileID: 217915754934050314, guid: c5953cea3ebe49e38a0c267d434069bf,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 57.80005
-      objectReference: {fileID: 0}
-    - target: {fileID: 2637452592478546113, guid: c5953cea3ebe49e38a0c267d434069bf,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 10.099976
-      objectReference: {fileID: 0}
-    - target: {fileID: 1415129767421460769, guid: c5953cea3ebe49e38a0c267d434069bf,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5953cea3ebe49e38a0c267d434069bf, type: 3}
 --- !u!114 &312131235 stripped

@@ -22,6 +22,8 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] Text NailPocket;
     [SerializeField] Text LevelName;
     [SerializeField] Text Coins;
+    [SerializeField] Text CoinsAdded;
+    [SerializeField] Text HighScore;
     [SerializeField] Sprite AwesomeSprite;  // sprite with Awesome! caption
     [SerializeField] Sprite PerfectSprite;
     [SerializeField] Sprite ToohardSprite;  // sprite with Too hard! caption
@@ -39,6 +41,7 @@ public class CanvasManager : MonoBehaviour
     private float cashed1Star;
     private float cashed2Stars;
     private float cashed3Stars;
+    private LevelData data;
     private RectTransform SplashRect;   // needed for changing scale when displaying Splash
     private Image SplashImage;    // needed for changing Sprite depending on hit rating
     private Vector3 SplashPosition;
@@ -93,7 +96,8 @@ public class CanvasManager : MonoBehaviour
         CanvasAudioSource = GetComponent<AudioSource>();
 
         StartCoroutine(DisplayMinPoints());
-        if(!LevelContainer.MenuHided)
+        data = LevelsDifficultyContainer.Houses[LevelContainer.CurrentHouseIndex].levelsData[LevelContainer.CurrentLevelIndex];
+        if (!LevelContainer.MenuHided)
         {
             MenuUI.SetActive(true);
             GameplayUI.SetActive(false);
@@ -111,10 +115,19 @@ public class CanvasManager : MonoBehaviour
         CanvasAudioSource.clip = LevelSound;
         CanvasAudioSource.Play();
         StartCoroutine(DisplayPoints());
-        Coins.text = PlayerPrefsManager.GetNumberOfCoins().ToString();
+        if (LevelContainer.Score > data.highScore)
+        {
+            CoinsAdded.text = "+" + (LevelContainer.Score - data.highScore) / ConstantDataContainer.ScoreDivider;
+            HighScore.text = "BEST: " + LevelContainer.Score;
+        }
+        else
+        {
+            CoinsAdded.text = "+0";
+            HighScore.text = "BEST: " + data.highScore.ToString();
+        }
+
         GameplayUI.SetActive(false);
         LevelName.gameObject.SetActive(false);
-        Coins.gameObject.SetActive(false);
 
         if (LevelContainer.PercentageValueOfScore > cashed3Stars)
         {
@@ -137,6 +150,7 @@ public class CanvasManager : MonoBehaviour
         else
         {
             PlayAgain.SetActive(true);
+            NextLevel.SetActive(false);
         }
     }
 

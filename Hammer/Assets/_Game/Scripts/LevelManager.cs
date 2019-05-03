@@ -25,13 +25,8 @@ public class LevelManager : MonoBehaviour
         else
         {
             _instance = this;
-            // DontDestroyOnLoad(gameObject);
         }
 
-        //if(SceneManager.GetActiveScene().buildIndex==0)
-        //{
-        //    LoadSplashScreenWithDelay();
-        //}
         PlayerPrefsManager.UnlockLevel(1);
     }
 

@@ -112,12 +112,12 @@ public class LevelContainer : MonoBehaviour
                                                                   data.numberOfRedNails * ConstantDataContainer.ScoreForRedNail*0.5f +
                                                                   data.movingDefaultNails * ConstantDataContainer.ScoreForDefaultNail*1.5f*0.5f +
                                                                   data.movingRedNails * ConstantDataContainer.ScoreForRedNail * 1.5f * 0.5f );
-        print(NailsSpawner.MaxScoreForNails);
-        print(data.numberOfDefaultNails * ConstantDataContainer.ScoreForDefaultNail * 0.5f +
-                                                                  data.numberOfRedNails * ConstantDataContainer.ScoreForRedNail * 0.5f +
-                                                                  data.movingDefaultNails * ConstantDataContainer.ScoreForDefaultNail * 1.5f * 0.5f +
-                                                                  data.movingRedNails * ConstantDataContainer.ScoreForRedNail * 1.5f * 0.5f);
-        print(maxAvailableScore);
+        //print(NailsSpawner.MaxScoreForNails);
+        //print(data.numberOfDefaultNails * ConstantDataContainer.ScoreForDefaultNail * 0.5f +
+        //                                                          data.numberOfRedNails * ConstantDataContainer.ScoreForRedNail * 0.5f +
+        //                                                          data.movingDefaultNails * ConstantDataContainer.ScoreForDefaultNail * 1.5f * 0.5f +
+        //                                                          data.movingRedNails * ConstantDataContainer.ScoreForRedNail * 1.5f * 0.5f);
+        //print(maxAvailableScore);
     }
     static LevelContainer instance;
     public static LevelContainer Instance

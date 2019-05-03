@@ -18,8 +18,7 @@ MonoBehaviour:
   scoreForDefaultNail: 300
   scoreForRedNail: 600
   scoreBonusForPerfectHit: 100
-  percentageValueFor1Star: 65
-  percentageValueFor2Stars: 75
-  percentageValueFor3Stars: 85
-  scoreDividerWhenMoreStars: 100
-  scoreDividerWhenSameStars: 200
+  percentageValueFor1Star: 60
+  percentageValueFor2Stars: 80
+  percentageValueFor3Stars: 97
+  scoreDivider: 10
