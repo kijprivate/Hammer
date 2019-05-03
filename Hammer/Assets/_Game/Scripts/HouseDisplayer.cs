@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class HouseDisplayer : MonoBehaviour
 {
+    [SerializeField] HousePartsArray houseParts;
     [SerializeField] private GameObject house;
-    [SerializeField] private GameObject[] houseParts;
     [SerializeField] private GameObject board;
+    [SerializeField] private GameObject SummaryGround;
 
     private LevelData data;
     private Vector3 positionToAnimate;
@@ -15,16 +16,27 @@ public class HouseDisplayer : MonoBehaviour
     private NailsSpawner nailsSpawner;
     private int index;
     private int starsForPreviousTries;
+
     void Start()
     {
+
+        for (int i = 0; i < houseParts.houseParts[LevelContainer.CurrentHouseNumber - 1].parts.Count; i++)
+        {
+            var part = Instantiate(houseParts.houseParts[LevelContainer.CurrentHouseIndex].parts[i],transform.position,Quaternion.identity);
+            part.transform.SetParent(house.transform);
+            part.transform.localPosition = Vector3.zero;
+            part.transform.localRotation = Quaternion.Euler(Vector3.zero);
+            part.SetActive(false);
+        }
+
         hammer = FindObjectOfType<Hammer>();
         nailsSpawner = FindObjectOfType<NailsSpawner>();
         index = LevelContainer.CurrentLevelIndex;
-        positionToAnimate = houseParts[index].transform.position;
+
         EventManager.EventGameOver += OnGameOver;
         EventManager.EventNoMoreNails += OnGameOver;
         
-        data = LevelsDifficultyContainer.Houses[LevelContainer.CurrentHouseNumber-1].levelsData[index];
+        data = LevelsDifficultyContainer.Houses[LevelContainer.CurrentHouseIndex].levelsData[index];
 
         starsForPreviousTries = data.gainedStars;
     }
@@ -44,15 +56,19 @@ public class HouseDisplayer : MonoBehaviour
     private IEnumerator DisableGameplayItemsAndActiveHouse()
     {
         yield return new WaitForSeconds(0.5f);
-        
+
+        SummaryGround.SetActive(true);
+
+        yield return new WaitForSeconds(0.3f);
+
         house.SetActive(true);
         for (int i = 0; i < index; i++)
         {
-            houseParts[i].SetActive(true);
+            house.transform.GetChild(i).gameObject.SetActive(true);
         }
-        if(starsForPreviousTries>0) //show if already unlocked
-        { houseParts[index].SetActive(true);}
-        
+        if (starsForPreviousTries > 0) //show if already unlocked
+        { house.transform.GetChild(LevelContainer.CurrentLevelIndex).gameObject.SetActive(true); }
+
         yield return new WaitForSeconds(0.3f);
         hammer.gameObject.SetActive(false);
         nailsSpawner.gameObject.SetActive(false);
@@ -65,9 +81,7 @@ public class HouseDisplayer : MonoBehaviour
         
         if (!(starsForPreviousTries > 0) && LevelContainer.StarsForCurrentTry>0) //unlock part and show
         {
-            houseParts[index].SetActive(true);
-            houseParts[index].transform.position = positionToAnimate;
-            houseParts[index].GetComponent<DOTweenAnimation>().DOPlay();
+            house.transform.GetChild(LevelContainer.CurrentLevelIndex).gameObject.SetActive(true);
         }
     }
 
@@ -78,12 +92,12 @@ public class HouseDisplayer : MonoBehaviour
         board.SetActive(false);
         
         house.SetActive(true);
-        houseParts[0].SetActive(true);
+        houseParts.houseParts[LevelContainer.CurrentHouseIndex].parts[0].SetActive(true);
         for (int i = 1; i < LevelsDifficultyContainer.Houses[LevelContainer.CurrentHouseNumber-1].levelsData.Count; i++)
         {
             if (PlayerPrefsManager.IsLevelUnlocked(i))
             {
-                houseParts[i].SetActive(true);
+                houseParts.houseParts[LevelContainer.CurrentHouseIndex].parts[i].SetActive(true);
             }
         }
     }
@@ -95,12 +109,12 @@ public class HouseDisplayer : MonoBehaviour
         board.SetActive(true);
         
         house.SetActive(false);
-        houseParts[0].SetActive(false);
+        houseParts.houseParts[LevelContainer.CurrentHouseIndex].parts[0].SetActive(false);
         for (int i = 1; i < LevelsDifficultyContainer.Houses[LevelContainer.CurrentHouseNumber-1].levelsData.Count; i++)
         {
             if (PlayerPrefsManager.IsLevelUnlocked(i))
             {
-                houseParts[i].SetActive(false);
+                houseParts.houseParts[LevelContainer.CurrentHouseIndex].parts[i].SetActive(false);
             }
         }
     }

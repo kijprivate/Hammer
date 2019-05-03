@@ -17,6 +17,9 @@ public class LevelContainer : MonoBehaviour
     private int currentHouseNumber;
     public static int CurrentHouseNumber => Instance.currentHouseNumber;
 
+    private int currentHouseIndex;
+    public static int CurrentHouseIndex => Instance.currentHouseIndex;
+
     private int numberOfNails;
     public static int NumberOfNails => Instance.numberOfNails;
 
@@ -69,6 +72,7 @@ public class LevelContainer : MonoBehaviour
         }
 
         currentLevelIndex = levNumber - 1;
+        currentHouseIndex = currentHouseNumber - 1;
         print(currentHouseNumber);
         print(currentLevelNumber);
         print(currentLevelIndex);

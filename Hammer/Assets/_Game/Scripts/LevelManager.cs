@@ -10,8 +10,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] GameObject QuitPanel;
     [SerializeField] Button CancelQuitPanel;
 
-    private bool isPaused;
-    private bool quitPanelActive;
+    public bool isPaused { get; set; }
+    public bool quitPanelActive { get; set; }
 
     private static LevelManager _instance;
     public static LevelManager Instance { get { return _instance; } }
