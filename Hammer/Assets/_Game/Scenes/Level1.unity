@@ -4757,7 +4757,7 @@ PrefabInstance:
         type: 3}
       propertyPath: houseParts
       value: 
-      objectReference: {fileID: 11400000, guid: a4163aa71120e4e4da2caa5c130720c6,
+      objectReference: {fileID: 11400000, guid: 9609d92f917bf6e42834833469409b27,
         type: 2}
     - target: {fileID: 2776964723470110587, guid: 93ae3e8e918a7d649a5173dd4e5527d9,
         type: 3}

@@ -30,6 +30,12 @@ public class LevelManager : MonoBehaviour
         PlayerPrefsManager.UnlockLevel(1);
     }
 
+    //private void OnApplicationPause(bool pause)
+    //{
+    //    PauseButton.onClick.Invoke();
+    //    isPaused = true;
+    //}
+
     private void Update()
     {
         if((Input.GetKey(KeyCode.Home) || Input.GetKey(KeyCode.Menu)) && LevelContainer.MenuHided && !isPaused)

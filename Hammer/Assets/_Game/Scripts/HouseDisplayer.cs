@@ -19,18 +19,9 @@ public class HouseDisplayer : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(SetupHouse());
 
-        for (int i = 0; i < houseParts.houseParts[LevelContainer.CurrentHouseNumber - 1].parts.Count; i++)
-        {
-            var part = Instantiate(houseParts.houseParts[LevelContainer.CurrentHouseIndex].parts[i],transform.position,Quaternion.identity);
-            part.transform.SetParent(house.transform);
-            part.transform.localPosition = Vector3.zero;
-            part.transform.localRotation = Quaternion.Euler(Vector3.zero);
-            part.SetActive(false);
-            //TODO Add dotween animation runtime
-        }
 
-        positionToAnimate = house.transform.GetChild(LevelContainer.CurrentLevelIndex).gameObject.transform.position;
 
         hammer = FindObjectOfType<Hammer>();
         nailsSpawner = FindObjectOfType<NailsSpawner>();
@@ -44,6 +35,21 @@ public class HouseDisplayer : MonoBehaviour
         starsForPreviousTries = data.gainedStars;
     }
 
+    IEnumerator SetupHouse()
+    {
+        yield return new WaitForSeconds(1f);
+
+        for (int i = 0; i < houseParts.houseParts[LevelContainer.CurrentHouseIndex].parts.Count; i++)
+        {
+            var part = Instantiate(houseParts.houseParts[LevelContainer.CurrentHouseIndex].parts[i], transform.position, Quaternion.identity);
+            part.transform.SetParent(house.transform);
+            part.transform.localPosition = Vector3.zero;
+            part.transform.localRotation = Quaternion.Euler(Vector3.zero);
+            part.SetActive(false);
+        }
+
+        positionToAnimate = house.transform.GetChild(LevelContainer.CurrentLevelIndex).gameObject.transform.position;
+    }
     void OnGameOver()
     {
         StartCoroutine(DisableGameplayItemsAndActiveHouse());
