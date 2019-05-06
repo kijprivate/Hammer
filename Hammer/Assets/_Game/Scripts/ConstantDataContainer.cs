@@ -17,19 +17,27 @@ public class ConstantDataContainer:ScriptableObject
     float positionOverNailHeadAfterHit = 0.7f;
     public static float PositionOverNailHeadAfterHit => Instance.positionOverNailHeadAfterHit;
 
-    [Header("Nails")]
+    [Header("Nails Score")]
     [SerializeField] 
-    private int scoreForDefaultNail=300;
-    public static int ScoreForDefaultNail => Instance.scoreForDefaultNail;
-    
+    private int defaultNail=100;
+    public static int DefaultNail => Instance.defaultNail;
+
+    [SerializeField]
+    private int movingDefaultNail = 150;
+    public static int MovingDefaultNail => Instance.movingDefaultNail;
+
     [SerializeField] 
-    private int scoreForRedNail=600;
-    public static int ScoreForRedNail => Instance.scoreForRedNail;
+    private int redNail=300;
+    public static int RedNail => Instance.redNail;
+
+    [SerializeField]
+    private int movingRedNail = 450;
+    public static int MovingRedNail => Instance.movingRedNail;
 
     [Header("Score")]
     [SerializeField] 
-    private int scoreBonusForPerfectHit = 100;
-    public static int ScoreBonusForPerfectHit => Instance.scoreBonusForPerfectHit;
+    private int percentageBonusForPerfectHit = 50;
+    public static float PercentageBonusForPerfectHit => Instance.percentageBonusForPerfectHit/100f;
     
     [SerializeField] 
     private int percentageValueFor1Star = 65;

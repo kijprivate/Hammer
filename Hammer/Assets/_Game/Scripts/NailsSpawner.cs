@@ -15,7 +15,7 @@ public class NailsSpawner : MonoBehaviour
     
     private int minHammerHits;
     private int numberOfNails;
-    private float Xoffset = 2f;
+    private float Xoffset = 2.3f;
     private int spawnedDefaultNails;
     private int spawnedRedNails;
     private int spawnedMovingDefaultNails;

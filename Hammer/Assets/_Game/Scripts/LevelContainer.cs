@@ -108,17 +108,16 @@ public class LevelContainer : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         //maxAvailableScore = NailsSpawner.MaxScoreForNails + numberOfNails * ConstantDataContainer.ScoreBonusForPerfectHit;
-        maxAvailableScore = NailsSpawner.MaxScoreForNails + (int)(data.numberOfDefaultNails * ConstantDataContainer.ScoreForDefaultNail * 0.5f +
-                                                                  data.numberOfRedNails * ConstantDataContainer.ScoreForRedNail*0.5f +
-                                                                  data.movingDefaultNails * ConstantDataContainer.ScoreForDefaultNail*1.5f*0.5f +
-                                                                  data.movingRedNails * ConstantDataContainer.ScoreForRedNail * 1.5f * 0.5f );
-        //print(NailsSpawner.MaxScoreForNails);
-        //print(data.numberOfDefaultNails * ConstantDataContainer.ScoreForDefaultNail * 0.5f +
-        //                                                          data.numberOfRedNails * ConstantDataContainer.ScoreForRedNail * 0.5f +
-        //                                                          data.movingDefaultNails * ConstantDataContainer.ScoreForDefaultNail * 1.5f * 0.5f +
-        //                                                          data.movingRedNails * ConstantDataContainer.ScoreForRedNail * 1.5f * 0.5f);
-        //print(maxAvailableScore);
+        maxAvailableScore = (int)((data.numberOfDefaultNails * ConstantDataContainer.DefaultNail +
+                             data.numberOfRedNails * ConstantDataContainer.RedNail +
+                             data.movingDefaultNails * ConstantDataContainer.MovingDefaultNail +
+                             data.movingRedNails * ConstantDataContainer.MovingRedNail) +
+                             (data.numberOfDefaultNails * ConstantDataContainer.DefaultNail +
+                             data.numberOfRedNails * ConstantDataContainer.RedNail +
+                             data.movingDefaultNails * ConstantDataContainer.MovingDefaultNail +
+                             data.movingRedNails * ConstantDataContainer.MovingRedNail) * ConstantDataContainer.PercentageBonusForPerfectHit);
     }
+
     static LevelContainer instance;
     public static LevelContainer Instance
     {
@@ -131,18 +130,24 @@ public class LevelContainer : MonoBehaviour
             return instance;
         }
     }
+
     private void OnGameOver()
     {
         GameOver = true;
 
         //maxAvailableScore = NailsSpawner.MaxScoreForNails + numberOfNails * ConstantDataContainer.ScoreBonusForPerfectHit;
-        maxAvailableScore = NailsSpawner.MaxScoreForNails + (int)(data.numberOfDefaultNails * ConstantDataContainer.ScoreForDefaultNail * 0.5f +
-                                                           data.numberOfRedNails * ConstantDataContainer.ScoreForRedNail * 0.5f +
-                                                           data.movingDefaultNails * ConstantDataContainer.ScoreForDefaultNail * 1.5f * 0.5f +
-                                                           data.movingRedNails * ConstantDataContainer.ScoreForRedNail * 1.5f * 0.5f);
+        maxAvailableScore = (int)((data.numberOfDefaultNails * ConstantDataContainer.DefaultNail +
+                             data.numberOfRedNails * ConstantDataContainer.RedNail +
+                             data.movingDefaultNails * ConstantDataContainer.MovingDefaultNail +
+                             data.movingRedNails * ConstantDataContainer.MovingRedNail) +
+                             (data.numberOfDefaultNails * ConstantDataContainer.DefaultNail +
+                             data.numberOfRedNails * ConstantDataContainer.RedNail +
+                             data.movingDefaultNails * ConstantDataContainer.MovingDefaultNail +
+                             data.movingRedNails * ConstantDataContainer.MovingRedNail)*ConstantDataContainer.PercentageBonusForPerfectHit);
+
         print(maxAvailableScore);
         percentageValueOfScore = (float)Score / maxAvailableScore;
-        
+
         StartCoroutine(CalculatePointsWithDelay());
     }
 
@@ -150,20 +155,19 @@ public class LevelContainer : MonoBehaviour
     {
         yield return new WaitForSeconds(0.3f);
        
-
-        if (percentageValueOfScore > cashed3Stars)
+        if (percentageValueOfScore >= cashed3Stars)
         {
             starsForCurrentTry = 3;
             PlayerPrefsManager.UnlockLevel(SceneManager.GetActiveScene().buildIndex + 2);
             HandleCoins();
         }
-        else if (percentageValueOfScore > cashed2Stars)
+        else if (percentageValueOfScore >= cashed2Stars)
         {
             starsForCurrentTry = 2;
             PlayerPrefsManager.UnlockLevel(SceneManager.GetActiveScene().buildIndex + 2);
             HandleCoins();
         }
-        else if (percentageValueOfScore > cashed1Star)
+        else if (percentageValueOfScore >= cashed1Star)
         {
             starsForCurrentTry = 1;
             PlayerPrefsManager.UnlockLevel(SceneManager.GetActiveScene().buildIndex + 2);
@@ -175,6 +179,7 @@ public class LevelContainer : MonoBehaviour
             HandleCoins();
         }
     }
+
     private void HandleCoins()
     {
         if (Score > data.highScore)

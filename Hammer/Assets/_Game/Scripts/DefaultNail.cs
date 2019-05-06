@@ -8,7 +8,7 @@ public class DefaultNail : Nail
     {
         base.Awake();
         StartCoroutine(AdditionalPointsForMoving());
-        scoreForNail = ConstantDataContainer.ScoreForDefaultNail;
+        scoreForNail = ConstantDataContainer.DefaultNail;
     }
 
     IEnumerator AdditionalPointsForMoving()
@@ -16,11 +16,11 @@ public class DefaultNail : Nail
         yield return new WaitForEndOfFrame();
         if (isMoving)
         {
-            scoreForNail = (int)(ConstantDataContainer.ScoreForDefaultNail * 1.5f);
+            scoreForNail = ConstantDataContainer.MovingDefaultNail;
         }
         else
         {
-            scoreForNail = ConstantDataContainer.ScoreForDefaultNail;
+            scoreForNail = ConstantDataContainer.DefaultNail;
         }
     }
 

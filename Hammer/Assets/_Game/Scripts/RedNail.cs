@@ -7,7 +7,7 @@ public class RedNail : Nail
     protected override void Awake()
     {
         base.Awake();
-        scoreForNail = ConstantDataContainer.ScoreForRedNail;
+        scoreForNail = ConstantDataContainer.RedNail;
         StartCoroutine(AdditionalPointsForMoving());
     }
 
@@ -16,11 +16,11 @@ public class RedNail : Nail
         yield return new WaitForEndOfFrame();
         if (isMoving)
         {
-            scoreForNail = (int)(ConstantDataContainer.ScoreForRedNail * 1.5f);
+            scoreForNail = ConstantDataContainer.MovingRedNail;
         }
         else
         {
-            scoreForNail = ConstantDataContainer.ScoreForRedNail;
+            scoreForNail = ConstantDataContainer.RedNail;
         }
     }
 

@@ -57,6 +57,7 @@ public class CanvasManager : MonoBehaviour
     private Vector3 PerfectScale;
     private int numberOfNails;
     private AudioSource CanvasAudioSource;
+    private int score;
 
     private void Start()
     {
@@ -129,19 +130,24 @@ public class CanvasManager : MonoBehaviour
         GameplayUI.SetActive(false);
         LevelName.gameObject.SetActive(false);
 
-        if (LevelContainer.PercentageValueOfScore > cashed3Stars)
+        DisplayStars();
+    }
+
+    private void DisplayStars()
+    {
+        if (LevelContainer.PercentageValueOfScore >= cashed3Stars)
         {
             star3.SetActive(true);
             PlayAgain.SetActive(true);
             NextLevel.SetActive(true);
         }
-        else if (LevelContainer.PercentageValueOfScore > cashed2Stars)
+        else if (LevelContainer.PercentageValueOfScore >= cashed2Stars)
         {
             star2.SetActive(true);
             PlayAgain.SetActive(true);
             NextLevel.SetActive(true);
         }
-        else if (LevelContainer.PercentageValueOfScore > cashed1Star)
+        else if (LevelContainer.PercentageValueOfScore >= cashed1Star)
         {
             star1.SetActive(true);
             PlayAgain.SetActive(true);
@@ -150,22 +156,33 @@ public class CanvasManager : MonoBehaviour
         else
         {
             PlayAgain.SetActive(true);
-            NextLevel.SetActive(false);
+            NextLevel.GetComponent<Button>().enabled = false;
+            NextLevel.GetComponent<Image>().color = Color.grey;
+            NextLevel.SetActive(true);
         }
     }
 
     private IEnumerator DisplayPoints()
     {
         yield return new WaitForSeconds(0.1f);
-        SummaryPanel.SetActive(true); 
-        ScoreSummary.text = LevelContainer.Score.ToString();
+        SummaryPanel.SetActive(true);
+        yield return new WaitForSeconds(0.5f); // duration of sliding panel animation
+        int toScore = LevelContainer.Score;
+        score = 0;
+        DOTween.To(() => score, x => score = x, toScore, 3).OnUpdate(UpdateUI).OnComplete(UpdateUI);
+
+    }
+
+    private void UpdateUI()
+    {
+        ScoreSummary.text = score.ToString();
     }
     
     private IEnumerator DisplayMinPoints()
     {
         yield return new WaitForSeconds(1.1f);
-        ScoreGameplay.text = LevelContainer.Score.ToString();
-       // ScoreGameplay.text = LevelContainer.Score +"/"+LevelContainer.MaxAvailableScore*(ConstantDataContainer.PercentageValueFor1Star/100f);
+        //ScoreGameplay.text = LevelContainer.Score.ToString();
+        ScoreGameplay.text = LevelContainer.Score + "/"+ (int)(LevelContainer.MaxAvailableScore*cashed1Star);
     }
     
     private void OnHammerHit()
@@ -175,37 +192,20 @@ public class CanvasManager : MonoBehaviour
 
     private void OnNailPocket()
     {
-        ScoreGameplay.text = LevelContainer.Score.ToString();
+        //ScoreGameplay.text = LevelContainer.Score.ToString();
 
-        //if (LevelContainer.Score >
-        //    LevelContainer.MaxAvailableScore * (ConstantDataContainer.PercentageValueFor3Stars / 100f) &&
-        //    LevelContainer.Score >
-        //    LevelsDifficultyContainer.Houses[LevelContainer.CurrentHouseNumber-1].levelsData[LevelContainer.CurrentLevelIndex].highScore)
-        //{
-        //    ScoreGameplay.text = LevelContainer.Score.ToString();
-        //}
-        //else if (LevelContainer.Score >
-        //    LevelContainer.MaxAvailableScore * (ConstantDataContainer.PercentageValueFor3Stars / 100f) &&
-        //    LevelContainer.Score < LevelsDifficultyContainer.Houses[LevelContainer.CurrentHouseNumber-1].levelsData[LevelContainer.CurrentLevelIndex].highScore)
-        //{
-        //    ScoreGameplay.text = LevelContainer.Score +"/"+LevelsDifficultyContainer.Houses[LevelContainer.CurrentHouseNumber-1].levelsData[LevelContainer.CurrentLevelIndex].highScore;
-        //}
-        //else if (LevelContainer.Score >
-        //    LevelContainer.MaxAvailableScore * (ConstantDataContainer.PercentageValueFor2Stars / 100f))
-        //{
-        //    ScoreGameplay.text = LevelContainer.Score +"/"+LevelContainer.MaxAvailableScore*(ConstantDataContainer.PercentageValueFor3Stars/100f);
-        //}
-        //else if (LevelContainer.Score >
-        //    LevelContainer.MaxAvailableScore * (ConstantDataContainer.PercentageValueFor1Star / 100f))
-        //{
-        //    ScoreGameplay.text = LevelContainer.Score +"/"+LevelContainer.MaxAvailableScore*(ConstantDataContainer.PercentageValueFor2Stars/100f);
-        //}
-        //else if (LevelContainer.Score <
-        //    LevelContainer.MaxAvailableScore * (ConstantDataContainer.PercentageValueFor1Star / 100f))
-        //{
-        //    ScoreGameplay.text = LevelContainer.Score + "/" + LevelContainer.MaxAvailableScore *
-        //                         (ConstantDataContainer.PercentageValueFor1Star / 100f);
-        //}
+        if (LevelContainer.Score >= LevelContainer.MaxAvailableScore * cashed2Stars)
+        {
+            ScoreGameplay.text = LevelContainer.Score + "/" + LevelContainer.MaxAvailableScore; //TODO change if 3 stars != 100% max score
+        }
+        else if (LevelContainer.Score >= LevelContainer.MaxAvailableScore * cashed1Star)
+        {
+            ScoreGameplay.text = LevelContainer.Score + "/" + (int)(LevelContainer.MaxAvailableScore * cashed2Stars);
+        }
+        else if (LevelContainer.Score < LevelContainer.MaxAvailableScore * cashed1Star)
+        {
+            ScoreGameplay.text = LevelContainer.Score + "/" + (int)(LevelContainer.MaxAvailableScore * cashed1Star);
+        }
     }
 
     private void OnNailFinished()

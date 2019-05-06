@@ -148,7 +148,7 @@ public class Hammer : MonoBehaviour
 
         for(int i = 0; i < cashedMaxStrength+1; i++)
         {
-            if(myTransform.rotation.z >= i*strengthInterval && myTransform.rotation.z < (i+1)*strengthInterval)
+            if(myTransform.rotation.z >= i*strengthInterval && myTransform.rotation.z <= (i+1)*strengthInterval + Mathf.Epsilon)
             { strength = i; }
         }
     }
@@ -205,7 +205,7 @@ public class Hammer : MonoBehaviour
     private void OnPerfectHit()
     {
        // Debug.Log("Perfect hit with " +targetNail.ScoreForNail+"score");
-        LevelContainer.Score += (int)(targetNail.ScoreForNail*0.5f);
+        LevelContainer.Score += (int)(targetNail.ScoreForNail*ConstantDataContainer.PercentageBonusForPerfectHit);
     }
 
     private void OnSpriteChanged()
