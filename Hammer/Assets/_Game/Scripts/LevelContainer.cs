@@ -158,19 +158,19 @@ public class LevelContainer : MonoBehaviour
         if (percentageValueOfScore >= cashed3Stars)
         {
             starsForCurrentTry = 3;
-            PlayerPrefsManager.UnlockLevel(SceneManager.GetActiveScene().buildIndex + 2);
+            PlayerPrefsManager.UnlockLevel(currentLevelNumber + 1);
             HandleCoins();
         }
         else if (percentageValueOfScore >= cashed2Stars)
         {
             starsForCurrentTry = 2;
-            PlayerPrefsManager.UnlockLevel(SceneManager.GetActiveScene().buildIndex + 2);
+            PlayerPrefsManager.UnlockLevel(currentLevelNumber + 1);
             HandleCoins();
         }
         else if (percentageValueOfScore >= cashed1Star)
         {
             starsForCurrentTry = 1;
-            PlayerPrefsManager.UnlockLevel(SceneManager.GetActiveScene().buildIndex + 2);
+            PlayerPrefsManager.UnlockLevel(currentLevelNumber + 1);
             HandleCoins();
         }
         else
