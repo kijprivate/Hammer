@@ -15,7 +15,7 @@ public class NailsSpawner : MonoBehaviour
     
     private int minHammerHits;
     private int numberOfNails;
-    private float Xoffset = 2.3f;
+    private float Xoffset = 2.5f;
     private int spawnedDefaultNails;
     private int spawnedRedNails;
     private int spawnedMovingDefaultNails;
@@ -86,10 +86,10 @@ public class NailsSpawner : MonoBehaviour
                         defNail.Xoffset = Xoffset;
 
                         defNail.transform.position = defNail.DefaultPosition;
-                        defNail.strengthForCorrectHit = defNail.DefaultStrengthForCorrectHit;
+                       // defNail.strengthForCorrectHit = defNail.DefaultStrengthForCorrectHit;
                         defNail.isMoving = true;
 
-                        CalculatePoints(defNail.strengthForCorrectHit, defNail.ScoreForNail);
+                        CalculatePoints(defNail.DefaultStrengthForCorrectHit, defNail.ScoreForNail);
                         spawnedMovingDefaultNails++;
                         i++;
                     }
@@ -102,10 +102,10 @@ public class NailsSpawner : MonoBehaviour
                         rNail.Xoffset = Xoffset;
 
                         rNail.transform.position = rNail.DefaultPosition;
-                        rNail.strengthForCorrectHit = rNail.DefaultStrengthForCorrectHit;
+                       // rNail.strengthForCorrectHit = rNail.DefaultStrengthForCorrectHit;
                         rNail.isMoving = true;
 
-                        CalculatePoints(rNail.strengthForCorrectHit, rNail.ScoreForNail);
+                        CalculatePoints(rNail.DefaultStrengthForCorrectHit, rNail.ScoreForNail);
                         spawnedMovingRedNails++;
                         i++;
                     }

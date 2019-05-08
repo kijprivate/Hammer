@@ -17,6 +17,7 @@ public class RedNail : Nail
         if (isMoving)
         {
             scoreForNail = ConstantDataContainer.MovingRedNail;
+            strengthForCorrectHit = defaultStrengthForCorrectHit;
         }
         else
         {

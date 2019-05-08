@@ -16,6 +16,7 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] GameObject ScoreEarned;    // Text displaying points earned with one hit
     [SerializeField] GameObject PerfectObject;    // Text displaying when perfect hit
     [SerializeField] GameObject BonusObject;    // Text displaying when perfect hit
+    [SerializeField] GameObject[] StarsGameplay; 
     [SerializeField] Text ScoreGameplay;
     [SerializeField] Text ScoreSummary;
     [SerializeField] Text HammersLeft;
@@ -75,7 +76,7 @@ public class CanvasManager : MonoBehaviour
         numberOfNails = LevelContainer.NumberOfNails;
         HammersLeft.text = LevelContainer.HammerHits.ToString();
         NailPocket.text = numberOfNails.ToString();
-        LevelName.text = "Level"+LevelContainer.CurrentLevelNumber;
+        LevelName.text = "LEVEL "+(LevelContainer.CurrentLevelIndex+1);
         Coins.text = PlayerPrefsManager.GetNumberOfCoins().ToString();
 
         cashed1Star = ConstantDataContainer.PercentageValueFor1Star/100f;
@@ -194,15 +195,25 @@ public class CanvasManager : MonoBehaviour
     {
         //ScoreGameplay.text = LevelContainer.Score.ToString();
 
-        if (LevelContainer.Score >= LevelContainer.MaxAvailableScore * cashed2Stars)
+        if (LevelContainer.Score == LevelContainer.MaxAvailableScore)
         {
             ScoreGameplay.text = LevelContainer.Score + "/" + LevelContainer.MaxAvailableScore; //TODO change if 3 stars != 100% max score
+            StarsGameplay[0].SetActive(true);
+            StarsGameplay[1].SetActive(true);
+            StarsGameplay[2].SetActive(true);
         }
-        else if (LevelContainer.Score >= LevelContainer.MaxAvailableScore * cashed1Star)
+        else if (LevelContainer.Score >= LevelContainer.MaxAvailableScore * cashed2Stars)
+        {
+            ScoreGameplay.text = LevelContainer.Score + "/" + LevelContainer.MaxAvailableScore; //TODO change if 3 stars != 100% max score
+            StarsGameplay[0].SetActive(true);
+            StarsGameplay[1].SetActive(true);
+        }
+        else if (LevelContainer.Score + 1 >= LevelContainer.MaxAvailableScore * cashed1Star)
         {
             ScoreGameplay.text = LevelContainer.Score + "/" + (int)(LevelContainer.MaxAvailableScore * cashed2Stars);
+            StarsGameplay[0].SetActive(true);
         }
-        else if (LevelContainer.Score < LevelContainer.MaxAvailableScore * cashed1Star)
+        else if (LevelContainer.Score + 1 < LevelContainer.MaxAvailableScore * cashed1Star)
         {
             ScoreGameplay.text = LevelContainer.Score + "/" + (int)(LevelContainer.MaxAvailableScore * cashed1Star);
         }

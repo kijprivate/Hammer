@@ -76,6 +76,8 @@ public class LevelContainer : MonoBehaviour
         print(currentHouseNumber);
         print(currentLevelNumber);
         print(currentLevelIndex);
+        PlayerPrefsManager.UnlockLevel(11);
+        PlayerPrefsManager.UnlockLevel(21);
         //DontDestroyOnLoad(gameObject);
         data = LevelsDifficultyContainer.Houses[currentHouseNumber-1].levelsData[currentLevelIndex];
 

@@ -53,7 +53,7 @@ public abstract class Nail : MonoBehaviour
         cashedMaxHammerStrength = ConstantDataContainer.MaxHammerStrength;
         hammer = FindObjectOfType<Hammer>();
         SetRandomHeight();
-        CalculateMinHammerHits();
+        StartCoroutine(CalculateMinHammerHits());
     }
     protected void Update()
     {
@@ -134,9 +134,6 @@ public abstract class Nail : MonoBehaviour
             isOverhit = true;
             isMoving = false;
             scoreForNail = 0;
-            //var sequence = DOTween.Sequence();
-            //sequence.Append(transform.DOMoveY(-5, 1f))
-            //    .Join(transform.DOScale(Vector3.zero, 1f));
         }
         else if (isMoving && GetCurrentAngle() <= allowedAngle)
         {
@@ -144,15 +141,17 @@ public abstract class Nail : MonoBehaviour
             transform.DORotate(Vector3.zero, 0.2f);
         }
     }
-    protected void CalculateMinHammerHits()
+    protected IEnumerator CalculateMinHammerHits()
     {
-        if (strengthForCorrectHit % cashedMaxHammerStrength == 0)
+        yield return new WaitForEndOfFrame();
+ 
+        if(isMoving)
         {
-            minHammerHits += strengthForCorrectHit / cashedMaxHammerStrength;
+            minHammerHits += (int)Mathf.Ceil(defaultStrengthForCorrectHit / (float)cashedMaxHammerStrength);
         }
         else
         {
-            minHammerHits += strengthForCorrectHit / cashedMaxHammerStrength + 1;
+            minHammerHits += (int)Mathf.Ceil(strengthForCorrectHit / (float)cashedMaxHammerStrength);
         }
     }
     

@@ -17,6 +17,7 @@ public class DefaultNail : Nail
         if (isMoving)
         {
             scoreForNail = ConstantDataContainer.MovingDefaultNail;
+            strengthForCorrectHit = defaultStrengthForCorrectHit;
         }
         else
         {

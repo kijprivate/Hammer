@@ -28,6 +28,7 @@ public class LevelManager : MonoBehaviour
         }
 
         PlayerPrefsManager.UnlockLevel(1);
+        PlayerPrefsManager.UnlockHouse(1);
     }
 
     //private void OnApplicationPause(bool pause)
@@ -69,15 +70,23 @@ public class LevelManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        if (LevelsDifficultyContainer.Houses[LevelContainer.CurrentHouseNumber-1].levelsData.Count > LevelContainer.CurrentLevelIndex+1)
+        if (LevelsDifficultyContainer.Houses[LevelContainer.CurrentHouseIndex].levelsData.Count > LevelContainer.CurrentLevelIndex+1)
         {
             PlayerPrefsManager.ChooseLevel(PlayerPrefsManager.GetChosenLevelNumber()+1);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             LevelContainer.MenuHided = true;
-        } //TODO unlock next house
+        } 
+        else if(LevelsDifficultyContainer.Houses.Count > LevelContainer.CurrentHouseNumber)
+        {
+            PlayerPrefsManager.UnlockHouse(LevelContainer.CurrentHouseNumber + 1);
+            PlayerPrefsManager.ChooseLevel(PlayerPrefsManager.GetChosenLevelNumber() + 1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            LevelContainer.MenuHided = true;
+        }
         else
         {
-            Debug.Log("This was last level");
+            //TODO handle this somehow
+            Debug.Log("This was last level in last house");
         }
     }
     public void ReloadLevel()
