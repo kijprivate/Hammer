@@ -35,6 +35,11 @@ public class BlurFade : MonoBehaviour
         blur.enabled = false;
     }
 
+    public void DisableBlur()
+    {
+        blur.enabled = false;
+    }
+
     private void OnDestroy()
     {
         EventManager.EventMenuHided -= OnMenuHided;

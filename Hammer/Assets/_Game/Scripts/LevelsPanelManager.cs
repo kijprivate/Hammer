@@ -5,22 +5,30 @@ using UnityEngine.UI;
 
 public class LevelsPanelManager : MonoBehaviour
 {
+    [SerializeField] AppearanceData appearanceData;
+    [SerializeField] GameObject ShowHouseButton;
     [SerializeField] GameObject CurrentHouse;
 
     [SerializeField] GameObject Previous;
     [SerializeField] GameObject Next;
+
+    [SerializeField] Text houseName;
 
     private Text[] levelNamesCurrentHouse;
     private Transform[] starsCurrentHouse;
 
     private LevelManager levelManager;
     private LevelData data;
+    private BlurFade blurFade;
+    private HouseDisplayer houseDisplayer;
     private int localHouseIndex;
     private int decimalNumberOfLevel;
 
     private void Awake()
     {
         levelManager = FindObjectOfType<LevelManager>();
+        houseDisplayer = FindObjectOfType<HouseDisplayer>();
+        blurFade = FindObjectOfType<BlurFade>();
         levelNamesCurrentHouse = Finder.FindComponentsInChildrenWithTag<Text>(CurrentHouse, "LevelName");
         starsCurrentHouse = Finder.FindComponentsInChildrenWithTag<Transform>(CurrentHouse, "StarsLevelsPanel");
 
@@ -58,10 +66,17 @@ public class LevelsPanelManager : MonoBehaviour
     {
         decimalNumberOfLevel = localHouseIndex * 10;
 
+        houseName.text = "HOUSE " + (localHouseIndex + 1);
+
+        ShowHouseButton.GetComponent<Image>().sprite = appearanceData.houses[localHouseIndex].ShowIcon;
+        ShowHouseButton.GetComponent<Button>().onClick.RemoveAllListeners();
+        ShowHouseButton.GetComponent<Button>().onClick.AddListener(() => ShowHouse(localHouseIndex+1));
+
         for (int i = 0; i < levelNamesCurrentHouse.Length; i++)
         {
             var levelNumber = i + 1;
             levelNamesCurrentHouse[i].text = "LEVEL " + (i + 1);
+            levelNamesCurrentHouse[i].gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
             levelNamesCurrentHouse[i].gameObject.GetComponent<Button>().onClick.AddListener(() => LoadLevel(decimalNumberOfLevel + levelNumber));
 
             if (!PlayerPrefsManager.IsLevelUnlocked(decimalNumberOfLevel + levelNumber))
@@ -132,5 +147,11 @@ public class LevelsPanelManager : MonoBehaviour
     public void LoadLevel(int globalLevelNumber)
     {
         levelManager.LoadLevel(globalLevelNumber);
+    }
+
+    public void ShowHouse(int houseNumber)
+    {
+        blurFade.DisableBlur();
+        houseDisplayer.ShowHouse(houseNumber);
     }
 }

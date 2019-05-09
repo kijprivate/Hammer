@@ -202,18 +202,18 @@ public class CanvasManager : MonoBehaviour
             StarsGameplay[1].SetActive(true);
             StarsGameplay[2].SetActive(true);
         }
-        else if (LevelContainer.Score >= LevelContainer.MaxAvailableScore * cashed2Stars)
+        else if (LevelContainer.Score + 5 >= LevelContainer.MaxAvailableScore * cashed2Stars)
         {
             ScoreGameplay.text = LevelContainer.Score + "/" + LevelContainer.MaxAvailableScore; //TODO change if 3 stars != 100% max score
             StarsGameplay[0].SetActive(true);
             StarsGameplay[1].SetActive(true);
         }
-        else if (LevelContainer.Score + 1 >= LevelContainer.MaxAvailableScore * cashed1Star)
+        else if (LevelContainer.Score + 5 >= LevelContainer.MaxAvailableScore * cashed1Star)
         {
             ScoreGameplay.text = LevelContainer.Score + "/" + (int)(LevelContainer.MaxAvailableScore * cashed2Stars);
             StarsGameplay[0].SetActive(true);
         }
-        else if (LevelContainer.Score + 1 < LevelContainer.MaxAvailableScore * cashed1Star)
+        else if (LevelContainer.Score + 5 < LevelContainer.MaxAvailableScore * cashed1Star)
         {
             ScoreGameplay.text = LevelContainer.Score + "/" + (int)(LevelContainer.MaxAvailableScore * cashed1Star);
         }

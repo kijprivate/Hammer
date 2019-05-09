@@ -507,11 +507,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 2165719928082984486, guid: c5953cea3ebe49e38a0c267d434069bf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 412901700}
     - target: {fileID: 8513580388261417550, guid: c5953cea3ebe49e38a0c267d434069bf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1176,6 +1171,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &746793375 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3098954382602746060, guid: c5953cea3ebe49e38a0c267d434069bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 312131234}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &916738320
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1219,6 +1220,11 @@ PrefabInstance:
       propertyPath: ResumeButton
       value: 
       objectReference: {fileID: 956979913}
+    - target: {fileID: 4876835395037101417, guid: 827f869584cb4196bf0c9e1abec8c432,
+        type: 3}
+      propertyPath: PausePanel
+      value: 
+      objectReference: {fileID: 746793375}
     - target: {fileID: 4876835395037101416, guid: 827f869584cb4196bf0c9e1abec8c432,
         type: 3}
       propertyPath: m_LocalPosition.x

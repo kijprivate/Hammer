@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.SceneManagement;
 
 public class HouseDisplayer : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class HouseDisplayer : MonoBehaviour
     private Vector3 positionToAnimate;
     private Hammer hammer;
     private NailsSpawner nailsSpawner;
+    private Sequence sequence;
+    private float animationTime = 0.8f;
     private int index;
     private int starsForPreviousTries;
 
@@ -68,29 +71,16 @@ public class HouseDisplayer : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         SummaryGround.SetActive(true);
-        var time = 0.8f;
+
         virtualCamera.m_Follow = null;
-        var seqBoard = DOTween.Sequence();
-        seqBoard.Append(board.transform.DOMove(board.transform.position + new Vector3(0f, -8f, 0f), time))
-            // .Join(board.transform.DOScale(Vector3.zero, time))
-            .Join(clouds.transform.DOMove(clouds.transform.position + new Vector3(0f, -8f, 0f), time))
-            // .Join(clouds.transform.DOScale(Vector3.zero, time))
-            .Join(background.transform.DOMove(background.transform.position + new Vector3(0f, -8f, 0f), 0.8f))
-            //  .Join(background.transform.DOScale(Vector3.zero, time))
-            .Join(hammer.transform.DOMove(background.transform.position + new Vector3(0f, -8f, 0f), 0.8f))
-            // .Join(hammer.transform.DOScale(Vector3.zero, time))
-            .Join(nailsSpawner.transform.DOMove(background.transform.position + new Vector3(0f, -8f, 0f), 0.8f));
-         //   .Join(nailsSpawner.transform.DOScale(Vector3.zero, time));
-
-        //board.transform.DOMove(board.transform.position + new Vector3(0f, -8f, 0f), 0.8f).;
-        //clouds.transform.DOMove(clouds.transform.position + new Vector3(0f, -8f, 0f), 0.8f);
-        //background.transform.DOMove(background.transform.position + new Vector3(0f, -8f, 0f), 0.8f);
-
-        //hammer.transform.DOMove(background.transform.position + new Vector3(0f, -8f, 0f), 0.8f);
-        //nailsSpawner.transform.DOMove(background.transform.position + new Vector3(0f, -8f, 0f), 0.8f);
+        //sequence = DOTween.Sequence();
+        sequence.Append(board.transform.DOMove(board.transform.position + new Vector3(0f, -8f, 0f), animationTime))
+            .Join(clouds.transform.DOMove(clouds.transform.position + new Vector3(0f, -8f, 0f), animationTime))
+            .Join(background.transform.DOMove(background.transform.position + new Vector3(0f, -8f, 0f), animationTime))
+            .Join(hammer.transform.DOMove(background.transform.position + new Vector3(0f, -8f, 0f), animationTime))
+            .Join(nailsSpawner.transform.DOMove(background.transform.position + new Vector3(0f, -8f, 0f), animationTime));
 
         yield return new WaitForSeconds(0.3f);
-
 
         house.SetActive(true);
         for (int i = 0; i < index; i++)
@@ -119,37 +109,51 @@ public class HouseDisplayer : MonoBehaviour
         }
     }
 
-    //public void ShowHouse(int houseNumber)
-    //{
-    //    hammer.gameObject.SetActive(false);
-    //    nailsSpawner.gameObject.SetActive(false);
-    //    board.SetActive(false);
-        
-    //    house.SetActive(true);
-    //    houseParts.houseParts[LevelContainer.CurrentHouseIndex].parts[0].SetActive(true);
-    //    for (int i = 1; i < LevelsDifficultyContainer.Houses[LevelContainer.CurrentHouseNumber-1].levelsData.Count; i++)
-    //    {
-    //        if (PlayerPrefsManager.IsLevelUnlocked(i))
-    //        {
-    //            houseParts.houseParts[LevelContainer.CurrentHouseIndex].parts[i].SetActive(true);
-    //        }
-    //    }
-    //}
+    public void ShowHouse(int houseNumber)
+    {
+        StartCoroutine(HouseAnimations(houseNumber));
+    }
 
-    //public void BackFromHouseView()
-    //{
-    //    hammer.gameObject.SetActive(true);
-    //    nailsSpawner.gameObject.SetActive(true);
-    //    board.SetActive(true);
-        
-    //    house.SetActive(false);
-    //    houseParts.houseParts[LevelContainer.CurrentHouseIndex].parts[0].SetActive(false);
-    //    for (int i = 1; i < LevelsDifficultyContainer.Houses[LevelContainer.CurrentHouseNumber-1].levelsData.Count; i++)
-    //    {
-    //        if (PlayerPrefsManager.IsLevelUnlocked(i))
-    //        {
-    //            houseParts.houseParts[LevelContainer.CurrentHouseIndex].parts[i].SetActive(false);
-    //        }
-    //    }
-    //}
+    private IEnumerator HouseAnimations(int houseNumber)
+    {
+        SummaryGround.SetActive(true);
+        virtualCamera.m_Follow = null;
+
+        sequence.Append(board.transform.DOMove(board.transform.position + new Vector3(0f, -8f, 0f), animationTime))
+            .Join(clouds.transform.DOMove(clouds.transform.position + new Vector3(0f, -8f, 0f), animationTime))
+            .Join(background.transform.DOMove(background.transform.position + new Vector3(0f, -8f, 0f), animationTime))
+            .Join(hammer.transform.DOMove(background.transform.position + new Vector3(0f, -8f, 0f), animationTime))
+            .Join(nailsSpawner.transform.DOMove(background.transform.position + new Vector3(0f, -8f, 0f), animationTime));
+
+        for (int i = 0; i < LevelsDifficultyContainer.Houses[LevelContainer.CurrentHouseIndex].levelsData.Count; i++)
+        {
+            Destroy(house.transform.GetChild(i).gameObject);
+        }
+
+        for (int i = 0; i < houseParts.houseParts[houseNumber-1].parts.Count; i++)
+        {
+            var part = Instantiate(houseParts.houseParts[houseNumber-1].parts[i], transform.position, Quaternion.identity);
+            part.transform.SetParent(house.transform);
+            part.transform.localPosition = Vector3.zero;
+            part.transform.localRotation = Quaternion.Euler(Vector3.zero);
+            part.SetActive(false);
+        }
+        yield return new WaitForSeconds(0.3f);
+
+        var decimalPart = (houseNumber - 1) * 10;
+        house.SetActive(true);
+
+        for (int i = 0; i < LevelsDifficultyContainer.Houses[houseNumber-1].levelsData.Count; i++)
+        {
+            if (PlayerPrefsManager.IsLevelUnlocked(decimalPart + (i+1)))
+            {
+                house.transform.GetChild(i).gameObject.SetActive(true);
+            }
+        }
+    }
+
+    public void BackFromHouseView()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }

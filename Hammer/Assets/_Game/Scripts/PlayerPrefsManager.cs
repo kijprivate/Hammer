@@ -69,8 +69,11 @@ public class PlayerPrefsManager : MonoBehaviour
     
     public static void LockAllLevels()
     {
-        for (int i = 2; i < 30; i++)
-        {   PlayerPrefs.SetInt(LEVEL_KEY + i.ToString(), 0);}
+        for (int i = 2; i < 1000; i++)
+        {
+            PlayerPrefs.SetInt(LEVEL_KEY + i.ToString(), 0);
+            PlayerPrefs.SetInt(HOUSE_KEY + i.ToString(), 0);
+        }
     }
 
     public static void LockAllHammers()
@@ -81,8 +84,11 @@ public class PlayerPrefsManager : MonoBehaviour
 
     public static void UnlockAllLevels()
     {
-        for (int i = 2; i < 30; i++)
-        {   PlayerPrefs.SetInt(LEVEL_KEY + i.ToString(), 1);}
+        for (int i = 2; i < 1000; i++)
+        {
+            PlayerPrefs.SetInt(LEVEL_KEY + i.ToString(), 1);
+            PlayerPrefs.SetInt(HOUSE_KEY + i.ToString(), 1);
+        }
     }
 
     public static void SetNumberOfCoins(int value)

@@ -7,6 +7,7 @@ public class LevelManager : MonoBehaviour
 {
     [SerializeField] Button PauseButton;
     [SerializeField] Button ResumeButton;
+    [SerializeField] GameObject PausePanel;
     [SerializeField] GameObject QuitPanel;
     [SerializeField] Button CancelQuitPanel;
 
@@ -31,11 +32,14 @@ public class LevelManager : MonoBehaviour
         PlayerPrefsManager.UnlockHouse(1);
     }
 
-    //private void OnApplicationPause(bool pause)
-    //{
-    //    PauseButton.onClick.Invoke();
-    //    isPaused = true;
-    //}
+    private void OnApplicationPause(bool pause)
+    {
+        if(LevelContainer.MenuHided && !isPaused)
+        {
+            PausePanel.SetActive(true);
+            isPaused = true;
+        }
+    }
 
     private void Update()
     {
