@@ -15,4 +15,6 @@ public class HouseAppearance
     public int houseNumber;
 
     [SerializeField] public Sprite ShowIcon;
+    [SerializeField] public Texture BackgroundGradient;
+    [SerializeField] public Material BoardMaterial;
 }

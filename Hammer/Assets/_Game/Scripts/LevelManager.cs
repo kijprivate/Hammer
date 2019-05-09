@@ -45,7 +45,7 @@ public class LevelManager : MonoBehaviour
     {
         if((Input.GetKey(KeyCode.Home) || Input.GetKey(KeyCode.Menu)) && LevelContainer.MenuHided && !isPaused)
         {
-            PauseButton.onClick.Invoke();
+            PausePanel.SetActive(true);
             isPaused = true;
         }
 
