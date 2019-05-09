@@ -19,7 +19,6 @@ public class LevelsPanelManager : MonoBehaviour
 
     private LevelManager levelManager;
     private LevelData data;
-    private BlurFade blurFade;
     private HouseDisplayer houseDisplayer;
     private int localHouseIndex;
     private int decimalNumberOfLevel;
@@ -28,7 +27,6 @@ public class LevelsPanelManager : MonoBehaviour
     {
         levelManager = FindObjectOfType<LevelManager>();
         houseDisplayer = FindObjectOfType<HouseDisplayer>();
-        blurFade = FindObjectOfType<BlurFade>();
         levelNamesCurrentHouse = Finder.FindComponentsInChildrenWithTag<Text>(CurrentHouse, "LevelName");
         starsCurrentHouse = Finder.FindComponentsInChildrenWithTag<Transform>(CurrentHouse, "StarsLevelsPanel");
 
@@ -151,7 +149,6 @@ public class LevelsPanelManager : MonoBehaviour
 
     public void ShowHouse(int houseNumber)
     {
-        blurFade.DisableBlur();
         houseDisplayer.ShowHouse(houseNumber);
     }
 }
