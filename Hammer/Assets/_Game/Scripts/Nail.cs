@@ -4,6 +4,7 @@ using UnityEngine;
 
 using DG.Tweening;
 
+[RequireComponent(typeof(AudioSource))]
 public abstract class Nail : MonoBehaviour
 {
     public Transform nailHead;
@@ -46,6 +47,7 @@ public abstract class Nail : MonoBehaviour
     protected Vector3 defaultPosition;
     protected int cashedMaxHammerStrength;
     protected float rotationZ=0f;
+    protected AudioSource nailAudioSource;
 
     protected abstract void SetRandomHeight();
     protected virtual void Awake()
@@ -54,6 +56,7 @@ public abstract class Nail : MonoBehaviour
         hammer = FindObjectOfType<Hammer>();
         SetRandomHeight();
         StartCoroutine(CalculateMinHammerHits());
+        nailAudioSource = GetComponent<AudioSource>();
     }
     protected void Update()
     {
@@ -129,6 +132,7 @@ public abstract class Nail : MonoBehaviour
     {
         if (isMoving && GetCurrentAngle() > allowedAngle && hammer.GetStrength() > 0)
         {
+            nailAudioSource.Play();
             GetComponentInChildren<MeshRenderer>().enabled = false;
             CrashedNail.SetActive(true);
             isOverhit = true;
