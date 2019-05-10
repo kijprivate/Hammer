@@ -37,6 +37,7 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] AudioClip LevelSound;
     [SerializeField] AudioClip WoodBreakSound;
     [SerializeField] AudioClip PickSound;
+    [SerializeField] AudioClip LevelFailedSound;
     [SerializeField] AudioSource MusicSource;
 
     private float cashed1Star;
@@ -114,8 +115,6 @@ public class CanvasManager : MonoBehaviour
     private void OnGameOver()
     {
         MusicSource.Stop();
-        CanvasAudioSource.clip = LevelSound;
-        CanvasAudioSource.Play();
         StartCoroutine(DisplayPoints());
         if (LevelContainer.Score > data.highScore)
         {
@@ -150,12 +149,16 @@ public class CanvasManager : MonoBehaviour
         }
         else if (LevelContainer.PercentageValueOfScore >= cashed1Star)
         {
+            CanvasAudioSource.clip = LevelSound;
+            CanvasAudioSource.Play();
             star1.SetActive(true);
             PlayAgain.SetActive(true);
             NextLevel.SetActive(true);
         }
         else
         {
+            CanvasAudioSource.clip = LevelFailedSound;
+            CanvasAudioSource.Play();
             PlayAgain.SetActive(true);
             NextLevel.GetComponent<Button>().enabled = false;
             NextLevel.GetComponent<Image>().color = Color.grey;

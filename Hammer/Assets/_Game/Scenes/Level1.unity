@@ -511,6 +511,11 @@ PrefabInstance:
       propertyPath: MusicSource
       value: 
       objectReference: {fileID: 322417097}
+    - target: {fileID: 4387342755592455859, guid: c5953cea3ebe49e38a0c267d434069bf,
+        type: 3}
+      propertyPath: LevelFailedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 406bbed2b6a41114aaf4fd909bf3069d, type: 3}
     - target: {fileID: 1769826331, guid: c5953cea3ebe49e38a0c267d434069bf, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1120,16 +1125,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4876835395037101418, guid: 827f869584cb4196bf0c9e1abec8c432,
-        type: 3}
-      propertyPath: m_Name
-      value: LevelManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 4876835395037101418, guid: 827f869584cb4196bf0c9e1abec8c432,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4876835395037101417, guid: 827f869584cb4196bf0c9e1abec8c432,
         type: 3}
       propertyPath: levelsDifficulty
@@ -1161,6 +1156,16 @@ PrefabInstance:
       propertyPath: PausePanel
       value: 
       objectReference: {fileID: 746793375}
+    - target: {fileID: 4876835395037101418, guid: 827f869584cb4196bf0c9e1abec8c432,
+        type: 3}
+      propertyPath: m_Name
+      value: LevelManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876835395037101418, guid: 827f869584cb4196bf0c9e1abec8c432,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4876835395037101416, guid: 827f869584cb4196bf0c9e1abec8c432,
         type: 3}
       propertyPath: m_LocalPosition.x
