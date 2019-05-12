@@ -37,7 +37,7 @@ public class HouseDisplayer : MonoBehaviour
         
         data = LevelsDifficultyContainer.Houses[LevelContainer.CurrentHouseIndex].levelsData[index];
 
-        starsForPreviousTries = data.gainedStars;
+        starsForPreviousTries = PlayerPrefsManager.GetGainedStars(LevelContainer.CurrentHouseIndex, LevelContainer.CurrentLevelIndex);
     }
 
     IEnumerator SetupHouse()

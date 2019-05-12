@@ -21,11 +21,4 @@ public class LevelData
     public int movingDefaultNails=0;
     [SerializeField] 
     public int movingRedNails=0;
-    
-
-    [Header("Score")] 
-    [SerializeField] 
-    public int gainedStars = 0;
-    [SerializeField] 
-    public int highScore = 0;
 }

@@ -125,18 +125,13 @@ public class LevelManager : MonoBehaviour
     public void LockAllLevels()
     {
         PlayerPrefsManager.LockAllLevels();
-        GameObject[] lockedLevels = GameObject.FindGameObjectsWithTag("Locked");
-        foreach(var locked in lockedLevels)
-        {
-            locked.GetComponent<Button>().enabled = true;
-            locked.GetComponent<Image>().enabled = true;
-        }
+
         for(int i=0;i< LevelsDifficultyContainer.Houses.Count; i++)
         {
             for (int j = 0; j < LevelsDifficultyContainer.Houses[i].levelsData.Count; j++)
             {
-                LevelsDifficultyContainer.Houses[i].levelsData[j].gainedStars=0;
-                LevelsDifficultyContainer.Houses[i].levelsData[j].highScore=0;
+                PlayerPrefsManager.SetGainedStars(i, j, 0);
+                PlayerPrefsManager.SetHighScore(i, j, 0);
             }
         }
     }

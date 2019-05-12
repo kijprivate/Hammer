@@ -88,12 +88,10 @@ public class LevelsPanelManager : MonoBehaviour
                 levelNamesCurrentHouse[i].gameObject.GetComponent<Button>().enabled = true;
             }
 
-            data = LevelsDifficultyContainer.Houses[localHouseIndex].levelsData[i];
-
             starsCurrentHouse[i].GetChild(1).gameObject.SetActive(false);
             starsCurrentHouse[i].GetChild(2).gameObject.SetActive(false);
             starsCurrentHouse[i].GetChild(3).gameObject.SetActive(false);
-            switch (data.gainedStars)
+            switch (PlayerPrefsManager.GetGainedStars(localHouseIndex, i))
             {
                 case 3:
                     starsCurrentHouse[i].GetChild(1).gameObject.SetActive(true);

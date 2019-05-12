@@ -60,6 +60,7 @@ public class CanvasManager : MonoBehaviour
     private Vector3 PerfectScale;
     private int numberOfNails;
     private AudioSource CanvasAudioSource;
+    private int currentHighScore;
     private int score;
 
     private void Start()
@@ -101,6 +102,8 @@ public class CanvasManager : MonoBehaviour
 
         StartCoroutine(DisplayMinPoints());
         data = LevelsDifficultyContainer.Houses[LevelContainer.CurrentHouseIndex].levelsData[LevelContainer.CurrentLevelIndex];
+        currentHighScore = PlayerPrefsManager.GetHighScore(LevelContainer.CurrentHouseIndex, LevelContainer.CurrentLevelIndex);
+
         if (!LevelContainer.MenuHided)
         {
             MenuUI.SetActive(true);
@@ -117,14 +120,14 @@ public class CanvasManager : MonoBehaviour
     {
         MusicSource.Stop();
         StartCoroutine(DisplayPoints());
-        if (LevelContainer.Score > data.highScore)
+        if (LevelContainer.Score > currentHighScore)
         {
-            CoinsAdded.text = "+" + (LevelContainer.Score - data.highScore) / ConstantDataContainer.ScoreDivider;
+            CoinsAdded.text = "+" + (LevelContainer.Score - currentHighScore) / ConstantDataContainer.ScoreDivider;
             HighScore.text = "BEST: " + LevelContainer.Score;
         }
         else
         {
-            HighScore.text = "BEST: " + data.highScore.ToString();
+            HighScore.text = "BEST: " + currentHighScore.ToString();
             CoinsAdded.text = "+0";
         }
 

@@ -12,15 +12,28 @@ public class PlayerPrefsManager : MonoBehaviour
     const string HOUSE_KEY = "house_unlocked_";
 
     const string NUMBER_COINS = "number of coins";
-    
-    const string HIGH_SCORE = "high score";
-    const string GAMES_PLAYED = "games played";
-    const string REWARDED_PLAYED = "rewarded played";
-    const string SOUND_ON = "sound_on";
 
-    const string INTERSTITIAL_PREVIOUS = "interstitial shown in previous game";
-    const string REMOVED_ADS = "removed ads";
+    const string HOUSE_PROGRESS = "house_progress_";
+    const string LEVEL_PROGRESS = "_level_progress_";
+    const string STARS_PROGRESS = "_stars";
+    const string HIGHSCORE_PROGRESS = "_highscore";
 
+    public static void SetGainedStars(int houseIndex,int levelIndex,int gainedStars)
+    {
+        PlayerPrefs.SetInt(HOUSE_PROGRESS + houseIndex.ToString() + LEVEL_PROGRESS + levelIndex.ToString() + STARS_PROGRESS, gainedStars);
+    }
+    public static int GetGainedStars(int houseIndex, int levelIndex)
+    {
+        return PlayerPrefs.GetInt(HOUSE_PROGRESS + houseIndex.ToString() + LEVEL_PROGRESS + levelIndex.ToString() + STARS_PROGRESS);
+    }
+    public static void SetHighScore(int houseIndex, int levelIndex, int highScore)
+    {
+        PlayerPrefs.SetInt(HOUSE_PROGRESS + houseIndex.ToString() + LEVEL_PROGRESS + levelIndex.ToString() + HIGHSCORE_PROGRESS, highScore);
+    }
+    public static int GetHighScore(int houseIndex, int levelIndex)
+    {
+       return PlayerPrefs.GetInt(HOUSE_PROGRESS + houseIndex.ToString() + LEVEL_PROGRESS + levelIndex.ToString() + HIGHSCORE_PROGRESS);
+    }
     public static void UnlockLevel(int levelNumber)
     {
         PlayerPrefs.SetInt(LEVEL_KEY + levelNumber.ToString(), 1);
@@ -111,55 +124,5 @@ public class PlayerPrefsManager : MonoBehaviour
         bool isHouseUnlocked = (houseValue == 1);
 
         return isHouseUnlocked;
-    }
-
-    public static void SetHighScore(float value)
-    {
-        PlayerPrefs.SetFloat(HIGH_SCORE, value);
-    }
-
-    public static float GetHighScore()
-    {
-        return PlayerPrefs.GetFloat(HIGH_SCORE);
-    }
-    public static void SetGamesPlayed(int value)
-    {
-        PlayerPrefs.SetInt(GAMES_PLAYED, value);
-    }
-
-    public static int GetGamesPlayed()
-    {
-        return PlayerPrefs.GetInt(GAMES_PLAYED);
-    }
-
-    public static void SetSoundOn()
-    {
-        PlayerPrefs.SetInt(SOUND_ON, 1);
-
-    }
-    public static void SetSoundOff()
-    {
-        PlayerPrefs.SetInt(SOUND_ON, 0);
-
-    }
-    public static bool IsSoundOn()
-    {
-        int get = PlayerPrefs.GetInt(SOUND_ON);
-        bool isSoundOn = (get == 1);
-
-        return isSoundOn;
-
-    }
-
-    public static bool IsAdsRemoved()
-    {
-        int get = PlayerPrefs.GetInt(REMOVED_ADS);
-        bool isRemoved = (get == 1);
-
-        return isRemoved;
-    }
-    public static void RemoveAds()
-    {
-        PlayerPrefs.SetInt(REMOVED_ADS, 1);
     }
 }

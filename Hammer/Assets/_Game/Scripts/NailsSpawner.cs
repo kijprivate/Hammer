@@ -1,27 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class NailsSpawner : MonoBehaviour
 {
-    private int maxScoreForNails;
-    public static int MaxScoreForNails => Instance.maxScoreForNails;
-
     [SerializeField] Nail defaultNail;
     [SerializeField] Nail redNail;
 
     private LevelData data;
-    
-    private int minHammerHits;
+
     private int numberOfNails;
     private float Xoffset = 2.5f;
     private int spawnedDefaultNails;
     private int spawnedRedNails;
     private int spawnedMovingDefaultNails;
     private int spawnedMovingRedNails;
-    private int cashedScoreForMoves;
-    private int cashedMaxHammerStrength;
     
     static NailsSpawner instance;
     public static NailsSpawner Instance
@@ -38,7 +31,6 @@ public class NailsSpawner : MonoBehaviour
     private void Awake()
     {
         StartCoroutine(SpawnWithDelay());
-        cashedMaxHammerStrength = ConstantDataContainer.MaxHammerStrength;
     }
 
     private IEnumerator SpawnWithDelay()
@@ -47,7 +39,7 @@ public class NailsSpawner : MonoBehaviour
         data = LevelsDifficultyContainer.Houses[LevelContainer.CurrentHouseNumber-1].levelsData[LevelContainer.CurrentLevelIndex];
 
         numberOfNails = LevelContainer.NumberOfNails;
-        //print(LevelContainer.CurrentLevelIndex);
+
         for (int i = 0; i < numberOfNails; )
         {
             int index = Random.Range(1, 5);
@@ -61,7 +53,6 @@ public class NailsSpawner : MonoBehaviour
                         defNail.gameObject.transform.SetParent(transform);
                         defNail.Xoffset = Xoffset;
 
-                        CalculatePoints(defNail.strengthForCorrectHit, defNail.ScoreForNail);
                         spawnedDefaultNails++;
                         i++;
                     }
@@ -73,7 +64,6 @@ public class NailsSpawner : MonoBehaviour
                         rNail.gameObject.transform.SetParent(transform);
                         rNail.Xoffset = Xoffset;
                         
-                        CalculatePoints(rNail.strengthForCorrectHit, rNail.ScoreForNail);
                         spawnedRedNails++;
                         i++;
                     }
@@ -86,10 +76,8 @@ public class NailsSpawner : MonoBehaviour
                         defNail.Xoffset = Xoffset;
 
                         defNail.transform.position = defNail.DefaultPosition;
-                       // defNail.strengthForCorrectHit = defNail.DefaultStrengthForCorrectHit;
                         defNail.isMoving = true;
 
-                        CalculatePoints(defNail.DefaultStrengthForCorrectHit, defNail.ScoreForNail);
                         spawnedMovingDefaultNails++;
                         i++;
                     }
@@ -102,29 +90,13 @@ public class NailsSpawner : MonoBehaviour
                         rNail.Xoffset = Xoffset;
 
                         rNail.transform.position = rNail.DefaultPosition;
-                       // rNail.strengthForCorrectHit = rNail.DefaultStrengthForCorrectHit;
                         rNail.isMoving = true;
 
-                        CalculatePoints(rNail.DefaultStrengthForCorrectHit, rNail.ScoreForNail);
                         spawnedMovingRedNails++;
                         i++;
                     }
                     break;
             }
-        }
-    }
-
-    private void CalculatePoints(int strengthForCorrectHit,int scoreForNail)
-    {
-        if (strengthForCorrectHit % cashedMaxHammerStrength == 0)
-        {
-            maxScoreForNails += scoreForNail / (strengthForCorrectHit / cashedMaxHammerStrength);
-            minHammerHits += strengthForCorrectHit / cashedMaxHammerStrength;
-        }
-        else
-        {
-            maxScoreForNails += scoreForNail / (strengthForCorrectHit / cashedMaxHammerStrength + 1);
-            minHammerHits += strengthForCorrectHit / cashedMaxHammerStrength + 1;
         }
     }
 }

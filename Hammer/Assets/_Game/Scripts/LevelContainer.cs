@@ -43,6 +43,7 @@ public class LevelContainer : MonoBehaviour
     private LevelData data;
 
     private int starsForPreviousTries;
+    private int currentHighScore;
     private float cashed1Star;
     private float cashed2Stars;
     private float cashed3Stars;
@@ -73,15 +74,15 @@ public class LevelContainer : MonoBehaviour
 
         currentLevelIndex = levNumber - 1;
         currentHouseIndex = currentHouseNumber - 1;
+
         print(currentHouseNumber);
         print(currentLevelNumber);
         print(currentLevelIndex);
-        PlayerPrefsManager.UnlockLevel(11);
-        PlayerPrefsManager.UnlockLevel(21);
-        //DontDestroyOnLoad(gameObject);
+
         data = LevelsDifficultyContainer.Houses[currentHouseNumber-1].levelsData[currentLevelIndex];
 
-        starsForPreviousTries = data.gainedStars;
+        starsForPreviousTries = PlayerPrefsManager.GetGainedStars(currentHouseIndex,currentLevelIndex);
+        currentHighScore = PlayerPrefsManager.GetHighScore(currentHouseIndex, currentLevelIndex);
         numberOfNails = data.numberOfDefaultNails + data.numberOfRedNails + data.movingDefaultNails + data.movingRedNails;
         hammerHits = data.hammerHits;
         
@@ -108,8 +109,8 @@ public class LevelContainer : MonoBehaviour
 
     IEnumerator CountMaxPoints()
     {
-        yield return new WaitForSeconds(1f);
-        //maxAvailableScore = NailsSpawner.MaxScoreForNails + numberOfNails * ConstantDataContainer.ScoreBonusForPerfectHit;
+        yield return new WaitForSeconds(0.2f);
+
         maxAvailableScore = (int)((data.numberOfDefaultNails * ConstantDataContainer.DefaultNail +
                              data.numberOfRedNails * ConstantDataContainer.RedNail +
                              data.movingDefaultNails * ConstantDataContainer.MovingDefaultNail +
@@ -139,7 +140,6 @@ public class LevelContainer : MonoBehaviour
         GameOver = true;
 
         print(maxAvailableScore);
-
 
         StartCoroutine(CalculatePointsWithDelay());
     }
@@ -175,14 +175,14 @@ public class LevelContainer : MonoBehaviour
 
     private void HandleCoins()
     {
-        if (Score > data.highScore && starsForCurrentTry > 0)
+        if (Score > currentHighScore && starsForCurrentTry > 0)
         {
-            PlayerPrefsManager.SetNumberOfCoins(PlayerPrefsManager.GetNumberOfCoins() + (Score - data.highScore)/ConstantDataContainer.ScoreDivider);
+            PlayerPrefsManager.SetNumberOfCoins(PlayerPrefsManager.GetNumberOfCoins() + (Score - currentHighScore)/ConstantDataContainer.ScoreDivider);
 
-            data.highScore = Score;
+            PlayerPrefsManager.SetHighScore(currentHouseIndex, currentLevelIndex, Score);
             if(starsForCurrentTry > starsForPreviousTries)
             {
-                data.gainedStars = starsForCurrentTry;
+                PlayerPrefsManager.SetGainedStars(currentHouseIndex, currentLevelIndex, starsForCurrentTry);
             }
         }
         else 
@@ -229,6 +229,5 @@ public class LevelContainer : MonoBehaviour
         EventManager.EventGameStarted -= OnGameStarted;
         EventManager.EventMenuHided -= OnMenuHided;
         EventManager.EventHammerHit -= OnHammerHit;
-        
     }
 }
