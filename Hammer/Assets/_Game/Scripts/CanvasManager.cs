@@ -269,7 +269,7 @@ public class CanvasManager : MonoBehaviour
         SplashRect.position = SplashPosition; // moves back before displaying
         SplashRect.localScale = SplashScale;  // scales back before displaying
         Splash.SetActive(true);
-        SplashRect.DOScale(new Vector3(1.2f, 1.2f, 1.0f), 0.5f).SetEase(Ease.OutElastic);   // scales splash for display
+        SplashRect.DOScale(new Vector3(1.3f, 1.3f, 1.0f), 0.5f).SetEase(Ease.OutBounce);   // scales splash for display
         SplashRect.DOMove(SplashTarget.position, 0.5f).SetEase(Ease.OutBounce);
         yield return new WaitForSeconds(0.7f);    
         Splash.SetActive(false);
@@ -307,7 +307,7 @@ public class CanvasManager : MonoBehaviour
         BonusObject.SetActive(true);
         PerfectRect.localScale = PerfectScale; // scales back before displaying
         PerfectRect.position = PerfectPosition; // moves back before displaying
-        PerfectRect.DOScale(new Vector3(1.5f, 1.5f, 1.0f), 0.5f).SetEase(Ease.OutElastic);   // scales perfect for display
+        PerfectRect.DOScale(new Vector3(1.3f, 1.3f, 1.0f), 0.5f).SetEase(Ease.OutBounce);   // scales perfect for display
         PerfectRect.DOMove(PerfectTarget.position, 0.5f).SetEase(Ease.OutBounce);
         Sequence bonusSequence = DOTween.Sequence();
         bonusSequence.Append(BonusText.DOColor(new Color(1.0f, 1.0f, 1.0f, 1.0f), 0.8f));

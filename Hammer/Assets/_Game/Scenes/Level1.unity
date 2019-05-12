@@ -516,6 +516,58 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
       objectReference: {fileID: 1494941756}
+    - target: {fileID: 867638789, guid: c5953cea3ebe49e38a0c267d434069bf, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -269
+      objectReference: {fileID: 0}
+    - target: {fileID: 867638789, guid: c5953cea3ebe49e38a0c267d434069bf, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 421
+      objectReference: {fileID: 0}
+    - target: {fileID: 223335340, guid: c5953cea3ebe49e38a0c267d434069bf, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 89
+      objectReference: {fileID: 0}
+    - target: {fileID: 223335340, guid: c5953cea3ebe49e38a0c267d434069bf, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 163
+      objectReference: {fileID: 0}
+    - target: {fileID: 453389157, guid: c5953cea3ebe49e38a0c267d434069bf, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 96
+      objectReference: {fileID: 0}
+    - target: {fileID: 453389157, guid: c5953cea3ebe49e38a0c267d434069bf, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 412
+      objectReference: {fileID: 0}
+    - target: {fileID: 509320851, guid: c5953cea3ebe49e38a0c267d434069bf, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 509320851, guid: c5953cea3ebe49e38a0c267d434069bf, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1474493358, guid: c5953cea3ebe49e38a0c267d434069bf, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1474493359, guid: c5953cea3ebe49e38a0c267d434069bf, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 1897790760, guid: c5953cea3ebe49e38a0c267d434069bf, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 43
+      objectReference: {fileID: 0}
+    - target: {fileID: 1897790761, guid: c5953cea3ebe49e38a0c267d434069bf, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 1897790761, guid: c5953cea3ebe49e38a0c267d434069bf, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5953cea3ebe49e38a0c267d434069bf, type: 3}
 --- !u!114 &312131235 stripped
@@ -1121,16 +1173,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4876835395037101418, guid: 827f869584cb4196bf0c9e1abec8c432,
-        type: 3}
-      propertyPath: m_Name
-      value: LevelManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 4876835395037101418, guid: 827f869584cb4196bf0c9e1abec8c432,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4876835395037101417, guid: 827f869584cb4196bf0c9e1abec8c432,
         type: 3}
       propertyPath: levelsDifficulty
@@ -1162,6 +1204,16 @@ PrefabInstance:
       propertyPath: PausePanel
       value: 
       objectReference: {fileID: 746793375}
+    - target: {fileID: 4876835395037101418, guid: 827f869584cb4196bf0c9e1abec8c432,
+        type: 3}
+      propertyPath: m_Name
+      value: LevelManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876835395037101418, guid: 827f869584cb4196bf0c9e1abec8c432,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4876835395037101416, guid: 827f869584cb4196bf0c9e1abec8c432,
         type: 3}
       propertyPath: m_LocalPosition.x
