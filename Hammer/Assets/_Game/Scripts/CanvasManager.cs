@@ -16,7 +16,8 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] GameObject ScoreEarned;    // Text displaying points earned with one hit
     [SerializeField] GameObject PerfectObject;    // Text displaying when perfect hit
     [SerializeField] GameObject BonusObject;    // Text displaying when perfect hit
-    [SerializeField] GameObject[] StarsGameplay; 
+    [SerializeField] GameObject[] StarsGameplay;
+    [SerializeField] GameObject LevelFailed;
     [SerializeField] Text ScoreGameplay;
     [SerializeField] Text ScoreSummary;
     [SerializeField] Text HammersLeft;
@@ -123,8 +124,8 @@ public class CanvasManager : MonoBehaviour
         }
         else
         {
-            CoinsAdded.text = "+0";
             HighScore.text = "BEST: " + data.highScore.ToString();
+            CoinsAdded.text = "+0";
         }
 
         GameplayUI.SetActive(false);
@@ -163,6 +164,8 @@ public class CanvasManager : MonoBehaviour
             NextLevel.GetComponent<Button>().enabled = false;
             NextLevel.GetComponent<Image>().color = Color.grey;
             NextLevel.SetActive(true);
+            CoinsAdded.transform.parent.gameObject.SetActive(false);
+            LevelFailed.SetActive(true);
         }
     }
 

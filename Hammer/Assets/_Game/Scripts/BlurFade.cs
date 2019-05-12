@@ -8,36 +8,39 @@ public class BlurFade : MonoBehaviour
 {
     [SerializeField] float fadeSpeed =2f;
 
-    private BlurOptimized blur;
+    private Image blur;
+    private float temp=1f;
 
     private void Awake()
     {
-        blur = GetComponent<BlurOptimized>();
+        blur = GetComponent<Image>();
         
         if(LevelContainer.MenuHided)
         { blur.enabled = false; }
 
         EventManager.EventMenuHided += OnMenuHided;
-    }
 
-    private void OnMenuHided()
-    {
-        StartCoroutine(FadeBlur());
     }
 
     private IEnumerator FadeBlur()
     {
-        while (blur.blurSize > Mathf.Epsilon)
+        while (blur.color.a > Mathf.Epsilon)
         {
             yield return new WaitForEndOfFrame();
-            blur.blurSize -= Time.deltaTime*fadeSpeed;
+            temp -= Time.deltaTime*fadeSpeed;
+            blur.color = new Color(1f, 1f, 1f, temp);
         }
         blur.enabled = false;
     }
 
-    public void DisableBlur()
+    private void OnMenuHided()
     {
-        blur.enabled = false;
+        Fade();
+    }
+
+    public void Fade()
+    {
+        StartCoroutine(FadeBlur());
     }
 
     private void OnDestroy()

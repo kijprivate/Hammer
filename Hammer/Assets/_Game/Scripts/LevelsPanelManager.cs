@@ -90,19 +90,19 @@ public class LevelsPanelManager : MonoBehaviour
 
             data = LevelsDifficultyContainer.Houses[localHouseIndex].levelsData[i];
 
-            starsCurrentHouse[i].GetChild(0).gameObject.SetActive(false);
             starsCurrentHouse[i].GetChild(1).gameObject.SetActive(false);
             starsCurrentHouse[i].GetChild(2).gameObject.SetActive(false);
+            starsCurrentHouse[i].GetChild(3).gameObject.SetActive(false);
             switch (data.gainedStars)
             {
                 case 3:
-                    starsCurrentHouse[i].GetChild(0).gameObject.SetActive(true);
-                    break;
-                case 2:
                     starsCurrentHouse[i].GetChild(1).gameObject.SetActive(true);
                     break;
-                case 1:
+                case 2:
                     starsCurrentHouse[i].GetChild(2).gameObject.SetActive(true);
+                    break;
+                case 1:
+                    starsCurrentHouse[i].GetChild(3).gameObject.SetActive(true);
                     break;
                 default:
                     break;
@@ -144,7 +144,7 @@ public class LevelsPanelManager : MonoBehaviour
 
     public void LoadLevel(int globalLevelNumber)
     {
-        levelManager.LoadLevel(globalLevelNumber);
+        levelManager.LoadLevelAndHideMenu(globalLevelNumber);
     }
 
     public void ShowHouse(int houseNumber)

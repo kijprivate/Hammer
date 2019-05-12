@@ -135,20 +135,11 @@ public class LevelContainer : MonoBehaviour
 
     private void OnGameOver()
     {
+        percentageValueOfScore = (float)Score / maxAvailableScore;
         GameOver = true;
 
-        //maxAvailableScore = NailsSpawner.MaxScoreForNails + numberOfNails * ConstantDataContainer.ScoreBonusForPerfectHit;
-        maxAvailableScore = (int)((data.numberOfDefaultNails * ConstantDataContainer.DefaultNail +
-                             data.numberOfRedNails * ConstantDataContainer.RedNail +
-                             data.movingDefaultNails * ConstantDataContainer.MovingDefaultNail +
-                             data.movingRedNails * ConstantDataContainer.MovingRedNail) +
-                             (data.numberOfDefaultNails * ConstantDataContainer.DefaultNail +
-                             data.numberOfRedNails * ConstantDataContainer.RedNail +
-                             data.movingDefaultNails * ConstantDataContainer.MovingDefaultNail +
-                             data.movingRedNails * ConstantDataContainer.MovingRedNail)*ConstantDataContainer.PercentageBonusForPerfectHit);
-
         print(maxAvailableScore);
-        percentageValueOfScore = (float)Score / maxAvailableScore;
+
 
         StartCoroutine(CalculatePointsWithDelay());
     }
@@ -184,7 +175,7 @@ public class LevelContainer : MonoBehaviour
 
     private void HandleCoins()
     {
-        if (Score > data.highScore)
+        if (Score > data.highScore && starsForCurrentTry > 0)
         {
             PlayerPrefsManager.SetNumberOfCoins(PlayerPrefsManager.GetNumberOfCoins() + (Score - data.highScore)/ConstantDataContainer.ScoreDivider);
 
@@ -219,9 +210,15 @@ public class LevelContainer : MonoBehaviour
     {
         hammerHits--;
         if (hammerHits <= 0)
-        { 
-            EventManager.RaiseEventGameOver();
+        {
+            StartCoroutine(FinishLevelWithDelay());
         }
+    }
+
+    IEnumerator FinishLevelWithDelay()
+    {
+        yield return new WaitForSeconds(0.2f);
+        EventManager.RaiseEventGameOver();
     }
 
     private void OnDestroy()

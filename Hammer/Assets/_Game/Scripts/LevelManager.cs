@@ -34,7 +34,7 @@ public class LevelManager : MonoBehaviour
 
     private void OnApplicationPause(bool pause)
     {
-        if(LevelContainer.MenuHided && !isPaused)
+        if(LevelContainer.MenuHided && !isPaused && !LevelContainer.GameOver)
         {
             PausePanel.SetActive(true);
             isPaused = true;
@@ -43,7 +43,7 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
-        if((Input.GetKey(KeyCode.Home) || Input.GetKey(KeyCode.Menu)) && LevelContainer.MenuHided && !isPaused)
+        if((Input.GetKey(KeyCode.Home) || Input.GetKey(KeyCode.Menu)) && LevelContainer.MenuHided && !isPaused && !LevelContainer.GameOver)
         {
             PausePanel.SetActive(true);
             isPaused = true;
@@ -60,12 +60,12 @@ public class LevelManager : MonoBehaviour
             quitPanelActive = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape) && LevelContainer.MenuHided && !isPaused)
+        if (Input.GetKeyDown(KeyCode.Escape) && LevelContainer.MenuHided && !isPaused && !LevelContainer.GameOver)
         {
             PauseButton.onClick.Invoke();
             isPaused = true;
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && LevelContainer.MenuHided && isPaused)
+        else if (Input.GetKeyDown(KeyCode.Escape) && LevelContainer.MenuHided && isPaused && !LevelContainer.GameOver)
         {
             ResumeButton.onClick.Invoke();
             isPaused = false;
@@ -106,6 +106,13 @@ public class LevelManager : MonoBehaviour
     {
         PlayerPrefsManager.ChooseLevel(levelNumber);
         LevelContainer.MenuHided = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    public void LoadLevelAndHideMenu(int levelNumber)
+    {
+        PlayerPrefsManager.ChooseLevel(levelNumber);
+        LevelContainer.MenuHided = true;
+        LevelContainer.GameStarted = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void LoadMenuWithActiveLevel()

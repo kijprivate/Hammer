@@ -148,7 +148,7 @@ public class Hammer : MonoBehaviour
 
         for(int i = 0; i < cashedMaxStrength+1; i++)
         {
-            if(myTransform.rotation.z >= i*strengthInterval && myTransform.rotation.z <= (i+1)*strengthInterval + Mathf.Epsilon)
+            if(myTransform.rotation.z >= i*strengthInterval + Mathf.Epsilon && myTransform.rotation.z <= (i+1)*strengthInterval + Mathf.Epsilon)
             { strength = i; }
         }
     }
@@ -198,7 +198,7 @@ public class Hammer : MonoBehaviour
         }
         else
         {
-            EventManager.RaiseEventNoMoreNails();
+            EventManager.RaiseEventGameOver();
         }
     }
 
