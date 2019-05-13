@@ -8,8 +8,8 @@ public class LevelContainer : MonoBehaviour
     private int hammerHits;
     public static int HammerHits => Instance.hammerHits;
 
-    private int currentLevelNumber;
-    public static int CurrentLevelNumber => Instance.currentLevelNumber;
+    private int currentGlobalLevelNumber;
+    public static int CurrentGlobalLevelNumber => Instance.currentGlobalLevelNumber;
     
     private int currentLevelIndex;
     public static int CurrentLevelIndex => Instance.currentLevelIndex;
@@ -50,46 +50,19 @@ public class LevelContainer : MonoBehaviour
 
     void Awake()
     {
-        currentLevelNumber = PlayerPrefsManager.GetChosenLevelNumber();
-        
-        int length=0;
-        for (int i = 0; i < LevelsDifficultyContainer.Houses.Count; i++)
-        {
-            length += LevelsDifficultyContainer.Houses[i].levelsData.Count;
-            if (currentLevelNumber <= length)
-            {
-                currentHouseNumber = i + 1;
-                break;
-            }
-        }
+        CountCurrentLevelIndexes();
 
-        int levNumber = currentLevelNumber;
-        for (int i = 1; i < currentHouseNumber; i++)
-        {
-            if (currentHouseNumber > 1)
-            {
-                levNumber -= LevelsDifficultyContainer.Houses[i].levelsData.Count;
-            }
-        }
+        data = LevelsDifficultyContainer.Houses[currentHouseIndex].levelsData[currentLevelIndex];
 
-        currentLevelIndex = levNumber - 1;
-        currentHouseIndex = currentHouseNumber - 1;
-
-        print(currentHouseNumber);
-        print(currentLevelNumber);
-        print(currentLevelIndex);
-
-        data = LevelsDifficultyContainer.Houses[currentHouseNumber-1].levelsData[currentLevelIndex];
-
-        starsForPreviousTries = PlayerPrefsManager.GetGainedStars(currentHouseIndex,currentLevelIndex);
+        starsForPreviousTries = PlayerPrefsManager.GetGainedStars(currentHouseIndex, currentLevelIndex);
         currentHighScore = PlayerPrefsManager.GetHighScore(currentHouseIndex, currentLevelIndex);
         numberOfNails = data.numberOfDefaultNails + data.numberOfRedNails + data.movingDefaultNails + data.movingRedNails;
         hammerHits = data.hammerHits;
-        
-        cashed1Star = ConstantDataContainer.PercentageValueFor1Star/100f;
-        cashed2Stars = ConstantDataContainer.PercentageValueFor2Stars/100f;
-        cashed3Stars = ConstantDataContainer.PercentageValueFor3Stars/100f;
-        
+
+        cashed1Star = ConstantDataContainer.PercentageValueFor1Star / 100f;
+        cashed2Stars = ConstantDataContainer.PercentageValueFor2Stars / 100f;
+        cashed3Stars = ConstantDataContainer.PercentageValueFor3Stars / 100f;
+
         PocketNails = 0;
         GameOver = false;
         Score = 0;
@@ -100,6 +73,34 @@ public class LevelContainer : MonoBehaviour
         EventManager.EventGameStarted += OnGameStarted;
         EventManager.EventMenuHided += OnMenuHided;
         EventManager.EventHammerHit += OnHammerHit;
+    }
+
+    private void CountCurrentLevelIndexes()
+    {
+        currentGlobalLevelNumber = PlayerPrefsManager.GetChosenLevelNumber();
+
+        int length = 0;
+        for (int i = 0; i < LevelsDifficultyContainer.Houses.Count; i++)
+        {
+            length += LevelsDifficultyContainer.Houses[i].levelsData.Count;
+            if (currentGlobalLevelNumber <= length)
+            {
+                currentHouseNumber = i + 1;
+                break;
+            }
+        }
+
+        int levNumber = currentGlobalLevelNumber;
+        for (int i = 1; i < currentHouseNumber; i++)
+        {
+            if (currentHouseNumber > 1)
+            {
+                levNumber -= LevelsDifficultyContainer.Houses[i].levelsData.Count;
+            }
+        }
+
+        currentLevelIndex = levNumber - 1;
+        currentHouseIndex = currentHouseNumber - 1;
     }
 
     private void Start()
@@ -151,39 +152,53 @@ public class LevelContainer : MonoBehaviour
         if (percentageValueOfScore >= cashed3Stars)
         {
             starsForCurrentTry = 3;
-            PlayerPrefsManager.UnlockLevel(currentLevelNumber + 1);
+            PlayerPrefsManager.UnlockLevel(currentGlobalLevelNumber + 1);
             HandleCoins();
+            HandleProgress();
         }
         else if (percentageValueOfScore >= cashed2Stars)
         {
             starsForCurrentTry = 2;
-            PlayerPrefsManager.UnlockLevel(currentLevelNumber + 1);
+            PlayerPrefsManager.UnlockLevel(currentGlobalLevelNumber + 1);
             HandleCoins();
+            HandleProgress();
         }
         else if (percentageValueOfScore >= cashed1Star)
         {
             starsForCurrentTry = 1;
-            PlayerPrefsManager.UnlockLevel(currentLevelNumber + 1);
+            PlayerPrefsManager.UnlockLevel(currentGlobalLevelNumber + 1);
             HandleCoins();
+            HandleProgress();
         }
         else
         {
             starsForCurrentTry = 0;
             HandleCoins();
+            HandleProgress();
         }
     }
 
+    private void HandleProgress()
+    {
+        if (Score > currentHighScore)
+        {
+            PlayerPrefsManager.SetHighScore(currentHouseIndex, currentLevelIndex, Score);
+        }
+        if (starsForCurrentTry > starsForPreviousTries)
+        {
+            PlayerPrefsManager.SetGainedStars(currentHouseIndex, currentLevelIndex, starsForCurrentTry);
+        }
+        if (LevelsDifficultyContainer.Houses[currentHouseIndex].levelsData.Count < currentLevelIndex + 1 &&
+            LevelsDifficultyContainer.Houses.Count > currentHouseNumber && starsForCurrentTry > 0)
+        {
+            PlayerPrefsManager.UnlockHouse(currentHouseNumber + 1);
+        }
+    }
     private void HandleCoins()
     {
         if (Score > currentHighScore && starsForCurrentTry > 0)
         {
             PlayerPrefsManager.SetNumberOfCoins(PlayerPrefsManager.GetNumberOfCoins() + (Score - currentHighScore)/ConstantDataContainer.ScoreDivider);
-
-            PlayerPrefsManager.SetHighScore(currentHouseIndex, currentLevelIndex, Score);
-            if(starsForCurrentTry > starsForPreviousTries)
-            {
-                PlayerPrefsManager.SetGainedStars(currentHouseIndex, currentLevelIndex, starsForCurrentTry);
-            }
         }
         else 
         {
