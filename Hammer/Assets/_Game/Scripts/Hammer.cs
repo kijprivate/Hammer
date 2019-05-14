@@ -104,6 +104,10 @@ public class Hammer : MonoBehaviour
         if (CF2Input.GetButtonUp("Click") && isHammerReady && LevelContainer.GameStarted)
         {
             SetupStrength();
+            ParticleSystem.Burst b = sparks.emission.GetBurst(0);
+            b.count = strength*20;
+            sparks.emission.SetBurst(0, b);
+            sparks.Play();
             PlayHitSound();
             SetupHammerPositionAfterHit();
 
@@ -175,7 +179,6 @@ public class Hammer : MonoBehaviour
         {
             if (strength == targetNail.strengthForCorrectHit)
             {
-                sparks.Play();
                 EventManager.RaiseEventShowSplash(0); // raises event needed for displaying splash with hit rating
             }
             else EventManager.RaiseEventShowSplash(-1); // raises event needed for displaying splash with hit rating
