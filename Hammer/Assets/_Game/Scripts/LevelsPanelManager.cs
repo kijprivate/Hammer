@@ -112,32 +112,42 @@ public class LevelsPanelManager : MonoBehaviour
     {
         if (localHouseIndex == 0)
         {
-            Previous.SetActive(false);
+            Previous.SetActive(true);
+            Previous.GetComponent<Image>().color = Color.grey;
+            Previous.GetComponent<Button>().enabled = false;
         }
         else
         {
             Previous.SetActive(true);
+            Previous.GetComponent<Image>().color = Color.white;
+            Previous.GetComponent<Button>().enabled = true;
         }
 
         if (localHouseIndex == LevelsDifficultyContainer.Houses.Count - 1)
         {
-            Next.SetActive(false);
-        }
-        else
-        {
             Next.SetActive(true);
-        }
-
-        if (!PlayerPrefsManager.IsHouseUnlocked(localHouseIndex + 2))
-        {
             Next.GetComponent<Image>().color = Color.grey;
             Next.GetComponent<Button>().enabled = false;
         }
         else
         {
+            Next.SetActive(true);
             Next.GetComponent<Image>().color = Color.white;
             Next.GetComponent<Button>().enabled = true;
+
+            if (!PlayerPrefsManager.IsHouseUnlocked(localHouseIndex + 2))
+            {
+                Next.GetComponent<Image>().color = Color.grey;
+                Next.GetComponent<Button>().enabled = false;
+            }
+            else
+            {
+                Next.GetComponent<Image>().color = Color.white;
+                Next.GetComponent<Button>().enabled = true;
+            }
         }
+
+
     }
 
     public void LoadLevel(int globalLevelNumber)

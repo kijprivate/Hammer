@@ -40,6 +40,7 @@ public abstract class Nail : MonoBehaviour
     public bool isOverhit { get; set; }
 
     protected Hammer hammer;
+    protected Transform myTransform;
     protected float depthAfterHit;
     protected bool isMovingRight;
 
@@ -54,6 +55,7 @@ public abstract class Nail : MonoBehaviour
     {
         cashedMaxHammerStrength = ConstantDataContainer.MaxHammerStrength;
         hammer = FindObjectOfType<Hammer>();
+        myTransform = transform;
         SetRandomHeight();
         StartCoroutine(CalculateMinHammerHits());
         nailAudioSource = GetComponent<AudioSource>();
@@ -65,7 +67,7 @@ public abstract class Nail : MonoBehaviour
             if (isMovingRight)
             {
                 rotationZ += rotationSpeed * Time.deltaTime;
-                transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
+                myTransform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
                 if (rotationZ >= angle)
                 {
                     isMovingRight = false;
@@ -74,7 +76,7 @@ public abstract class Nail : MonoBehaviour
             else
             {
                 rotationZ -= rotationSpeed * Time.deltaTime;
-                transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
+                myTransform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
                 if (rotationZ <= -angle)
                 {
                     isMovingRight = true;
@@ -89,7 +91,7 @@ public abstract class Nail : MonoBehaviour
         {return;}
         if(hammer.GetStrength() > strengthForCorrectHit)
         {
-            depthAfterHit = transform.position.y - (strengthForCorrectHit * step + (hammer.GetStrength() - strengthForCorrectHit) * (step / 2f));
+            depthAfterHit = myTransform.position.y - (strengthForCorrectHit * step + (hammer.GetStrength() - strengthForCorrectHit) * (step / 2f));
             isOverhit = true;
 
             DisplayCrack();
@@ -105,11 +107,11 @@ public abstract class Nail : MonoBehaviour
                 EventManager.RaiseEventEarnScore(scoreForNail);
                 EventManager.RaiseEventNailPocket();
             }
-            depthAfterHit = transform.position.y - (hammer.GetStrength() * step);
+            depthAfterHit = myTransform.position.y - (hammer.GetStrength() * step);
             strengthForCorrectHit -= hammer.GetStrength();
         }
         hitsPerCurrentNail++;
-        transform.DOMove(new Vector3(transform.position.x, depthAfterHit, transform.position.z), 0.06f);
+        myTransform.DOMove(new Vector3(myTransform.position.x, depthAfterHit, myTransform.position.z), 0.06f);
     }
 
     private void DisplayCrack()
@@ -142,7 +144,7 @@ public abstract class Nail : MonoBehaviour
         else if (isMoving && GetCurrentAngle() <= allowedAngle)
         {
             isMoving = false;
-            transform.DORotate(Vector3.zero, 0.2f);
+            myTransform.DORotate(Vector3.zero, 0.2f);
         }
     }
     protected IEnumerator CalculateMinHammerHits()
@@ -179,13 +181,13 @@ public abstract class Nail : MonoBehaviour
 
     protected virtual float GetCurrentAngle()
     {
-        if (transform.rotation.eulerAngles.z > angle)
+        if (myTransform.rotation.eulerAngles.z > angle)
         {
-            return 360f - transform.rotation.eulerAngles.z;
+            return 360f - myTransform.rotation.eulerAngles.z;
         }
         else
         {
-            return transform.rotation.eulerAngles.z;
+            return myTransform.rotation.eulerAngles.z;
         }
     }
 }

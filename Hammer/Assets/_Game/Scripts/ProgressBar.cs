@@ -85,8 +85,7 @@ public class ProgressBar : MonoBehaviour
             finished1Star = Remap(percentageValueOfScore, 0f,
                 ConstantDataContainer.PercentageValueFor1Star / 100f, 0f, 1f);
             current1Star = star1.fillAmount;
-            print(current1Star);
-            print(finished1Star);
+
             DOTween.To(() => current1Star, x => current1Star = x, finished1Star, 0.3f).OnUpdate(UpdateFirst).OnComplete(UpdateFirst).OnComplete(AnimateFirst);
         }
     }

@@ -39,9 +39,11 @@ public class NailsSpawner : MonoBehaviour
         data = LevelsDifficultyContainer.Houses[LevelContainer.CurrentHouseNumber-1].levelsData[LevelContainer.CurrentLevelIndex];
 
         numberOfNails = LevelContainer.NumberOfNails;
-
-        for (int i = 0; i < numberOfNails; )
+        int i = 0;
+        while (i < numberOfNails)
         {
+            yield return new WaitForEndOfFrame();
+
             int index = Random.Range(1, 5);
 
             switch (index)
@@ -63,7 +65,7 @@ public class NailsSpawner : MonoBehaviour
                         Nail rNail = Instantiate(redNail, redNail.transform.position + new Vector3(Xoffset * i, 0f, 0f), Quaternion.identity) as RedNail;
                         rNail.gameObject.transform.SetParent(transform);
                         rNail.Xoffset = Xoffset;
-                        
+
                         spawnedRedNails++;
                         i++;
                     }

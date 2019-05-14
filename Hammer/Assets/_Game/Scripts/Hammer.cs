@@ -49,13 +49,14 @@ public class Hammer : MonoBehaviour
 
     private IEnumerator SetupWithDelay()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.4f);
         data = LevelsDifficultyContainer.Houses[LevelContainer.CurrentHouseNumber-1].levelsData[LevelContainer.CurrentLevelIndex];
         verticalMoveSpeed = data.rotationSpeed / 100f;
         NailsParent = FindObjectOfType<NailsSpawner>().gameObject;
+        targetNail = NailsParent.transform.GetChild(targetIndex).gameObject.GetComponent<Nail>();
         EventManager.EventPerfectHit += OnPerfectHit;
         EventManager.EventHammerSpriteChanged += OnSpriteChanged;
-        targetNail = NailsParent.transform.GetChild(targetIndex).gameObject.GetComponent<Nail>();
+
 
         cashedMaxStrength = ConstantDataContainer.MaxHammerStrength;
         cashedPositionBeforeHit = ConstantDataContainer.PositionOverNailHeadBeforeHit;
@@ -63,6 +64,7 @@ public class Hammer : MonoBehaviour
         
         myTransform.DOMove(new Vector3(myTransform.position.x,targetNail.nailHead.transform.position.y + cashedPositionBeforeHit, myTransform.position.z),0.3f) ;
         yield return new WaitForSeconds(0.3f);
+
         rotationZ = myTransform.rotation.z;
         movingY = myTransform.position.y;
         startingRotation = myTransform.rotation;
