@@ -9,7 +9,10 @@ public class PlayerPrefsManager : MonoBehaviour
     const string HAMMER_KEY = "hammer_unlocked_";
     const string CHOSEN_HAMMER_KEY = "chosen_hammer_key_";
 
+    const string SPECIAL_ITEM_KEY = "special_item_unlocked_";
     const string HOUSE_KEY = "house_unlocked_";
+
+    const string SPECIAL_ITEM_PLACED = "special_item_placed_";
 
     const string NUMBER_COINS = "number of coins";
 
@@ -79,7 +82,26 @@ public class PlayerPrefsManager : MonoBehaviour
         else
         { return PlayerPrefs.GetInt(CHOSEN_HAMMER_KEY); }
     }
-    
+
+    public static void UnlockSpecialItem(int index)
+    {
+        PlayerPrefs.SetInt(SPECIAL_ITEM_KEY + index.ToString(), 1);
+    }
+    public static bool IsSpecialItemUnlocked(int index)
+    {
+        int itemValue = PlayerPrefs.GetInt(SPECIAL_ITEM_KEY + index.ToString());
+        bool isItemUnlocked = (itemValue == 1);
+
+        return isItemUnlocked;
+    }
+    public static void PlaceSpecialItem(int itemIndex, int houseNumber)
+    {
+        PlayerPrefs.SetInt(SPECIAL_ITEM_PLACED + itemIndex.ToString(),houseNumber);
+    }
+    public static int GetPlacedSpecialItem(int itemIndex)
+    {
+        return PlayerPrefs.GetInt(SPECIAL_ITEM_PLACED + itemIndex.ToString());
+    }
     public static void LockAllLevels()
     {
         for (int i = 2; i < 1000; i++)

@@ -175,4 +175,9 @@ public class LevelsPanelManager : MonoBehaviour
     {
         houseDisplayer.ShowHouse(houseNumber);
     }
+
+    public int GetLocalHouseIndex()
+    {
+        return localHouseIndex;
+    }
 }
