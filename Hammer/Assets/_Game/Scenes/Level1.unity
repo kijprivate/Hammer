@@ -506,6 +506,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 412901700}
+    - target: {fileID: 8513580388261417550, guid: c5953cea3ebe49e38a0c267d434069bf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackFromHouseView
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513580388261417550, guid: c5953cea3ebe49e38a0c267d434069bf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4387342755592455859, guid: c5953cea3ebe49e38a0c267d434069bf,
         type: 3}
       propertyPath: MusicSource
@@ -516,6 +526,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
       objectReference: {fileID: 1494941756}
+    - target: {fileID: 6739388436487732197, guid: c5953cea3ebe49e38a0c267d434069bf,
+        type: 3}
+      propertyPath: houseStarsProgress
+      value: 
+      objectReference: {fileID: 1609921661}
+    - target: {fileID: 6817089728629388435, guid: c5953cea3ebe49e38a0c267d434069bf,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000030517578
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5953cea3ebe49e38a0c267d434069bf, type: 3}
 --- !u!114 &312131235 stripped
@@ -2022,6 +2042,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1609921661 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8414994215091764481, guid: c5953cea3ebe49e38a0c267d434069bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 312131234}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1765094950
 GameObject:
   m_ObjectHideFlags: 0

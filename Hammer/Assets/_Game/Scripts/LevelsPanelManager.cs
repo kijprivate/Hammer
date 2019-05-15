@@ -13,6 +13,7 @@ public class LevelsPanelManager : MonoBehaviour
     [SerializeField] GameObject Next;
 
     [SerializeField] Text houseName;
+    [SerializeField] Text houseStarsProgress;
 
     private Text[] levelNamesCurrentHouse;
     private Transform[] starsCurrentHouse;
@@ -22,6 +23,8 @@ public class LevelsPanelManager : MonoBehaviour
     private HouseDisplayer houseDisplayer;
     private int localHouseIndex;
     private int decimalNumberOfLevel;
+    private int starsPerCurrentHouse;
+    private int maxStarsPerCurrentHouse;
 
     private void Awake()
     {
@@ -65,10 +68,11 @@ public class LevelsPanelManager : MonoBehaviour
         decimalNumberOfLevel = localHouseIndex * 10;
 
         houseName.text = "HOUSE " + (localHouseIndex + 1);
+        DisplayStarsPerHouse();
 
         ShowHouseButton.GetComponent<Image>().sprite = appearanceData.houses[localHouseIndex].ShowIcon;
         ShowHouseButton.GetComponent<Button>().onClick.RemoveAllListeners();
-        ShowHouseButton.GetComponent<Button>().onClick.AddListener(() => ShowHouse(localHouseIndex+1));
+        ShowHouseButton.GetComponent<Button>().onClick.AddListener(() => ShowHouse(localHouseIndex + 1));
 
         for (int i = 0; i < levelNamesCurrentHouse.Length; i++)
         {
@@ -106,6 +110,18 @@ public class LevelsPanelManager : MonoBehaviour
                     break;
             }
         }
+    }
+
+    private void DisplayStarsPerHouse()
+    {
+        starsPerCurrentHouse = 0;
+        maxStarsPerCurrentHouse = 0;
+        for (int i = 0; i < LevelsDifficultyContainer.Houses[localHouseIndex].levelsData.Count; i++)
+        {
+            starsPerCurrentHouse += PlayerPrefsManager.GetGainedStars(localHouseIndex, i);
+            maxStarsPerCurrentHouse += 3;
+        }
+        houseStarsProgress.text = starsPerCurrentHouse + "/" + maxStarsPerCurrentHouse;
     }
 
     private void HandleToggleButtons()

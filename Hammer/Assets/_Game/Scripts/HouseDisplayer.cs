@@ -105,7 +105,6 @@ public class HouseDisplayer : MonoBehaviour
             unlockedPart.transform.position = positionToAnimate;
             unlockedPart.SetActive(true);
             unlockedPart.transform.DOMove(unlockedPart.transform.position + new Vector3(0f,-8f,0f), 1f).SetEase(Ease.OutBounce);
-           // unlockedPart.GetComponent<DOTweenAnimation>().DOPlay();
         }
     }
 
@@ -145,7 +144,7 @@ public class HouseDisplayer : MonoBehaviour
 
         for (int i = 0; i < LevelsDifficultyContainer.Houses[houseNumber-1].levelsData.Count; i++)
         {
-            if (PlayerPrefsManager.IsLevelUnlocked(decimalPart + (i+1)))
+            if (PlayerPrefsManager.IsLevelUnlocked(decimalPart + (i+2)))
             {
                 house.transform.GetChild(i).gameObject.SetActive(true);
             }

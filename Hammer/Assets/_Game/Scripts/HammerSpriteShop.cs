@@ -14,7 +14,7 @@ public class HammerSpriteShop : MonoBehaviour
     {
         if(!PlayerPrefsManager.IsHammerUnlocked(hammerIndex))
         {
-            GetComponent<Image>().color = Color.grey;
+            GetComponent<Image>().color = new Color(0.25f,0.25f,0.25f,1);
             if (childText)
             {
                 childText.text = hammerCost.ToString();
@@ -22,7 +22,7 @@ public class HammerSpriteShop : MonoBehaviour
         }
         else
         {
-            GetComponent<Image>().color = new Color(1f, 1f, 1f, 180f / 255f);
+            GetComponent<Image>().color = new Color(1f, 1f, 1f, 100f / 255f);
             if(childText)
             {
                 childText.enabled = false;
@@ -47,7 +47,7 @@ public class HammerSpriteShop : MonoBehaviour
         }
         else if(PlayerPrefsManager.IsHammerUnlocked(hammerIndex) && ! (PlayerPrefsManager.GetChosenHammer() == hammerIndex))
         {
-            GetComponent<Image>().color = new Color(1f, 1f, 1f, 180f / 255f);
+            GetComponent<Image>().color = new Color(1f, 1f, 1f, 100f / 255f);
         }
     }
 
