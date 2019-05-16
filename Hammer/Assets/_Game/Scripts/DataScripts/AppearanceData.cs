@@ -16,5 +16,6 @@ public class HouseAppearance
 
     [SerializeField] public Sprite ShowIcon;
     [SerializeField] public Texture BackgroundGradient;
+    [SerializeField] public Sprite BackgroundEnvironment;
     [SerializeField] public Material BoardMaterial;
 }
