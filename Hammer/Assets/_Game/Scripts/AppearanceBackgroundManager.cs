@@ -8,23 +8,28 @@ public class AppearanceBackgroundManager : MonoBehaviour
 
     [SerializeField] Transform Board;
     [SerializeField] GameObject BackgroundGradient;
+    [SerializeField] GameObject Clouds;
     [SerializeField] GameObject BackgroundEnvironment;
 
     [SerializeField] GameObject simpleBoardPrefab;
 
     Transform hammerTransform;
     Transform enviroTransform;
+    Transform cloudTransform;
     float boardXOffset = 8f;
     float envXOffset = 24.83f;
     float hammerOffsetBoard = 8f;
     float hammerOffsetEnviro = 24.83f;
+    float hammerOffsetClouds = 24.83f;
     int counterMultiplierBoard = 1;
     int counterMultiplierEnviro = 1;
+    int counterMultiplierClouds = 1;
 
     private void Start()
     {
         hammerTransform = FindObjectOfType<Hammer>().transform;
         enviroTransform = BackgroundEnvironment.transform;
+        cloudTransform = Clouds.transform;
 
         for(int i=0; i<3;i++)
         {
@@ -39,7 +44,10 @@ public class AppearanceBackgroundManager : MonoBehaviour
 
         BackgroundGradient.GetComponent<MeshRenderer>().material.mainTexture = appearanceData.houses[LevelContainer.CurrentHouseIndex].BackgroundGradient;
         StartCoroutine(MoveBoard());
+
+        //TODO easier/better way to do it - set plane with sprite and changing texture offset runtime
         StartCoroutine(MoveEnvironment());
+        StartCoroutine(MoveClouds());
     }
 
     IEnumerator MoveBoard()
@@ -88,6 +96,31 @@ public class AppearanceBackgroundManager : MonoBehaviour
                     enviroTransform.GetChild(2).transform.position += new Vector3(3 * envXOffset, 0f, 0f);
                 }
                 counterMultiplierEnviro++;
+            }
+        }
+    }
+
+    IEnumerator MoveClouds()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+
+            if (hammerTransform.position.x > hammerOffsetClouds * counterMultiplierClouds)
+            {
+                if (cloudTransform.GetChild(0).transform.position.x < cloudTransform.GetChild(1).transform.position.x && cloudTransform.GetChild(0).transform.position.x < cloudTransform.GetChild(2).transform.position.x)
+                {
+                    cloudTransform.GetChild(0).transform.position += new Vector3(4 * hammerOffsetClouds, 0f, 0f);
+                }
+                else if (cloudTransform.GetChild(1).transform.position.x < cloudTransform.GetChild(0).transform.position.x && cloudTransform.GetChild(1).transform.position.x < cloudTransform.GetChild(2).transform.position.x)
+                {
+                    cloudTransform.GetChild(1).transform.position += new Vector3(4 * hammerOffsetClouds, 0f, 0f);
+                }
+                else
+                {
+                    cloudTransform.GetChild(2).transform.position += new Vector3(4 * hammerOffsetClouds, 0f, 0f);
+                }
+                counterMultiplierClouds++;
             }
         }
     }
