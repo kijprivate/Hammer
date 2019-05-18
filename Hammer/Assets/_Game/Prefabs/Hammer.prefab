@@ -4766,8 +4766,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6724451300504717537}
   - component: {fileID: 6724451300504717542}
-  - component: {fileID: 4254407275896810460}
-  - component: {fileID: 1355255266893725222}
   - component: {fileID: 5992882115302261986}
   m_Layer: 0
   m_Name: Hammer
@@ -4809,35 +4807,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d6c6e66ee4741224c9cfaa25ac55d2d8, type: 3}
   - {fileID: 8300000, guid: 76aa1962e7bcf0149b3c2c9dbacf2005, type: 3}
   - {fileID: 8300000, guid: ad40881c1ec29304bb5c618e05b1277e, type: 3}
---- !u!54 &4254407275896810460
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6724451300504717536}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &1355255266893725222
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6724451300504717536}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.4, y: 1.6, z: 0.3398995}
-  m_Center: {x: 1.74, y: 0.14, z: 0}
 --- !u!82 &5992882115302261986
 AudioSource:
   m_ObjectHideFlags: 0

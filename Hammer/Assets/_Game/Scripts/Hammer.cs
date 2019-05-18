@@ -188,7 +188,12 @@ public class Hammer : MonoBehaviour
         }
 
         myTransform.DORotateQuaternion(Quaternion.Euler(0f, 0f, 0f), 0.06f);
-        myTransform.DOMove(new Vector3(myTransform.position.x, depthAfterHit, myTransform.position.z), 0.06f);
+        myTransform.DOMove(new Vector3(myTransform.position.x, depthAfterHit, myTransform.position.z), 0.06f).OnComplete(ContactWithNail);
+    }
+
+    private void ContactWithNail()
+    {
+        targetNail.OnHammerContact();
     }
 
     private void SetupNextTarget()

@@ -6,13 +6,14 @@ using UnityEngine.UI;
 public class SpecialItemShop : MonoBehaviour
 {
     [SerializeField] int specialItemIndex;
+    [SerializeField] int houseNumber;
     [SerializeField] int cost;
     [SerializeField] Image childImage;
     [SerializeField] Text childText;
 
     private void Awake()
     {
-        if (!PlayerPrefsManager.IsSpecialItemUnlocked(specialItemIndex))
+        if (!PlayerPrefsManager.IsSpecialItemUnlocked(specialItemIndex,houseNumber))
         {
             GetComponent<Image>().color = new Color(0.25f, 0.25f, 0.25f, 1);
             if (childText)
@@ -34,11 +35,19 @@ public class SpecialItemShop : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (PlayerPrefsManager.IsSpecialItemUnlocked(specialItemIndex, houseNumber))
+        {
+            GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
+        }
+    }
+
     public void OnClick()
     {
-        if (!PlayerPrefsManager.IsSpecialItemUnlocked(specialItemIndex) && PlayerPrefsManager.GetNumberOfCoins() >= cost)
+        if (!PlayerPrefsManager.IsSpecialItemUnlocked(specialItemIndex,houseNumber) && PlayerPrefsManager.GetNumberOfCoins() >= cost)
         {
-            PlayerPrefsManager.UnlockSpecialItem(specialItemIndex);
+            PlayerPrefsManager.UnlockSpecialItem(specialItemIndex,houseNumber);
             PlayerPrefsManager.SetNumberOfCoins(PlayerPrefsManager.GetNumberOfCoins() - cost);
             if (childText)
             {

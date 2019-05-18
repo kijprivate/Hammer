@@ -18,6 +18,7 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] GameObject BonusObject;    // Text displaying when perfect hit
     [SerializeField] GameObject[] StarsGameplay;
     [SerializeField] GameObject LevelFailed;
+    [SerializeField] GameObject CF2CanvasInput;
     [SerializeField] Text ScoreGameplay;
     [SerializeField] Text ScoreSummary;
     [SerializeField] Text HammersLeft;
@@ -133,6 +134,7 @@ public class CanvasManager : MonoBehaviour
 
         GameplayUI.SetActive(false);
         LevelName.gameObject.SetActive(false);
+        CF2CanvasInput.SetActive(false);
 
         DisplayStars();
     }

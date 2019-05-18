@@ -10,6 +10,7 @@ public class HouseDisplayer : MonoBehaviour
     [SerializeField] HousePartsArray houseParts;
     [SerializeField] CinemachineVirtualCamera virtualCamera;
     [SerializeField] private GameObject house;
+    [SerializeField] private GameObject specialItems;
     [SerializeField] private GameObject board;
     [SerializeField] private GameObject clouds;
     [SerializeField] private GameObject background;
@@ -52,6 +53,14 @@ public class HouseDisplayer : MonoBehaviour
             part.transform.localRotation = Quaternion.Euler(Vector3.zero);
             part.SetActive(false);
         }
+        for (int i = 0; i < houseParts.houseParts[LevelContainer.CurrentHouseIndex].specialItems.Count; i++)
+        {
+            var special = Instantiate(houseParts.houseParts[LevelContainer.CurrentHouseIndex].specialItems[i], transform.position, Quaternion.identity);
+            special.transform.SetParent(specialItems.transform);
+            special.transform.localPosition = Vector3.zero;
+            special.transform.localRotation = Quaternion.Euler(Vector3.zero);
+            special.SetActive(false);
+        }
 
         positionToAnimate = house.transform.GetChild(LevelContainer.CurrentLevelIndex).gameObject.transform.position;
     }
@@ -89,6 +98,15 @@ public class HouseDisplayer : MonoBehaviour
         }
         if (starsForPreviousTries > 0) //show if already unlocked
         { house.transform.GetChild(LevelContainer.CurrentLevelIndex).gameObject.SetActive(true); }
+
+        specialItems.SetActive(true);
+        for (int i = 0; i < specialItems.transform.childCount; i++)
+        {
+            if(PlayerPrefsManager.IsSpecialItemUnlocked(i,LevelContainer.CurrentHouseNumber))
+            {
+                specialItems.transform.GetChild(i).gameObject.SetActive(true);
+            }
+        }
 
         yield return new WaitForSeconds(0.3f);
 
@@ -129,6 +147,11 @@ public class HouseDisplayer : MonoBehaviour
             Destroy(house.transform.GetChild(i).gameObject);
         }
 
+        foreach(Transform child in specialItems.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
         for (int i = 0; i < houseParts.houseParts[houseNumber-1].parts.Count; i++)
         {
             var part = Instantiate(houseParts.houseParts[houseNumber-1].parts[i], transform.position, Quaternion.identity);
@@ -136,6 +159,14 @@ public class HouseDisplayer : MonoBehaviour
             part.transform.localPosition = Vector3.zero;
             part.transform.localRotation = Quaternion.Euler(Vector3.zero);
             part.SetActive(false);
+        }
+        for (int i = 0; i < houseParts.houseParts[houseNumber-1].specialItems.Count; i++)
+        {
+            var special = Instantiate(houseParts.houseParts[houseNumber-1].specialItems[i], transform.position, Quaternion.identity);
+            special.transform.SetParent(specialItems.transform);
+            special.transform.localPosition = Vector3.zero;
+            special.transform.localRotation = Quaternion.Euler(Vector3.zero);
+            special.SetActive(false);
         }
         yield return new WaitForSeconds(0.3f);
 
@@ -147,6 +178,14 @@ public class HouseDisplayer : MonoBehaviour
             if (PlayerPrefsManager.IsLevelUnlocked(decimalPart + (i+2)))
             {
                 house.transform.GetChild(i).gameObject.SetActive(true);
+            }
+        }
+        specialItems.SetActive(true);
+        for (int i = 0; i < specialItems.transform.childCount; i++)
+        {
+            if (PlayerPrefsManager.IsSpecialItemUnlocked(i, houseNumber))
+            {
+                specialItems.transform.GetChild(i).gameObject.SetActive(true);
             }
         }
     }

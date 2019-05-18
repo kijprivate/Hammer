@@ -84,7 +84,9 @@ public abstract class Nail : MonoBehaviour
             }
         }
     }
-    protected void OnTriggerEnter(Collider collision)
+
+    //method call on hammer finished animation - replaced OnTriggerEnter, now there is no physics in game
+    public void OnHammerContact()
     {
         HandleMovingNail();
         if(isOverhit)

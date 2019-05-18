@@ -12,8 +12,6 @@ public class PlayerPrefsManager : MonoBehaviour
     const string SPECIAL_ITEM_KEY = "special_item_unlocked_";
     const string HOUSE_KEY = "house_unlocked_";
 
-    const string SPECIAL_ITEM_PLACED = "special_item_placed_";
-
     const string NUMBER_COINS = "number of coins";
 
     const string HOUSE_PROGRESS = "house_progress_";
@@ -83,25 +81,18 @@ public class PlayerPrefsManager : MonoBehaviour
         { return PlayerPrefs.GetInt(CHOSEN_HAMMER_KEY); }
     }
 
-    public static void UnlockSpecialItem(int index)
+    public static void UnlockSpecialItem(int index,int houseNumber)
     {
-        PlayerPrefs.SetInt(SPECIAL_ITEM_KEY + index.ToString(), 1);
+        PlayerPrefs.SetInt(SPECIAL_ITEM_KEY + index.ToString() + HOUSE_KEY + houseNumber.ToString(), 1);
     }
-    public static bool IsSpecialItemUnlocked(int index)
+    public static bool IsSpecialItemUnlocked(int index,int houseNumber)
     {
-        int itemValue = PlayerPrefs.GetInt(SPECIAL_ITEM_KEY + index.ToString());
+        int itemValue = PlayerPrefs.GetInt(SPECIAL_ITEM_KEY + index.ToString() + HOUSE_KEY + houseNumber.ToString());
         bool isItemUnlocked = (itemValue == 1);
 
         return isItemUnlocked;
     }
-    public static void PlaceSpecialItem(int itemIndex, int houseNumber)
-    {
-        PlayerPrefs.SetInt(SPECIAL_ITEM_PLACED + itemIndex.ToString(),houseNumber);
-    }
-    public static int GetPlacedSpecialItem(int itemIndex)
-    {
-        return PlayerPrefs.GetInt(SPECIAL_ITEM_PLACED + itemIndex.ToString());
-    }
+
     public static void LockAllLevels()
     {
         for (int i = 2; i < 1000; i++)
