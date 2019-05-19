@@ -7,8 +7,8 @@ public class DefaultNail : Nail
     protected override void Awake()
     {
         base.Awake();
-        StartCoroutine(AdditionalPointsForMoving());
         scoreForNail = ConstantDataContainer.DefaultNail;
+        StartCoroutine(AdditionalPointsForMoving());
     }
 
     IEnumerator AdditionalPointsForMoving()

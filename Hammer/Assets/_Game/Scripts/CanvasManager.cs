@@ -7,6 +7,7 @@ using DG.Tweening;
 
 public class CanvasManager : MonoBehaviour
 {
+    [SerializeField] AppearanceData appearanceData;
     [SerializeField] GameObject GameplayUI;
     [SerializeField] GameObject MenuUI;
     [SerializeField] GameObject SummaryPanel;
@@ -141,6 +142,12 @@ public class CanvasManager : MonoBehaviour
 
     private void DisplayStars()
     {
+        if(LevelContainer.CurrentLevelIndex == LevelsDifficultyContainer.Houses[LevelContainer.CurrentHouseIndex].levelsData.Count-1
+            && appearanceData.houses[LevelContainer.CurrentHouseIndex].NextHouseIcon)
+        {
+            NextLevel.GetComponent<Image>().sprite = appearanceData.houses[LevelContainer.CurrentHouseIndex].NextHouseIcon;
+        }
+
         if (LevelContainer.PercentageValueOfScore >= cashed3Stars)
         {
             star3.SetActive(true);

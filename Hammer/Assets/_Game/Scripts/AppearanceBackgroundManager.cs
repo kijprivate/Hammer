@@ -7,6 +7,7 @@ public class AppearanceBackgroundManager : MonoBehaviour
     [SerializeField] AppearanceData appearanceData;
 
     [SerializeField] Transform Board;
+    [SerializeField] SpriteRenderer SummaryGround;
     [SerializeField] GameObject BackgroundGradient;
     [SerializeField] GameObject Clouds;
     [SerializeField] GameObject BackgroundEnvironment;
@@ -30,14 +31,18 @@ public class AppearanceBackgroundManager : MonoBehaviour
         hammerTransform = FindObjectOfType<Hammer>().transform;
         enviroTransform = BackgroundEnvironment.transform;
         cloudTransform = Clouds.transform;
+        SummaryGround.sprite = appearanceData.houses[LevelContainer.CurrentHouseIndex].SummaryGround;
+        cloudTransform.GetChild(0).GetComponent<SpriteRenderer>().sprite = appearanceData.houses[LevelContainer.CurrentHouseIndex].Clouds1;
+        cloudTransform.GetChild(1).GetComponent<SpriteRenderer>().sprite = appearanceData.houses[LevelContainer.CurrentHouseIndex].Clouds2;
+        cloudTransform.GetChild(2).GetComponent<SpriteRenderer>().sprite = appearanceData.houses[LevelContainer.CurrentHouseIndex].Clouds1;
 
-        for(int i=0; i<3;i++)
+        for (int i=0; i<3;i++)
         {
             var b = Instantiate(simpleBoardPrefab, new Vector3(boardXOffset*i, 0f, 0f),Quaternion.identity);
             b.transform.SetParent(Board);
             b.GetComponent<MeshRenderer>().material = appearanceData.houses[LevelContainer.CurrentHouseIndex].BoardMaterial;
         }
-        foreach(Transform child in BackgroundEnvironment.transform)
+        foreach (Transform child in BackgroundEnvironment.transform)
         {
             child.GetComponent<SpriteRenderer>().sprite = appearanceData.houses[LevelContainer.CurrentHouseIndex].BackgroundEnvironment;
         }

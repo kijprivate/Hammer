@@ -15,22 +15,34 @@ MonoBehaviour:
   houses:
   - houseNumber: 1
     ShowIcon: {fileID: 21300000, guid: c9e10839de2f0ad4c991c855963eed81, type: 3}
+    SummaryGround: {fileID: 21300000, guid: 1e34b670293c60a4cabafd0e6218ae65, type: 3}
+    Clouds1: {fileID: 21300000, guid: af043050086192344a14d3cc4fed0c8e, type: 3}
+    Clouds2: {fileID: 21300000, guid: 97ca09e4e6fcc4341be4d0747be3f68a, type: 3}
     BackgroundGradient: {fileID: 2800000, guid: 8c70f9d52ecd9a9469543655a52a5f8f,
       type: 3}
     BackgroundEnvironment: {fileID: 21300000, guid: 510296d8914f3e44d960c137e2c9c9f4,
       type: 3}
     BoardMaterial: {fileID: 2100000, guid: 759a6d392a04de24c98fa8717c3409dd, type: 2}
+    NextHouseIcon: {fileID: 21300000, guid: 5ac1d9c01ad3b1f439e82b98b701231c, type: 3}
   - houseNumber: 2
     ShowIcon: {fileID: 21300000, guid: d92578cc3e6a09d47b1d5c726d345e5f, type: 3}
+    SummaryGround: {fileID: 21300000, guid: 84db1e01fdee88e40bcdabe23724e4ec, type: 3}
+    Clouds1: {fileID: 21300000, guid: af043050086192344a14d3cc4fed0c8e, type: 3}
+    Clouds2: {fileID: 21300000, guid: 97ca09e4e6fcc4341be4d0747be3f68a, type: 3}
     BackgroundGradient: {fileID: 2800000, guid: 52251f092e6b46a488b09b6fcb9b358b,
       type: 3}
     BackgroundEnvironment: {fileID: 21300000, guid: d1081d4d30a77994ea8899e97580690a,
       type: 3}
     BoardMaterial: {fileID: 2100000, guid: 06f82bec53a899c41a1370985e3325e4, type: 2}
+    NextHouseIcon: {fileID: 21300000, guid: 2124de8972afb5741a1a1adc5bef5b28, type: 3}
   - houseNumber: 3
     ShowIcon: {fileID: 21300000, guid: 76e364b1eba2e164d804368b78c7e83f, type: 3}
+    SummaryGround: {fileID: 21300000, guid: 03c8431734378224e9302af21b4efba5, type: 3}
+    Clouds1: {fileID: 21300000, guid: af043050086192344a14d3cc4fed0c8e, type: 3}
+    Clouds2: {fileID: 21300000, guid: 97ca09e4e6fcc4341be4d0747be3f68a, type: 3}
     BackgroundGradient: {fileID: 2800000, guid: 49b5ab7a82862a14c8e17c441970e2a6,
       type: 3}
     BackgroundEnvironment: {fileID: 21300000, guid: 29ad58252cb849341a7d506c3f41caa9,
       type: 3}
     BoardMaterial: {fileID: 2100000, guid: 539b16f69a6887e4f979b627cba51b66, type: 2}
+    NextHouseIcon: {fileID: 0}

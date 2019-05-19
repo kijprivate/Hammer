@@ -19,6 +19,8 @@ public class PlayerPrefsManager : MonoBehaviour
     const string STARS_PROGRESS = "_stars";
     const string HIGHSCORE_PROGRESS = "_highscore";
 
+    const string SOUND_ON = "sound_on";
+
     public static void SetGainedStars(int houseIndex,int levelIndex,int gainedStars)
     {
         PlayerPrefs.SetInt(HOUSE_PROGRESS + houseIndex.ToString() + LEVEL_PROGRESS + levelIndex.ToString() + STARS_PROGRESS, gainedStars);
@@ -137,5 +139,23 @@ public class PlayerPrefsManager : MonoBehaviour
         bool isHouseUnlocked = (houseValue == 1);
 
         return isHouseUnlocked;
+    }
+
+    public static void SetSoundOn()
+    {
+        PlayerPrefs.SetInt(SOUND_ON, 1);
+    }
+
+    public static void SetSoundOff()
+    {
+        PlayerPrefs.SetInt(SOUND_ON, 0);
+    }
+
+    public static bool IsSoundOn()
+    {
+        int get = PlayerPrefs.GetInt(SOUND_ON);
+        bool isSoundOn = (get == 1);
+
+        return isSoundOn;
     }
 }
