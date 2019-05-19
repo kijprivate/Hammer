@@ -22,15 +22,15 @@ MonoBehaviour:
     BoardMaterial: {fileID: 2100000, guid: 759a6d392a04de24c98fa8717c3409dd, type: 2}
   - houseNumber: 2
     ShowIcon: {fileID: 21300000, guid: d92578cc3e6a09d47b1d5c726d345e5f, type: 3}
-    BackgroundGradient: {fileID: 2800000, guid: 8c70f9d52ecd9a9469543655a52a5f8f,
+    BackgroundGradient: {fileID: 2800000, guid: 52251f092e6b46a488b09b6fcb9b358b,
       type: 3}
     BackgroundEnvironment: {fileID: 21300000, guid: d1081d4d30a77994ea8899e97580690a,
       type: 3}
-    BoardMaterial: {fileID: 2100000, guid: 759a6d392a04de24c98fa8717c3409dd, type: 2}
+    BoardMaterial: {fileID: 2100000, guid: 06f82bec53a899c41a1370985e3325e4, type: 2}
   - houseNumber: 3
     ShowIcon: {fileID: 21300000, guid: 76e364b1eba2e164d804368b78c7e83f, type: 3}
-    BackgroundGradient: {fileID: 2800000, guid: 8c70f9d52ecd9a9469543655a52a5f8f,
+    BackgroundGradient: {fileID: 2800000, guid: 49b5ab7a82862a14c8e17c441970e2a6,
       type: 3}
     BackgroundEnvironment: {fileID: 21300000, guid: 29ad58252cb849341a7d506c3f41caa9,
       type: 3}
-    BoardMaterial: {fileID: 2100000, guid: 759a6d392a04de24c98fa8717c3409dd, type: 2}
+    BoardMaterial: {fileID: 2100000, guid: 539b16f69a6887e4f979b627cba51b66, type: 2}
