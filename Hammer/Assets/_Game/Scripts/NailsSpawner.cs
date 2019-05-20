@@ -5,6 +5,7 @@ using UnityEngine;
 public class NailsSpawner : MonoBehaviour
 {
     [SerializeField] Nail defaultNail;
+    [SerializeField] Nail mediumNail;
     [SerializeField] Nail redNail;
 
     private LevelData data;
@@ -12,8 +13,10 @@ public class NailsSpawner : MonoBehaviour
     private int numberOfNails;
     private float Xoffset = 2.5f;
     private int spawnedDefaultNails;
+    private int spawnedMediumNails;
     private int spawnedRedNails;
     private int spawnedMovingDefaultNails;
+    private int spawnedMovingMediumNails;
     private int spawnedMovingRedNails;
     
     static NailsSpawner instance;
@@ -44,7 +47,7 @@ public class NailsSpawner : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
 
-            int index = Random.Range(1, 5);
+            int index = Random.Range(1, 7);
 
             switch (index)
             {
@@ -71,6 +74,17 @@ public class NailsSpawner : MonoBehaviour
                     }
                     break;
                 case 3:
+                    if (spawnedMediumNails < data.numberOfMediumNails)
+                    {
+                        Nail mNail = Instantiate(mediumNail, mediumNail.transform.position + new Vector3(Xoffset * i, 0f, 0f), Quaternion.identity) as MediumNail;
+                        mNail.gameObject.transform.SetParent(transform);
+                        mNail.Xoffset = Xoffset;
+
+                        spawnedMediumNails++;
+                        i++;
+                    }
+                    break;
+                case 4:
                     if (spawnedMovingDefaultNails < data.movingDefaultNails)
                     {
                         Nail defNail = Instantiate(defaultNail, defaultNail.transform.position + new Vector3(Xoffset * i, 0f, 0f), Quaternion.identity) as DefaultNail;
@@ -84,7 +98,7 @@ public class NailsSpawner : MonoBehaviour
                         i++;
                     }
                     break;
-                case 4:
+                case 5:
                     if (spawnedMovingRedNails < data.movingRedNails)
                     {
                         Nail rNail = Instantiate(redNail, redNail.transform.position + new Vector3(Xoffset * i, 0f, 0f), Quaternion.identity) as RedNail;
@@ -95,6 +109,20 @@ public class NailsSpawner : MonoBehaviour
                         rNail.isMoving = true;
 
                         spawnedMovingRedNails++;
+                        i++;
+                    }
+                    break;
+                case 6:
+                    if (spawnedMovingMediumNails < data.movingMediumNails)
+                    {
+                        Nail mNail = Instantiate(mediumNail, mediumNail.transform.position + new Vector3(Xoffset * i, 0f, 0f), Quaternion.identity) as MediumNail;
+                        mNail.gameObject.transform.SetParent(transform);
+                        mNail.Xoffset = Xoffset;
+
+                        mNail.transform.position = mNail.DefaultPosition;
+                        mNail.isMoving = true;
+
+                        spawnedMovingMediumNails++;
                         i++;
                     }
                     break;

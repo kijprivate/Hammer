@@ -5119,6 +5119,28 @@ PrefabInstance:
       propertyPath: m_Name
       value: MusicSource
       objectReference: {fileID: 0}
+    - target: {fileID: 2876087646331195775, guid: 356c56051d2e4074b95f6fdf4fa237be,
+        type: 3}
+      propertyPath: soundSprites.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876087646331195775, guid: 356c56051d2e4074b95f6fdf4fa237be,
+        type: 3}
+      propertyPath: soundButton
+      value: 
+      objectReference: {fileID: 1004437086}
+    - target: {fileID: 2876087646331195775, guid: 356c56051d2e4074b95f6fdf4fa237be,
+        type: 3}
+      propertyPath: soundSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 06382abf425a32348bbe5ec089fcf657,
+        type: 3}
+    - target: {fileID: 2876087646331195775, guid: 356c56051d2e4074b95f6fdf4fa237be,
+        type: 3}
+      propertyPath: soundSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 815f4fe2ca2205a47ae92af269f12398,
+        type: 3}
     - target: {fileID: 2876087646331195773, guid: 356c56051d2e4074b95f6fdf4fa237be,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5174,28 +5196,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2876087646331195775, guid: 356c56051d2e4074b95f6fdf4fa237be,
-        type: 3}
-      propertyPath: soundSprites.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2876087646331195775, guid: 356c56051d2e4074b95f6fdf4fa237be,
-        type: 3}
-      propertyPath: soundButton
-      value: 
-      objectReference: {fileID: 1004437086}
-    - target: {fileID: 2876087646331195775, guid: 356c56051d2e4074b95f6fdf4fa237be,
-        type: 3}
-      propertyPath: soundSprites.Array.data[0]
-      value: 
-      objectReference: {fileID: 21300000, guid: 06382abf425a32348bbe5ec089fcf657,
-        type: 3}
-    - target: {fileID: 2876087646331195775, guid: 356c56051d2e4074b95f6fdf4fa237be,
-        type: 3}
-      propertyPath: soundSprites.Array.data[1]
-      value: 
-      objectReference: {fileID: 21300000, guid: 815f4fe2ca2205a47ae92af269f12398,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 356c56051d2e4074b95f6fdf4fa237be, type: 3}
 --- !u!1001 &6724451301149526442
@@ -5346,5 +5346,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: d7eca6dd7d1c5954aa5b032b4ca82d38,
         type: 2}
+    - target: {fileID: 9073872882390369756, guid: 598e28f9fe5641c6a7ebf4e59819b34f,
+        type: 3}
+      propertyPath: mediumNail
+      value: 
+      objectReference: {fileID: 2137663067472487042, guid: 162081e37c935564295576ff26269c57,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 598e28f9fe5641c6a7ebf4e59819b34f, type: 3}

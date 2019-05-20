@@ -26,6 +26,14 @@ public class ConstantDataContainer:ScriptableObject
     private int movingDefaultNail = 150;
     public static int MovingDefaultNail => Instance.movingDefaultNail;
 
+    [SerializeField]
+    private int mediumNail = 200;
+    public static int MediumNail => Instance.mediumNail;
+
+    [SerializeField]
+    private int movingMediumNail = 300;
+    public static int MovingMediumNail => Instance.movingMediumNail;
+
     [SerializeField] 
     private int redNail=300;
     public static int RedNail => Instance.redNail;

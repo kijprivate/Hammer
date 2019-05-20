@@ -15,10 +15,14 @@ public class LevelData
     [Header("Nails")] 
     [SerializeField] 
     public int numberOfDefaultNails=10;
+    [SerializeField]
+    public int numberOfMediumNails = 0;
     [SerializeField] 
     public int numberOfRedNails=2;
     [SerializeField] 
     public int movingDefaultNails=0;
+    [SerializeField]
+    public int movingMediumNails = 0;
     [SerializeField] 
     public int movingRedNails=0;
 }

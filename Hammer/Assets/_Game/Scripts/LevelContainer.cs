@@ -56,7 +56,9 @@ public class LevelContainer : MonoBehaviour
 
         starsForPreviousTries = PlayerPrefsManager.GetGainedStars(currentHouseIndex, currentLevelIndex);
         currentHighScore = PlayerPrefsManager.GetHighScore(currentHouseIndex, currentLevelIndex);
-        numberOfNails = data.numberOfDefaultNails + data.numberOfRedNails + data.movingDefaultNails + data.movingRedNails;
+        numberOfNails = data.numberOfDefaultNails + data.numberOfRedNails +
+                        data.numberOfMediumNails + data.movingMediumNails +
+                        data.movingDefaultNails + data.movingRedNails;
         hammerHits = data.hammerHits;
 
         cashed1Star = ConstantDataContainer.PercentageValueFor1Star / 100f;
@@ -114,11 +116,15 @@ public class LevelContainer : MonoBehaviour
 
         maxAvailableScore = (int)((data.numberOfDefaultNails * ConstantDataContainer.DefaultNail +
                              data.numberOfRedNails * ConstantDataContainer.RedNail +
+                             data.numberOfMediumNails * ConstantDataContainer.MediumNail +
                              data.movingDefaultNails * ConstantDataContainer.MovingDefaultNail +
+                             data.movingMediumNails * ConstantDataContainer.MovingMediumNail +
                              data.movingRedNails * ConstantDataContainer.MovingRedNail) +
                              (data.numberOfDefaultNails * ConstantDataContainer.DefaultNail +
+                             data.numberOfMediumNails * ConstantDataContainer.MediumNail +
                              data.numberOfRedNails * ConstantDataContainer.RedNail +
                              data.movingDefaultNails * ConstantDataContainer.MovingDefaultNail +
+                             data.movingMediumNails * ConstantDataContainer.MovingMediumNail +
                              data.movingRedNails * ConstantDataContainer.MovingRedNail) * ConstantDataContainer.PercentageBonusForPerfectHit);
     }
 
