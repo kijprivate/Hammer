@@ -38,11 +38,6 @@ public class MusicSource : MonoBehaviour
         musicAudioSource.Play();
     }
 
-    public void SoundOff()
-    {
-        AudioListener.volume = 0;
-    }
-
     public void ToggleSound()
     {
         //if (Application.platform != RuntimePlatform.Android) { return; }

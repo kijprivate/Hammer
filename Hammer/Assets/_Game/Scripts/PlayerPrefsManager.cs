@@ -153,7 +153,7 @@ public class PlayerPrefsManager : MonoBehaviour
 
     public static bool IsSoundOn()
     {
-        int get = PlayerPrefs.GetInt(SOUND_ON);
+        int get = PlayerPrefs.GetInt(SOUND_ON,1); //default sound on
         bool isSoundOn = (get == 1);
 
         return isSoundOn;
