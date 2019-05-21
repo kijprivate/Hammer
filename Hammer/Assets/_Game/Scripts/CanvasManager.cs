@@ -10,24 +10,30 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] AppearanceData appearanceData;
     [SerializeField] GameObject GameplayUI;
     [SerializeField] GameObject MenuUI;
+    [SerializeField] GameObject CF2CanvasInput;
+
+    [Header("Gameplay")]
+    [SerializeField] Text HammersLeft;
+    [SerializeField] Text NailPocket;
+    [SerializeField] Text LevelName;
+
+    [Header("SummaryPanel")]
     [SerializeField] GameObject SummaryPanel;
     [SerializeField] GameObject star1,star2,star3;
     [SerializeField] GameObject PlayAgain, NextLevel;
+    [SerializeField] GameObject LevelFailed;
+    [SerializeField] Text ScoreSummary;
+    [SerializeField] Text CoinsAdded;
+    [SerializeField] Text HighScore;
+
+    [Header("Shop")]
+    [SerializeField] Text CoinsShop;
+
+    [Header("Popups")]
     [SerializeField] GameObject Splash; // Image that displays splashes with hit rating 
     [SerializeField] GameObject ScoreEarned;    // Text displaying points earned with one hit
     [SerializeField] GameObject PerfectObject;    // Text displaying when perfect hit
     [SerializeField] GameObject BonusObject;    // Text displaying when perfect hit
-    [SerializeField] GameObject[] StarsGameplay;
-    [SerializeField] GameObject LevelFailed;
-    [SerializeField] GameObject CF2CanvasInput;
-    [SerializeField] Text ScoreGameplay;
-    [SerializeField] Text ScoreSummary;
-    [SerializeField] Text HammersLeft;
-    [SerializeField] Text NailPocket;
-    [SerializeField] Text LevelName;
-    [SerializeField] Text Coins;
-    [SerializeField] Text CoinsAdded;
-    [SerializeField] Text HighScore;
     [SerializeField] Sprite AwesomeSprite;  // sprite with Awesome! caption
     [SerializeField] Sprite PerfectSprite;
     [SerializeField] Sprite ToohardSprite;  // sprite with Too hard! caption
@@ -35,6 +41,8 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] RectTransform PerfectTarget;
     [SerializeField] RectTransform SplashTarget;
     [SerializeField] RectTransform ScoreTarget;
+
+    [Header("Sounds")]
     [SerializeField] AudioClip OkSound;
     [SerializeField] AudioClip PerfectSound;
     [SerializeField] AudioClip LevelSound;
@@ -82,7 +90,7 @@ public class CanvasManager : MonoBehaviour
         HammersLeft.text = LevelContainer.HammerHits.ToString();
         NailPocket.text = numberOfNails.ToString();
         LevelName.text = "LEVEL "+(LevelContainer.CurrentLevelIndex+1);
-        Coins.text = PlayerPrefsManager.GetNumberOfCoins().ToString();
+        CoinsShop.text = PlayerPrefsManager.GetNumberOfCoins().ToString();
 
         cashed1Star = ConstantDataContainer.PercentageValueFor1Star/100f;
         cashed2Stars = ConstantDataContainer.PercentageValueFor2Stars/100f;
@@ -102,7 +110,6 @@ public class CanvasManager : MonoBehaviour
         PerfectScale = PerfectRect.localScale;
         CanvasAudioSource = GetComponent<AudioSource>();
 
-        StartCoroutine(DisplayMinPoints());
         data = LevelsDifficultyContainer.Houses[LevelContainer.CurrentHouseIndex].levelsData[LevelContainer.CurrentLevelIndex];
         currentHighScore = PlayerPrefsManager.GetHighScore(LevelContainer.CurrentHouseIndex, LevelContainer.CurrentLevelIndex);
 
@@ -197,13 +204,6 @@ public class CanvasManager : MonoBehaviour
         ScoreSummary.text = score.ToString();
     }
     
-    private IEnumerator DisplayMinPoints()
-    {
-        yield return new WaitForSeconds(1.1f);
-        //ScoreGameplay.text = LevelContainer.Score.ToString();
-        ScoreGameplay.text = LevelContainer.Score + "/"+ (int)(LevelContainer.MaxAvailableScore*cashed1Star);
-    }
-    
     private void OnHammerHit()
     {
         HammersLeft.text = LevelContainer.HammerHits.ToString();
@@ -213,28 +213,28 @@ public class CanvasManager : MonoBehaviour
     {
         //ScoreGameplay.text = LevelContainer.Score.ToString();
 
-        if (LevelContainer.Score == LevelContainer.MaxAvailableScore)
-        {
-            ScoreGameplay.text = LevelContainer.Score + "/" + LevelContainer.MaxAvailableScore; //TODO change if 3 stars != 100% max score
-            StarsGameplay[0].SetActive(true);
-            StarsGameplay[1].SetActive(true);
-            StarsGameplay[2].SetActive(true);
-        }
-        else if (LevelContainer.Score + 5 >= LevelContainer.MaxAvailableScore * cashed2Stars)
-        {
-            ScoreGameplay.text = LevelContainer.Score + "/" + LevelContainer.MaxAvailableScore; //TODO change if 3 stars != 100% max score
-            StarsGameplay[0].SetActive(true);
-            StarsGameplay[1].SetActive(true);
-        }
-        else if (LevelContainer.Score + 5 >= LevelContainer.MaxAvailableScore * cashed1Star)
-        {
-            ScoreGameplay.text = LevelContainer.Score + "/" + (int)(LevelContainer.MaxAvailableScore * cashed2Stars);
-            StarsGameplay[0].SetActive(true);
-        }
-        else if (LevelContainer.Score + 5 < LevelContainer.MaxAvailableScore * cashed1Star)
-        {
-            ScoreGameplay.text = LevelContainer.Score + "/" + (int)(LevelContainer.MaxAvailableScore * cashed1Star);
-        }
+        //if (LevelContainer.Score == LevelContainer.MaxAvailableScore)
+        //{
+        //    ScoreGameplay.text = LevelContainer.Score + "/" + LevelContainer.MaxAvailableScore; //TODO change if 3 stars != 100% max score
+        //    StarsGameplay[0].SetActive(true);
+        //    StarsGameplay[1].SetActive(true);
+        //    StarsGameplay[2].SetActive(true);
+        //}
+        //else if (LevelContainer.Score + 5 >= LevelContainer.MaxAvailableScore * cashed2Stars)
+        //{
+        //    ScoreGameplay.text = LevelContainer.Score + "/" + LevelContainer.MaxAvailableScore; //TODO change if 3 stars != 100% max score
+        //    StarsGameplay[0].SetActive(true);
+        //    StarsGameplay[1].SetActive(true);
+        //}
+        //else if (LevelContainer.Score + 5 >= LevelContainer.MaxAvailableScore * cashed1Star)
+        //{
+        //    ScoreGameplay.text = LevelContainer.Score + "/" + (int)(LevelContainer.MaxAvailableScore * cashed2Stars);
+        //    StarsGameplay[0].SetActive(true);
+        //}
+        //else if (LevelContainer.Score + 5 < LevelContainer.MaxAvailableScore * cashed1Star)
+        //{
+        //    ScoreGameplay.text = LevelContainer.Score + "/" + (int)(LevelContainer.MaxAvailableScore * cashed1Star);
+        //}
     }
 
     private void OnNailFinished()
@@ -245,7 +245,7 @@ public class CanvasManager : MonoBehaviour
     
     private void OnCoinsSubstracted()
     {
-        Coins.text = PlayerPrefsManager.GetNumberOfCoins().ToString();
+        CoinsShop.text = PlayerPrefsManager.GetNumberOfCoins().ToString();
     }
 
     private void OnMenuHided()
