@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] Button PauseButton;
-    [SerializeField] Button ResumeButton;
     [SerializeField] GameObject PausePanel;
     [SerializeField] GameObject QuitPanel;
     [SerializeField] Button CancelQuitPanel;
@@ -62,12 +60,12 @@ public class LevelManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape) && LevelContainer.MenuHided && !isPaused && !LevelContainer.GameOver)
         {
-            PauseButton.onClick.Invoke();
+            PausePanel.SetActive(true);
             isPaused = true;
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && LevelContainer.MenuHided && isPaused && !LevelContainer.GameOver)
         {
-            ResumeButton.onClick.Invoke();
+            PausePanel.SetActive(false);
             isPaused = false;
         }
     }

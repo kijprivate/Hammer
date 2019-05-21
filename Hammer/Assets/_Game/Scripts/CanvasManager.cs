@@ -16,6 +16,7 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] Text HammersLeft;
     [SerializeField] Text NailPocket;
     [SerializeField] Text LevelName;
+    [SerializeField] GameObject TutorialSprite;
 
     [Header("SummaryPanel")]
     [SerializeField] GameObject SummaryPanel;
@@ -25,6 +26,7 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] Text ScoreSummary;
     [SerializeField] Text CoinsAdded;
     [SerializeField] Text HighScore;
+    [SerializeField] GameObject ParticlesSummary;
 
     [Header("Shop")]
     [SerializeField] Text CoinsShop;
@@ -157,13 +159,13 @@ public class CanvasManager : MonoBehaviour
 
         if (LevelContainer.PercentageValueOfScore >= cashed3Stars)
         {
-            star3.SetActive(true);
+           // star3.SetActive(true);
             PlayAgain.SetActive(true);
             NextLevel.SetActive(true);
         }
         else if (LevelContainer.PercentageValueOfScore >= cashed2Stars)
         {
-            star2.SetActive(true);
+           // star2.SetActive(true);
             PlayAgain.SetActive(true);
             NextLevel.SetActive(true);
         }
@@ -171,7 +173,7 @@ public class CanvasManager : MonoBehaviour
         {
             CanvasAudioSource.clip = LevelSound;
             CanvasAudioSource.Play();
-            star1.SetActive(true);
+           // star1.SetActive(true);
             PlayAgain.SetActive(true);
             NextLevel.SetActive(true);
         }
@@ -195,13 +197,34 @@ public class CanvasManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f); // duration of sliding panel animation
         int toScore = LevelContainer.Score;
         score = 0;
-        DOTween.To(() => score, x => score = x, toScore, 3).OnUpdate(UpdateUI).OnComplete(UpdateUI);
+        DOTween.To(() => score, x => score = x, toScore, 3).OnUpdate(UpdateUI).OnComplete(UpdateUI).OnComplete(OnCompleteScoreAnimation);
 
     }
 
     private void UpdateUI()
     {
         ScoreSummary.text = score.ToString();
+
+        if ((float)score/LevelContainer.MaxAvailableScore >= cashed1Star)
+        {
+            star1.SetActive(true);
+        }
+        if ((float)score / LevelContainer.MaxAvailableScore >= cashed2Stars)
+        {
+            star2.SetActive(true);
+        }
+        if ((float)score / LevelContainer.MaxAvailableScore >= cashed3Stars)
+        {
+            star3.SetActive(true);
+        }
+    }
+
+    private void OnCompleteScoreAnimation()
+    {
+        if((float)score / LevelContainer.MaxAvailableScore >= cashed1Star)
+        {
+            ParticlesSummary.SetActive(true);
+        }
     }
     
     private void OnHammerHit()
@@ -252,6 +275,12 @@ public class CanvasManager : MonoBehaviour
     {
         MenuUI.SetActive(false);
         GameplayUI.SetActive(true);
+
+        if(!Tutorial.wasPlayed)
+        {
+            TutorialSprite.SetActive(true);
+            Tutorial.wasPlayed = true;
+        }
     }
 
     private void OnShowSplash(int splashId)

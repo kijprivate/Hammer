@@ -19,273 +19,273 @@ MonoBehaviour:
       hammerHits: 10
       rotationSpeed: 70
       numberOfDefaultNails: 5
+      numberOfMediumNails: 0
       numberOfRedNails: 0
       movingDefaultNails: 0
+      movingMediumNails: 0
       movingRedNails: 0
-      gainedStars: 0
-      highScore: 0
     - levelNumber: 2
       hammerHits: 12
       rotationSpeed: 70
       numberOfDefaultNails: 8
+      numberOfMediumNails: 0
       numberOfRedNails: 0
       movingDefaultNails: 0
+      movingMediumNails: 0
       movingRedNails: 0
-      gainedStars: 0
-      highScore: 0
     - levelNumber: 3
       hammerHits: 15
       rotationSpeed: 70
       numberOfDefaultNails: 7
+      numberOfMediumNails: 0
       numberOfRedNails: 1
       movingDefaultNails: 0
+      movingMediumNails: 0
       movingRedNails: 0
-      gainedStars: 0
-      highScore: 0
     - levelNumber: 4
       hammerHits: 15
       rotationSpeed: 70
       numberOfDefaultNails: 7
+      numberOfMediumNails: 0
       numberOfRedNails: 2
       movingDefaultNails: 0
+      movingMediumNails: 0
       movingRedNails: 0
-      gainedStars: 0
-      highScore: 0
     - levelNumber: 5
       hammerHits: 16
       rotationSpeed: 70
       numberOfDefaultNails: 6
+      numberOfMediumNails: 0
       numberOfRedNails: 3
       movingDefaultNails: 0
+      movingMediumNails: 0
       movingRedNails: 0
-      gainedStars: 0
-      highScore: 0
     - levelNumber: 6
       hammerHits: 18
       rotationSpeed: 70
       numberOfDefaultNails: 8
+      numberOfMediumNails: 0
       numberOfRedNails: 3
       movingDefaultNails: 0
+      movingMediumNails: 0
       movingRedNails: 0
-      gainedStars: 0
-      highScore: 0
     - levelNumber: 7
       hammerHits: 17
       rotationSpeed: 70
       numberOfDefaultNails: 6
+      numberOfMediumNails: 0
       numberOfRedNails: 4
       movingDefaultNails: 0
+      movingMediumNails: 0
       movingRedNails: 0
-      gainedStars: 0
-      highScore: 0
     - levelNumber: 8
       hammerHits: 18
       rotationSpeed: 70
       numberOfDefaultNails: 7
+      numberOfMediumNails: 0
       numberOfRedNails: 4
       movingDefaultNails: 0
+      movingMediumNails: 0
       movingRedNails: 0
-      gainedStars: 0
-      highScore: 0
     - levelNumber: 9
       hammerHits: 18
       rotationSpeed: 70
       numberOfDefaultNails: 5
+      numberOfMediumNails: 0
       numberOfRedNails: 5
       movingDefaultNails: 0
+      movingMediumNails: 0
       movingRedNails: 0
-      gainedStars: 0
-      highScore: 0
     - levelNumber: 10
       hammerHits: 17
       rotationSpeed: 70
       numberOfDefaultNails: 7
+      numberOfMediumNails: 0
       numberOfRedNails: 5
       movingDefaultNails: 0
+      movingMediumNails: 0
       movingRedNails: 0
-      gainedStars: 0
-      highScore: 0
   - houseNumber: 2
     levelsData:
     - levelNumber: 1
       hammerHits: 14
       rotationSpeed: 85
       numberOfDefaultNails: 5
+      numberOfMediumNails: 0
       numberOfRedNails: 1
       movingDefaultNails: 1
+      movingMediumNails: 0
       movingRedNails: 0
-      gainedStars: 0
-      highScore: 0
     - levelNumber: 2
       hammerHits: 13
       rotationSpeed: 85
       numberOfDefaultNails: 7
+      numberOfMediumNails: 0
       numberOfRedNails: 1
       movingDefaultNails: 1
+      movingMediumNails: 0
       movingRedNails: 0
-      gainedStars: 0
-      highScore: 0
     - levelNumber: 3
       hammerHits: 12
       rotationSpeed: 85
       numberOfDefaultNails: 6
+      numberOfMediumNails: 0
       numberOfRedNails: 1
       movingDefaultNails: 2
+      movingMediumNails: 0
       movingRedNails: 0
-      gainedStars: 0
-      highScore: 0
     - levelNumber: 4
       hammerHits: 15
       rotationSpeed: 85
       numberOfDefaultNails: 7
+      numberOfMediumNails: 0
       numberOfRedNails: 2
       movingDefaultNails: 2
+      movingMediumNails: 0
       movingRedNails: 0
-      gainedStars: 0
-      highScore: 0
     - levelNumber: 5
       hammerHits: 18
       rotationSpeed: 85
       numberOfDefaultNails: 6
+      numberOfMediumNails: 0
       numberOfRedNails: 2
       movingDefaultNails: 3
+      movingMediumNails: 0
       movingRedNails: 0
-      gainedStars: 0
-      highScore: 0
     - levelNumber: 6
       hammerHits: 19
       rotationSpeed: 85
       numberOfDefaultNails: 6
+      numberOfMediumNails: 0
       numberOfRedNails: 3
       movingDefaultNails: 3
+      movingMediumNails: 0
       movingRedNails: 0
-      gainedStars: 0
-      highScore: 0
     - levelNumber: 7
       hammerHits: 17
       rotationSpeed: 85
       numberOfDefaultNails: 5
+      numberOfMediumNails: 0
       numberOfRedNails: 3
       movingDefaultNails: 4
+      movingMediumNails: 0
       movingRedNails: 0
-      gainedStars: 0
-      highScore: 0
     - levelNumber: 8
       hammerHits: 20
       rotationSpeed: 85
       numberOfDefaultNails: 5
+      numberOfMediumNails: 0
       numberOfRedNails: 4
       movingDefaultNails: 4
+      movingMediumNails: 0
       movingRedNails: 0
-      gainedStars: 0
-      highScore: 0
     - levelNumber: 9
       hammerHits: 20
       rotationSpeed: 85
       numberOfDefaultNails: 5
+      numberOfMediumNails: 0
       numberOfRedNails: 4
       movingDefaultNails: 5
+      movingMediumNails: 0
       movingRedNails: 0
-      gainedStars: 0
-      highScore: 0
     - levelNumber: 10
       hammerHits: 20
       rotationSpeed: 85
       numberOfDefaultNails: 5
+      numberOfMediumNails: 0
       numberOfRedNails: 5
       movingDefaultNails: 5
+      movingMediumNails: 0
       movingRedNails: 0
-      gainedStars: 0
-      highScore: 0
   - houseNumber: 3
     levelsData:
     - levelNumber: 1
       hammerHits: 18
       rotationSpeed: 100
       numberOfDefaultNails: 5
+      numberOfMediumNails: 0
       numberOfRedNails: 2
       movingDefaultNails: 1
+      movingMediumNails: 0
       movingRedNails: 1
-      gainedStars: 0
-      highScore: 0
     - levelNumber: 2
       hammerHits: 17
       rotationSpeed: 100
       numberOfDefaultNails: 5
+      numberOfMediumNails: 0
       numberOfRedNails: 2
       movingDefaultNails: 2
+      movingMediumNails: 0
       movingRedNails: 1
-      gainedStars: 0
-      highScore: 0
     - levelNumber: 3
       hammerHits: 16
       rotationSpeed: 100
       numberOfDefaultNails: 4
+      numberOfMediumNails: 0
       numberOfRedNails: 2
       movingDefaultNails: 2
+      movingMediumNails: 0
       movingRedNails: 2
-      gainedStars: 0
-      highScore: 0
     - levelNumber: 4
       hammerHits: 16
       rotationSpeed: 100
       numberOfDefaultNails: 4
+      numberOfMediumNails: 0
       numberOfRedNails: 2
       movingDefaultNails: 3
+      movingMediumNails: 0
       movingRedNails: 2
-      gainedStars: 0
-      highScore: 0
     - levelNumber: 5
       hammerHits: 20
       rotationSpeed: 100
       numberOfDefaultNails: 4
+      numberOfMediumNails: 0
       numberOfRedNails: 3
       movingDefaultNails: 3
+      movingMediumNails: 0
       movingRedNails: 2
-      gainedStars: 0
-      highScore: 0
     - levelNumber: 6
       hammerHits: 19
       rotationSpeed: 100
       numberOfDefaultNails: 5
+      numberOfMediumNails: 0
       numberOfRedNails: 1
       movingDefaultNails: 4
+      movingMediumNails: 0
       movingRedNails: 3
-      gainedStars: 0
-      highScore: 0
     - levelNumber: 7
       hammerHits: 19
       rotationSpeed: 100
       numberOfDefaultNails: 5
+      numberOfMediumNails: 0
       numberOfRedNails: 3
       movingDefaultNails: 0
+      movingMediumNails: 0
       movingRedNails: 4
-      gainedStars: 0
-      highScore: 0
     - levelNumber: 8
       hammerHits: 20
       rotationSpeed: 100
       numberOfDefaultNails: 6
+      numberOfMediumNails: 0
       numberOfRedNails: 0
       movingDefaultNails: 4
+      movingMediumNails: 0
       movingRedNails: 3
-      gainedStars: 0
-      highScore: 0
     - levelNumber: 9
       hammerHits: 19
       rotationSpeed: 100
       numberOfDefaultNails: 1
+      numberOfMediumNails: 0
       numberOfRedNails: 2
       movingDefaultNails: 6
+      movingMediumNails: 0
       movingRedNails: 3
-      gainedStars: 0
-      highScore: 0
     - levelNumber: 10
       hammerHits: 17
       rotationSpeed: 100
       numberOfDefaultNails: 1
+      numberOfMediumNails: 0
       numberOfRedNails: 0
       movingDefaultNails: 6
+      movingMediumNails: 0
       movingRedNails: 5
-      gainedStars: 0
-      highScore: 0
