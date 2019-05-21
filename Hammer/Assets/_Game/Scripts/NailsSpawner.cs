@@ -31,7 +31,7 @@ public class NailsSpawner : MonoBehaviour
             return instance;
         }
     }
-    private void Awake()
+    private void Start()
     {
         StartCoroutine(SpawnWithDelay());
     }

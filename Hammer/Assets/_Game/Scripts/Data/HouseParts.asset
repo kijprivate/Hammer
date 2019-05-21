@@ -28,7 +28,7 @@ MonoBehaviour:
     specialItems:
     - {fileID: 2234401605666442245, guid: 24b528f5975384744a38d7ecf4bcc69b, type: 3}
     - {fileID: 6480920794848568927, guid: b0de6c0eb9ec9644ea75a5be866c15c5, type: 3}
-    - {fileID: 7822995781790372764, guid: d2892e935c4c8104cbfdae0f8145c1ef, type: 3}
+    - {fileID: 5664907059035050943, guid: bf5b1cca08d9d634098330da86d981d3, type: 3}
   - houseNumber: 2
     parts:
     - {fileID: 3930023975061986363, guid: db4e8668e8502ce4d806ed9f52c70cec, type: 3}
@@ -44,7 +44,7 @@ MonoBehaviour:
     specialItems:
     - {fileID: 2234401605666442245, guid: afd2af448eaead54da8e34fc68fcf773, type: 3}
     - {fileID: 6480920794848568927, guid: 8f553fff14622d241979862fd471015f, type: 3}
-    - {fileID: 7822995781790372764, guid: 44da50d2a3ee35445ba68b185cedb538, type: 3}
+    - {fileID: 5861078212477951328, guid: fa28b9126d3ee274c83a2654f97c284f, type: 3}
   - houseNumber: 3
     parts:
     - {fileID: 5702684698940619285, guid: eb9da73a03b4ed94ca1402e419bd2835, type: 3}
@@ -60,4 +60,4 @@ MonoBehaviour:
     specialItems:
     - {fileID: 2234401605666442245, guid: 5e3139cb490e89d4bad19316e490c732, type: 3}
     - {fileID: 6480920794848568927, guid: 0a8ae5caf682bf94aa68b5e8b8290346, type: 3}
-    - {fileID: 7822995781790372764, guid: e7b7846e37c675347a86fcf219ed9e75, type: 3}
+    - {fileID: 7042044013415528069, guid: 89c312a97b8970c4e985ab6a251cb036, type: 3}
