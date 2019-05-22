@@ -95,6 +95,7 @@ public abstract class Nail : MonoBehaviour
         {
             depthAfterHit = myTransform.position.y - (strengthForCorrectHit * step + (hammer.GetStrength() - strengthForCorrectHit) * (step / 2f));
             isOverhit = true;
+            EventManager.RaiseEventShowSplash(1);   // raises event needed for displaying splash with hit rating
 
             DisplayCrack();
         }
@@ -106,9 +107,11 @@ public abstract class Nail : MonoBehaviour
                 hitsPerCurrentNail++;
                 
                 CalculatePoints();
+                EventManager.RaiseEventShowSplash(0); // raises event needed for displaying splash with hit rating
                 EventManager.RaiseEventEarnScore(scoreForNail);
                 EventManager.RaiseEventNailPocket();
             }
+            else EventManager.RaiseEventShowSplash(-1); // raises event needed for displaying splash with hit rating
             depthAfterHit = myTransform.position.y - (hammer.GetStrength() * step);
             strengthForCorrectHit -= hammer.GetStrength();
         }
