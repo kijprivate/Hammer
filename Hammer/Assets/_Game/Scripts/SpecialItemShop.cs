@@ -13,7 +13,11 @@ public class SpecialItemShop : MonoBehaviour
 
     private void Awake()
     {
-        if (!PlayerPrefsManager.IsSpecialItemUnlocked(specialItemIndex,houseNumber))
+        if(!PlayerPrefsManager.IsHouseUnlocked(houseNumber))
+        {
+            gameObject.SetActive(false);
+        }
+        else if (!PlayerPrefsManager.IsSpecialItemUnlocked(specialItemIndex,houseNumber))
         {
             GetComponent<Image>().color = new Color(0.25f, 0.25f, 0.25f, 1);
             if (childText)

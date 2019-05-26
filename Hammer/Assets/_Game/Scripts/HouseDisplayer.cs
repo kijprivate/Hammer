@@ -45,7 +45,7 @@ public class HouseDisplayer : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-        for (int i = 0; i < houseParts.houseParts[LevelContainer.CurrentHouseIndex].parts.Count; i++)
+        for (int i = 0; i <= LevelContainer.CurrentLevelIndex; i++)
         {
             var part = Instantiate(houseParts.houseParts[LevelContainer.CurrentHouseIndex].parts[i], transform.position, Quaternion.identity);
             part.transform.SetParent(house.transform);
@@ -142,7 +142,7 @@ public class HouseDisplayer : MonoBehaviour
             .Join(hammer.transform.DOMove(background.transform.position + new Vector3(0f, -8f, 0f), animationTime))
             .Join(nailsSpawner.transform.DOMove(background.transform.position + new Vector3(0f, -8f, 0f), animationTime));
 
-        for (int i = 0; i < LevelsDifficultyContainer.Houses[LevelContainer.CurrentHouseIndex].levelsData.Count; i++)
+        for (int i = 0; i < house.transform.childCount ; i++)
         {
             Destroy(house.transform.GetChild(i).gameObject);
         }

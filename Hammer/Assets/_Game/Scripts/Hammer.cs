@@ -91,7 +91,7 @@ public class Hammer : MonoBehaviour
                 myTransform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
                 myTransform.position = new Vector3(myTransform.position.x, movingY, myTransform.position.z);
 
-                if (myTransform.rotation.z >= 0.6f)
+                if (myTransform.rotation.eulerAngles.z >= 70f)
                 { isMovingUp = false; }
             }
             else if (!isMovingUp)
@@ -153,11 +153,11 @@ public class Hammer : MonoBehaviour
     }
     private void SetupStrength() // Hardcoded numbers based on hammer angle
     {
-        float strengthInterval = 0.60f / (cashedMaxStrength+1);
+        float strengthInterval = 70f / (cashedMaxStrength+1);
 
         for(int i = 0; i < cashedMaxStrength+1; i++)
         {
-            if(myTransform.rotation.z >= i*strengthInterval + Mathf.Epsilon && myTransform.rotation.z <= (i+1)*strengthInterval + Mathf.Epsilon)
+            if(myTransform.rotation.eulerAngles.z >= i*strengthInterval + Mathf.Epsilon && myTransform.rotation.eulerAngles.z <= (i+1)*strengthInterval + Mathf.Epsilon)
             { strength = i; }
         }
     }

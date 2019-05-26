@@ -26,8 +26,8 @@ MonoBehaviour:
     - {fileID: 9084797638030816602, guid: 9e5f7e286b04e67448391581e2eaece6, type: 3}
     - {fileID: 2084814345007236789, guid: abe2fd2e1e7f72e49a3c897e3b1c17df, type: 3}
     specialItems:
-    - {fileID: 2234401605666442245, guid: 24b528f5975384744a38d7ecf4bcc69b, type: 3}
-    - {fileID: 6480920794848568927, guid: b0de6c0eb9ec9644ea75a5be866c15c5, type: 3}
+    - {fileID: 4218123683235925411, guid: 24b528f5975384744a38d7ecf4bcc69b, type: 3}
+    - {fileID: 285244223859992727, guid: b0de6c0eb9ec9644ea75a5be866c15c5, type: 3}
     - {fileID: 5664907059035050943, guid: bf5b1cca08d9d634098330da86d981d3, type: 3}
   - houseNumber: 2
     parts:
