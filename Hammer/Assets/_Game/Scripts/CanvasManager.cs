@@ -16,7 +16,9 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] Text HammersLeft;
     [SerializeField] Text NailPocket;
     [SerializeField] Text LevelName;
-    [SerializeField] GameObject TutorialSprite;
+    [SerializeField] GameObject Tutorial;
+    [SerializeField] GameObject TutorialHand;
+    [SerializeField] GameObject TutorialCircle;
 
     [Header("SummaryPanel")]
     [SerializeField] GameObject SummaryPanel;
@@ -159,13 +161,15 @@ public class CanvasManager : MonoBehaviour
 
         if (LevelContainer.PercentageValueOfScore >= cashed3Stars)
         {
-           // star3.SetActive(true);
+            CanvasAudioSource.clip = LevelSound;
+            CanvasAudioSource.Play();
             PlayAgain.SetActive(true);
             NextLevel.SetActive(true);
         }
         else if (LevelContainer.PercentageValueOfScore >= cashed2Stars)
         {
-           // star2.SetActive(true);
+            CanvasAudioSource.clip = LevelSound;
+            CanvasAudioSource.Play();
             PlayAgain.SetActive(true);
             NextLevel.SetActive(true);
         }
@@ -173,7 +177,6 @@ public class CanvasManager : MonoBehaviour
         {
             CanvasAudioSource.clip = LevelSound;
             CanvasAudioSource.Play();
-           // star1.SetActive(true);
             PlayAgain.SetActive(true);
             NextLevel.SetActive(true);
         }
@@ -276,10 +279,19 @@ public class CanvasManager : MonoBehaviour
         MenuUI.SetActive(false);
         GameplayUI.SetActive(true);
 
-        if(!Tutorial.wasPlayed)
+        if(!global::Tutorial.wasPlayed)
         {
-            TutorialSprite.SetActive(true);
-            Tutorial.wasPlayed = true;
+            Tutorial.SetActive(true);
+            global::Tutorial.wasPlayed = true;
+            var sequence = DOTween.Sequence();
+            sequence.Append(TutorialHand.transform.DOScale(new Vector3(1f, 1f, 1f), 0.5f))
+                    .Join(TutorialCircle.transform.DOScale(new Vector3(0.6f, 0.35f, 1f), 0.4f))
+                    .Append(TutorialHand.transform.DOScale(new Vector3(1f, 1f, 1f), 0.8f))
+                    .Append(TutorialHand.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f))
+                   // .Join(TutorialHand.GetComponent<RectTransform>().DOAnchorPos(new Vector3(34f, 34f, 0f), 0.5f))
+                    .Join(TutorialCircle.transform.DOScale(new Vector3(0f, 0f, 0f), 0.4f))
+                    .AppendInterval(0.5f)
+                    .SetLoops(-1);
         }
     }
 
@@ -306,7 +318,6 @@ public class CanvasManager : MonoBehaviour
                 CanvasAudioSource.Play();
                 break;
         }
-        DOTween.KillAll(true);
         SplashRect.position = SplashPosition; // moves back before displaying
         SplashRect.localScale = SplashScale;  // scales back before displaying
         Splash.SetActive(true);
@@ -327,11 +338,11 @@ public class CanvasManager : MonoBehaviour
         EarnedScoreRect.position = EarnedScorePosition;
         EarnedScoreText.text = "+" + earnedPoints;
         Sequence earnedScoreSequence = DOTween.Sequence();
-        earnedScoreSequence.Append(EarnedScoreText.DOColor(new Color(1.0f,1.0f,1.0f,1.0f), 0.8f));
-        earnedScoreSequence.AppendInterval(0.4f);
-        earnedScoreSequence.Append(EarnedScoreText.DOColor(new Color(1.0f, 1.0f, 1.0f, 0.0f), 0.8f));
-        earnedScoreSequence.Insert(0, EarnedScoreRect.DOMove(ScoreTarget.position, 2.0f));
-        yield return new WaitForSeconds(2.0f);
+        earnedScoreSequence.Append(EarnedScoreText.DOColor(new Color(1.0f,1.0f,1.0f,1.0f), 0.4f));
+        earnedScoreSequence.AppendInterval(0.2f);
+        earnedScoreSequence.Append(EarnedScoreText.DOColor(new Color(1.0f, 1.0f, 1.0f, 0.0f), 0.4f));
+        earnedScoreSequence.Insert(0, EarnedScoreRect.DOMove(ScoreTarget.position, 1.0f));
+        yield return new WaitForSeconds(1.0f);
         ScoreEarned.SetActive(false);
     }
 
@@ -351,11 +362,11 @@ public class CanvasManager : MonoBehaviour
         PerfectRect.DOScale(new Vector3(1.3f, 1.3f, 1.0f), 0.5f).SetEase(Ease.OutBounce);   // scales perfect for display
         PerfectRect.DOMove(PerfectTarget.position, 0.5f).SetEase(Ease.OutBounce);
         Sequence bonusSequence = DOTween.Sequence();
-        bonusSequence.Append(BonusText.DOColor(new Color(1.0f, 1.0f, 1.0f, 1.0f), 0.8f));
-        bonusSequence.AppendInterval(0.4f);
-        bonusSequence.Append(BonusText.DOColor(new Color(1.0f, 1.0f, 1.0f, 0.0f), 0.8f));
-        bonusSequence.Insert(0, BonusRect.DOMove(ScoreTarget.position - new Vector3(0.0f, 89.0f,0.0f), 2.0f));
-        yield return new WaitForSeconds(2.0f);
+        bonusSequence.Append(BonusText.DOColor(new Color(1.0f, 1.0f, 1.0f, 1.0f), 0.4f));
+        bonusSequence.AppendInterval(0.2f);
+        bonusSequence.Append(BonusText.DOColor(new Color(1.0f, 1.0f, 1.0f, 0.0f), 0.4f));
+        bonusSequence.Insert(0, BonusRect.DOMove(ScoreTarget.position - new Vector3(0.0f, 89.0f,0.0f), 1.0f));
+        yield return new WaitForSeconds(1.0f);
         BonusRect.position = BonusPosition;
         PerfectObject.SetActive(false);
         BonusObject.SetActive(false);

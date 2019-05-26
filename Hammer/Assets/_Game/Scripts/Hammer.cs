@@ -10,6 +10,7 @@ public class Hammer : MonoBehaviour
     public int targetIndex { get; private set; }
 
     [SerializeField] HammerSprites sprites;
+    [SerializeField] GameObject Tutorial;
     [SerializeField] AudioClip[] HammerHits;
 
     private LevelData data;
@@ -81,6 +82,8 @@ public class Hammer : MonoBehaviour
 
         if (CF2Input.GetButton("Click") && isHammerReady && LevelContainer.GameStarted)
         {
+            if(Tutorial.active)
+            { Tutorial.SetActive(false); }
             if (isMovingUp)
             {
                 rotationZ += data.rotationSpeed * Time.deltaTime;

@@ -37,8 +37,8 @@ MonoBehaviour:
       hammerHits: 15
       rotationSpeed: 70
       numberOfDefaultNails: 7
-      numberOfMediumNails: 0
-      numberOfRedNails: 1
+      numberOfMediumNails: 1
+      numberOfRedNails: 0
       movingDefaultNails: 0
       movingMediumNails: 0
       movingRedNails: 0
@@ -46,17 +46,17 @@ MonoBehaviour:
       hammerHits: 15
       rotationSpeed: 70
       numberOfDefaultNails: 7
-      numberOfMediumNails: 0
-      numberOfRedNails: 2
+      numberOfMediumNails: 2
+      numberOfRedNails: 0
       movingDefaultNails: 0
       movingMediumNails: 0
       movingRedNails: 0
     - levelNumber: 5
-      hammerHits: 16
+      hammerHits: 15
       rotationSpeed: 70
       numberOfDefaultNails: 6
-      numberOfMediumNails: 0
-      numberOfRedNails: 3
+      numberOfMediumNails: 3
+      numberOfRedNails: 0
       movingDefaultNails: 0
       movingMediumNails: 0
       movingRedNails: 0
@@ -64,136 +64,136 @@ MonoBehaviour:
       hammerHits: 18
       rotationSpeed: 70
       numberOfDefaultNails: 8
-      numberOfMediumNails: 0
-      numberOfRedNails: 3
+      numberOfMediumNails: 3
+      numberOfRedNails: 0
       movingDefaultNails: 0
       movingMediumNails: 0
       movingRedNails: 0
     - levelNumber: 7
       hammerHits: 17
       rotationSpeed: 70
-      numberOfDefaultNails: 6
-      numberOfMediumNails: 0
-      numberOfRedNails: 4
+      numberOfDefaultNails: 7
+      numberOfMediumNails: 4
+      numberOfRedNails: 0
       movingDefaultNails: 0
       movingMediumNails: 0
       movingRedNails: 0
     - levelNumber: 8
       hammerHits: 18
       rotationSpeed: 70
-      numberOfDefaultNails: 7
-      numberOfMediumNails: 0
-      numberOfRedNails: 4
+      numberOfDefaultNails: 8
+      numberOfMediumNails: 4
+      numberOfRedNails: 0
       movingDefaultNails: 0
       movingMediumNails: 0
       movingRedNails: 0
     - levelNumber: 9
       hammerHits: 18
       rotationSpeed: 70
-      numberOfDefaultNails: 5
-      numberOfMediumNails: 0
-      numberOfRedNails: 5
+      numberOfDefaultNails: 7
+      numberOfMediumNails: 5
+      numberOfRedNails: 0
       movingDefaultNails: 0
       movingMediumNails: 0
       movingRedNails: 0
     - levelNumber: 10
       hammerHits: 17
       rotationSpeed: 70
-      numberOfDefaultNails: 7
-      numberOfMediumNails: 0
-      numberOfRedNails: 5
+      numberOfDefaultNails: 8
+      numberOfMediumNails: 5
+      numberOfRedNails: 0
       movingDefaultNails: 0
       movingMediumNails: 0
       movingRedNails: 0
   - houseNumber: 2
     levelsData:
     - levelNumber: 1
-      hammerHits: 14
+      hammerHits: 15
       rotationSpeed: 85
-      numberOfDefaultNails: 5
-      numberOfMediumNails: 0
-      numberOfRedNails: 1
+      numberOfDefaultNails: 6
+      numberOfMediumNails: 2
+      numberOfRedNails: 0
       movingDefaultNails: 1
       movingMediumNails: 0
       movingRedNails: 0
     - levelNumber: 2
-      hammerHits: 13
+      hammerHits: 14
       rotationSpeed: 85
-      numberOfDefaultNails: 7
-      numberOfMediumNails: 0
-      numberOfRedNails: 1
-      movingDefaultNails: 1
+      numberOfDefaultNails: 5
+      numberOfMediumNails: 2
+      numberOfRedNails: 0
+      movingDefaultNails: 2
       movingMediumNails: 0
       movingRedNails: 0
     - levelNumber: 3
-      hammerHits: 12
+      hammerHits: 16
       rotationSpeed: 85
-      numberOfDefaultNails: 6
-      numberOfMediumNails: 0
-      numberOfRedNails: 1
+      numberOfDefaultNails: 5
+      numberOfMediumNails: 3
+      numberOfRedNails: 0
       movingDefaultNails: 2
       movingMediumNails: 0
       movingRedNails: 0
     - levelNumber: 4
       hammerHits: 15
       rotationSpeed: 85
-      numberOfDefaultNails: 7
-      numberOfMediumNails: 0
-      numberOfRedNails: 2
-      movingDefaultNails: 2
+      numberOfDefaultNails: 6
+      numberOfMediumNails: 2
+      numberOfRedNails: 0
+      movingDefaultNails: 3
       movingMediumNails: 0
       movingRedNails: 0
     - levelNumber: 5
-      hammerHits: 18
+      hammerHits: 16
       rotationSpeed: 85
-      numberOfDefaultNails: 6
-      numberOfMediumNails: 0
-      numberOfRedNails: 2
+      numberOfDefaultNails: 5
+      numberOfMediumNails: 3
+      numberOfRedNails: 0
       movingDefaultNails: 3
       movingMediumNails: 0
       movingRedNails: 0
     - levelNumber: 6
-      hammerHits: 19
+      hammerHits: 15
       rotationSpeed: 85
-      numberOfDefaultNails: 6
-      numberOfMediumNails: 0
-      numberOfRedNails: 3
+      numberOfDefaultNails: 7
+      numberOfMediumNails: 2
+      numberOfRedNails: 0
       movingDefaultNails: 3
       movingMediumNails: 0
       movingRedNails: 0
     - levelNumber: 7
-      hammerHits: 17
+      hammerHits: 16
       rotationSpeed: 85
-      numberOfDefaultNails: 5
-      numberOfMediumNails: 0
-      numberOfRedNails: 3
+      numberOfDefaultNails: 4
+      numberOfMediumNails: 4
+      numberOfRedNails: 0
       movingDefaultNails: 4
       movingMediumNails: 0
       movingRedNails: 0
     - levelNumber: 8
-      hammerHits: 20
+      hammerHits: 17
       rotationSpeed: 85
       numberOfDefaultNails: 5
-      numberOfMediumNails: 0
-      numberOfRedNails: 4
+      numberOfMediumNails: 4
+      numberOfRedNails: 0
       movingDefaultNails: 4
       movingMediumNails: 0
       movingRedNails: 0
     - levelNumber: 9
-      hammerHits: 20
+      hammerHits: 17
       rotationSpeed: 85
-      numberOfDefaultNails: 5
-      numberOfMediumNails: 0
-      numberOfRedNails: 4
-      movingDefaultNails: 5
+      numberOfDefaultNails: 6
+      numberOfMediumNails: 4
+      numberOfRedNails: 0
+      movingDefaultNails: 4
       movingMediumNails: 0
       movingRedNails: 0
     - levelNumber: 10
-      hammerHits: 20
+      hammerHits: 29
       rotationSpeed: 85
-      numberOfDefaultNails: 5
-      numberOfMediumNails: 0
-      numberOfRedNails: 5
+      numberOfDefaultNails: 6
+      numberOfMediumNails: 5
+      numberOfRedNails: 0
       movingDefaultNails: 5
       movingMediumNails: 0
       movingRedNails: 0
@@ -203,89 +203,89 @@ MonoBehaviour:
       hammerHits: 18
       rotationSpeed: 100
       numberOfDefaultNails: 5
-      numberOfMediumNails: 0
-      numberOfRedNails: 2
-      movingDefaultNails: 1
+      numberOfMediumNails: 3
+      numberOfRedNails: 1
+      movingDefaultNails: 0
       movingMediumNails: 0
-      movingRedNails: 1
+      movingRedNails: 0
     - levelNumber: 2
       hammerHits: 17
       rotationSpeed: 100
-      numberOfDefaultNails: 5
-      numberOfMediumNails: 0
+      numberOfDefaultNails: 4
+      numberOfMediumNails: 3
       numberOfRedNails: 2
-      movingDefaultNails: 2
+      movingDefaultNails: 0
       movingMediumNails: 0
-      movingRedNails: 1
+      movingRedNails: 0
     - levelNumber: 3
-      hammerHits: 16
+      hammerHits: 15
       rotationSpeed: 100
       numberOfDefaultNails: 4
-      numberOfMediumNails: 0
+      numberOfMediumNails: 2
       numberOfRedNails: 2
-      movingDefaultNails: 2
+      movingDefaultNails: 1
       movingMediumNails: 0
-      movingRedNails: 2
+      movingRedNails: 0
     - levelNumber: 4
-      hammerHits: 16
+      hammerHits: 17
       rotationSpeed: 100
       numberOfDefaultNails: 4
-      numberOfMediumNails: 0
-      numberOfRedNails: 2
-      movingDefaultNails: 3
+      numberOfMediumNails: 2
+      numberOfRedNails: 3
+      movingDefaultNails: 1
       movingMediumNails: 0
-      movingRedNails: 2
+      movingRedNails: 0
     - levelNumber: 5
       hammerHits: 20
       rotationSpeed: 100
-      numberOfDefaultNails: 4
-      numberOfMediumNails: 0
+      numberOfDefaultNails: 5
+      numberOfMediumNails: 3
       numberOfRedNails: 3
-      movingDefaultNails: 3
+      movingDefaultNails: 1
       movingMediumNails: 0
-      movingRedNails: 2
+      movingRedNails: 0
     - levelNumber: 6
-      hammerHits: 19
-      rotationSpeed: 100
-      numberOfDefaultNails: 5
-      numberOfMediumNails: 0
-      numberOfRedNails: 1
-      movingDefaultNails: 4
-      movingMediumNails: 0
-      movingRedNails: 3
-    - levelNumber: 7
-      hammerHits: 19
-      rotationSpeed: 100
-      numberOfDefaultNails: 5
-      numberOfMediumNails: 0
-      numberOfRedNails: 3
-      movingDefaultNails: 0
-      movingMediumNails: 0
-      movingRedNails: 4
-    - levelNumber: 8
       hammerHits: 20
       rotationSpeed: 100
+      numberOfDefaultNails: 5
+      numberOfMediumNails: 3
+      numberOfRedNails: 3
+      movingDefaultNails: 2
+      movingMediumNails: 0
+      movingRedNails: 0
+    - levelNumber: 7
+      hammerHits: 21
+      rotationSpeed: 100
       numberOfDefaultNails: 6
-      numberOfMediumNails: 0
-      numberOfRedNails: 0
-      movingDefaultNails: 4
+      numberOfMediumNails: 2
+      numberOfRedNails: 4
+      movingDefaultNails: 2
       movingMediumNails: 0
-      movingRedNails: 3
+      movingRedNails: 0
+    - levelNumber: 8
+      hammerHits: 22
+      rotationSpeed: 100
+      numberOfDefaultNails: 10
+      numberOfMediumNails: 1
+      numberOfRedNails: 4
+      movingDefaultNails: 1
+      movingMediumNails: 0
+      movingRedNails: 0
     - levelNumber: 9
-      hammerHits: 19
+      hammerHits: 21
       rotationSpeed: 100
-      numberOfDefaultNails: 1
-      numberOfMediumNails: 0
-      numberOfRedNails: 2
-      movingDefaultNails: 6
+      numberOfDefaultNails: 5
+      numberOfMediumNails: 3
+      numberOfRedNails: 4
+      movingDefaultNails: 2
       movingMediumNails: 0
-      movingRedNails: 3
+      movingRedNails: 0
     - levelNumber: 10
-      hammerHits: 17
+      hammerHits: 22
       rotationSpeed: 100
-      numberOfDefaultNails: 1
-      numberOfMediumNails: 0
-      numberOfRedNails: 0
-      movingDefaultNails: 6
+      numberOfDefaultNails: 4
+      numberOfMediumNails: 3
+      numberOfRedNails: 5
+      movingDefaultNails: 3
       movingMediumNails: 0
-      movingRedNails: 5
+      movingRedNails: 0
