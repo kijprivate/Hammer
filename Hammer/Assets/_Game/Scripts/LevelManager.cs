@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] GameObject PausePanel;
     [SerializeField] GameObject QuitPanel;
     [SerializeField] Button CancelQuitPanel;
+    [SerializeField] GameObject EndGamePanel;
 
     public bool isPaused { get; set; }
     public bool quitPanelActive { get; set; }
@@ -87,8 +88,7 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
-            //TODO handle this somehow
-            Debug.Log("This was last level in last house");
+            EndGamePanel.SetActive(true);
         }
     }
     public void ReloadLevel()

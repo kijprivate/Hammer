@@ -29,6 +29,8 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] Text CoinsAdded;
     [SerializeField] Text HighScore;
     [SerializeField] GameObject ParticlesSummary;
+    [SerializeField] GameObject LevelCompletedText;
+    [SerializeField] GameObject HouseCompletedText;
 
     [Header("Shop")]
     [SerializeField] Text CoinsShop;
@@ -153,12 +155,6 @@ public class CanvasManager : MonoBehaviour
 
     private void DisplayStars()
     {
-        if(LevelContainer.CurrentLevelIndex == LevelsDifficultyContainer.Houses[LevelContainer.CurrentHouseIndex].levelsData.Count-1
-            && appearanceData.houses[LevelContainer.CurrentHouseIndex].NextHouseIcon)
-        {
-            NextLevel.GetComponent<Image>().sprite = appearanceData.houses[LevelContainer.CurrentHouseIndex].NextHouseIcon;
-        }
-
         if (LevelContainer.PercentageValueOfScore >= cashed3Stars)
         {
             CanvasAudioSource.clip = LevelSound;
@@ -190,6 +186,13 @@ public class CanvasManager : MonoBehaviour
             NextLevel.SetActive(true);
             CoinsAdded.transform.parent.gameObject.SetActive(false);
             LevelFailed.SetActive(true);
+        }
+
+        if (LevelContainer.CurrentLevelIndex == LevelsDifficultyContainer.Houses[LevelContainer.CurrentHouseIndex].levelsData.Count - 1
+             && appearanceData.houses[LevelContainer.CurrentHouseIndex].NextHouseIcon)
+        {
+            NextLevel.GetComponent<Image>().sprite = appearanceData.houses[LevelContainer.CurrentHouseIndex].NextHouseIcon;
+            LevelCompletedText.SetActive(false);
         }
     }
 
@@ -224,9 +227,16 @@ public class CanvasManager : MonoBehaviour
 
     private void OnCompleteScoreAnimation()
     {
-        if((float)score / LevelContainer.MaxAvailableScore >= cashed1Star)
+        if ((float)score / LevelContainer.MaxAvailableScore >= cashed1Star &&
+            LevelContainer.CurrentLevelIndex == LevelsDifficultyContainer.Houses[LevelContainer.CurrentHouseIndex].levelsData.Count - 1
+            && appearanceData.houses[LevelContainer.CurrentHouseIndex].NextHouseIcon)
         {
             ParticlesSummary.SetActive(true);
+            HouseCompletedText.SetActive(true);
+        }
+        else if ((float)score / LevelContainer.MaxAvailableScore >= cashed1Star)
+        {
+            LevelCompletedText.SetActive(true);
         }
     }
     
