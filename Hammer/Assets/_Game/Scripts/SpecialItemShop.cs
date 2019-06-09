@@ -10,16 +10,21 @@ public class SpecialItemShop : MonoBehaviour
     [SerializeField] int cost;
     [SerializeField] Image childImage;
     [SerializeField] Text childText;
+    [SerializeField] Sprite grayedSprite;
+
+    private Sprite mySprite;
 
     private void Awake()
     {
-        if(!PlayerPrefsManager.IsHouseUnlocked(houseNumber))
+        mySprite = GetComponent<Image>().sprite;
+
+        if (!PlayerPrefsManager.IsHouseUnlocked(houseNumber))
         {
             gameObject.SetActive(false);
         }
         else if (!PlayerPrefsManager.IsSpecialItemUnlocked(specialItemIndex,houseNumber))
         {
-            GetComponent<Image>().color = new Color(0.25f, 0.25f, 0.25f, 1);
+            GetComponent<Image>().sprite = grayedSprite;
             if (childText)
             {
                 childText.text = cost.ToString();
@@ -52,6 +57,7 @@ public class SpecialItemShop : MonoBehaviour
         if (!PlayerPrefsManager.IsSpecialItemUnlocked(specialItemIndex,houseNumber) && PlayerPrefsManager.GetNumberOfCoins() >= cost)
         {
             PlayerPrefsManager.UnlockSpecialItem(specialItemIndex,houseNumber);
+            GetComponent<Image>().sprite = mySprite;
             PlayerPrefsManager.SetNumberOfCoins(PlayerPrefsManager.GetNumberOfCoins() - cost);
             if (childText)
             {

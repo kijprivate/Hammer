@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class HouseDisplayer : MonoBehaviour
 {
+    public static bool LoadedFromHouseView = false;
+
     [SerializeField] HousePartsArray houseParts;
     [SerializeField] CinemachineVirtualCamera virtualCamera;
     [SerializeField] private GameObject house;
@@ -192,6 +194,7 @@ public class HouseDisplayer : MonoBehaviour
 
     public void BackFromHouseView()
     {
+        LoadedFromHouseView = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

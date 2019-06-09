@@ -29,6 +29,7 @@ public class LevelManager : MonoBehaviour
 
         PlayerPrefsManager.UnlockLevel(1);
         PlayerPrefsManager.UnlockHouse(1);
+        PlayerPrefsManager.UnlockHammer(0);
     }
 
     private void OnApplicationPause(bool pause)

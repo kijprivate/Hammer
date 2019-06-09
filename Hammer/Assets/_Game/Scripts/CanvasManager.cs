@@ -10,6 +10,7 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] AppearanceData appearanceData;
     [SerializeField] GameObject GameplayUI;
     [SerializeField] GameObject MenuUI;
+    [SerializeField] GameObject LevelsPanel;
     [SerializeField] GameObject CF2CanvasInput;
 
     [Header("Gameplay")]
@@ -31,6 +32,8 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] GameObject ParticlesSummary;
     [SerializeField] GameObject LevelCompletedText;
     [SerializeField] GameObject HouseCompletedText;
+    [SerializeField] GameObject FailedRedStar;
+    [SerializeField] GameObject Gain1StarText;
 
     [Header("Shop")]
     [SerializeField] Text CoinsShop;
@@ -95,7 +98,7 @@ public class CanvasManager : MonoBehaviour
         numberOfNails = LevelContainer.NumberOfNails;
         HammersLeft.text = LevelContainer.HammerHits.ToString();
         NailPocket.text = numberOfNails.ToString();
-        LevelName.text = "LEVEL "+(LevelContainer.CurrentLevelIndex+1);
+        LevelName.text = "LEVEL "+(LevelContainer.CurrentGlobalLevelNumber);
         CoinsShop.text = PlayerPrefsManager.GetNumberOfCoins().ToString();
 
         cashed1Star = ConstantDataContainer.PercentageValueFor1Star/100f;
@@ -128,7 +131,14 @@ public class CanvasManager : MonoBehaviour
         {
             OnMenuHided();
         }
-        Debug.Log("Canvas Manager started");
+
+        //cheat to avoid setting up all house animations and quick reload scene with active panel with levels
+        if (HouseDisplayer.LoadedFromHouseView)
+        {
+            LevelsPanel.SetActive(true);
+            MenuUI.SetActive(false);
+            HouseDisplayer.LoadedFromHouseView = false;
+        }
     }
 
     private void OnGameOver()
@@ -237,6 +247,11 @@ public class CanvasManager : MonoBehaviour
         else if ((float)score / LevelContainer.MaxAvailableScore >= cashed1Star)
         {
             LevelCompletedText.SetActive(true);
+        }
+        else if((float)score / LevelContainer.MaxAvailableScore < cashed1Star)
+        {
+            Gain1StarText.SetActive(true);
+            FailedRedStar.SetActive(true);
         }
     }
     
@@ -372,11 +387,11 @@ public class CanvasManager : MonoBehaviour
         PerfectRect.DOScale(new Vector3(1.3f, 1.3f, 1.0f), 0.5f).SetEase(Ease.OutBounce);   // scales perfect for display
         PerfectRect.DOMove(PerfectTarget.position, 0.5f).SetEase(Ease.OutBounce);
         Sequence bonusSequence = DOTween.Sequence();
-        bonusSequence.Append(BonusText.DOColor(new Color(1.0f, 1.0f, 1.0f, 1.0f), 0.4f));
-        bonusSequence.AppendInterval(0.2f);
-        bonusSequence.Append(BonusText.DOColor(new Color(1.0f, 1.0f, 1.0f, 0.0f), 0.4f));
+        bonusSequence.Append(BonusText.DOColor(new Color(1.0f, 1.0f, 1.0f, 1.0f), 0.6f));
+        bonusSequence.AppendInterval(0.3f);
+        bonusSequence.Append(BonusText.DOColor(new Color(1.0f, 1.0f, 1.0f, 0.0f), 0.6f));
         bonusSequence.Insert(0, BonusRect.DOMove(ScoreTarget.position - new Vector3(0.0f, 89.0f,0.0f), 1.0f));
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(1.2f);
         BonusRect.position = BonusPosition;
         PerfectObject.SetActive(false);
         BonusObject.SetActive(false);

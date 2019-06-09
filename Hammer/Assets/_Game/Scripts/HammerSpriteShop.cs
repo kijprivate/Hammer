@@ -9,12 +9,18 @@ public class HammerSpriteShop : MonoBehaviour
     [SerializeField] int hammerCost;
     [SerializeField] Image childImage;
     [SerializeField] Text childText;
+    [SerializeField] Sprite grayedImage;
+    [SerializeField] Image tick;
+
+    private Sprite mySprite;
 
     private void Awake()
     {
-        if(!PlayerPrefsManager.IsHammerUnlocked(hammerIndex))
+        mySprite = GetComponent<Image>().sprite;
+
+        if (!PlayerPrefsManager.IsHammerUnlocked(hammerIndex))
         {
-            GetComponent<Image>().color = new Color(0.25f,0.25f,0.25f,1);
+            GetComponent<Image>().sprite = grayedImage;
             if (childText)
             {
                 childText.text = hammerCost.ToString();
@@ -44,10 +50,12 @@ public class HammerSpriteShop : MonoBehaviour
         if (PlayerPrefsManager.GetChosenHammer() == hammerIndex)
         {
             GetComponent<Image>().color = Color.white;
+            tick.enabled = true;
         }
         else if(PlayerPrefsManager.IsHammerUnlocked(hammerIndex) && ! (PlayerPrefsManager.GetChosenHammer() == hammerIndex))
         {
             GetComponent<Image>().color = new Color(1f, 1f, 1f, 100f / 255f);
+            tick.enabled = false;
         }
     }
 
@@ -56,6 +64,7 @@ public class HammerSpriteShop : MonoBehaviour
         if(!PlayerPrefsManager.IsHammerUnlocked(hammerIndex) && PlayerPrefsManager.GetNumberOfCoins() >= hammerCost)
         {
             PlayerPrefsManager.UnlockHammer(hammerIndex);
+            GetComponent<Image>().sprite = mySprite;
             PlayerPrefsManager.SetNumberOfCoins(PlayerPrefsManager.GetNumberOfCoins() - hammerCost);
             if (childText)
             {

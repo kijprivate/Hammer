@@ -77,7 +77,7 @@ public class LevelsPanelManager : MonoBehaviour
         for (int i = 0; i < levelNamesCurrentHouse.Length; i++)
         {
             var levelNumber = i + 1;
-            levelNamesCurrentHouse[i].text = "LEVEL " + (i + 1);
+            levelNamesCurrentHouse[i].text = "LEVEL " + (localHouseIndex*10 + (i + 1));
             levelNamesCurrentHouse[i].gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
             levelNamesCurrentHouse[i].gameObject.GetComponent<Button>().onClick.AddListener(() => LoadLevel(decimalNumberOfLevel + levelNumber));
 

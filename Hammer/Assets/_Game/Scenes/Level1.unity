@@ -4807,6 +4807,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2050769336 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5107825810053903854, guid: 2812b160420e8c544986f451e7caca2e,
+    type: 3}
+  m_PrefabInstance: {fileID: 8713812515012587155}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2073354641
 GameObject:
   m_ObjectHideFlags: 0
@@ -5177,6 +5183,11 @@ PrefabInstance:
       propertyPath: MenuUI
       value: 
       objectReference: {fileID: 4387342755749713477}
+    - target: {fileID: 3910060746032008437, guid: 96b7f094fec38724097746acf69cc336,
+        type: 3}
+      propertyPath: LevelsPanel
+      value: 
+      objectReference: {fileID: 2050769336}
     - target: {fileID: 3910060746032008437, guid: 96b7f094fec38724097746acf69cc336,
         type: 3}
       propertyPath: CF2CanvasInput
@@ -5608,69 +5619,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 412901700}
-    - target: {fileID: 3647732593566094200, guid: 2812b160420e8c544986f451e7caca2e,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -105
-      objectReference: {fileID: 0}
-    - target: {fileID: 3647732593566094200, guid: 2812b160420e8c544986f451e7caca2e,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 480.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3647732593566094200, guid: 2812b160420e8c544986f451e7caca2e,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 6.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3647732593566094200, guid: 2812b160420e8c544986f451e7caca2e,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 838.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3123361499762297514, guid: 2812b160420e8c544986f451e7caca2e,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 205
-      objectReference: {fileID: 0}
-    - target: {fileID: 6766880720235139837, guid: 2812b160420e8c544986f451e7caca2e,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 198
-      objectReference: {fileID: 0}
-    - target: {fileID: 877879165238051720, guid: 2812b160420e8c544986f451e7caca2e,
-        type: 3}
-      propertyPath: m_Text
-      value: "\t\tMusic: \nFireflies and Stardust, Fretless, Industrious Ferret by
-        Kevin McLeod https://incompetech.com/\n\n\t\tSounds: \n-jingle-lose-00.wav:
-        www.littlerobotsoundfactory.com\n-success-02.wav: Andy Rhode\r\nhttps://freesound.org/s/320652/\n-
-        Snapping, Wooden Fence, C.wav by InspectorJ (www.jshaw.co.uk) of Freesound.org\n\n\n"
-      objectReference: {fileID: 0}
-    - target: {fileID: 877879165238051720, guid: 2812b160420e8c544986f451e7caca2e,
-        type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 37
-      objectReference: {fileID: 0}
-    - target: {fileID: 877879165238051720, guid: 2812b160420e8c544986f451e7caca2e,
-        type: 3}
-      propertyPath: m_FontData.m_LineSpacing
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 877879165238051720, guid: 2812b160420e8c544986f451e7caca2e,
-        type: 3}
-      propertyPath: m_FontData.m_BestFit
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 877879165238051720, guid: 2812b160420e8c544986f451e7caca2e,
-        type: 3}
-      propertyPath: m_FontData.m_Alignment
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 877879165238051720, guid: 2812b160420e8c544986f451e7caca2e,
-        type: 3}
-      propertyPath: m_FontData.m_RichText
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2812b160420e8c544986f451e7caca2e, type: 3}
 --- !u!1001 &9073872882882728236

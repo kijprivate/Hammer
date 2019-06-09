@@ -106,8 +106,8 @@ public abstract class Nail : MonoBehaviour
                 isOverhit = true;
                 hitsPerCurrentNail++;
                 
-                CalculatePoints();
                 EventManager.RaiseEventShowSplash(0); // raises event needed for displaying splash with hit rating
+                CalculatePoints();
                 EventManager.RaiseEventEarnScore(scoreForNail);
                 EventManager.RaiseEventNailPocket();
             }
