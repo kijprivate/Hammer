@@ -5178,6 +5178,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameplayCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3910060746032008443, guid: 96b7f094fec38724097746acf69cc336,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3910060746032008437, guid: 96b7f094fec38724097746acf69cc336,
         type: 3}
       propertyPath: MenuUI
@@ -5333,6 +5338,56 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 568993574}
+    - target: {fileID: 3910060747148405023, guid: 96b7f094fec38724097746acf69cc336,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 226581029013652259, guid: 96b7f094fec38724097746acf69cc336,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -174.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 226581029013652259, guid: 96b7f094fec38724097746acf69cc336,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 330
+      objectReference: {fileID: 0}
+    - target: {fileID: 226581029013652259, guid: 96b7f094fec38724097746acf69cc336,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 330
+      objectReference: {fileID: 0}
+    - target: {fileID: 226581029013652259, guid: 96b7f094fec38724097746acf69cc336,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 226581029013652259, guid: 96b7f094fec38724097746acf69cc336,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 226581029013652259, guid: 96b7f094fec38724097746acf69cc336,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 201.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502220715063075014, guid: 96b7f094fec38724097746acf69cc336,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910060745646221693, guid: 96b7f094fec38724097746acf69cc336,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910060745692874968, guid: 96b7f094fec38724097746acf69cc336,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96b7f094fec38724097746acf69cc336, type: 3}
 --- !u!114 &4244632987065547789 stripped
@@ -5468,6 +5523,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MenuCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4904233820943799933, guid: 2812b160420e8c544986f451e7caca2e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8587788818791437348, guid: 2812b160420e8c544986f451e7caca2e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107825810053903854, guid: 2812b160420e8c544986f451e7caca2e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4904233821550278870, guid: 2812b160420e8c544986f451e7caca2e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3006975154376337022, guid: 2812b160420e8c544986f451e7caca2e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 800302655057213305, guid: 2812b160420e8c544986f451e7caca2e,
         type: 3}
@@ -5624,6 +5704,120 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 412901700}
+    - target: {fileID: 4904233821550278871, guid: 2812b160420e8c544986f451e7caca2e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -40.907616
+      objectReference: {fileID: 0}
+    - target: {fileID: 4904233821550278871, guid: 2812b160420e8c544986f451e7caca2e,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -81.78497
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088261837301782711, guid: 2812b160420e8c544986f451e7caca2e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 51.092453
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088261837301782711, guid: 2812b160420e8c544986f451e7caca2e,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -210.58488
+      objectReference: {fileID: 0}
+    - target: {fileID: 8929405963370827323, guid: 2812b160420e8c544986f451e7caca2e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 891.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662991502377679088, guid: 2812b160420e8c544986f451e7caca2e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 891.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5414877429076645200, guid: 2812b160420e8c544986f451e7caca2e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 597.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5414877429076645200, guid: 2812b160420e8c544986f451e7caca2e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -228.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 668830150199774462, guid: 2812b160420e8c544986f451e7caca2e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -680.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 1089659395106409344, guid: 2812b160420e8c544986f451e7caca2e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -680.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 8032865030174956849, guid: 2812b160420e8c544986f451e7caca2e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -55.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4904233822231556374, guid: 2812b160420e8c544986f451e7caca2e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647732593566094200, guid: 2812b160420e8c544986f451e7caca2e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -131.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3123361499762297514, guid: 2812b160420e8c544986f451e7caca2e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 179.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6766880720235139837, guid: 2812b160420e8c544986f451e7caca2e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 179.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 909070900327085287, guid: 2812b160420e8c544986f451e7caca2e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 163635806031065706, guid: 2812b160420e8c544986f451e7caca2e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5749412763611962110, guid: 2812b160420e8c544986f451e7caca2e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 467.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 877879165238051720, guid: 2812b160420e8c544986f451e7caca2e,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: b7d2c4eee91433e48881509675bb1bb6,
+        type: 3}
+    - target: {fileID: 877879165238051720, guid: 2812b160420e8c544986f451e7caca2e,
+        type: 3}
+      propertyPath: m_Text
+      value: "Music: \nFireflies and Stardust, Fretless, Industrious Ferret \nby Kevin
+        McLeod https://incompetech.com/\n\nSounds: \nJingle-lose-00.wav: www.littlerobotsoundfactory.com\nSuccess-02.wav
+        Andy Rhode\r (freesound.org/s/320652)\nSnapping, Wooden Fence, C.wav by InspectorJ
+        (www.jshaw.co.uk) of Freesound.org\n\n\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 877879165238051720, guid: 2812b160420e8c544986f451e7caca2e,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3082329491384634663, guid: 2812b160420e8c544986f451e7caca2e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2812b160420e8c544986f451e7caca2e, type: 3}
 --- !u!1001 &9073872882882728236
