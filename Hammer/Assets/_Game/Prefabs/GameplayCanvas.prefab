@@ -2225,11 +2225,11 @@ MonoBehaviour:
   ScoreEarned: {fileID: 3910060746656363249}
   PerfectObject: {fileID: 3910060745293755867}
   BonusObject: {fileID: 3910060746619690990}
-  AwesomeSprite: {fileID: 21300000, guid: 7918d268125028340b8cb72dfeb0d03d, type: 3}
+  AwesomeSprite: {fileID: 21300000, guid: e3d3765494c421b4eb1a15871df8bb6b, type: 3}
   PerfectSprite: {fileID: 21300000, guid: ccf05c616d7f98d4db51685711ac2133, type: 3}
   ToohardSprite: {fileID: 21300000, guid: 9076fc8e744bcc848af3ac938f300eb4, type: 3}
   HitagainSprite: {fileID: 21300000, guid: 0c5b5213c5710d14cab08fd07d2d52fc, type: 3}
-  PerfectTarget: {fileID: 3910060746402076483}
+  PerfectTarget: {fileID: 3910060745509497522}
   SplashTarget: {fileID: 3910060745509497522}
   ScoreTarget: {fileID: 3910060746157804453}
   OkSound: {fileID: 8300000, guid: 263881af296651249a053c2d1ce5875d, type: 3}
@@ -5204,14 +5204,14 @@ RectTransform:
   m_GameObject: {fileID: 5502220715063075014}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.49999136, y: 0.49999136, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 3910060747148405022}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -134, y: 1326.1}
+  m_AnchoredPosition: {x: -174.2, y: 201.7}
   m_SizeDelta: {x: 330, y: 330}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4719252013392550154

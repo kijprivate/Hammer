@@ -221,15 +221,15 @@ public class CanvasManager : MonoBehaviour
     {
         ScoreSummary.text = score.ToString();
 
-        if ((float)score/LevelContainer.MaxAvailableScore >= cashed1Star)
+        if ((float)score/LevelContainer.MaxAvailableScore + 0.001f >= cashed1Star)
         {
             star1.SetActive(true);
         }
-        if ((float)score / LevelContainer.MaxAvailableScore >= cashed2Stars)
+        if ((float)score / LevelContainer.MaxAvailableScore + 0.001f >= cashed2Stars)
         {
             star2.SetActive(true);
         }
-        if ((float)score / LevelContainer.MaxAvailableScore >= cashed3Stars)
+        if ((float)score / LevelContainer.MaxAvailableScore + 0.001f >= cashed3Stars)
         {
             star3.SetActive(true);
         }
@@ -237,14 +237,14 @@ public class CanvasManager : MonoBehaviour
 
     private void OnCompleteScoreAnimation()
     {
-        if ((float)score / LevelContainer.MaxAvailableScore >= cashed1Star &&
+        if ((float)score / LevelContainer.MaxAvailableScore + 0.001f >= cashed1Star &&
             LevelContainer.CurrentLevelIndex == LevelsDifficultyContainer.Houses[LevelContainer.CurrentHouseIndex].levelsData.Count - 1
             && appearanceData.houses[LevelContainer.CurrentHouseIndex].NextHouseIcon)
         {
             ParticlesSummary.SetActive(true);
             HouseCompletedText.SetActive(true);
         }
-        else if ((float)score / LevelContainer.MaxAvailableScore >= cashed1Star)
+        else if ((float)score / LevelContainer.MaxAvailableScore + 0.001f >= cashed1Star)
         {
             LevelCompletedText.SetActive(true);
         }

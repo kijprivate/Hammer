@@ -144,3 +144,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2e732b5239804f046a31aa01c42e7321, type: 3}
   - {fileID: 8300000, guid: 97067ca9e4fd6244f82d30efd7f702da, type: 3}
   - {fileID: 8300000, guid: 0966e81d250f2f04094091a0e205ab17, type: 3}
+  soundButton: {fileID: 0}
+  soundSprites:
+  - {fileID: 21300000, guid: 42d38eadc6de4dd4891f449c3a89d8d8, type: 3}
+  - {fileID: 21300000, guid: 815f4fe2ca2205a47ae92af269f12398, type: 3}

@@ -49,6 +49,7 @@ public abstract class Nail : MonoBehaviour
     protected int cashedMaxHammerStrength;
     protected float rotationZ=0f;
     protected AudioSource nailAudioSource;
+    protected bool isPerfect;
 
     protected abstract void SetRandomHeight();
     protected virtual void Awake()
@@ -106,8 +107,13 @@ public abstract class Nail : MonoBehaviour
                 isOverhit = true;
                 hitsPerCurrentNail++;
                 
-                EventManager.RaiseEventShowSplash(0); // raises event needed for displaying splash with hit rating
                 CalculatePoints();
+
+                if (isPerfect)
+                { EventManager.RaiseEventPerfectHit(); }
+                else
+                { EventManager.RaiseEventShowSplash(0); }  // raises event needed for displaying splash with hit rating
+
                 EventManager.RaiseEventEarnScore(scoreForNail);
                 EventManager.RaiseEventNailPocket();
             }
@@ -171,10 +177,11 @@ public abstract class Nail : MonoBehaviour
         if (hitsPerCurrentNail <= minHammerHits)
         {
             LevelContainer.Score += scoreForNail;
-            EventManager.RaiseEventPerfectHit();
+            isPerfect = true;
         }
         else
         {
+            isPerfect = false;
             LevelContainer.Score += scoreForNail;
         }
     }
