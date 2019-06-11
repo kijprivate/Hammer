@@ -8,6 +8,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] GameObject PausePanel;
     [SerializeField] GameObject QuitPanel;
     [SerializeField] Button CancelQuitPanel;
+    [SerializeField] Button PauseButton;
+    [SerializeField] Button ResumeButton;
     [SerializeField] GameObject EndGamePanel;
 
     public bool isPaused { get; set; }
@@ -36,7 +38,8 @@ public class LevelManager : MonoBehaviour
     {
         if(LevelContainer.MenuHided && !isPaused && !LevelContainer.GameOver)
         {
-            PausePanel.SetActive(true);
+           // PausePanel.SetActive(true);
+            PauseButton.onClick.Invoke();
             isPaused = true;
         }
     }
@@ -45,7 +48,8 @@ public class LevelManager : MonoBehaviour
     {
         if((Input.GetKey(KeyCode.Home) || Input.GetKey(KeyCode.Menu)) && LevelContainer.MenuHided && !isPaused && !LevelContainer.GameOver)
         {
-            PausePanel.SetActive(true);
+          //  PausePanel.SetActive(true);
+            PauseButton.onClick.Invoke();
             isPaused = true;
         }
 
@@ -62,12 +66,14 @@ public class LevelManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape) && LevelContainer.MenuHided && !isPaused && !LevelContainer.GameOver)
         {
-            PausePanel.SetActive(true);
+           // PausePanel.SetActive(true);
+            PauseButton.onClick.Invoke();
             isPaused = true;
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && LevelContainer.MenuHided && isPaused && !LevelContainer.GameOver)
         {
-            PausePanel.SetActive(false);
+          //  PausePanel.SetActive(false);
+            ResumeButton.onClick.Invoke();
             isPaused = false;
         }
     }
