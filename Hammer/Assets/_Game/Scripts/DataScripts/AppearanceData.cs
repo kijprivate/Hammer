@@ -18,6 +18,7 @@ public class HouseAppearance
     [SerializeField] public Sprite SummaryGround;
     [SerializeField] public Sprite Clouds1;
     [SerializeField] public Sprite Clouds2;
+    [SerializeField] public Sprite BoardCrack;
     [SerializeField] public Texture BackgroundGradient;
     [SerializeField] public Sprite BackgroundEnvironment;
     [SerializeField] public Material BoardMaterial;

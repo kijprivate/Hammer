@@ -18,6 +18,7 @@ MonoBehaviour:
     SummaryGround: {fileID: 21300000, guid: 1e34b670293c60a4cabafd0e6218ae65, type: 3}
     Clouds1: {fileID: 21300000, guid: af043050086192344a14d3cc4fed0c8e, type: 3}
     Clouds2: {fileID: 21300000, guid: 97ca09e4e6fcc4341be4d0747be3f68a, type: 3}
+    BoardCrack: {fileID: 21300000, guid: a77fcb8de6b88d145b66b7dd81bb4aac, type: 3}
     BackgroundGradient: {fileID: 2800000, guid: 8c70f9d52ecd9a9469543655a52a5f8f,
       type: 3}
     BackgroundEnvironment: {fileID: 21300000, guid: 510296d8914f3e44d960c137e2c9c9f4,
@@ -29,6 +30,7 @@ MonoBehaviour:
     SummaryGround: {fileID: 21300000, guid: 84db1e01fdee88e40bcdabe23724e4ec, type: 3}
     Clouds1: {fileID: 21300000, guid: 02d1d6caa6148d74e8ffa35ca8f1c3f3, type: 3}
     Clouds2: {fileID: 21300000, guid: b4ded7c32d2600c408dd5b84f493fb1f, type: 3}
+    BoardCrack: {fileID: 21300000, guid: 4677acbf132f63b469d8d1fa39c36560, type: 3}
     BackgroundGradient: {fileID: 2800000, guid: 52251f092e6b46a488b09b6fcb9b358b,
       type: 3}
     BackgroundEnvironment: {fileID: 21300000, guid: d1081d4d30a77994ea8899e97580690a,
@@ -40,6 +42,7 @@ MonoBehaviour:
     SummaryGround: {fileID: 21300000, guid: 03c8431734378224e9302af21b4efba5, type: 3}
     Clouds1: {fileID: 21300000, guid: cd8bcf0d64047754b8f56b4bd2f74fef, type: 3}
     Clouds2: {fileID: 21300000, guid: d6f96a8c99673db45a8b5d9eecc69bdf, type: 3}
+    BoardCrack: {fileID: 21300000, guid: 189f25a4069753443a3df891d2d2488d, type: 3}
     BackgroundGradient: {fileID: 2800000, guid: 49b5ab7a82862a14c8e17c441970e2a6,
       type: 3}
     BackgroundEnvironment: {fileID: 21300000, guid: 29ad58252cb849341a7d506c3f41caa9,
