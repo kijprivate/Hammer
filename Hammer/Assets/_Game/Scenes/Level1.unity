@@ -5215,6 +5215,11 @@ PrefabInstance:
       propertyPath: MusicSource
       value: 
       objectReference: {fileID: 322417097}
+    - target: {fileID: 3910060746790944409, guid: 96b7f094fec38724097746acf69cc336,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3910060746032008433, guid: 96b7f094fec38724097746acf69cc336,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5340,6 +5345,92 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 568993574}
+    - target: {fileID: 5211939700892815898, guid: 96b7f094fec38724097746acf69cc336,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 108
+      objectReference: {fileID: 0}
+    - target: {fileID: 5211939700892815898, guid: 96b7f094fec38724097746acf69cc336,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -275
+      objectReference: {fileID: 0}
+    - target: {fileID: 5211939700892815898, guid: 96b7f094fec38724097746acf69cc336,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 5211939700892815898, guid: 96b7f094fec38724097746acf69cc336,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5211939700892815898, guid: 96b7f094fec38724097746acf69cc336,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5211939700892815898, guid: 96b7f094fec38724097746acf69cc336,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5211939700892815898, guid: 96b7f094fec38724097746acf69cc336,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5211939700892815898, guid: 96b7f094fec38724097746acf69cc336,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 5211939700892815898, guid: 96b7f094fec38724097746acf69cc336,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5211939700892815898, guid: 96b7f094fec38724097746acf69cc336,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046914066541938947, guid: 96b7f094fec38724097746acf69cc336,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 06382abf425a32348bbe5ec089fcf657,
+        type: 3}
+    - target: {fileID: 226581029013652259, guid: 96b7f094fec38724097746acf69cc336,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 226581029013652259, guid: 96b7f094fec38724097746acf69cc336,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 226581029013652259, guid: 96b7f094fec38724097746acf69cc336,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 226581029013652259, guid: 96b7f094fec38724097746acf69cc336,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 226581029013652259, guid: 96b7f094fec38724097746acf69cc336,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 108
+      objectReference: {fileID: 0}
+    - target: {fileID: 226581029013652259, guid: 96b7f094fec38724097746acf69cc336,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -275
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96b7f094fec38724097746acf69cc336, type: 3}
 --- !u!114 &4244632987065547789 stripped
@@ -5631,6 +5722,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 412901700}
+    - target: {fileID: 930728968509818349, guid: 2812b160420e8c544986f451e7caca2e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2812b160420e8c544986f451e7caca2e, type: 3}
 --- !u!1001 &9073872882882728236
